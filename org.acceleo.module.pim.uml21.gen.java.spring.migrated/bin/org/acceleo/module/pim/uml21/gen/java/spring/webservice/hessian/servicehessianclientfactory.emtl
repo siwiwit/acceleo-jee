@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="servicehessianclientfactory" nsURI="org::acceleo::module::pim::uml21::gen::java::spring::webservice::hessian::servicehessianclientfactory" endHeaderPosition="76">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
+    </input>
+    <imports href="../../profile.emtl#/0"/>
+    <imports href="../../common.emtl#/0"/>
+    <imports href="../../ioc.emtl#/0"/>
+    <imports href="../../services/uml2services.emtl#/0"/>
+    <imports href="../../services/springservices.emtl#/0"/>
+    <imports href="../../tests/entitytesthelper.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/dataTypes.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0"/>
+    <imports href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="fullFilePath" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainJava"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/fullFilePath/model">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0/toPath"/>
+          <argument xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0/baseImports"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/fullFilePath/model">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/ws/WSHessianClientFactory.java&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="mtl:QueryInvocation" eType="/6/Sequence(Class)">
+            <definition href="../../profile.emtl#/0/webservices"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/fullFilePath/model">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/notEmpty"/>
+        </ifExpr>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="model">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateXfireWSClientFactory" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0/baseImports"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateXfireWSClientFactory/model">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".ws;&#xA;&#xA;// "/>
+        <body xsi:type="mtl:ProtectedAreaBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;// for import &#xA;import java.net.MalformedURLException;&#xA;import java.util.logging.Level;&#xA;import java.util.logging.Logger;&#xA;import com.caucho.hessian.client.HessianProxyFactory;&#xA;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="import "/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../common.emtl#/0/servicePackage"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".I"/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/class">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+              </source>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService;&#xA;"/>
+            <loopVariable name="class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </loopVariable>
+            <iterSet xsi:type="mtl:QueryInvocation" eType="/6/Sequence(Class)">
+              <definition href="../../profile.emtl#/0/webservices"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/17">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+              </argument>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;// "/>
+          <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="imports">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </marker>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" for import&#xA;&#xA;public class WSHessianClientFactory {&#xA;&#xA;&#x9;private static WSHessianClientFactory instance = new WSHessianClientFactory();&#xA;&#x9;&#xA;&#x9;static {&#xA;&#x9;&#x9;Logger.getLogger(&quot;com.caucho.hessian&quot;).setLevel(Level.SEVERE);&#xA;&#x9;}&#xA;&#x9;&#xA;&#x9;private WSHessianClientFactory(){}&#xA;&#x9;&#xA;&#x9;public static WSHessianClientFactory getInstance(){&#xA;&#x9;&#x9;return instance;&#xA;&#x9;}&#xA;&#x9;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;public I"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </source>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService create"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </source>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService(String address) throws MalformedURLException{&#x9;&#x9;&#xA;&#x9;&#x9; //Create stub factory&#xA;&#x9;&#x9; HessianProxyFactory factory = new HessianProxyFactory();&#xA;&#x9;&#x9; //Doesn't Use Hessian protocol V2 because it's not completely stable with Spring AOP proxies)&#xA;&#x9;&#x9; factory.setHessian2Reply(false);&#x9;&#xA;&#x9;&#x9; factory.setHessian2Request(false);&#xA;&#x9;&#x9; // "/>
+          <body xsi:type="mtl:ProtectedAreaBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;&#x9;&#x9; //"/>
+            <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+              </source>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService bindings&#x9;&#x9; &#xA;&#x9;&#x9; // "/>
+            <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService bindings">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </marker>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;&#x9; &#x9; //Create service proxy&#xA;&#x9;&#x9; I"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </source>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService ws = (I"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </source>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService)factory.create(I"/>
+          <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </source>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="WebService.class, address);&#xA;&#x9;&#x9;return ws;&#x9;&#x9;&#xA;&#x9;}&#xA;"/>
+          <loopVariable name="class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/6/Sequence(Class)">
+            <definition href="../../profile.emtl#/0/webservices"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/23">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;}&#xA;"/>
+        <fileUrl xsi:type="mtl:TemplateInvocation" definition="/0/fullFilePath">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateXfireWSClientFactory/model">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+          </argument>
+        </fileUrl>
+      </body>
+      <parameter name="model">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="toUpperFirst">
+        <eAnnotations source="MTL"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="fullFilePath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/fullFilePath"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateXfireWSClientFactory">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateXfireWSClientFactory"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="webservices">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../profile.emtl#/0/webservices"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../xfire/servicexfiremocktest.emtl#/3/Sequence(Class)"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="servicePackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../common.emtl#/0/servicePackage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="namedElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="toPath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0/toPath"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="pathToMainJava">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainJava"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="eObject">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="baseImports">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0/baseImports"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="element">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Model_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Classifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Property_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Type_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Type"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Operation_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interface_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Enumeration_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Enumeration"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Element_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dependency_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Dependency"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(Element)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/3/Sequence(Element)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Association_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Association"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuralFeature_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuralFeature"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//PrimitiveType"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Package_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Class)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/fullFilePath">
+      <details key="start" value="1060"/>
+      <details key="end" value="1252"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/fullFilePath/@body.0">
+      <details key="start" value="1106"/>
+      <details key="end" value="1239"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/fullFilePath/@body.0/@body.0">
+      <details key="start" value="1146"/>
+      <details key="end" value="1168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/fullFilePath/@body.0/@body.0/model">
+      <details key="start" value="1146"/>
+      <details key="end" value="1151"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/fullFilePath/@body.0/@body.1">
+      <details key="start" value="1170"/>
+      <details key="end" value="1171"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/fullFilePath/@body.0/@body.2">
+      <details key="start" value="1172"/>
+      <details key="end" value="1200"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/fullFilePath/@body.0/@body.2/@argument.0">
+      <details key="start" value="1172"/>
+      <details key="end" value="1191"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/fullFilePath/@body.0/@body.2/@argument.0/model">
+      <details key="start" value="1172"/>
+      <details key="end" value="1177"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/fullFilePath/@body.0/@body.3">
+      <details key="start" value="1202"/>
+      <details key="end" value="1234"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/fullFilePath/@body.0/@ifExpr">
+      <details key="start" value="1110"/>
+      <details key="end" value="1143"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/fullFilePath/@body.0/@ifExpr/@source">
+      <details key="start" value="1111"/>
+      <details key="end" value="1130"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/fullFilePath/@body.0/@ifExpr/@source/model">
+      <details key="start" value="1111"/>
+      <details key="end" value="1116"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/fullFilePath/@body.1">
+      <details key="start" value="1240"/>
+      <details key="end" value="1241"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/fullFilePath/model">
+      <details key="start" value="1090"/>
+      <details key="end" value="1103"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateXfireWSClientFactory">
+      <details key="start" value="1255"/>
+      <details key="end" value="2901"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateXfireWSClientFactory/@body.0">
+      <details key="start" value="1377"/>
+      <details key="end" value="2889"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateXfireWSClientFactory/@body.0/@body.0">
+      <details key="start" value="1415"/>
+      <details key="end" value="1423"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateXfireWSClientFactory/@body.0/@body.1">
+      <details key="start" value="1424"/>
+      <details key="end" value="1443"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateXfireWSClientFactory/@body.0/@body.1/model">
+      <details key="start" value="1424"/>
+      <details key="end" value="1429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateXfireWSClientFactory/@body.0/@body.2">
+      <details key="start" value="1445"/>
+      <details key="end" value="1454"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateXfireWSClientFactory/@body.0/@body.3">
+      <details key="start" value="1454"/>
+      <details key="end" value="1785"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.0">
+      <details key="start" value="1477"/>
+      <details key="end" value="1653"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1">
+      <details key="start" value="1653"/>
+      <details key="end" value="1767"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.0">
+      <details key="start" value="1687"/>
+      <details key="end" value="1694"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.1">
+      <details key="start" value="1695"/>
+      <details key="end" value="1717"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.1/class">
+      <details key="start" value="1695"/>
+      <details key="end" value="1700"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.2">
+      <details key="start" value="1719"/>
+      <details key="end" value="1721"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.3">
+      <details key="start" value="1722"/>
+      <details key="end" value="1747"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.3/@source">
+      <details key="start" value="1722"/>
+      <details key="end" value="1732"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.3/@source/class">
+      <details key="start" value="1722"/>
+      <details key="end" value="1727"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@body.4">
+      <details key="start" value="1749"/>
+      <details key="end" value="1761"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/class">
+      <details key="start" value="1659"/>
+      <details key="end" value="1670"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@iterSet">
+      <details key="start" value="1671"/>
+      <details key="end" value="1684"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.1/@iterSet/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@body.2">
+      <details key="start" value="1768"/>
+      <details key="end" value="1773"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateXfireWSClientFactory/@body.0/@body.3/@marker">
+      <details key="start" value="1466"/>
+      <details key="end" value="1475"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateXfireWSClientFactory/@body.0/@body.4">
+      <details key="start" value="1785"/>
+      <details key="end" value="2114"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateXfireWSClientFactory/@body.0/@body.5">
+      <details key="start" value="2114"/>
+      <details key="end" value="2877"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.0">
+      <details key="start" value="2148"/>
+      <details key="end" value="2157"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.1">
+      <details key="start" value="2158"/>
+      <details key="end" value="2183"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.1/@source">
+      <details key="start" value="2158"/>
+      <details key="end" value="2168"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.1/@source/class">
+      <details key="start" value="2158"/>
+      <details key="end" value="2163"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.2">
+      <details key="start" value="2185"/>
+      <details key="end" value="2202"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.3">
+      <details key="start" value="2203"/>
+      <details key="end" value="2228"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.3/@source">
+      <details key="start" value="2203"/>
+      <details key="end" value="2213"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.3/@source/class">
+      <details key="start" value="2203"/>
+      <details key="end" value="2208"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.4">
+      <details key="start" value="2230"/>
+      <details key="end" value="2552"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5">
+      <details key="start" value="2552"/>
+      <details key="end" value="2663"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5/@body.0">
+      <details key="start" value="2587"/>
+      <details key="end" value="2594"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5/@body.1">
+      <details key="start" value="2595"/>
+      <details key="end" value="2620"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5/@body.1/@source">
+      <details key="start" value="2595"/>
+      <details key="end" value="2605"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5/@body.1/@source/class">
+      <details key="start" value="2595"/>
+      <details key="end" value="2600"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5/@body.2">
+      <details key="start" value="2622"/>
+      <details key="end" value="2651"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.5/@marker">
+      <details key="start" value="2564"/>
+      <details key="end" value="2585"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.6">
+      <details key="start" value="2663"/>
+      <details key="end" value="2696"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.7">
+      <details key="start" value="2697"/>
+      <details key="end" value="2722"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.7/@source">
+      <details key="start" value="2697"/>
+      <details key="end" value="2707"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.7/@source/class">
+      <details key="start" value="2697"/>
+      <details key="end" value="2702"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.8">
+      <details key="start" value="2724"/>
+      <details key="end" value="2742"/>
+      <details key="line" value="69"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.9">
+      <details key="start" value="2743"/>
+      <details key="end" value="2768"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.9/@source">
+      <details key="start" value="2743"/>
+      <details key="end" value="2753"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.9/@source/class">
+      <details key="start" value="2743"/>
+      <details key="end" value="2748"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.10">
+      <details key="start" value="2770"/>
+      <details key="end" value="2797"/>
+      <details key="line" value="69"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.11">
+      <details key="start" value="2798"/>
+      <details key="end" value="2823"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.11/@source">
+      <details key="start" value="2798"/>
+      <details key="end" value="2808"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.11/@source/class">
+      <details key="start" value="2798"/>
+      <details key="end" value="2803"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@body.12">
+      <details key="start" value="2825"/>
+      <details key="end" value="2871"/>
+      <details key="line" value="69"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateXfireWSClientFactory/@body.0/@body.5/class">
+      <details key="start" value="2120"/>
+      <details key="end" value="2131"/>
+      <details key="line" value="58"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@iterSet">
+      <details key="start" value="2132"/>
+      <details key="end" value="2145"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateXfireWSClientFactory/@body.0/@body.5/@iterSet/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateXfireWSClientFactory/@body.0/@body.6">
+      <details key="start" value="2878"/>
+      <details key="end" value="2882"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateXfireWSClientFactory/@body.0/@fileUrl">
+      <details key="start" value="1384"/>
+      <details key="end" value="1404"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateXfireWSClientFactory/@body.0/@fileUrl/model">
+      <details key="start" value="1384"/>
+      <details key="end" value="1389"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateXfireWSClientFactory/model">
+      <details key="start" value="1301"/>
+      <details key="end" value="1314"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

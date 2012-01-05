@@ -1,0 +1,2735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="daohibernatedirect" nsURI="org::acceleo::module::pim::uml21::gen::java::hibernate::daohibernatedirect" endHeaderPosition="67">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
+    </input>
+    <imports href="daohibernatecommon.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/requests.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/dataTypes.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="fullFilePath" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainJava"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/fullFilePath/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/"/>
+        <body xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0/toPath"/>
+          <argument xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="daohibernatecommon.emtl#/0/hibernatePackage"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/fullFilePath/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/Hibernate"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/fullFilePath/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Dao.java&#xD;&#xA;"/>
+        <ifExpr xsi:type="mtl:QueryInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/requests.emtl#/0/isEntity"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/fullFilePath/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </ifExpr>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <parameter name="class">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateDaoHibernateDirect" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="package "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="daohibernatecommon.emtl#/0/hibernatePackage"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;&#xD;&#xA;// "/>
+        <body xsi:type="mtl:ProtectedAreaBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" for import&#xA;import java.util.Collection;&#xD;&#xA;&#xD;&#xA;import org.apache.commons.logging.Log;&#xD;&#xA;import org.apache.commons.logging.LogFactory;&#xD;&#xA;import org.hibernate.Criteria;&#xD;&#xA;import org.hibernate.HibernateException;&#xD;&#xA;import org.hibernate.Session;&#xD;&#xA;import org.hibernate.criterion.Restrictions;&#xD;&#xA;&#xD;&#xA;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/importDaoException"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="daohibernatecommon.emtl#/0/importHibernateUtil"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;import "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/entityQualifiedName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;import "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#xD;&#xA;&#xD;&#xA;// "/>
+          <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="imports">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </marker>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" for import&#xD;&#xA;&#xD;&#xA;/**&#xD;&#xA; * Implementation of DAO interface "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" based on the hibernate&#xD;&#xA; * persistence framework.&#xD;&#xA; * @see "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA; */&#xD;&#xA;public class Hibernate"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Dao implements "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" {&#xD;&#xA;&#xD;&#xA;    /**&#xD;&#xA;     * The logger of this class.&#xD;&#xA;     */&#xD;&#xA;    private static final Log LOG =&#xD;&#xA;        LogFactory.getLog(Hibernate"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Dao.class);&#xD;&#xA;&#xD;&#xA;    /**&#xD;&#xA;     * Creates a new element.&#xD;&#xA;     * @param "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" Element to create.&#xD;&#xA;     * @throws DaoException If an HibernateException occurs.&#xD;&#xA;     * @see "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".create"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;     */&#xD;&#xA;    public void create"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(final "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") throws DaoException {&#xD;&#xA;        LOG.debug(&quot;Create a new "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" entity&quot;);&#xD;&#xA;    &#xD;&#xA;        try {&#xD;&#xA;            Session session = HibernateUtil.currentSession();&#xD;&#xA;            session.save("/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xD;&#xA;        } catch (HibernateException e) {&#xD;&#xA;            throw new DaoException(e);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    /**&#xD;&#xA;     * Updates an existing element.&#xD;&#xA;     * @param "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;     *            Element to update. If the element has an id,it may use it.&#xD;&#xA;     * @throws DaoException If an HibernateException occurs.&#xD;&#xA;     * @see "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".update"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;     */&#xD;&#xA;    public void update"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(final "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") throws DaoException {&#xD;&#xA;        LOG.debug(&quot;Update the entity "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" with "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" = &quot; + "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".get"/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="());&#xD;&#xA;        &#xD;&#xA;        try {&#xD;&#xA;            Session session = HibernateUtil.currentSession();&#xD;&#xA;            session.update("/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xD;&#xA;        } catch (HibernateException e) {&#xD;&#xA;            throw new DaoException(e);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    /**&#xD;&#xA;     * Deletes an element.&#xD;&#xA;     * Only "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" can be used to find which element must be deleted.&#xD;&#xA;     * @param "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" Element which will be delete.&#xD;&#xA;     * @throws DaoException If an HibernateException occurs.&#xD;&#xA;     * @see "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".delete"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;     */&#xD;&#xA;    public void delete"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="(final "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") throws DaoException {&#xD;&#xA;        LOG.debug(&quot;Delete the entity "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" with "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" =&quot; + "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".get"/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="());&#xD;&#xA;&#xD;&#xA;        try {&#xD;&#xA;            Session session = HibernateUtil.currentSession();&#xD;&#xA;            session.delete("/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xD;&#xA;        } catch (HibernateException e) {&#xD;&#xA;            throw new DaoException(e);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    /**&#xD;&#xA;     * Finds all elements.&#xD;&#xA;     * @return A list with all elements, without any filter.&#xD;&#xA;     * @throws DaoException If an HibernateException occurs.&#xD;&#xA;     * @see "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".findAll"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="s&#xD;&#xA;     */&#xD;&#xA;    public Collection&lt;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="> findAll"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="s() throws DaoException {&#xD;&#xA;        LOG.debug(&quot;Find all instance of "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" entity&quot;);&#xD;&#xA;        &#xD;&#xA;        try {&#xD;&#xA;            Session session = HibernateUtil.currentSession();&#xD;&#xA;            Criteria criteria = session.createCriteria("/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".class);&#xD;&#xA;            Collection&lt;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="> resultList = criteria.list();&#xD;&#xA;&#xD;&#xA;            LOG.debug(&quot;Found &quot; + resultList.size()&#xD;&#xA;                    + &quot; instances of "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" entity&quot;);&#xD;&#xA;            return resultList;&#xD;&#xA;        } catch (HibernateException e) {&#xD;&#xA;            throw new DaoException(e);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    /**&#xD;&#xA;     * Finds one entity by its primary key.&#xD;&#xA;     * @param some"/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" The PK of the entity&#xD;&#xA;     * @return Return the entity found.&#xD;&#xA;     * @throws DaoException If an HibernateException occurs.&#xD;&#xA;     * @see "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/findByPKMethodName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;     */&#xD;&#xA;    public "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/findByPKSignature"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" {&#xD;&#xA;        LOG.debug(&quot;Looking for instance of "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" entity by "/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" : &quot;&#xD;&#xA;                + some"/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xD;&#xA;        &#xD;&#xA;        try {&#xD;&#xA;            Session session = HibernateUtil.currentSession();&#xD;&#xA;            Criteria criteria = session.createCriteria("/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".class)&#xD;&#xA;                .add(Restrictions.eq(&quot;"/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;, some"/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="));&#xD;&#xA;            "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" result = ("/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") criteria.uniqueResult();&#xD;&#xA;&#xD;&#xA;            return result; &#xD;&#xA;        } catch (HibernateException e) {&#xD;&#xA;            throw new DaoException(e);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;&#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    "/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0/generateJavadoc.1"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/generateDaoHibernateDirect/@body.0/@body.117/oper">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;    public "/>
+            <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/77/Bag(String)">
+              <source xsi:type="ocl.ecore:OperationCallExp" eType="/77/Set(Parameter)">
+                <source xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/generateDaoHibernateDirect/@body.0/@body.117/oper">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation/returnResult"/>
+              </source>
+              <body xsi:type="mtl:TemplateInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/dataTypes.emtl#/0/convertToJavaType"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect/temp1">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+                </argument>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+              </iterator>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/generateDaoHibernateDirect/@body.0/@body.117/oper">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="("/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0/generateParameters"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/generateDaoHibernateDirect/@body.0/@body.117/oper">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=") throws DaoException {        &#xD;&#xA;        // "/>
+            <body xsi:type="mtl:ProtectedAreaBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" for "/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/86">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="         &#xA;&#x9;&#x9;LOG.debug(&quot;Call "/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/87">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" on "/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" entity&quot;);        &#xD;&#xA;        try {&#xD;&#xA;            Session session = HibernateUtil.currentSession();&#xD;&#xA;            // TODO implementation with Hibernate of criteria search&#xD;&#xA;            return null;&#xD;&#xA;        } catch (HibernateException e) {&#xD;&#xA;            throw new DaoException(e);&#xD;&#xA;        }&#xD;&#xA;        // "/>
+              <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="convert">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              </marker>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" for "/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/89">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;    }&#xD;&#xA;"/>
+            <ifExpr xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/0/hasStereotype"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/generateDaoHibernateDirect/@body.0/@body.117/oper">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/OclAny_Class/getProperty">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/80">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </source>
+                <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="find">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                </argument>
+              </argument>
+            </ifExpr>
+          </body>
+          <loopVariable name="oper">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/77/OrderedSet(Operation)">
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/ownedOperation"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;    //"/>
+        <body xsi:type="mtl:ProtectedAreaBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="    &#xA;&#x9;//"/>
+          <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="additions">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </marker>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;}&#xA;&#xA;"/>
+        <fileUrl xsi:type="mtl:TemplateInvocation" definition="/0/fullFilePath">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateDaoHibernateDirect/class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </argument>
+        </fileUrl>
+      </body>
+      <parameter name="class">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="toUpperFirst">
+        <eAnnotations source="MTL"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+      <eOperations name="toLowerFirst">
+        <eAnnotations source="MTL"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="fullFilePath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/fullFilePath"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateDaoHibernateDirect">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateDaoHibernateDirect"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="importHibernateUtil">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="daohibernatecommon.emtl#/0/importHibernateUtil"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aElement">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="hibernatePackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="daohibernatecommon.emtl#/0/hibernatePackage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="entityQualifiedName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/entityQualifiedName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="type">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Type"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="pathToMainJava">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainJava"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="eObject">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getPKName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/getPKName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isEntity">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/requests.emtl#/0/isEntity"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="classifier">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateParameters">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0/generateParameters"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="operation">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateJavadoc">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0/generateJavadoc.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="operation">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="convertToJavaType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/dataTypes.emtl#/0/convertToJavaType"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="parameter">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="toPath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0/toPath"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="hasStereotype">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/0/hasStereotype"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+        <eParameters name="stereotypeName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="daoInterfaceName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="daoInterfaceQualifiedName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoInterfaceQualifiedName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="findByPKSignature">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/findByPKSignature"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="findByPKMethodName">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/findByPKMethodName"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="importDaoException">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/importDaoException"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="element">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+      <eOperations name="getProperty">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="key">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Element_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Type_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Type"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Property_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Operation_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Classifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interface_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Package_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuralFeature_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuralFeature"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//PrimitiveType"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(Element)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/3/Sequence(Element)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Association_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Association"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Model_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Operation)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Parameter)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:BagType" name="Bag(String)" instanceClassName="org.eclipse.ocl.util.Bag">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/fullFilePath">
+      <details key="start" value="735"/>
+      <details key="end" value="916"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/fullFilePath/@body.0">
+      <details key="start" value="779"/>
+      <details key="end" value="903"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/fullFilePath/@body.0/@body.0">
+      <details key="start" value="804"/>
+      <details key="end" value="826"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/fullFilePath/@body.0/@body.0/class">
+      <details key="start" value="804"/>
+      <details key="end" value="809"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/fullFilePath/@body.0/@body.1">
+      <details key="start" value="828"/>
+      <details key="end" value="829"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/fullFilePath/@body.0/@body.2">
+      <details key="start" value="830"/>
+      <details key="end" value="863"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/fullFilePath/@body.0/@body.2/@argument.0">
+      <details key="start" value="830"/>
+      <details key="end" value="854"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/fullFilePath/@body.0/@body.2/@argument.0/class">
+      <details key="start" value="830"/>
+      <details key="end" value="835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/fullFilePath/@body.0/@body.3">
+      <details key="start" value="865"/>
+      <details key="end" value="875"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/fullFilePath/@body.0/@body.4">
+      <details key="start" value="876"/>
+      <details key="end" value="886"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/fullFilePath/@body.0/@body.4/class">
+      <details key="start" value="876"/>
+      <details key="end" value="881"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/fullFilePath/@body.0/@body.5">
+      <details key="start" value="888"/>
+      <details key="end" value="898"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/fullFilePath/@body.0/@ifExpr">
+      <details key="start" value="783"/>
+      <details key="end" value="801"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/fullFilePath/@body.0/@ifExpr/class">
+      <details key="start" value="784"/>
+      <details key="end" value="789"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/fullFilePath/@body.1">
+      <details key="start" value="904"/>
+      <details key="end" value="905"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/fullFilePath/class">
+      <details key="start" value="765"/>
+      <details key="end" value="776"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateDaoHibernateDirect">
+      <details key="start" value="919"/>
+      <details key="end" value="7091"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateDaoHibernateDirect/@body.0">
+      <details key="start" value="1037"/>
+      <details key="end" value="7079"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateDaoHibernateDirect/@body.0/@body.0">
+      <details key="start" value="1075"/>
+      <details key="end" value="1083"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateDaoHibernateDirect/@body.0/@body.1">
+      <details key="start" value="1084"/>
+      <details key="end" value="1108"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateDaoHibernateDirect/@body.0/@body.1/class">
+      <details key="start" value="1084"/>
+      <details key="end" value="1089"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateDaoHibernateDirect/@body.0/@body.2">
+      <details key="start" value="1110"/>
+      <details key="end" value="1118"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateDaoHibernateDirect/@body.0/@body.3">
+      <details key="start" value="1118"/>
+      <details key="end" value="1591"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.0">
+      <details key="start" value="1141"/>
+      <details key="end" value="1425"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.1">
+      <details key="start" value="1426"/>
+      <details key="end" value="1452"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.1/class">
+      <details key="start" value="1426"/>
+      <details key="end" value="1431"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.2">
+      <details key="start" value="1454"/>
+      <details key="end" value="1456"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.3">
+      <details key="start" value="1457"/>
+      <details key="end" value="1484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.3/class">
+      <details key="start" value="1457"/>
+      <details key="end" value="1462"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.4">
+      <details key="start" value="1486"/>
+      <details key="end" value="1495"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.5">
+      <details key="start" value="1496"/>
+      <details key="end" value="1523"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.5/class">
+      <details key="start" value="1496"/>
+      <details key="end" value="1501"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.6">
+      <details key="start" value="1525"/>
+      <details key="end" value="1535"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.7">
+      <details key="start" value="1536"/>
+      <details key="end" value="1569"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.7/class">
+      <details key="start" value="1536"/>
+      <details key="end" value="1541"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@body.8">
+      <details key="start" value="1571"/>
+      <details key="end" value="1579"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateDaoHibernateDirect/@body.0/@body.3/@marker">
+      <details key="start" value="1130"/>
+      <details key="end" value="1139"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateDaoHibernateDirect/@body.0/@body.4">
+      <details key="start" value="1591"/>
+      <details key="end" value="1646"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateDaoHibernateDirect/@body.0/@body.5">
+      <details key="start" value="1647"/>
+      <details key="end" value="1671"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateDaoHibernateDirect/@body.0/@body.5/class">
+      <details key="start" value="1647"/>
+      <details key="end" value="1652"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateDaoHibernateDirect/@body.0/@body.6">
+      <details key="start" value="1673"/>
+      <details key="end" value="1733"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateDaoHibernateDirect/@body.0/@body.7">
+      <details key="start" value="1734"/>
+      <details key="end" value="1767"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateDaoHibernateDirect/@body.0/@body.7/class">
+      <details key="start" value="1734"/>
+      <details key="end" value="1739"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateDaoHibernateDirect/@body.0/@body.8">
+      <details key="start" value="1769"/>
+      <details key="end" value="1798"/>
+      <details key="line" value="46"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateDaoHibernateDirect/@body.0/@body.9">
+      <details key="start" value="1799"/>
+      <details key="end" value="1809"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateDaoHibernateDirect/@body.0/@body.9/class">
+      <details key="start" value="1799"/>
+      <details key="end" value="1804"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateDaoHibernateDirect/@body.0/@body.10">
+      <details key="start" value="1811"/>
+      <details key="end" value="1826"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateDaoHibernateDirect/@body.0/@body.11">
+      <details key="start" value="1827"/>
+      <details key="end" value="1851"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateDaoHibernateDirect/@body.0/@body.11/class">
+      <details key="start" value="1827"/>
+      <details key="end" value="1832"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateDaoHibernateDirect/@body.0/@body.12">
+      <details key="start" value="1853"/>
+      <details key="end" value="1982"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateDaoHibernateDirect/@body.0/@body.13">
+      <details key="start" value="1983"/>
+      <details key="end" value="1993"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateDaoHibernateDirect/@body.0/@body.13/class">
+      <details key="start" value="1983"/>
+      <details key="end" value="1988"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateDaoHibernateDirect/@body.0/@body.14">
+      <details key="start" value="1995"/>
+      <details key="end" value="2064"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateDaoHibernateDirect/@body.0/@body.15">
+      <details key="start" value="2065"/>
+      <details key="end" value="2090"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateDaoHibernateDirect/@body.0/@body.15/@source">
+      <details key="start" value="2065"/>
+      <details key="end" value="2075"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateDaoHibernateDirect/@body.0/@body.15/@source/class">
+      <details key="start" value="2065"/>
+      <details key="end" value="2070"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateDaoHibernateDirect/@body.0/@body.16">
+      <details key="start" value="2092"/>
+      <details key="end" value="2187"/>
+      <details key="line" value="57"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateDaoHibernateDirect/@body.0/@body.17">
+      <details key="start" value="2188"/>
+      <details key="end" value="2221"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateDaoHibernateDirect/@body.0/@body.17/class">
+      <details key="start" value="2188"/>
+      <details key="end" value="2193"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateDaoHibernateDirect/@body.0/@body.18">
+      <details key="start" value="2223"/>
+      <details key="end" value="2230"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateDaoHibernateDirect/@body.0/@body.19">
+      <details key="start" value="2231"/>
+      <details key="end" value="2241"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateDaoHibernateDirect/@body.0/@body.19/class">
+      <details key="start" value="2231"/>
+      <details key="end" value="2236"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateDaoHibernateDirect/@body.0/@body.20">
+      <details key="start" value="2243"/>
+      <details key="end" value="2276"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateDaoHibernateDirect/@body.0/@body.21">
+      <details key="start" value="2277"/>
+      <details key="end" value="2287"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateDaoHibernateDirect/@body.0/@body.21/class">
+      <details key="start" value="2277"/>
+      <details key="end" value="2282"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateDaoHibernateDirect/@body.0/@body.22">
+      <details key="start" value="2289"/>
+      <details key="end" value="2296"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateDaoHibernateDirect/@body.0/@body.23">
+      <details key="start" value="2297"/>
+      <details key="end" value="2307"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateDaoHibernateDirect/@body.0/@body.23/class">
+      <details key="start" value="2297"/>
+      <details key="end" value="2302"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateDaoHibernateDirect/@body.0/@body.24">
+      <details key="start" value="2309"/>
+      <details key="end" value="2310"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateDaoHibernateDirect/@body.0/@body.25">
+      <details key="start" value="2311"/>
+      <details key="end" value="2336"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateDaoHibernateDirect/@body.0/@body.25/@source">
+      <details key="start" value="2311"/>
+      <details key="end" value="2321"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateDaoHibernateDirect/@body.0/@body.25/@source/class">
+      <details key="start" value="2311"/>
+      <details key="end" value="2316"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateDaoHibernateDirect/@body.0/@body.26">
+      <details key="start" value="2338"/>
+      <details key="end" value="2395"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateDaoHibernateDirect/@body.0/@body.27">
+      <details key="start" value="2396"/>
+      <details key="end" value="2406"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateDaoHibernateDirect/@body.0/@body.27/class">
+      <details key="start" value="2396"/>
+      <details key="end" value="2401"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateDaoHibernateDirect/@body.0/@body.28">
+      <details key="start" value="2408"/>
+      <details key="end" value="2529"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateDaoHibernateDirect/@body.0/@body.29">
+      <details key="start" value="2530"/>
+      <details key="end" value="2555"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateDaoHibernateDirect/@body.0/@body.29/@source">
+      <details key="start" value="2530"/>
+      <details key="end" value="2540"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateDaoHibernateDirect/@body.0/@body.29/@source/class">
+      <details key="start" value="2530"/>
+      <details key="end" value="2535"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateDaoHibernateDirect/@body.0/@body.30">
+      <details key="start" value="2557"/>
+      <details key="end" value="2723"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateDaoHibernateDirect/@body.0/@body.31">
+      <details key="start" value="2724"/>
+      <details key="end" value="2749"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateDaoHibernateDirect/@body.0/@body.31/@source">
+      <details key="start" value="2724"/>
+      <details key="end" value="2734"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateDaoHibernateDirect/@body.0/@body.31/@source/class">
+      <details key="start" value="2724"/>
+      <details key="end" value="2729"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateDaoHibernateDirect/@body.0/@body.32">
+      <details key="start" value="2751"/>
+      <details key="end" value="2905"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateDaoHibernateDirect/@body.0/@body.33">
+      <details key="start" value="2906"/>
+      <details key="end" value="2939"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateDaoHibernateDirect/@body.0/@body.33/class">
+      <details key="start" value="2906"/>
+      <details key="end" value="2911"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateDaoHibernateDirect/@body.0/@body.34">
+      <details key="start" value="2941"/>
+      <details key="end" value="2948"/>
+      <details key="line" value="77"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateDaoHibernateDirect/@body.0/@body.35">
+      <details key="start" value="2949"/>
+      <details key="end" value="2959"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateDaoHibernateDirect/@body.0/@body.35/class">
+      <details key="start" value="2949"/>
+      <details key="end" value="2954"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateDaoHibernateDirect/@body.0/@body.36">
+      <details key="start" value="2961"/>
+      <details key="end" value="2994"/>
+      <details key="line" value="78"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateDaoHibernateDirect/@body.0/@body.37">
+      <details key="start" value="2995"/>
+      <details key="end" value="3005"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateDaoHibernateDirect/@body.0/@body.37/class">
+      <details key="start" value="2995"/>
+      <details key="end" value="3000"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateDaoHibernateDirect/@body.0/@body.38">
+      <details key="start" value="3007"/>
+      <details key="end" value="3014"/>
+      <details key="line" value="79"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateDaoHibernateDirect/@body.0/@body.39">
+      <details key="start" value="3015"/>
+      <details key="end" value="3025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateDaoHibernateDirect/@body.0/@body.39/class">
+      <details key="start" value="3015"/>
+      <details key="end" value="3020"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateDaoHibernateDirect/@body.0/@body.40">
+      <details key="start" value="3027"/>
+      <details key="end" value="3028"/>
+      <details key="line" value="79"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateDaoHibernateDirect/@body.0/@body.41">
+      <details key="start" value="3029"/>
+      <details key="end" value="3054"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateDaoHibernateDirect/@body.0/@body.41/@source">
+      <details key="start" value="3029"/>
+      <details key="end" value="3039"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateDaoHibernateDirect/@body.0/@body.41/@source/class">
+      <details key="start" value="3029"/>
+      <details key="end" value="3034"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateDaoHibernateDirect/@body.0/@body.42">
+      <details key="start" value="3056"/>
+      <details key="end" value="3118"/>
+      <details key="line" value="79"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateDaoHibernateDirect/@body.0/@body.43">
+      <details key="start" value="3119"/>
+      <details key="end" value="3129"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateDaoHibernateDirect/@body.0/@body.43/class">
+      <details key="start" value="3119"/>
+      <details key="end" value="3124"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateDaoHibernateDirect/@body.0/@body.44">
+      <details key="start" value="3131"/>
+      <details key="end" value="3137"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateDaoHibernateDirect/@body.0/@body.45">
+      <details key="start" value="3138"/>
+      <details key="end" value="3155"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateDaoHibernateDirect/@body.0/@body.45/class">
+      <details key="start" value="3138"/>
+      <details key="end" value="3143"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateDaoHibernateDirect/@body.0/@body.46">
+      <details key="start" value="3158"/>
+      <details key="end" value="3165"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateDaoHibernateDirect/@body.0/@body.47">
+      <details key="start" value="3166"/>
+      <details key="end" value="3191"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateDaoHibernateDirect/@body.0/@body.47/@source">
+      <details key="start" value="3166"/>
+      <details key="end" value="3176"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateDaoHibernateDirect/@body.0/@body.47/@source/class">
+      <details key="start" value="3166"/>
+      <details key="end" value="3171"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateDaoHibernateDirect/@body.0/@body.48">
+      <details key="start" value="3193"/>
+      <details key="end" value="3197"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateDaoHibernateDirect/@body.0/@body.49">
+      <details key="start" value="3198"/>
+      <details key="end" value="3230"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateDaoHibernateDirect/@body.0/@body.49/@source">
+      <details key="start" value="3198"/>
+      <details key="end" value="3215"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateDaoHibernateDirect/@body.0/@body.49/@source/class">
+      <details key="start" value="3198"/>
+      <details key="end" value="3203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateDaoHibernateDirect/@body.0/@body.50">
+      <details key="start" value="3232"/>
+      <details key="end" value="3353"/>
+      <details key="line" value="80"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateDaoHibernateDirect/@body.0/@body.51">
+      <details key="start" value="3354"/>
+      <details key="end" value="3379"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateDaoHibernateDirect/@body.0/@body.51/@source">
+      <details key="start" value="3354"/>
+      <details key="end" value="3364"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateDaoHibernateDirect/@body.0/@body.51/@source/class">
+      <details key="start" value="3354"/>
+      <details key="end" value="3359"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateDaoHibernateDirect/@body.0/@body.52">
+      <details key="start" value="3381"/>
+      <details key="end" value="3536"/>
+      <details key="line" value="84"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateDaoHibernateDirect/@body.0/@body.53">
+      <details key="start" value="3537"/>
+      <details key="end" value="3554"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateDaoHibernateDirect/@body.0/@body.53/class">
+      <details key="start" value="3537"/>
+      <details key="end" value="3542"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateDaoHibernateDirect/@body.0/@body.54">
+      <details key="start" value="3556"/>
+      <details key="end" value="3623"/>
+      <details key="line" value="92"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateDaoHibernateDirect/@body.0/@body.55">
+      <details key="start" value="3624"/>
+      <details key="end" value="3649"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateDaoHibernateDirect/@body.0/@body.55/@source">
+      <details key="start" value="3624"/>
+      <details key="end" value="3634"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateDaoHibernateDirect/@body.0/@body.55/@source/class">
+      <details key="start" value="3624"/>
+      <details key="end" value="3629"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateDaoHibernateDirect/@body.0/@body.56">
+      <details key="start" value="3651"/>
+      <details key="end" value="3757"/>
+      <details key="line" value="93"/>
+    </eAnnotations>
+    <eAnnotations source="positions.125" references="/0/generateDaoHibernateDirect/@body.0/@body.57">
+      <details key="start" value="3758"/>
+      <details key="end" value="3791"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.126" references="/0/generateDaoHibernateDirect/@body.0/@body.57/class">
+      <details key="start" value="3758"/>
+      <details key="end" value="3763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.127" references="/0/generateDaoHibernateDirect/@body.0/@body.58">
+      <details key="start" value="3793"/>
+      <details key="end" value="3800"/>
+      <details key="line" value="95"/>
+    </eAnnotations>
+    <eAnnotations source="positions.128" references="/0/generateDaoHibernateDirect/@body.0/@body.59">
+      <details key="start" value="3801"/>
+      <details key="end" value="3811"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.129" references="/0/generateDaoHibernateDirect/@body.0/@body.59/class">
+      <details key="start" value="3801"/>
+      <details key="end" value="3806"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.130" references="/0/generateDaoHibernateDirect/@body.0/@body.60">
+      <details key="start" value="3813"/>
+      <details key="end" value="3846"/>
+      <details key="line" value="96"/>
+    </eAnnotations>
+    <eAnnotations source="positions.131" references="/0/generateDaoHibernateDirect/@body.0/@body.61">
+      <details key="start" value="3847"/>
+      <details key="end" value="3857"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.132" references="/0/generateDaoHibernateDirect/@body.0/@body.61/class">
+      <details key="start" value="3847"/>
+      <details key="end" value="3852"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.133" references="/0/generateDaoHibernateDirect/@body.0/@body.62">
+      <details key="start" value="3859"/>
+      <details key="end" value="3866"/>
+      <details key="line" value="97"/>
+    </eAnnotations>
+    <eAnnotations source="positions.134" references="/0/generateDaoHibernateDirect/@body.0/@body.63">
+      <details key="start" value="3867"/>
+      <details key="end" value="3877"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.135" references="/0/generateDaoHibernateDirect/@body.0/@body.63/class">
+      <details key="start" value="3867"/>
+      <details key="end" value="3872"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.136" references="/0/generateDaoHibernateDirect/@body.0/@body.64">
+      <details key="start" value="3879"/>
+      <details key="end" value="3880"/>
+      <details key="line" value="97"/>
+    </eAnnotations>
+    <eAnnotations source="positions.137" references="/0/generateDaoHibernateDirect/@body.0/@body.65">
+      <details key="start" value="3881"/>
+      <details key="end" value="3906"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.138" references="/0/generateDaoHibernateDirect/@body.0/@body.65/@source">
+      <details key="start" value="3881"/>
+      <details key="end" value="3891"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.139" references="/0/generateDaoHibernateDirect/@body.0/@body.65/@source/class">
+      <details key="start" value="3881"/>
+      <details key="end" value="3886"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.140" references="/0/generateDaoHibernateDirect/@body.0/@body.66">
+      <details key="start" value="3908"/>
+      <details key="end" value="3970"/>
+      <details key="line" value="97"/>
+    </eAnnotations>
+    <eAnnotations source="positions.141" references="/0/generateDaoHibernateDirect/@body.0/@body.67">
+      <details key="start" value="3971"/>
+      <details key="end" value="3981"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.142" references="/0/generateDaoHibernateDirect/@body.0/@body.67/class">
+      <details key="start" value="3971"/>
+      <details key="end" value="3976"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.143" references="/0/generateDaoHibernateDirect/@body.0/@body.68">
+      <details key="start" value="3983"/>
+      <details key="end" value="3989"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.144" references="/0/generateDaoHibernateDirect/@body.0/@body.69">
+      <details key="start" value="3990"/>
+      <details key="end" value="4007"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.145" references="/0/generateDaoHibernateDirect/@body.0/@body.69/class">
+      <details key="start" value="3990"/>
+      <details key="end" value="3995"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.146" references="/0/generateDaoHibernateDirect/@body.0/@body.70">
+      <details key="start" value="4009"/>
+      <details key="end" value="4015"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.147" references="/0/generateDaoHibernateDirect/@body.0/@body.71">
+      <details key="start" value="4016"/>
+      <details key="end" value="4041"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.148" references="/0/generateDaoHibernateDirect/@body.0/@body.71/@source">
+      <details key="start" value="4016"/>
+      <details key="end" value="4026"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.149" references="/0/generateDaoHibernateDirect/@body.0/@body.71/@source/class">
+      <details key="start" value="4016"/>
+      <details key="end" value="4021"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.150" references="/0/generateDaoHibernateDirect/@body.0/@body.72">
+      <details key="start" value="4043"/>
+      <details key="end" value="4047"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.151" references="/0/generateDaoHibernateDirect/@body.0/@body.73">
+      <details key="start" value="4048"/>
+      <details key="end" value="4080"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.152" references="/0/generateDaoHibernateDirect/@body.0/@body.73/@source">
+      <details key="start" value="4048"/>
+      <details key="end" value="4065"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.153" references="/0/generateDaoHibernateDirect/@body.0/@body.73/@source/class">
+      <details key="start" value="4048"/>
+      <details key="end" value="4053"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.154" references="/0/generateDaoHibernateDirect/@body.0/@body.74">
+      <details key="start" value="4082"/>
+      <details key="end" value="4195"/>
+      <details key="line" value="98"/>
+    </eAnnotations>
+    <eAnnotations source="positions.155" references="/0/generateDaoHibernateDirect/@body.0/@body.75">
+      <details key="start" value="4196"/>
+      <details key="end" value="4221"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.156" references="/0/generateDaoHibernateDirect/@body.0/@body.75/@source">
+      <details key="start" value="4196"/>
+      <details key="end" value="4206"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.157" references="/0/generateDaoHibernateDirect/@body.0/@body.75/@source/class">
+      <details key="start" value="4196"/>
+      <details key="end" value="4201"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.158" references="/0/generateDaoHibernateDirect/@body.0/@body.76">
+      <details key="start" value="4223"/>
+      <details key="end" value="4502"/>
+      <details key="line" value="102"/>
+    </eAnnotations>
+    <eAnnotations source="positions.159" references="/0/generateDaoHibernateDirect/@body.0/@body.77">
+      <details key="start" value="4503"/>
+      <details key="end" value="4536"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.160" references="/0/generateDaoHibernateDirect/@body.0/@body.77/class">
+      <details key="start" value="4503"/>
+      <details key="end" value="4508"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.161" references="/0/generateDaoHibernateDirect/@body.0/@body.78">
+      <details key="start" value="4538"/>
+      <details key="end" value="4546"/>
+      <details key="line" value="112"/>
+    </eAnnotations>
+    <eAnnotations source="positions.162" references="/0/generateDaoHibernateDirect/@body.0/@body.79">
+      <details key="start" value="4547"/>
+      <details key="end" value="4557"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.163" references="/0/generateDaoHibernateDirect/@body.0/@body.79/class">
+      <details key="start" value="4547"/>
+      <details key="end" value="4552"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.164" references="/0/generateDaoHibernateDirect/@body.0/@body.80">
+      <details key="start" value="4559"/>
+      <details key="end" value="4593"/>
+      <details key="line" value="112"/>
+    </eAnnotations>
+    <eAnnotations source="positions.165" references="/0/generateDaoHibernateDirect/@body.0/@body.81">
+      <details key="start" value="4594"/>
+      <details key="end" value="4604"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.166" references="/0/generateDaoHibernateDirect/@body.0/@body.81/class">
+      <details key="start" value="4594"/>
+      <details key="end" value="4599"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.167" references="/0/generateDaoHibernateDirect/@body.0/@body.82">
+      <details key="start" value="4606"/>
+      <details key="end" value="4615"/>
+      <details key="line" value="114"/>
+    </eAnnotations>
+    <eAnnotations source="positions.168" references="/0/generateDaoHibernateDirect/@body.0/@body.83">
+      <details key="start" value="4616"/>
+      <details key="end" value="4626"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.169" references="/0/generateDaoHibernateDirect/@body.0/@body.83/class">
+      <details key="start" value="4616"/>
+      <details key="end" value="4621"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.170" references="/0/generateDaoHibernateDirect/@body.0/@body.84">
+      <details key="start" value="4628"/>
+      <details key="end" value="4695"/>
+      <details key="line" value="114"/>
+    </eAnnotations>
+    <eAnnotations source="positions.171" references="/0/generateDaoHibernateDirect/@body.0/@body.85">
+      <details key="start" value="4696"/>
+      <details key="end" value="4706"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.172" references="/0/generateDaoHibernateDirect/@body.0/@body.85/class">
+      <details key="start" value="4696"/>
+      <details key="end" value="4701"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.173" references="/0/generateDaoHibernateDirect/@body.0/@body.86">
+      <details key="start" value="4708"/>
+      <details key="end" value="4863"/>
+      <details key="line" value="115"/>
+    </eAnnotations>
+    <eAnnotations source="positions.174" references="/0/generateDaoHibernateDirect/@body.0/@body.87">
+      <details key="start" value="4864"/>
+      <details key="end" value="4874"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.175" references="/0/generateDaoHibernateDirect/@body.0/@body.87/class">
+      <details key="start" value="4864"/>
+      <details key="end" value="4869"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.176" references="/0/generateDaoHibernateDirect/@body.0/@body.88">
+      <details key="start" value="4876"/>
+      <details key="end" value="4909"/>
+      <details key="line" value="119"/>
+    </eAnnotations>
+    <eAnnotations source="positions.177" references="/0/generateDaoHibernateDirect/@body.0/@body.89">
+      <details key="start" value="4910"/>
+      <details key="end" value="4920"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.178" references="/0/generateDaoHibernateDirect/@body.0/@body.89/class">
+      <details key="start" value="4910"/>
+      <details key="end" value="4915"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.179" references="/0/generateDaoHibernateDirect/@body.0/@body.90">
+      <details key="start" value="4922"/>
+      <details key="end" value="5046"/>
+      <details key="line" value="120"/>
+    </eAnnotations>
+    <eAnnotations source="positions.180" references="/0/generateDaoHibernateDirect/@body.0/@body.91">
+      <details key="start" value="5047"/>
+      <details key="end" value="5057"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.181" references="/0/generateDaoHibernateDirect/@body.0/@body.91/class">
+      <details key="start" value="5047"/>
+      <details key="end" value="5052"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.182" references="/0/generateDaoHibernateDirect/@body.0/@body.92">
+      <details key="start" value="5059"/>
+      <details key="end" value="5277"/>
+      <details key="line" value="123"/>
+    </eAnnotations>
+    <eAnnotations source="positions.183" references="/0/generateDaoHibernateDirect/@body.0/@body.93">
+      <details key="start" value="5278"/>
+      <details key="end" value="5310"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.184" references="/0/generateDaoHibernateDirect/@body.0/@body.93/@source">
+      <details key="start" value="5278"/>
+      <details key="end" value="5295"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.185" references="/0/generateDaoHibernateDirect/@body.0/@body.93/@source/class">
+      <details key="start" value="5278"/>
+      <details key="end" value="5283"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.186" references="/0/generateDaoHibernateDirect/@body.0/@body.94">
+      <details key="start" value="5312"/>
+      <details key="end" value="5450"/>
+      <details key="line" value="132"/>
+    </eAnnotations>
+    <eAnnotations source="positions.187" references="/0/generateDaoHibernateDirect/@body.0/@body.95">
+      <details key="start" value="5451"/>
+      <details key="end" value="5484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.188" references="/0/generateDaoHibernateDirect/@body.0/@body.95/class">
+      <details key="start" value="5451"/>
+      <details key="end" value="5456"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.189" references="/0/generateDaoHibernateDirect/@body.0/@body.96">
+      <details key="start" value="5486"/>
+      <details key="end" value="5487"/>
+      <details key="line" value="135"/>
+    </eAnnotations>
+    <eAnnotations source="positions.190" references="/0/generateDaoHibernateDirect/@body.0/@body.97">
+      <details key="start" value="5488"/>
+      <details key="end" value="5514"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.191" references="/0/generateDaoHibernateDirect/@body.0/@body.97/class">
+      <details key="start" value="5488"/>
+      <details key="end" value="5493"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.192" references="/0/generateDaoHibernateDirect/@body.0/@body.98">
+      <details key="start" value="5516"/>
+      <details key="end" value="5538"/>
+      <details key="line" value="136"/>
+    </eAnnotations>
+    <eAnnotations source="positions.193" references="/0/generateDaoHibernateDirect/@body.0/@body.99">
+      <details key="start" value="5539"/>
+      <details key="end" value="5564"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.194" references="/0/generateDaoHibernateDirect/@body.0/@body.99/class">
+      <details key="start" value="5539"/>
+      <details key="end" value="5544"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.195" references="/0/generateDaoHibernateDirect/@body.0/@body.100">
+      <details key="start" value="5566"/>
+      <details key="end" value="5613"/>
+      <details key="line" value="137"/>
+    </eAnnotations>
+    <eAnnotations source="positions.196" references="/0/generateDaoHibernateDirect/@body.0/@body.101">
+      <details key="start" value="5614"/>
+      <details key="end" value="5624"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.197" references="/0/generateDaoHibernateDirect/@body.0/@body.101/class">
+      <details key="start" value="5614"/>
+      <details key="end" value="5619"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.198" references="/0/generateDaoHibernateDirect/@body.0/@body.102">
+      <details key="start" value="5626"/>
+      <details key="end" value="5637"/>
+      <details key="line" value="138"/>
+    </eAnnotations>
+    <eAnnotations source="positions.199" references="/0/generateDaoHibernateDirect/@body.0/@body.103">
+      <details key="start" value="5638"/>
+      <details key="end" value="5655"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.200" references="/0/generateDaoHibernateDirect/@body.0/@body.103/class">
+      <details key="start" value="5638"/>
+      <details key="end" value="5643"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.201" references="/0/generateDaoHibernateDirect/@body.0/@body.104">
+      <details key="start" value="5657"/>
+      <details key="end" value="5685"/>
+      <details key="line" value="138"/>
+    </eAnnotations>
+    <eAnnotations source="positions.202" references="/0/generateDaoHibernateDirect/@body.0/@body.105">
+      <details key="start" value="5686"/>
+      <details key="end" value="5718"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.203" references="/0/generateDaoHibernateDirect/@body.0/@body.105/@source">
+      <details key="start" value="5686"/>
+      <details key="end" value="5703"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.204" references="/0/generateDaoHibernateDirect/@body.0/@body.105/@source/class">
+      <details key="start" value="5686"/>
+      <details key="end" value="5691"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.205" references="/0/generateDaoHibernateDirect/@body.0/@body.106">
+      <details key="start" value="5720"/>
+      <details key="end" value="5867"/>
+      <details key="line" value="139"/>
+    </eAnnotations>
+    <eAnnotations source="positions.206" references="/0/generateDaoHibernateDirect/@body.0/@body.107">
+      <details key="start" value="5868"/>
+      <details key="end" value="5878"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.207" references="/0/generateDaoHibernateDirect/@body.0/@body.107/class">
+      <details key="start" value="5868"/>
+      <details key="end" value="5873"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.208" references="/0/generateDaoHibernateDirect/@body.0/@body.108">
+      <details key="start" value="5880"/>
+      <details key="end" value="5927"/>
+      <details key="line" value="143"/>
+    </eAnnotations>
+    <eAnnotations source="positions.209" references="/0/generateDaoHibernateDirect/@body.0/@body.109">
+      <details key="start" value="5928"/>
+      <details key="end" value="5945"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.210" references="/0/generateDaoHibernateDirect/@body.0/@body.109/class">
+      <details key="start" value="5928"/>
+      <details key="end" value="5933"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.211" references="/0/generateDaoHibernateDirect/@body.0/@body.110">
+      <details key="start" value="5947"/>
+      <details key="end" value="5954"/>
+      <details key="line" value="144"/>
+    </eAnnotations>
+    <eAnnotations source="positions.212" references="/0/generateDaoHibernateDirect/@body.0/@body.111">
+      <details key="start" value="5955"/>
+      <details key="end" value="5987"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.213" references="/0/generateDaoHibernateDirect/@body.0/@body.111/@source">
+      <details key="start" value="5955"/>
+      <details key="end" value="5972"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.214" references="/0/generateDaoHibernateDirect/@body.0/@body.111/@source/class">
+      <details key="start" value="5955"/>
+      <details key="end" value="5960"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.215" references="/0/generateDaoHibernateDirect/@body.0/@body.112">
+      <details key="start" value="5989"/>
+      <details key="end" value="6006"/>
+      <details key="line" value="144"/>
+    </eAnnotations>
+    <eAnnotations source="positions.216" references="/0/generateDaoHibernateDirect/@body.0/@body.113">
+      <details key="start" value="6007"/>
+      <details key="end" value="6017"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.217" references="/0/generateDaoHibernateDirect/@body.0/@body.113/class">
+      <details key="start" value="6007"/>
+      <details key="end" value="6012"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.218" references="/0/generateDaoHibernateDirect/@body.0/@body.114">
+      <details key="start" value="6019"/>
+      <details key="end" value="6030"/>
+      <details key="line" value="145"/>
+    </eAnnotations>
+    <eAnnotations source="positions.219" references="/0/generateDaoHibernateDirect/@body.0/@body.115">
+      <details key="start" value="6031"/>
+      <details key="end" value="6041"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.220" references="/0/generateDaoHibernateDirect/@body.0/@body.115/class">
+      <details key="start" value="6031"/>
+      <details key="end" value="6036"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.221" references="/0/generateDaoHibernateDirect/@body.0/@body.116">
+      <details key="start" value="6043"/>
+      <details key="end" value="6210"/>
+      <details key="line" value="145"/>
+    </eAnnotations>
+    <eAnnotations source="positions.222" references="/0/generateDaoHibernateDirect/@body.0/@body.117">
+      <details key="start" value="6265"/>
+      <details key="end" value="7013"/>
+      <details key="line" value="155"/>
+    </eAnnotations>
+    <eAnnotations source="positions.223" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0">
+      <details key="start" value="6363"/>
+      <details key="end" value="7005"/>
+      <details key="line" value="157"/>
+    </eAnnotations>
+    <eAnnotations source="positions.224" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.0">
+      <details key="start" value="6410"/>
+      <details key="end" value="6414"/>
+      <details key="line" value="158"/>
+    </eAnnotations>
+    <eAnnotations source="positions.225" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.1">
+      <details key="start" value="6415"/>
+      <details key="end" value="6437"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.226" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.1/oper">
+      <details key="start" value="6415"/>
+      <details key="end" value="6419"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.227" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.2">
+      <details key="start" value="6439"/>
+      <details key="end" value="6452"/>
+      <details key="line" value="159"/>
+    </eAnnotations>
+    <eAnnotations source="positions.228" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect">
+      <details key="start" value="6453"/>
+      <details key="end" value="6492"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.229" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect/@source">
+      <details key="start" value="6453"/>
+      <details key="end" value="6472"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.230" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect/@source/oper">
+      <details key="start" value="6453"/>
+      <details key="end" value="6457"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.231" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect/@body">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.232" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect/@body/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.233" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.234" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.4">
+      <details key="start" value="6494"/>
+      <details key="end" value="6495"/>
+      <details key="line" value="159"/>
+    </eAnnotations>
+    <eAnnotations source="positions.235" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.5">
+      <details key="start" value="6496"/>
+      <details key="end" value="6505"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.236" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.5/oper">
+      <details key="start" value="6496"/>
+      <details key="end" value="6500"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.237" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.6">
+      <details key="start" value="6507"/>
+      <details key="end" value="6508"/>
+      <details key="line" value="159"/>
+    </eAnnotations>
+    <eAnnotations source="positions.238" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.7">
+      <details key="start" value="6509"/>
+      <details key="end" value="6534"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.239" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.7/oper">
+      <details key="start" value="6509"/>
+      <details key="end" value="6513"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.240" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.8">
+      <details key="start" value="6536"/>
+      <details key="end" value="6580"/>
+      <details key="line" value="159"/>
+    </eAnnotations>
+    <eAnnotations source="positions.241" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9">
+      <details key="start" value="6580"/>
+      <details key="end" value="6977"/>
+      <details key="line" value="160"/>
+    </eAnnotations>
+    <eAnnotations source="positions.242" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.0">
+      <details key="start" value="6603"/>
+      <details key="end" value="6608"/>
+      <details key="line" value="160"/>
+    </eAnnotations>
+    <eAnnotations source="positions.243" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.1">
+      <details key="start" value="6609"/>
+      <details key="end" value="6613"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.244" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.245" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.2">
+      <details key="start" value="6615"/>
+      <details key="end" value="6643"/>
+      <details key="line" value="160"/>
+    </eAnnotations>
+    <eAnnotations source="positions.246" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.3">
+      <details key="start" value="6644"/>
+      <details key="end" value="6648"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.247" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.3/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.248" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.4">
+      <details key="start" value="6650"/>
+      <details key="end" value="6654"/>
+      <details key="line" value="161"/>
+    </eAnnotations>
+    <eAnnotations source="positions.249" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.5">
+      <details key="start" value="6655"/>
+      <details key="end" value="6665"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.250" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.5/class">
+      <details key="start" value="6655"/>
+      <details key="end" value="6660"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.251" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@body.6">
+      <details key="start" value="6667"/>
+      <details key="end" value="6965"/>
+      <details key="line" value="161"/>
+    </eAnnotations>
+    <eAnnotations source="positions.252" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.9/@marker">
+      <details key="start" value="6592"/>
+      <details key="end" value="6601"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.253" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.10">
+      <details key="start" value="6977"/>
+      <details key="end" value="6982"/>
+      <details key="line" value="169"/>
+    </eAnnotations>
+    <eAnnotations source="positions.254" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.11">
+      <details key="start" value="6983"/>
+      <details key="end" value="6987"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.255" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.11/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.256" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@body.12">
+      <details key="start" value="6989"/>
+      <details key="end" value="6998"/>
+      <details key="line" value="170"/>
+    </eAnnotations>
+    <eAnnotations source="positions.257" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@ifExpr">
+      <details key="start" value="6367"/>
+      <details key="end" value="6408"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.258" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@ifExpr/oper">
+      <details key="start" value="6368"/>
+      <details key="end" value="6372"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.259" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@ifExpr/@argument.1">
+      <details key="start" value="6387"/>
+      <details key="end" value="6406"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.260" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@ifExpr/@argument.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.261" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@body.0/@ifExpr/@argument.1/@argument.0">
+      <details key="start" value="6399"/>
+      <details key="end" value="6405"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.262" references="/0/generateDaoHibernateDirect/@body.0/@body.117/oper">
+      <details key="start" value="6271"/>
+      <details key="end" value="6285"/>
+      <details key="line" value="155"/>
+    </eAnnotations>
+    <eAnnotations source="positions.263" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@iterSet">
+      <details key="start" value="6286"/>
+      <details key="end" value="6306"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.264" references="/0/generateDaoHibernateDirect/@body.0/@body.117/@iterSet/class">
+      <details key="start" value="6286"/>
+      <details key="end" value="6291"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.265" references="/0/generateDaoHibernateDirect/@body.0/@body.118">
+      <details key="start" value="7014"/>
+      <details key="end" value="7022"/>
+      <details key="line" value="173"/>
+    </eAnnotations>
+    <eAnnotations source="positions.266" references="/0/generateDaoHibernateDirect/@body.0/@body.119">
+      <details key="start" value="7022"/>
+      <details key="end" value="7067"/>
+      <details key="line" value="174"/>
+    </eAnnotations>
+    <eAnnotations source="positions.267" references="/0/generateDaoHibernateDirect/@body.0/@body.119/@body.0">
+      <details key="start" value="7047"/>
+      <details key="end" value="7055"/>
+      <details key="line" value="174"/>
+    </eAnnotations>
+    <eAnnotations source="positions.268" references="/0/generateDaoHibernateDirect/@body.0/@body.119/@marker">
+      <details key="start" value="7034"/>
+      <details key="end" value="7045"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.269" references="/0/generateDaoHibernateDirect/@body.0/@body.120">
+      <details key="start" value="7067"/>
+      <details key="end" value="7072"/>
+      <details key="line" value="176"/>
+    </eAnnotations>
+    <eAnnotations source="positions.270" references="/0/generateDaoHibernateDirect/@body.0/@fileUrl">
+      <details key="start" value="1044"/>
+      <details key="end" value="1064"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.271" references="/0/generateDaoHibernateDirect/@body.0/@fileUrl/class">
+      <details key="start" value="1044"/>
+      <details key="end" value="1049"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.272" references="/0/generateDaoHibernateDirect/class">
+      <details key="start" value="963"/>
+      <details key="end" value="974"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="daohibernatecfg" nsURI="org::acceleo::module::pim::uml21::gen::java::hibernate::daohibernatecfg" endHeaderPosition="64">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
+    </input>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/requests.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0"/>
+    <imports href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateHibernateConfig" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version='1.0' encoding='utf-8'?>&#xD;&#xA;&lt;!DOCTYPE hibernate-configuration&#xD;&#xA;    PUBLIC &quot;-//Hibernate/Hibernate Configuration DTD//EN&quot;&#xD;&#xA;    &quot;http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;>&#xD;&#xA;&#xD;&#xA;&lt;hibernate-configuration>&#xD;&#xA;&#xD;&#xA;    &lt;session-factory>&#xD;&#xA;&#xD;&#xA;        &lt;!-- mapping files -->&#xD;&#xA;        &#xD;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="        &lt;mapping resource=&quot;"/>
+            <body xsi:type="mtl:QueryInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0/toPath"/>
+              <argument xsi:type="mtl:TemplateInvocation" definition="/0/hibernatePackage">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateHibernateConfig/@body.0/@body.1/class">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </argument>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateHibernateConfig/@body.0/@body.1/class">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".hbm.xml&quot;/>&#xD;&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/requests.emtl#/0/isEntity"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateHibernateConfig/@body.0/@body.1/class">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </argument>
+              </source>
+              <argument xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/Set(Class)">
+                  <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/generateHibernateConfig/@body.0/@body.1/class">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/superClass"/>
+                </source>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Set(T)_Class/isEmpty"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean_Class/and"/>
+            </ifExpr>
+          </body>
+          <loopVariable name="class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:OperationCallExp" eType="/7/Set(Class)" referredOperation="/1/Collection(T)_Class/filter">
+            <source xsi:type="ocl.ecore:OperationCallExp" eType="/7/Set(Element)">
+              <source xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateHibernateConfig/model">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+              </source>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element/allOwnedElements"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/8/Class">
+              <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;        &lt;!-- "/>
+        <body xsi:type="mtl:ProtectedAreaBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" of listeners -->        &#xA;&#x9;&#x9;&lt;!-- "/>
+          <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="listeners">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </marker>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" of listeners -->&#xD;&#xA;&#xD;&#xA;    &lt;/session-factory>&#xD;&#xA;&#xD;&#xA;    &lt;!-- "/>
+        <body xsi:type="mtl:ProtectedAreaBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" of security parameters -->&#xA;&#x9;&lt;!-- "/>
+          <marker xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="security parameters">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </marker>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" of security parameters -->&#xD;&#xA;&#xD;&#xA;&lt;/hibernate-configuration>&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainResources"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateHibernateConfig/model">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/hibernate.cfg.xml">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/concat"/>
+        </fileUrl>
+      </body>
+      <parameter name="model">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="hibernatePackage" visibility="Public">
+      <body xsi:type="mtl:TemplateInvocation">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <definition href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoPackage"/>
+        <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/hibernatePackage/class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </argument>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".hibernate"/>
+      <parameter name="class">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateHibernateConfig">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateHibernateConfig"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="hibernatePackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/hibernatePackage"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="pathToMainResources">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainResources"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="eObject">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isEntity">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/requests.emtl#/0/isEntity"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="classifier">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="daoPackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0/daoPackage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="toPath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0/toPath"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+      <eOperations name="filter">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:CollectionType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+        <eParameters name="filter">
+          <eType xsi:type="ocl.ecore:TypeType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclType"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Model_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Element_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Type_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Type"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Property_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Operation_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Classifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(Element)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/3/Sequence(Element)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Association_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Association"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Element)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Class)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Class">
+      <referredType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateHibernateConfig">
+      <details key="start" value="499"/>
+      <details key="end" value="1517"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateHibernateConfig/@body.0">
+      <details key="start" value="614"/>
+      <details key="end" value="1505"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateHibernateConfig/@body.0/@body.0">
+      <details key="start" value="688"/>
+      <details key="end" value="993"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateHibernateConfig/@body.0/@body.1">
+      <details key="start" value="994"/>
+      <details key="end" value="1217"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0">
+      <details key="start" value="1056"/>
+      <details key="end" value="1209"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.0">
+      <details key="start" value="1112"/>
+      <details key="end" value="1139"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.1">
+      <details key="start" value="1140"/>
+      <details key="end" value="1173"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.1/@argument.0">
+      <details key="start" value="1140"/>
+      <details key="end" value="1164"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.1/@argument.0/class">
+      <details key="start" value="1140"/>
+      <details key="end" value="1145"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.2">
+      <details key="start" value="1175"/>
+      <details key="end" value="1176"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.3">
+      <details key="start" value="1177"/>
+      <details key="end" value="1187"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.3/class">
+      <details key="start" value="1177"/>
+      <details key="end" value="1182"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@body.4">
+      <details key="start" value="1189"/>
+      <details key="end" value="1202"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@ifExpr">
+      <details key="start" value="1060"/>
+      <details key="end" value="1110"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@ifExpr/@source">
+      <details key="start" value="1061"/>
+      <details key="end" value="1077"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@ifExpr/@source/class">
+      <details key="start" value="1061"/>
+      <details key="end" value="1066"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@ifExpr/@argument.0">
+      <details key="start" value="1082"/>
+      <details key="end" value="1109"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@ifExpr/@argument.0/@source">
+      <details key="start" value="1082"/>
+      <details key="end" value="1098"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateHibernateConfig/@body.0/@body.1/@body.0/@ifExpr/@argument.0/@source/class">
+      <details key="start" value="1082"/>
+      <details key="end" value="1087"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateHibernateConfig/@body.0/@body.1/class">
+      <details key="start" value="1000"/>
+      <details key="end" value="1011"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateHibernateConfig/@body.0/@body.1/@iterSet">
+      <details key="start" value="1012"/>
+      <details key="end" value="1051"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateHibernateConfig/@body.0/@body.1/@iterSet/@source">
+      <details key="start" value="1012"/>
+      <details key="end" value="1036"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateHibernateConfig/@body.0/@body.1/@iterSet/@source/model">
+      <details key="start" value="1012"/>
+      <details key="end" value="1017"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateHibernateConfig/@body.0/@body.1/@iterSet/@argument.0">
+      <details key="start" value="1045"/>
+      <details key="end" value="1050"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateHibernateConfig/@body.0/@body.2">
+      <details key="start" value="1218"/>
+      <details key="end" value="1233"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateHibernateConfig/@body.0/@body.3">
+      <details key="start" value="1233"/>
+      <details key="end" value="1303"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateHibernateConfig/@body.0/@body.3/@body.0">
+      <details key="start" value="1258"/>
+      <details key="end" value="1291"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateHibernateConfig/@body.0/@body.3/@marker">
+      <details key="start" value="1245"/>
+      <details key="end" value="1256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateHibernateConfig/@body.0/@body.4">
+      <details key="start" value="1303"/>
+      <details key="end" value="1359"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateHibernateConfig/@body.0/@body.5">
+      <details key="start" value="1359"/>
+      <details key="end" value="1440"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateHibernateConfig/@body.0/@body.5/@body.0">
+      <details key="start" value="1394"/>
+      <details key="end" value="1428"/>
+      <details key="line" value="34"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateHibernateConfig/@body.0/@body.5/@marker">
+      <details key="start" value="1371"/>
+      <details key="end" value="1392"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateHibernateConfig/@body.0/@body.6">
+      <details key="start" value="1440"/>
+      <details key="end" value="1498"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateHibernateConfig/@body.0/@fileUrl">
+      <details key="start" value="621"/>
+      <details key="end" value="677"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateHibernateConfig/@body.0/@fileUrl/@source">
+      <details key="start" value="621"/>
+      <details key="end" value="648"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateHibernateConfig/@body.0/@fileUrl/@source/model">
+      <details key="start" value="621"/>
+      <details key="end" value="626"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateHibernateConfig/@body.0/@fileUrl/@argument.0">
+      <details key="start" value="656"/>
+      <details key="end" value="676"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateHibernateConfig/model">
+      <details key="start" value="540"/>
+      <details key="end" value="551"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/hibernatePackage">
+      <details key="start" value="1520"/>
+      <details key="end" value="1611"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/hibernatePackage/@body.0">
+      <details key="start" value="1569"/>
+      <details key="end" value="1587"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/hibernatePackage/@body.0/class">
+      <details key="start" value="1569"/>
+      <details key="end" value="1574"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/hibernatePackage/@body.1">
+      <details key="start" value="1589"/>
+      <details key="end" value="1599"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/hibernatePackage/class">
+      <details key="start" value="1554"/>
+      <details key="end" value="1565"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

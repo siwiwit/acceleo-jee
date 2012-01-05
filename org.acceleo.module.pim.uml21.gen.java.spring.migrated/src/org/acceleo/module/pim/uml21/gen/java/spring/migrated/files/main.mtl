@@ -1,0 +1,233 @@
+[module main('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::acceleo::module::pim::uml21::gen::java::spring::component::componenthessianxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::component::componenttestxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::component::componentxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::config::config /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::config::configxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::dao::dao /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::dao::hibernate::daohibernatetestimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::dao::hibernate::daohibernatetestsuite /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::dao::hibernate::daohibernatexml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::dao::hibernate::daoimplhibernate /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::dto::dto /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javabusinessexception /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javaclass /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javaenum /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javaexception /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javainterface /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::log4jconfig /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::service::serviceimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::service::servicetestimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::service::service /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::service::servicexml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::tests::abstractbusinesslayertest /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::tests::entitytesthelper /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::tests::testsxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::tests::testsuite /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::servletcontroller /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::servletcontrollerxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::velocity::uiimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::velocity::ui /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::velocity::uixml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::velocity::velocityproperties /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::velocity::velocityviewfactory /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::ui::web::velocity::velocityview /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::dwr::servicedwrxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::gwt::gwtmodulexml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::gwt::gwtserviceasync /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::gwt::gwtserviceimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::gwt::gwtservice /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::gwt::servicegwtrpcxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::hessian::abstractbusinesslayertesthessian /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::hessian::servicehessianclientfactory /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::hessian::servicehessiantestimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::hessian::servicehessianxml /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::webserviceinterface /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::webservicemocktest /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::xfire::servicexfireclientfactory /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::xfire::servicexfiremocktest /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::xfire::servicexfiretestimpl /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::xfire::servicexfire /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::webservice::xfire::servicexfirexml /]
+
+[template public generate(aModel : Model)]
+	[comment @main /]
+
+	[comment Call the file block in 'componenthessianxml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'componenttestxml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'componentxml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'config' /]
+	[ generateConfig() /]
+
+	[comment Call the file block in 'xml' /]
+	[ generateConfig() /]
+
+	[comment Call the file block in 'dao' /]
+	[ generateDao() /]
+
+	[comment Call the file block in 'daohibernatetestimpl' /]
+	[ generate() /]
+
+	[comment Call the file block in 'daohibernatetestsuite' /]
+	[ generate() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'daoimplhibernate' /]
+	[ generateDao() /]
+
+	[comment Call the file block in 'dto' /]
+	[ generate() /]
+
+	[comment Call the file block in 'javabusinessexception' /]
+	[ generateJavaClass() /]
+
+	[comment Call the file block in 'javaclass' /]
+	[ generateJavaClass() /]
+
+	[comment Call the file block in 'javaenum' /]
+	[ generateEnum() /]
+
+	[comment Call the file block in 'javaexception' /]
+	[ generateJavaClass() /]
+
+	[comment Call the file block in 'javainterface' /]
+	[ generateJavaInterface() /]
+
+	[comment Call the file block in 'log4jconfig' /]
+	[ generateLog4jConfig() /]
+
+	[comment Call the file block in 'serviceimpl' /]
+	[ generateService() /]
+
+	[comment Call the file block in 'servicetestimpl' /]
+	[ generateService() /]
+
+	[comment Call the file block in 'service' /]
+	[ generateService() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'abstractbusinesslayertest' /]
+	[ generateAbstractBusinessLayerTests() /]
+
+	[comment Call the file block in 'entitytesthelper' /]
+	[ generateEntityTestHelper() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'testsuite' /]
+	[ generate() /]
+
+	[comment Call the file block in 'servletcontroller' /]
+	[ generateUi() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'uiimpl' /]
+	[ generateUi() /]
+
+	[comment Call the file block in 'ui' /]
+	[ generateUi() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'velocityproperties' /]
+	[ generateVelocityConfig() /]
+
+	[comment Call the file block in 'velocityviewfactory' /]
+	[ generateUi() /]
+
+	[comment Call the file block in 'velocityview' /]
+	[ generateUi() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'gwtserviceasync' /]
+	[ generateWebService() /]
+
+	[comment Call the file block in 'gwtserviceimpl' /]
+	[ generateService() /]
+
+	[comment Call the file block in 'gwtservice' /]
+	[ generateWebService() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'abstractbusinesslayertesthessian' /]
+	[ generateAbstractBusinessLayerTests() /]
+
+	[comment Call the file block in 'servicehessianclientfactory' /]
+	[ generateXfireWSClientFactory() /]
+
+	[comment Call the file block in 'servicehessiantestimpl' /]
+	[ generateWebServiceTest() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+	[comment Call the file block in 'webserviceinterface' /]
+	[ generateWebService() /]
+
+	[comment Call the file block in 'webservicemocktest' /]
+	[ generateWebService() /]
+
+	[comment Call the file block in 'servicexfireclientfactory' /]
+	[ generateXfireWSClientFactory() /]
+
+	[comment Call the file block in 'servicexfiremocktest' /]
+	[ generateWebService() /]
+
+	[comment Call the file block in 'servicexfiretestimpl' /]
+	[ generateWebServiceTest() /]
+
+	[comment Call the file block in 'servicexfire' /]
+	[ generateWebService() /]
+
+	[comment Call the file block in 'xml' /]
+	[ springApplicationContext() /]
+
+
+	[for (aClassifier : Classifier | aModel.ownedElement->filter(Classifier))]
+		[aClassifier.generateClassifier()/]
+	[/for]
+
+	[for (pack : Package | aModel.ownedElement->filter(Package))]
+		[pack.generatePackage()/]
+	[/for]
+
+[/template]
+
+[template public generatePackage(aPackage : Package)]
+	[for (aClassifier : Classifier | aPackage.ownedElement->filter(Classifier))]
+		[aClassifier.generateClassifier()/]
+	[/for]
+	[for (pack : Package | aPackage.nestedPackage)]
+		[pack.generatePackage()/]
+	[/for]
+[/template]
+
+[template public generateClassifier(aClassifier : Classifier)]
+	[if (aClassifier.oclIsTypeOf(Class))]
+		[let aClass : Class = aClassifier.oclAsType(Class)]
+
+		[/let]
+	[/if]
+[/template]
+
