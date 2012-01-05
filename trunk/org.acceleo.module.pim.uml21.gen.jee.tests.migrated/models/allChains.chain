@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<chain:Chain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:chain="http://www.obeo.fr/acceleo/chain">
+  <repository>
+    <members documentation="Repository for chain call : [Ljava.lang.Object;@1a93388">
+      <files xsi:type="chain:Model" path="/org.acceleo.module.pim.uml21.gen.jee.tests/models/persistence/basic/basic.uml"/>
+    </members>
+  </repository>
+  <actions>
+    <actions xsi:type="chain:ChainCall" chainPath="/org.acceleo.module.pim.uml21.gen.jee.tests/models/persistence/basic/basic.chain"/>
+    <actions xsi:type="chain:ChainCall" chainPath="/org.acceleo.module.pim.uml21.gen.jee.tests/models/persistence/associations/associations.chain"/>
+    <actions xsi:type="chain:ChainCall" chainPath="/org.acceleo.module.pim.uml21.gen.jee.tests/models/persistence/inheritance/inheritance.chain"/>
+    <actions xsi:type="chain:ChainCall" chainPath="/org.acceleo.module.pim.uml21.gen.jee.tests/models/persistence/inheritance_associations/inheritance_associations.chain"/>
+  </actions>
+</chain:Chain>

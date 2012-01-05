@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chain:Chain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:chain="http://www.obeo.fr/acceleo/chain">
+  <repository>
+    <files xsi:type="chain:Model" path="/org.acceleo.module.pim.uml21.gen.jee.tests/models/persistence/inheritance/inheritance.uml"/>
+    <files xsi:type="chain:EmfMetamodel" path="http://www.eclipse.org/uml2/3.0.0/UML"/>
+    <files xsi:type="chain:Log" path="/org.acceleo.module.pim.uml21.gen.jee.tests/gen.hibernate.api.log"/>
+    <files xsi:type="chain:Log" path="/org.acceleo.module.pim.uml21.gen.jee.tests/gen.hibernate.impl.log"/>
+    <files xsi:type="chain:Folder" path="/org.acceleo.module.pim.uml21.gen.jee.tests/src/persistence/inheritance"/>
+    <files xsi:type="chain:Folder" path="/org.acceleo.module.pim.uml21.gen.jee.tests/sql/persistence/inheritance"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/java/dao/api/dao-factory.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/java/dao/api/dao-interface-customized.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/java/dao/api/dao-interface-direct.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/java/dao/test/dao-interface-direct-test-junit-testsuite.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.common/src/org/acceleo/module/pim/uml21/gen/java/business/entity.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/sql/mysql/sql-create.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/sql/mysql/sql-constraints.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.dao/src/org/acceleo/module/pim/uml21/gen/java/common/dto/dto.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.hibernate/src/org/acceleo/module/pim/uml21/gen/java/hibernate/dao-hibernate-hbm.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.hibernate/src/org/acceleo/module/pim/uml21/gen/java/hibernate/dao-hibernate-direct.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.hibernate/src/org/acceleo/module/pim/uml21/gen/java/hibernate/dao-hibernate-cfg.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.hibernate/src/org/acceleo/module/pim/uml21/gen/java/hibernate/dao-hibernate-dao.properties.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.hibernate/src/org/acceleo/module/pim/uml21/gen/java/hibernate/dao-hibernate-properties.mt"/>
+    <files xsi:type="chain:Generator" path="/org.acceleo.module.pim.uml21.gen.java.hibernate/src/org/acceleo/module/pim/uml21/gen/java/hibernate/dao-hibernate-direct-test-junit.mt"/>
+  </repository>
+  <actions documentation="Clean">
+    <actions xsi:type="chain:Remove" resources="//@repository/@files.2 //@repository/@files.3"/>
+  </actions>
+  <actions documentation="entity">
+    <actions xsi:type="chain:Generate" documentation="entity" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.10" folder="//@repository/@files.4"/>
+  </actions>
+  <actions documentation="dao api">
+    <actions xsi:type="chain:Generate" documentation="dao factory" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.6" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="dao interface direct" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.8" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="dao interface customized" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.7" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="test suite" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.9" folder="//@repository/@files.4"/>
+  </actions>
+  <actions documentation="sql">
+    <actions xsi:type="chain:Generate" documentation="create" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.11" folder="//@repository/@files.5"/>
+    <actions xsi:type="chain:Generate" documentation="constraints" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.12" folder="//@repository/@files.5"/>
+  </actions>
+  <actions documentation="hibernate">
+    <actions xsi:type="chain:Generate" documentation="hbm" log="//@repository/@files.3" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.14" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="dao direct" log="//@repository/@files.3" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.15" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="cfg" log="//@repository/@files.3" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.16" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="dao.properties" log="//@repository/@files.3" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.17" folder="//@repository/@files.4"/>
+    <actions xsi:type="chain:Generate" documentation="test" log="//@repository/@files.2" model="//@repository/@files.0" metamodel="//@repository/@files.1" generator="//@repository/@files.19" folder="//@repository/@files.4"/>
+  </actions>
+</chain:Chain>
