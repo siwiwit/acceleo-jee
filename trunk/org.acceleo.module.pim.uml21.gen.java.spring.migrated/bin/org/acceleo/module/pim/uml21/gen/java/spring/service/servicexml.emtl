@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="servicexml" nsURI="org::acceleo::module::pim::uml21::gen::java::spring::service::servicexml" endHeaderPosition="59">
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
+    </input>
+    <imports href="../profile.emtl#/0"/>
+    <imports href="../common.emtl#/0"/>
+    <imports href="../ioc.emtl#/0"/>
+    <imports href="../services/uml2services.emtl#/0"/>
+    <imports href="../services/springservices.emtl#/0"/>
+    <imports href="../tests/entitytesthelper.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/stringservice.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/dataTypes.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/structure.emtl#/0"/>
+    <imports href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.dao.migrated/bin/org/acceleo/module/pim/uml21/gen/java/dao/api/daocommon.emtl#/0"/>
+    <ownedModuleElement xsi:type="mtl:Template" name="fullFilePath" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainResources"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/fullFilePath/model">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/META-INF/spring/"/>
+        <body xsi:type="mtl:TemplateInvocation">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <definition href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0/baseImports"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/fullFilePath/model">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+          </argument>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/layer-services.xml"/>
+        <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="mtl:QueryInvocation" eType="/6/Sequence(Class)">
+            <definition href="../profile.emtl#/0/services"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/fullFilePath/model">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/notEmpty"/>
+        </ifExpr>
+      </body>
+      <parameter name="model">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="springApplicationContext" visibility="Public">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&#xA;&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;&#xA;&#x9;xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&#xA;&#x9;xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;&#xA;&#x9;xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;&#xA;&#x9;xmlns:jee=&quot;http://www.springframework.org/schema/jee&quot;&#xA;&#x9;xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd&#xA;           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd&#xA;           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd&#xA;           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd&quot;>&#xA;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&lt;bean id=&quot;"/>
+          <body xsi:type="mtl:QueryInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../services/springservices.emtl#/0/computeBeanId"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.1/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; class=&quot;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../common.emtl#/0/serviceImplPackage"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.1/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.1/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Impl&quot;>&#x9;&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&lt;property name=&quot;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="prop" referredVariable="/0/springApplicationContext/@body.0/@body.1/@body.7/prop">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; value=&quot;"/>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="prop" referredVariable="/0/springApplicationContext/@body.0/@body.1/@body.7/prop">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property/default"/>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;/>&#xA;"/>
+              <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <source xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="prop" referredVariable="/0/springApplicationContext/@body.0/@body.1/@body.7/prop">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property/default"/>
+                </source>
+                <argument xsi:type="ocl.ecore:NullLiteralExp">
+                  <eType xsi:type="ocl.ecore:VoidType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclVoid"/>
+                </argument>
+                <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/%3C%3E"/>
+              </ifExpr>
+              <else>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&#x9;&lt;property name=&quot;"/>
+                <body xsi:type="ocl.ecore:PropertyCallExp">
+                  <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="prop" referredVariable="/0/springApplicationContext/@body.0/@body.1/@body.7/prop">
+                    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+                  </source>
+                  <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+                </body>
+                <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; value=&quot;&quot;/>&#xA;"/>
+              </else>
+            </body>
+            <loopVariable name="prop">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:IteratorExp" name="select" eType="/6/Set(Property)">
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/Set(Property)">
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/20">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/attribute"/>
+              </source>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <definition href="../profile.emtl#/0/isConfig.1"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/springApplicationContext/@body.0/@body.1/@body.7/select/temp1">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+                </argument>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+              </iterator>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../ioc.emtl#/0/iocInjectors"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/28">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Dao">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../ioc.emtl#/0/iocInjectors"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/29">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Service">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../ioc.emtl#/0/iocInjectors"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/30">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Config">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&lt;/bean>&#xA;"/>
+          <loopVariable name="class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/6/Sequence(Class)">
+            <definition href="../profile.emtl#/0/services"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/springApplicationContext/model">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&lt;tx:advice id=&quot;txAdvice"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.2/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; transaction-manager=&quot;transactionManager&quot;>&#xA;&#x9;&#x9;&lt;tx:attributes>&#xA;"/>
+          <body xsi:type="mtl:ForBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&lt;tx:method name=&quot;"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/springApplicationContext/@body.0/@body.2/@body.3/oper">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; "/>
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="propagation=&quot;"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="../services/springservices.emtl#/0/getTransactionalPropagationValue"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/40">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;"/>
+              <ifExpr xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <definition href="../services/springservices.emtl#/0/isTransactionalPropagationValueSpecified"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/springApplicationContext/@body.0/@body.2/@body.3/oper">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </argument>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+            <body xsi:type="mtl:IfBlock">
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="isolation=&quot;"/>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <definition href="../services/springservices.emtl#/0/getTransactionalIsolationValue"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/springApplicationContext/@body.0/@body.2/@body.3/oper">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </argument>
+              </body>
+              <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;"/>
+              <ifExpr xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <definition href="../services/springservices.emtl#/0/isTransactionalIsolationValueSpecified"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="oper" referredVariable="/0/springApplicationContext/@body.0/@body.2/@body.3/oper">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </argument>
+              </ifExpr>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/>&#xA;"/>
+            <loopVariable name="oper">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+            </loopVariable>
+            <iterSet xsi:type="ocl.ecore:IteratorExp" name="select" eType="/6/OrderedSet(Operation)">
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/6/OrderedSet(Operation)">
+                <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.2/class">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/ownedOperation"/>
+              </source>
+              <body xsi:type="mtl:QueryInvocation">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+                <definition href="../profile.emtl#/0/isTransactional"/>
+                <argument xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/springApplicationContext/@body.0/@body.2/@body.3/select/temp2">
+                  <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+                </argument>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp2">
+                <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+              </iterator>
+            </iterSet>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;&lt;tx:method name=&quot;*&quot; read-only=&quot;false&quot;/>&#xA;&#x9;&#x9;&lt;/tx:attributes>&#xA;&#x9;&lt;/tx:advice>&#xA;&#x9;&lt;aop:config>&#xA;&#x9;&#x9;&lt;aop:advisor pointcut=&quot;execution(* "/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../common.emtl#/0/serviceImplPackage"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.2/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="."/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.2/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="Impl.*(..))&quot; advice-ref=&quot;txAdvice"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="class" referredVariable="/0/springApplicationContext/@body.0/@body.2/class">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot; />&#xA;&#x9;&lt;/aop:config>&#xA;"/>
+          <loopVariable name="class">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+          </loopVariable>
+          <iterSet xsi:type="mtl:QueryInvocation" eType="/6/Sequence(Class)">
+            <definition href="../profile.emtl#/0/services"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/springApplicationContext/model">
+              <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+            </argument>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&lt;/beans>&#xA;"/>
+        <fileUrl xsi:type="mtl:TemplateInvocation" definition="/0/fullFilePath">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/springApplicationContext/model">
+            <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+          </argument>
+        </fileUrl>
+      </body>
+      <parameter name="model">
+        <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="fullFilePath">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/fullFilePath"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="springApplicationContext">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/springApplicationContext"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isConfig">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../profile.emtl#/0/isConfig.1"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="property">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isTransactional">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../profile.emtl#/0/isTransactional"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="operation">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="services">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../profile.emtl#/0/services"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:SequenceType" href="../webservice/xfire/servicexfiremocktest.emtl#/3/Sequence(Class)"/>
+        <eParameters name="model">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="serviceImplPackage">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../common.emtl#/0/serviceImplPackage"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="iocInjectors">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../ioc.emtl#/0/iocInjectors"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="class">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eParameters>
+        <eParameters name="stereotypeName">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="computeBeanId">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/springservices.emtl#/0/computeBeanId"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isTransactionalPropagationValueSpecified">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/springservices.emtl#/0/isTransactionalPropagationValueSpecified"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getTransactionalPropagationValue">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/springservices.emtl#/0/getTransactionalPropagationValue"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="isTransactionalIsolationValueSpecified">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/springservices.emtl#/0/isTransactionalIsolationValueSpecified"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="getTransactionalIsolationValue">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../services/springservices.emtl#/0/getTransactionalIsolationValue"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="arg0">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="pathToMainResources">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/common.emtl#/0/pathToMainResources"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="eObject">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="baseImports">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/gen/java/common/specifics.emtl#/0/baseImports"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="element">
+          <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Model_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Classifier_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Property_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Parameter"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Type_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Type"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Operation_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interface_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NamedElement_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Enumeration_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Enumeration"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Element_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Element"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dependency_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Dependency"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(Element)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../../../../../../../../../../../org.acceleo.module.pim.uml21.gen.java.common.migrated/bin/org/acceleo/module/pim/uml21/services/uml2services.emtl#/3/Sequence(Element)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Association_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Association"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructuralFeature_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuralFeature"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//PrimitiveType"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Package_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Class)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" name="Set(Property)" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Operation)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Model"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/fullFilePath">
+      <details key="start" value="1043"/>
+      <details key="end" value="1229"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/fullFilePath/@body.0">
+      <details key="start" value="1089"/>
+      <details key="end" value="1217"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/fullFilePath/@body.0/@body.0">
+      <details key="start" value="1125"/>
+      <details key="end" value="1152"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/fullFilePath/@body.0/@body.0/model">
+      <details key="start" value="1125"/>
+      <details key="end" value="1130"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/fullFilePath/@body.0/@body.1">
+      <details key="start" value="1154"/>
+      <details key="end" value="1171"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/fullFilePath/@body.0/@body.2">
+      <details key="start" value="1172"/>
+      <details key="end" value="1191"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/fullFilePath/@body.0/@body.2/model">
+      <details key="start" value="1172"/>
+      <details key="end" value="1177"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/fullFilePath/@body.0/@body.3">
+      <details key="start" value="1193"/>
+      <details key="end" value="1212"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/fullFilePath/@body.0/@ifExpr">
+      <details key="start" value="1093"/>
+      <details key="end" value="1123"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/fullFilePath/@body.0/@ifExpr/@source">
+      <details key="start" value="1094"/>
+      <details key="end" value="1110"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/fullFilePath/@body.0/@ifExpr/@source/model">
+      <details key="start" value="1094"/>
+      <details key="end" value="1099"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/fullFilePath/model">
+      <details key="start" value="1073"/>
+      <details key="end" value="1086"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/springApplicationContext">
+      <details key="start" value="1232"/>
+      <details key="end" value="3606"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/springApplicationContext/@body.0">
+      <details key="start" value="1350"/>
+      <details key="end" value="3594"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/springApplicationContext/@body.0/@body.0">
+      <details key="start" value="1388"/>
+      <details key="end" value="2177"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/springApplicationContext/@body.0/@body.1">
+      <details key="start" value="2177"/>
+      <details key="end" value="2619"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/springApplicationContext/@body.0/@body.1/@body.0">
+      <details key="start" value="2214"/>
+      <details key="end" value="2225"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/springApplicationContext/@body.0/@body.1/@body.1">
+      <details key="start" value="2226"/>
+      <details key="end" value="2247"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/springApplicationContext/@body.0/@body.1/@body.1/class">
+      <details key="start" value="2226"/>
+      <details key="end" value="2231"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/springApplicationContext/@body.0/@body.1/@body.2">
+      <details key="start" value="2249"/>
+      <details key="end" value="2258"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/springApplicationContext/@body.0/@body.1/@body.3">
+      <details key="start" value="2259"/>
+      <details key="end" value="2285"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/springApplicationContext/@body.0/@body.1/@body.3/class">
+      <details key="start" value="2259"/>
+      <details key="end" value="2264"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/springApplicationContext/@body.0/@body.1/@body.4">
+      <details key="start" value="2287"/>
+      <details key="end" value="2288"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/springApplicationContext/@body.0/@body.1/@body.5">
+      <details key="start" value="2289"/>
+      <details key="end" value="2299"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/springApplicationContext/@body.0/@body.1/@body.5/class">
+      <details key="start" value="2289"/>
+      <details key="end" value="2294"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/springApplicationContext/@body.0/@body.1/@body.6">
+      <details key="start" value="2301"/>
+      <details key="end" value="2309"/>
+      <details key="line" value="39"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/springApplicationContext/@body.0/@body.1/@body.7">
+      <details key="start" value="2310"/>
+      <details key="end" value="2521"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0">
+      <details key="start" value="2364"/>
+      <details key="end" value="2513"/>
+      <details key="line" value="41"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.0">
+      <details key="start" value="2392"/>
+      <details key="end" value="2412"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.1">
+      <details key="start" value="2413"/>
+      <details key="end" value="2422"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.1/prop">
+      <details key="start" value="2413"/>
+      <details key="end" value="2417"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.2">
+      <details key="start" value="2424"/>
+      <details key="end" value="2433"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.3">
+      <details key="start" value="2434"/>
+      <details key="end" value="2446"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.3/prop">
+      <details key="start" value="2434"/>
+      <details key="end" value="2438"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@body.4">
+      <details key="start" value="2448"/>
+      <details key="end" value="2452"/>
+      <details key="line" value="42"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@ifExpr">
+      <details key="start" value="2368"/>
+      <details key="end" value="2390"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@ifExpr/@source">
+      <details key="start" value="2369"/>
+      <details key="end" value="2381"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@ifExpr/@source/prop">
+      <details key="start" value="2369"/>
+      <details key="end" value="2373"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@ifExpr/@argument.0">
+      <details key="start" value="2385"/>
+      <details key="end" value="2389"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@else">
+      <details key="start" value="2454"/>
+      <details key="end" value="2508"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@else/@body.0">
+      <details key="start" value="2461"/>
+      <details key="end" value="2481"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@else/@body.1">
+      <details key="start" value="2482"/>
+      <details key="end" value="2491"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@else/@body.1/prop">
+      <details key="start" value="2482"/>
+      <details key="end" value="2486"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/springApplicationContext/@body.0/@body.1/@body.7/@body.0/@else/@body.2">
+      <details key="start" value="2493"/>
+      <details key="end" value="2506"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/springApplicationContext/@body.0/@body.1/@body.7/prop">
+      <details key="start" value="2316"/>
+      <details key="end" value="2329"/>
+      <details key="line" value="40"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/springApplicationContext/@body.0/@body.1/@body.7/select">
+      <details key="start" value="2330"/>
+      <details key="end" value="2359"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/springApplicationContext/@body.0/@body.1/@body.7/select/@source">
+      <details key="start" value="2330"/>
+      <details key="end" value="2339"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/springApplicationContext/@body.0/@body.1/@body.7/select/@source/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/springApplicationContext/@body.0/@body.1/@body.7/select/@body">
+      <details key="start" value="2348"/>
+      <details key="end" value="2358"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/springApplicationContext/@body.0/@body.1/@body.7/select/@body/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/springApplicationContext/@body.0/@body.1/@body.7/select/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/springApplicationContext/@body.0/@body.1/@body.8">
+      <details key="start" value="2522"/>
+      <details key="end" value="2524"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/springApplicationContext/@body.0/@body.1/@body.9">
+      <details key="start" value="2525"/>
+      <details key="end" value="2544"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/springApplicationContext/@body.0/@body.1/@body.9/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/springApplicationContext/@body.0/@body.1/@body.9/@argument.1">
+      <details key="start" value="2538"/>
+      <details key="end" value="2543"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/springApplicationContext/@body.0/@body.1/@body.10">
+      <details key="start" value="2546"/>
+      <details key="end" value="2549"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/springApplicationContext/@body.0/@body.1/@body.11">
+      <details key="start" value="2550"/>
+      <details key="end" value="2573"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/springApplicationContext/@body.0/@body.1/@body.11/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/springApplicationContext/@body.0/@body.1/@body.11/@argument.1">
+      <details key="start" value="2563"/>
+      <details key="end" value="2572"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/springApplicationContext/@body.0/@body.1/@body.12">
+      <details key="start" value="2575"/>
+      <details key="end" value="2578"/>
+      <details key="line" value="49"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/springApplicationContext/@body.0/@body.1/@body.13">
+      <details key="start" value="2579"/>
+      <details key="end" value="2601"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/springApplicationContext/@body.0/@body.1/@body.13/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/springApplicationContext/@body.0/@body.1/@body.13/@argument.1">
+      <details key="start" value="2592"/>
+      <details key="end" value="2600"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/springApplicationContext/@body.0/@body.1/@body.14">
+      <details key="start" value="2603"/>
+      <details key="end" value="2613"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/springApplicationContext/@body.0/@body.1/class">
+      <details key="start" value="2183"/>
+      <details key="end" value="2194"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/springApplicationContext/@body.0/@body.1/@iterSet">
+      <details key="start" value="2195"/>
+      <details key="end" value="2211"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/springApplicationContext/@body.0/@body.1/@iterSet/model">
+      <details key="start" value="2195"/>
+      <details key="end" value="2200"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/springApplicationContext/@body.0/@body.2">
+      <details key="start" value="2862"/>
+      <details key="end" value="3577"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/springApplicationContext/@body.0/@body.2/@body.0">
+      <details key="start" value="2899"/>
+      <details key="end" value="2923"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/springApplicationContext/@body.0/@body.2/@body.1">
+      <details key="start" value="2924"/>
+      <details key="end" value="2934"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/springApplicationContext/@body.0/@body.2/@body.1/class">
+      <details key="start" value="2924"/>
+      <details key="end" value="2929"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/springApplicationContext/@body.0/@body.2/@body.2">
+      <details key="start" value="2936"/>
+      <details key="end" value="2998"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/springApplicationContext/@body.0/@body.2/@body.3">
+      <details key="start" value="2999"/>
+      <details key="end" value="3334"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.0">
+      <details key="start" value="3070"/>
+      <details key="end" value="3090"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.1">
+      <details key="start" value="3091"/>
+      <details key="end" value="3100"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.1/oper">
+      <details key="start" value="3091"/>
+      <details key="end" value="3095"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.2">
+      <details key="start" value="3102"/>
+      <details key="end" value="3104"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3">
+      <details key="start" value="3104"/>
+      <details key="end" value="3214"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3/@body.0">
+      <details key="start" value="3158"/>
+      <details key="end" value="3171"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3/@body.1">
+      <details key="start" value="3172"/>
+      <details key="end" value="3206"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3/@body.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3/@body.2">
+      <details key="start" value="3208"/>
+      <details key="end" value="3209"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3/@ifExpr">
+      <details key="start" value="3108"/>
+      <details key="end" value="3157"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.3/@ifExpr/oper">
+      <details key="start" value="3109"/>
+      <details key="end" value="3113"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.4">
+      <details key="start" value="3214"/>
+      <details key="end" value="3215"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5">
+      <details key="start" value="3215"/>
+      <details key="end" value="3324"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5/@body.0">
+      <details key="start" value="3267"/>
+      <details key="end" value="3278"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5/@body.1">
+      <details key="start" value="3279"/>
+      <details key="end" value="3316"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5/@body.1/oper">
+      <details key="start" value="3279"/>
+      <details key="end" value="3283"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5/@body.2">
+      <details key="start" value="3318"/>
+      <details key="end" value="3319"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5/@ifExpr">
+      <details key="start" value="3219"/>
+      <details key="end" value="3266"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.5/@ifExpr/oper">
+      <details key="start" value="3220"/>
+      <details key="end" value="3224"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/springApplicationContext/@body.0/@body.2/@body.3/@body.6">
+      <details key="start" value="3324"/>
+      <details key="end" value="3327"/>
+      <details key="line" value="64"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/springApplicationContext/@body.0/@body.2/@body.3/oper">
+      <details key="start" value="3005"/>
+      <details key="end" value="3019"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/springApplicationContext/@body.0/@body.2/@body.3/select">
+      <details key="start" value="3020"/>
+      <details key="end" value="3067"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/springApplicationContext/@body.0/@body.2/@body.3/select/@source">
+      <details key="start" value="3020"/>
+      <details key="end" value="3040"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/springApplicationContext/@body.0/@body.2/@body.3/select/@source/class">
+      <details key="start" value="3020"/>
+      <details key="end" value="3025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/springApplicationContext/@body.0/@body.2/@body.3/select/@body">
+      <details key="start" value="3049"/>
+      <details key="end" value="3066"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/springApplicationContext/@body.0/@body.2/@body.3/select/@body/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/springApplicationContext/@body.0/@body.2/@body.3/select/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/springApplicationContext/@body.0/@body.2/@body.4">
+      <details key="start" value="3335"/>
+      <details key="end" value="3462"/>
+      <details key="line" value="66"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/springApplicationContext/@body.0/@body.2/@body.5">
+      <details key="start" value="3463"/>
+      <details key="end" value="3489"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/springApplicationContext/@body.0/@body.2/@body.5/class">
+      <details key="start" value="3463"/>
+      <details key="end" value="3468"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/springApplicationContext/@body.0/@body.2/@body.6">
+      <details key="start" value="3491"/>
+      <details key="end" value="3492"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/springApplicationContext/@body.0/@body.2/@body.7">
+      <details key="start" value="3493"/>
+      <details key="end" value="3503"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/springApplicationContext/@body.0/@body.2/@body.7/class">
+      <details key="start" value="3493"/>
+      <details key="end" value="3498"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/springApplicationContext/@body.0/@body.2/@body.8">
+      <details key="start" value="3505"/>
+      <details key="end" value="3538"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/springApplicationContext/@body.0/@body.2/@body.9">
+      <details key="start" value="3539"/>
+      <details key="end" value="3549"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/springApplicationContext/@body.0/@body.2/@body.9/class">
+      <details key="start" value="3539"/>
+      <details key="end" value="3544"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/springApplicationContext/@body.0/@body.2/@body.10">
+      <details key="start" value="3551"/>
+      <details key="end" value="3571"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/springApplicationContext/@body.0/@body.2/class">
+      <details key="start" value="2868"/>
+      <details key="end" value="2879"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/springApplicationContext/@body.0/@body.2/@iterSet">
+      <details key="start" value="2880"/>
+      <details key="end" value="2896"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/springApplicationContext/@body.0/@body.2/@iterSet/model">
+      <details key="start" value="2880"/>
+      <details key="end" value="2885"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/springApplicationContext/@body.0/@body.3">
+      <details key="start" value="3578"/>
+      <details key="end" value="3587"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/springApplicationContext/@body.0/@fileUrl">
+      <details key="start" value="1357"/>
+      <details key="end" value="1377"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/springApplicationContext/@body.0/@fileUrl/model">
+      <details key="start" value="1357"/>
+      <details key="end" value="1362"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/springApplicationContext/model">
+      <details key="start" value="1274"/>
+      <details key="end" value="1287"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>
