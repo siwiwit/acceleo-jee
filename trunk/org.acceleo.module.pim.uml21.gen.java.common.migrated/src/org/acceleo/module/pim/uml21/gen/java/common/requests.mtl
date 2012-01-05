@@ -1,0 +1,46 @@
+[module requests('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::acceleo::module::pim::uml21::services::uml2services /]
+
+[query public isEntity(classifier:Classifier) : Boolean =
+classifier.hasStereotype(getProperty('Entity'))
+/]
+
+
+[query public isDao(class:Class) : Boolean =
+class.hasStereotype(getProperty('Dao'))
+/]
+
+
+[query public isDto(class:Class) : Boolean =
+class.hasStereotype(getProperty('Dto'))
+/]
+
+
+[query public isPK(property:Property) : Boolean =
+property.hasStereotype(getProperty('pk'))
+/]
+
+[query public getPKAttribute(class:Class) : Set(Property) = 
+class.interfaceRealization.target->filter(Interface)->select(isEntity())->asSequence()->first().attribute->select(isPK())
+->including(attribute->select(isPK())->asSequence()->first()) 
+/]
+
+
+[query public hasPrimaryKey(class:Class) : Boolean =
+class.attribute->select(isPK())->notEmpty()
+or
+(class.interfaceRealization->notEmpty()
+and 
+class.interfaceRealization.target->notEmpty()
+and 
+class.interfaceRealization.target->filter(Interface)->notEmpty()
+and 
+class.interfaceRealization.target->filter(Interface)->select(isEntity())->notEmpty()
+and 
+class.interfaceRealization.target->filter(Interface)->select(isEntity())->asSequence()->first().attribute->select(isPK())->notEmpty())
+/]
+
+[query public dtoPerEntity(element:Element) : Boolean = 
+getProperty('generate.dto.per.entity') = 'yes' 
+/]
+
