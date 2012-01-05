@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AcceleoBusiness="http:///schemas/AcceleoBusiness/_ex16ICKPEd26SOvVLQpYXg/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http:///schemas/AcceleoBusiness/_ex16ICKPEd26SOvVLQpYXg/1 pathmap://ACCELEO_PROFILES/Acceleo.Business.profile.uml#_81g14fWcEdyuYMHNZCqWBQ">
+  <uml:Model xmi:id="_qb8akM37EdqwVrslYOdUDA" name="inheritance">
+    <elementImport xmi:id="_y_Qi0LZsEdybHqpF6k3bUw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_y_Qi0bZsEdybHqpF6k3bUw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </elementImport>
+    <elementImport xmi:id="_y_Qi0rZsEdybHqpF6k3bUw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <elementImport xmi:id="_y_RJ4LZsEdybHqpF6k3bUw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="inheritance">
+      <packagedElement xmi:type="uml:Class" xmi:id="_uHMnsLZsEdybHqpF6k3bUw" name="Basic">
+        <generalization xmi:id="_VQfWQ7ziEdyJ1f3WnnCXNg" general="_Ta1cMLziEdyJ1f3WnnCXNg"/>
+        <ownedAttribute xmi:id="_vDAvsLZsEdybHqpF6k3bUw" name="myProp1" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_4U2HcLZsEdybHqpF6k3bUw" name="myProp2" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8G6q4LZsEdybHqpF6k3bUw" name="BasicWithoutAttr">
+        <generalization xmi:id="_VDCwILziEdyJ1f3WnnCXNg" general="_Ta1cMLziEdyJ1f3WnnCXNg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Ta1cMLziEdyJ1f3WnnCXNg" name="Root">
+        <ownedAttribute xmi:id="_WkR5YLziEdyJ1f3WnnCXNg" name="rootProp" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_6Rl_gLzkEdyJ1f3WnnCXNg" name="ClassA1">
+        <ownedAttribute xmi:id="_9k0q0LzkEdyJ1f3WnnCXNg" name="a1" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_7EtegLzkEdyJ1f3WnnCXNg" name="ClassA2">
+        <generalization xmi:id="_8_dT8LzkEdyJ1f3WnnCXNg" general="_6Rl_gLzkEdyJ1f3WnnCXNg"/>
+        <ownedAttribute xmi:id="_-zAVMrzkEdyJ1f3WnnCXNg" name="a2" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_7zw84LzkEdyJ1f3WnnCXNg" name="ClassA3">
+        <generalization xmi:id="_8rz_M7zkEdyJ1f3WnnCXNg" general="_7EtegLzkEdyJ1f3WnnCXNg"/>
+        <ownedAttribute xmi:id="_AG60IbzlEdyJ1f3WnnCXNg" name="a3" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_iFvzAEONEd27Xcb7jTbjXA">
+      <eAnnotations xmi:id="_iFvzAUONEd27Xcb7jTbjXA" source="http://www.eclipse.org/uml2/3.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ACCELEO_PROFILES/Acceleo.Business.profile.uml#_81g14fWcEdyuYMHNZCqWBQ"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ACCELEO_PROFILES/Acceleo.Business.profile.uml#_JX9fQPWcEdyuYMHNZCqWBQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_iFwaEEONEd27Xcb7jTbjXA">
+      <eAnnotations xmi:id="_iFwaEUONEd27Xcb7jTbjXA" source="http://www.eclipse.org/uml2/3.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ACCELEO_PROFILES/Acceleo.UI.profile.uml#_BT60sRKtEdypx4Rgey6BQg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ACCELEO_PROFILES/Acceleo.UI.profile.uml#_n4E-YBKqEdypx4Rgey6BQg"/>
+    </profileApplication>
+  </uml:Model>
+  <AcceleoBusiness:Entity xmi:id="_iFxoMEONEd27Xcb7jTbjXA" base_Class="_uHMnsLZsEdybHqpF6k3bUw"/>
+  <AcceleoBusiness:Entity xmi:id="_iFxoMUONEd27Xcb7jTbjXA" base_Class="_8G6q4LZsEdybHqpF6k3bUw"/>
+  <AcceleoBusiness:Entity xmi:id="_iFxoMkONEd27Xcb7jTbjXA" base_Class="_Ta1cMLziEdyJ1f3WnnCXNg"/>
+  <AcceleoBusiness:Entity xmi:id="_iFyPQEONEd27Xcb7jTbjXA" base_Class="_6Rl_gLzkEdyJ1f3WnnCXNg"/>
+  <AcceleoBusiness:Entity xmi:id="_iFyPQUONEd27Xcb7jTbjXA" base_Class="_7EtegLzkEdyJ1f3WnnCXNg"/>
+  <AcceleoBusiness:Entity xmi:id="_iFy2UEONEd27Xcb7jTbjXA" base_Class="_7zw84LzkEdyJ1f3WnnCXNg"/>
+</xmi:XMI>
