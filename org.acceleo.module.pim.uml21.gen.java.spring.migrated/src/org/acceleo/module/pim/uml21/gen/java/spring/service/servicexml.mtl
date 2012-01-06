@@ -20,7 +20,7 @@
 [/template]
 
 
-[template public springApplicationContext(model : Model)]
+[template public generateSpringApplicationContext(model : Model)]
 [comment This template is called by the main module file /]
 [file (model.fullFilePath(), false))]
 <?xml version="1.0" encoding="UTF-8"?>

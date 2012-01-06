@@ -24,7 +24,7 @@
 [/template]
 
 
-[template public generateUi(class : Class)]
+[template public generateUiImpl(class : Class)]
 [comment This template is called by the main module file /]
 [file (class.fullFilePath(), false))]
 package [class.uiImplPackage()/];

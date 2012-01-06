@@ -23,7 +23,7 @@
 [/template]
 
 
-[template public generateWebService(class : Class)]
+[template public generateGwtServiceAsync(class : Class)]
 [comment This template is called by the main module file /]
 [file (class.fullFilePath(), false))]
 package [class.servicePackage()/];

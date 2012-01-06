@@ -20,7 +20,7 @@
 [/template]
 
 
-[template public generate(model : Model)]
+[template public generateDaoHibernateTestSuit(model : Model)]
 [comment This template is called by the main module file /]
 [file (fullFilePath(), false))]
 package [testPackage()/];
