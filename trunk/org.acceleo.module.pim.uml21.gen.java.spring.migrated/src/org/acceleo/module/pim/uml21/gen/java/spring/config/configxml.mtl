@@ -18,7 +18,7 @@
 [/template]
 
 
-[template public generateConfig(model : Model)]
+[template public generateConfigXml(model : Model)]
 [comment This template is called by the main module file /]
 [file (model.fullFilePath(), false))]
 <?xml version="1.0" encoding="UTF-8"?>

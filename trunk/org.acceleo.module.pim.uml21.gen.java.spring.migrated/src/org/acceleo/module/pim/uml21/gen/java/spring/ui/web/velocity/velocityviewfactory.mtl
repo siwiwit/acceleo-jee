@@ -20,7 +20,7 @@
 [/template]
 
 
-[template public generateUi(model : Model)]
+[template public generateVelocityViewFactory(model : Model)]
 [comment This template is called by the main module file /]
 [file (model.fullFilePath(), false))]
 package [model.viewFactoryPackage()/];

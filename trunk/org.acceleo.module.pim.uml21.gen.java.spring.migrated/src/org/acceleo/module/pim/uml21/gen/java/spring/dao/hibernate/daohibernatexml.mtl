@@ -52,8 +52,3 @@
 </beans>
 [/file]
 [/template]
-
-
-
-[query private computeBeanId(arg0 : String) : String = invoke('org.acceleo.module.pim.uml21.gen.java.spring.services.SpringServices', 'computeBeanId(java.lang.String)', Sequence{arg0})/]
-[query private computeBeanId(arg0 : Element) : String = invoke('org.acceleo.module.pim.uml21.gen.java.spring.services.SpringServices', 'computeBeanId(org.eclipse.uml2.uml.Element)', Sequence{arg0})/]

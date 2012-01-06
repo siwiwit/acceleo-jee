@@ -20,7 +20,7 @@
 [/template]
 
 
-[template public generateDao(class : Class)]
+[template public generateDaoImplementHibernate(class : Class)]
 [comment This template is called by the main module file /]
 [file (class.fullFilePath(), false))]
 package [class.daoImplPackage()/];

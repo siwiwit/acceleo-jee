@@ -62,56 +62,17 @@
 	[comment Call the file block in 'componentxml' /]
 	[ springApplicationContext() /]
 
-	[comment Call the file block in 'config' /]
-	[ generateConfig() /]
-
-	[comment Call the file block in 'xml' /]
-	[ generateConfig() /]
-
-	[comment Call the file block in 'dao' /]
-	[ generateDao() /]
-
-	[comment Call the file block in 'daohibernatetestimpl' /]
-	[ generate() /]
+	[comment Call the file block in 'configxml' /]
+	[ generateConfigXml() /]
 
 	[comment Call the file block in 'daohibernatetestsuite' /]
-	[ generate() /]
+	[ generateDaoHibernateTestSuit() /]
 
 	[comment Call the file block in 'xml' /]
 	[ springApplicationContext() /]
 
-	[comment Call the file block in 'daoimplhibernate' /]
-	[ generateDao() /]
-
-	[comment Call the file block in 'dto' /]
-	[ generate() /]
-
-	[comment Call the file block in 'javabusinessexception' /]
-	[ generateJavaClass() /]
-
-	[comment Call the file block in 'javaclass' /]
-	[ generateJavaClass() /]
-
-	[comment Call the file block in 'javaenum' /]
-	[ generateEnum() /]
-
-	[comment Call the file block in 'javaexception' /]
-	[ generateJavaClass() /]
-
-	[comment Call the file block in 'javainterface' /]
-	[ generateJavaInterface() /]
-
 	[comment Call the file block in 'log4jconfig' /]
 	[ generateLog4jConfig() /]
-
-	[comment Call the file block in 'serviceimpl' /]
-	[ generateService() /]
-
-	[comment Call the file block in 'servicetestimpl' /]
-	[ generateService() /]
-
-	[comment Call the file block in 'service' /]
-	[ generateService() /]
 
 	[comment Call the file block in 'xml' /]
 	[ springApplicationContext() /]
@@ -119,53 +80,29 @@
 	[comment Call the file block in 'abstractbusinesslayertest' /]
 	[ generateAbstractBusinessLayerTests() /]
 
-	[comment Call the file block in 'entitytesthelper' /]
-	[ generateEntityTestHelper() /]
-
 	[comment Call the file block in 'xml' /]
 	[ springApplicationContext() /]
 
 	[comment Call the file block in 'testsuite' /]
 	[ generate() /]
 
-	[comment Call the file block in 'servletcontroller' /]
-	[ generateUi() /]
-
 	[comment Call the file block in 'xml' /]
 	[ springApplicationContext() /]
 
-	[comment Call the file block in 'uiimpl' /]
-	[ generateUi() /]
-
-	[comment Call the file block in 'ui' /]
-	[ generateUi() /]
-
-	[comment Call the file block in 'xml' /]
-	[ springApplicationContext() /]
+	[comment Call the file block in 'servletcontrollerxml' /]
+	[ generateSevletControllerSpringApplicationContext() /]
 
 	[comment Call the file block in 'velocityproperties' /]
 	[ generateVelocityConfig() /]
 
 	[comment Call the file block in 'velocityviewfactory' /]
-	[ generateUi() /]
+	[ generateVelocityViewFactory() /]
 
-	[comment Call the file block in 'velocityview' /]
-	[ generateUi() /]
+	[comment Call the file block in 'servicexml' /]
+	[ generateSpringApplicationContext() /]
 
-	[comment Call the file block in 'xml' /]
-	[ springApplicationContext() /]
-
-	[comment Call the file block in 'xml' /]
-	[ springApplicationContext() /]
-
-	[comment Call the file block in 'gwtserviceasync' /]
-	[ generateWebService() /]
-
-	[comment Call the file block in 'gwtserviceimpl' /]
-	[ generateService() /]
-
-	[comment Call the file block in 'gwtservice' /]
-	[ generateWebService() /]
+	[comment Call the file block in 'testsxml' /]
+	[ generateTestSpringApplicationContext() /]
 
 	[comment Call the file block in 'xml' /]
 	[ springApplicationContext() /]
@@ -223,11 +160,78 @@
 	[/for]
 [/template]
 
-[template public generateClassifier(aClassifier : Classifier)]
-	[if (aClassifier.oclIsTypeOf(Class))]
-		[let aClass : Class = aClassifier.oclAsType(Class)]
+[template public generateClassifier(aType : Type)]
+	[if (aType.oclIsTypeOf(Class))]
+		[let aClass : Class = aType.oclAsType(Class)]
+	[comment Call the file block in 'dao' /]
+	[ aClass.generateDao() /]
+
+	[comment Call the file block in 'daoimplhibernate' /]
+	[ aClass.generateDaoImplementHibernate() /]
+
+	[comment Call the file block in 'daohibernatetestimpl' /]
+	[ aClass.generateDaoHibernateTestImpl() /]
+
+	[comment Call the file block in 'config' /]
+	[ aClass.generateConfig() /]
+
+	[comment Call the file block in 'javabusinessexception' /]
+	[ aClass.generateJavaBusinessException() /]
+
+	[comment Call the file block in 'dto' /]
+	[ aClass.generateDto() /]
+
+	[comment Call the file block in 'velocityview' /]
+	[ aClass.generateVelocityView() /]
+
+	[comment Call the file block in 'javaclass' /]
+	[ aClass.generateJavaClass() /]
+
+	[comment Call the file block in 'javaexception' /]
+	[ aClass.generateJavaExceptionClass() /]
+
+	[comment Call the file block in 'serviceimpl' /]
+	[ aClass.generateServiceImpl() /]
+
+	[comment Call the file block in 'servicetestimpl' /]
+	[ aClass.generateServiceTestImpl() /]
+
+	[comment Call the file block in 'service' /]
+	[ aClass.generateService() /]
+
+	[comment Call the file block in 'entitytesthelper' /]
+	[ aClass.generateEntityTestHelper() /]
+
+	[comment Call the file block in 'servletcontroller' /]
+	[ aClass.generateServletController() /]
+
+	[comment Call the file block in 'uiimpl' /]
+	[ generateUiImpl() /]
+
+	[comment Call the file block in 'ui' /]
+	[ generateUi() /]
+
+	[comment Call the file block in 'gwtserviceasync' /]
+	[ generateGwtServiceAsync() /]
+
+	[comment Call the file block in 'gwtserviceimpl' /]
+	[ generateGwtServiceImpl() /]
+
+	[comment Call the file block in 'gwtservice' /]
+	[ generateGwtService() /]
 
 		[/let]
+	[elseif (aType.oclIsTypeOf(Interface))]
+		[let aInterface : Interface = aType.oclAsType(Interface)]
+	[comment Call the file block in 'javainterface' /]
+	[ aInterface.generateJavaInterface() /]
+		[/let]
+	[elseif (aType.oclIsTypeOf(Enumeration))]
+		[let aEnumeration : Enumeration = aType.oclAsType(Enumeration)]
+	[comment Call the file block in 'javaenum' /]
+	[ aEnumeration.generateEnum() /]
+		[/let]
 	[/if]
+
 [/template]
 
