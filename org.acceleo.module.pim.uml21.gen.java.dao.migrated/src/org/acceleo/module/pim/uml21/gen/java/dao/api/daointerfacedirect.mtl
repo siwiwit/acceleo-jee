@@ -8,7 +8,7 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
-[template public fullFilePath(class:Class)]
+[template private fullFilePath(class:Class)]
 [if (class.isEntity())]
 [class.pathToMainJava()/]/[class.daoInterfacePackage().toPath()/]/[class.daoInterfaceName()/].java
 [/if]
