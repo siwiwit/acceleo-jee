@@ -15,14 +15,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(model : Model)]
+[comment][template private fullFilePath(model : Model)]
 [if (model.uis()->notEmpty())][model.pathToMainResources()/]/velocity.properties[/if]
-[/template]
+[/template][/comment]
 
 
-[template public generateVelocityConfig(model : Model)]
+[template public generateVelocityConfig(model : Model)? (model.uis()->notEmpty())]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainResources(), '', 'velocity.properties'), false))]
 # [protected ('settings')]
 #
 # specify three resource loaders to use

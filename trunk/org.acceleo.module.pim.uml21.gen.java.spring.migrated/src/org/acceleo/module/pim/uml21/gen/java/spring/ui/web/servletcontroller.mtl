@@ -15,17 +15,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class)]
 [if (class.isController())]
 [class.pathToMainJava()/]/[class.controllerPackage().toPath()/]/[class.name/].java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateServletController(class : Class)]
+[template public generateServletController(class : Class)? (class.isController())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(), class.controllerPackage().toPath(), class.name.concat('.java')), false))]
 package [class.controllerPackage()/];
 
 // [protected ('import')] 
