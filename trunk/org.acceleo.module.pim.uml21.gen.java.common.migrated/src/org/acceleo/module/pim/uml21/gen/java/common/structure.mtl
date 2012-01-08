@@ -20,16 +20,18 @@ interface.getAssociations()->filter(Association).oppositeAttributeOf(interface)-
 ->including(interface.ownedAttribute)->asSet()
 /]
 
-[template public generateImports(class:Class)]
-[for (class.classAttributes())]
-		[let typeName : String = class.name]
-			[if (class._package.name <> 'UMLPrimitiveTypes' and 
+[template public generateImports(class:Class) post (trim())]
+[for (prop:Property|class.classAttributes()->select(type.oclIsTypeOf(NamedElement)))]
+	[let propType : Type = prop.type]
+		[let typeName : String = propType.name]
+			[if (propType._package.name <> 'UMLPrimitiveTypes' and 
 				typeName <> 'String' and typeName <> 'Integer' and 
 				typeName <> 'Float' and typeName <> 'Long' and 
 				typeName <> 'Boolean' and typeName <> 'Date')]
-import [class.qualifiedName.replaceAll('::','.')/];
+import [propType.getCompleteName()/];
 			[/if]		
 		[/let]
+	[/let]
 
 [/for]
 
@@ -123,9 +125,14 @@ some[name.toUpperFirst()/]
 [/template]
 
 
-[template public normalizedName(package:Package)]
-[name.toStandardNotation().toLower()/]
-[/template]
+[query public normalizedName(_package:Package):String=
+_package.name.toStandardNotation().toLower()
+/]
 
+[template public getCompleteName(namedElement:NamedElement) post (trim())]
+[let packages : Sequence(Package) = namedElement.ancestors(Package)->select(not oclIsTypeOf(Model))]
+	[packages.name->reverse()->sep('.')->toString().concat(if(packages->notEmpty())then '.' else '' endif).concat(namedElement.name)/]
+[/let]
+[/template]
 
 

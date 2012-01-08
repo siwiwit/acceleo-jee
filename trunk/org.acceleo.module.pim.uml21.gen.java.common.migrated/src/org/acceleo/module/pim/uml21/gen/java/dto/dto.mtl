@@ -7,15 +7,14 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
-[template public fullFilePath(class:Class) ? (class.isEntity() or class.isDto())]
+[template private fullFilePath(class:Class) ? (class.isEntity() or class.isDto())]
 [class.pathToMainJava()/]/[class.dtoPackage().toPath()/]/[class.dtoName()/].java
-
 [/template]
 
 
 [template public generateDto(class:Class)? (class.isEntity() or class.isDto())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(),class.dtoPackage().toPath(),class.dtoName().concat('.java')), false))]
 [if (class.isEntity() and getProperty('generate.dto.per.entity') = 'yes')]
 [class.genEntityDto()/]
 [else]

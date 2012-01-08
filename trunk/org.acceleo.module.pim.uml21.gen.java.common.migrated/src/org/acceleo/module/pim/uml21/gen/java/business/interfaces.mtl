@@ -3,9 +3,15 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure/]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
+
+[comment][template private fullFilePath(interface:Interface)]
+[interface.pathToMainJava()/]/[interface.entityPackage().toPath()/]/[interface.name/].java
+[/template][/comment]
+
+
 [template public generateInterface(interface:Interface)]
 [comment This template is called by the main module file /]
-[file (interface.fullFilePath(), false))]
+[file (interface.fullFilePath(interface.pathToMainJava(), interface.entityPackage().toPath(), interface.name.concat('.java')), false))]
 package [interface.entityPackage()/];
 
 /**
@@ -71,10 +77,6 @@ public interface [interface.name/] {
 [/file]
 [/template]
 
-
-[template public fullFilePath(interface:Interface)]
-[interface.pathToMainJava()/]/[interface.entityPackage().toPath()/]/[interface.name/].java
-[/template]
 
 
 

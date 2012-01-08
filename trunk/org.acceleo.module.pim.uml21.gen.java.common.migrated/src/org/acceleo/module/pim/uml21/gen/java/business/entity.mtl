@@ -6,17 +6,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure/]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
-[template public fullFilePath(class:Class) ? (class.isEntity()) post (trim())]
+[comment][template private fullFilePath(class:Class) ? (class.isEntity()) post (trim())]
 [comment][if (class.isEntity())][/comment]
 [class.pathToMainJava()/]/[class.entityPackage().toPath()/]/[class.name/].java
 [comment][/if][/comment]
 
-[/template]
+[/template][/comment]
 
 
 [template public generateEntity(class:Class) ? (class.isEntity())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(), class.entityPackage().toPath(), class.name.concat('.java')), false))]
 package [class.entityPackage()/];
 // [protected ('imports')] 
 // for imports
@@ -50,7 +50,7 @@ import [prop.type.entityPackage()/].[prop.type.name/];
 import [class.entityPackage()/].[class.superClass.name/];
 [/if]
 
-// [/protected] for imports
+// [/protected]
 
 /**
 [if (class.ownedComment._body->size() > 0)]
@@ -299,6 +299,7 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
 	[/for]
 [/if]
 [comment  Recopie vers et depuis les value objects /]
+
 [if (class.dtoPerEntity())]
     /**
      * Provides a Data value object corresponding to this entity.
@@ -317,12 +318,12 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
      * @param aValueObject The value object to get the values from.
      */
     public void copyTo[class.dtoSuffix()/](final [class.dtoName()/] aValueObject) {
-[if (class.superClass->size()>0)]
+	[if (class.superClass->size()>0)]
         super.copyTo[class.dtoSuffix()/](aValueObject);
-[/if]
-[for (class.ownedAttribute->select(not (type.oclAsType(Class).isEntity()) and not (isDerived)))]
+	[/if]
+	[for (class.ownedAttribute->select(not (type.oclAsType(Class).isEntity()) and not (isDerived)))]
         aValueObject.set[name.toUpperFirst()/](get[name.toUpperFirst()/]());
-[/for]
+	[/for]
     }
 
     /**
@@ -332,19 +333,19 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
      * @param aValueObject The value object to copy the values to.
      */
     public void updateFrom[class.dtoSuffix()/](final [class.dtoName()/] aValueObject) {
-[if (class.superClass->size() > 0)]
+	[if (class.superClass->size() > 0)]
         super.updateFrom[class.dtoSuffix()/](aValueObject);
-[/if]
-[for (class.ownedAttribute->select(not (type.oclAsType(Class).isEntity()) and not (isPK()) and not (isDerived)))]
+	[/if]
+	[for (class.ownedAttribute->select(not (type.oclAsType(Class).isEntity()) and not (isPK()) and not (isDerived)))]
         set[name.toUpperFirst()/](aValueObject.get[name.toUpperFirst()/]());
-[/for]
+	[/for]
     }
 
 [/if]
 [for (oper:Operation|class.ownedOperation->select(not (hasStereotype(getProperty('find')))))]
 [oper.generateJavadoc()/]
     [oper.signature()/] {
-        // [protected ('protected')]
+        // [protected ('finder')]
         // TODO implement [oper.name/]
         throw new UnsupportedOperationException("Method not yet implemented");
         // [/protected]
@@ -364,7 +365,8 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
      */
     @Override
     public boolean equals(final Object other) {
-        // [protected ('protected')] for equals         
+        // [protected ('equals')] 
+		// for equals         
 		if (this == other) {
             return true;
         }
@@ -373,28 +375,28 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
         }
         final [class.name/] castedOther = ([class.name/]) other;
 [if (class.hasPrimaryKey())]
-[for (prop:Property|class.getPKAttribute())]
+	[for (prop:Property|class.getPKAttribute())]
         return [prop.name/] == castedOther.get[prop.name.toUpperFirst()/]();
-[/for]
+	[/for]
 [elseif (class.defaultPKType().isPrimitiveType())]
         return id == castedOther.getId();
 [else]
         if (id != null && castedOther.getId() != null) {
             return id.equals(castedOther.getId());
         }
-[for (prop:Property|class.classAttributes()->filter(Property)->select(not (isPK())))]
-[if (prop.type.isJavaPrimitiveType())]
+	[for (prop:Property|class.classAttributes()->filter(Property)->select(not (isPK())))]
+		[if (prop.type.isJavaPrimitiveType())]
         if ([prop.name/] != castedOther.get[prop.name.toUpperFirst()/]()) {
             return false;
         }
-[else]
+		[else]
         if (([prop.name/] == null && castedOther.get[prop.name.toUpperFirst()/]() != null) 
              || ([prop.name/] != null && ![prop.name/].equals(
                 castedOther.get[prop.name.toUpperFirst()/]()))) {
            return false;
         }
-[/if]
-[/for]
+		[/if]
+	[/for]
 [/if]
 [if (class.isSupperAsEntity())]
     	return super.equals(other);
@@ -410,7 +412,7 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
      */
     @Override
     public int hashCode() {
-        // [protected ('protected')] for hashCode
+        // [protected ('hashCode')] for hashCode
 int result = 0;
 [if (class.hasPrimaryKey())]
         result = new Long([class.getPKAttribute()->asSequence()->first().oclAsType(Property).name/]).hashCode();
@@ -420,23 +422,23 @@ int result = 0;
         if (id != null) {
             result = id.hashCode();
         } else {[comment  This else is required to be synchro with the equals() method, otherwise we could generate different hashCodes for equal objects ! /]
-[for (prop:Property|class.attribute->select(not (isPK())))]
-[if (prop.type.name = 'Boolean')]
+	[for (prop:Property|class.attribute->select(not (isPK())))]
+		[if (prop.type.name = 'Boolean')]
             if ([prop.name/]) {
                 result++;
             }
-[elseif (prop.type.name = 'Integer')]
+		[elseif (prop.type.name = 'Integer')]
             result = 29 * result + [prop.name/];
-[elseif (prop.type.name = 'Float')]
+		[elseif (prop.type.name = 'Float')]
             if ([prop.name/] != null) {
                 result = (int) (29 * result + [prop.name/].hashCode());
             }
-[else]
+		[else]
             if ([prop.name/] != null) {
                 result = 29 * result + [prop.name/].hashCode();
             }
-[/if]
-[/for]
+		[/if]
+	[/for]
         }
 [/if]
 [if (class.isSupperAsEntity())]
@@ -448,7 +450,8 @@ int result = 0;
     }
 
 [comment  N.B. It is mandatory to have identical lines for start and end user code !!! /]    
-	// [protected ('protected')] for private methods
+	// [protected ('private methods')] 
+	// for private methods
 	// TODO Remove this line and add your private methods here
     // [/protected] for private methods
 
