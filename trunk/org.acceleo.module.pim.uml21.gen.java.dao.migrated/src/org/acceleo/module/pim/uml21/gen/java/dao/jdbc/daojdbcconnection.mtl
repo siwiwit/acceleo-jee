@@ -7,14 +7,14 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /] 
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /] 
 
-[template public fullFilePath(model:Model)]
+[comment][template private fullFilePath(model:Model)]
 [model.pathToMainJava()/]/[model.utilPackage().toPath()/]/[model.projectName().toUpperFirst()/]ConnectionUtils.java
-[/template]
+[/template][/comment]
 
 
 [template public generateDaoJdbcConnection(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainJava(),model.utilPackage().toPath(),model.projectName().toUpperFirst().concat('ConnectionUtils.java')), false))]
 package [model.utilPackage()/];
 
 import java.sql.Connection;

@@ -7,7 +7,7 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public fullFilePath(class:Class)]
+[template private fullFilePath(class:Class)]
 [if (class.isEntity())]
 [class.pathToTestJava()/]/[class.objectsPackage().toPath()/]/[class.daoInterfaceName()/]Test.java
 [/if]
@@ -15,12 +15,13 @@
 [/template]
 
 
-[template public generateInterfaceDirectTest(class:Class)]
+[template public generateInterfaceDirectTest(class:Class)? (class.isEntity())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.objectsPackage().toPath(), class.daoInterfaceName().concat('Test.java')), false))]
 package [class.objectsPackage()/];
 
-// [protected ('imports')] for import
+// [protected ('imports')] 
+// for import
 [if (class.attribute->select(type.name = 'Date')->notEmpty())]
 import java.util.Date;
 	[/if]
@@ -51,7 +52,8 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         this.dao = [class.projectName().toUpperFirst()/]DaoFactory.get[class.name/]Dao();
-        // [protected ('setup')] for setup        
+        // [protected ('setup')] 
+		// for setup        
 		// [/protected] for setup 
     }
 
@@ -192,7 +194,8 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 	[for (prop:Property|class.attribute)]
 		[if (prop.lower <> 0)]
             
-        // [protected ('relations')] for [type.name/].[name/]        
+        // [protected ('relations1')] 
+		// for [type.name/].[name/]        
 		[type.name/] [name.toLowerFirst()/]Exemple = new [type.name/]();
 			[if (upper = 1)]
         [class.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([name.toLowerFirst()/]Exemple);
@@ -237,7 +240,8 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 	[for (prop:Property|class.attribute)]
 		[if (prop.lower <> 0)]
             
-        // [protected ('relations')] for [prop.type.name/].[name/]         
+        // [protected ('relations2')] 
+		// for [prop.type.name/].[name/]         
 [prop.type.name/] [prop.name.toLowerFirst()/]Exemple = new [prop.type.name/]();
 			[if (prop.upper = 1)]
         [class.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([prop.name.toLowerFirst()/]Exemple);

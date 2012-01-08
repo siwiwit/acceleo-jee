@@ -6,14 +6,14 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
-[template public fullFilePath(model:Model)]
+[comment][template private fullFilePath(model:Model)]
 [model.pathToMainJava()/]/[model.daoFactoryPackage().toPath()/]/[model.projectName().toUpperFirst()/]DaoFactory.java
-[/template]
+[/template][/comment]
 
 
 [template public generateDaoFactory(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainJava(),model.daoFactoryPackage().toPath(), model.projectName().toUpperFirst().concat('DaoFactory.java')), false))]
 package [model.daoFactoryPackage()/];
 
 import java.util.MissingResourceException;

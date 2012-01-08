@@ -7,14 +7,14 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public fullFilePath(model:Model)]
+[comment][template private fullFilePath(model:Model)]
 [model.pathToTestJava()/]/[model.testPackage().toPath()/]/All[model.projectName().toUpperFirst()/]DaoTests.java
-[/template]
+[/template][/comment]
 
 
 [template public generateDaoInterfaceDirectTestSuit(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToTestJava(),model.testPackage().toPath(), 'All'.concat(model.projectName().toUpperFirst()).concat('DaoTests.java')), false))]
 package [model.testPackage()/];
 
 import junit.framework.Test;
