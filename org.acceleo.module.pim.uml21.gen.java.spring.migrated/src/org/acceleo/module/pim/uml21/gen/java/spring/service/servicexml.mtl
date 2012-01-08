@@ -15,14 +15,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(model : Model)]
+[comment][template private fullFilePath(model : Model)]
 [if (model.services()->notEmpty())][model.pathToMainResources()/]/META-INF/spring/[model.baseImports()/]/layer-services.xml[/if]
-[/template]
+[/template][/comment]
 
 
-[template public generateSpringApplicationContext(model : Model)]
+[template public generateServiceSpringApplicationContext(model : Model)? (model.services()->notEmpty())]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainResources(), '/META-INF/spring/'.concat(model.baseImports()), 'layer-services.xml'), false))]
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"

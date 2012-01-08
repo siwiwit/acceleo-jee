@@ -99,7 +99,7 @@
 	[ generateVelocityViewFactory() /]
 
 	[comment Call the file block in 'servicexml' /]
-	[ generateSpringApplicationContext() /]
+	[ generateServiceSpringApplicationContext() /]
 
 	[comment Call the file block in 'testsxml' /]
 	[ generateTestSpringApplicationContext() /]
@@ -113,36 +113,21 @@
 	[comment Call the file block in 'servicehessianclientfactory' /]
 	[ generateXfireWSClientFactory() /]
 
-	[comment Call the file block in 'servicehessiantestimpl' /]
-	[ generateWebServiceTest() /]
-
-	[comment Call the file block in 'xml' /]
-	[ springApplicationContext() /]
-
-	[comment Call the file block in 'webserviceinterface' /]
-	[ generateWebService() /]
-
-	[comment Call the file block in 'webservicemocktest' /]
-	[ generateWebService() /]
+	[comment Call the file block in 'servicehessianxml' /]
+	[ generateServiceHessianSpringApplicationContext() /]
 
 	[comment Call the file block in 'servicexfireclientfactory' /]
 	[ generateXfireWSClientFactory() /]
 
-	[comment Call the file block in 'servicexfiremocktest' /]
-	[ generateWebService() /]
-
-	[comment Call the file block in 'servicexfiretestimpl' /]
-	[ generateWebServiceTest() /]
-
 	[comment Call the file block in 'servicexfire' /]
-	[ generateWebService() /]
+	[ generateServiceFireSpringApplicationContext() /]
 
-	[comment Call the file block in 'xml' /]
+	[comment Call the file block in 'servicexfirexml' /]
 	[ springApplicationContext() /]
 
 
-	[for (aClassifier : Classifier | aModel.ownedElement->filter(Classifier))]
-		[aClassifier.generateClassifier()/]
+	[for (aType : Type | aModel.ownedElement->filter(Type))]
+		[aType.generateClassifier()/]
 	[/for]
 
 	[for (pack : Package | aModel.ownedElement->filter(Package))]
@@ -164,7 +149,7 @@
 	[if (aType.oclIsTypeOf(Class))]
 		[let aClass : Class = aType.oclAsType(Class)]
 	[comment Call the file block in 'dao' /]
-	[ aClass.generateDao() /]
+	[ aClass.generateSpringDao() /]
 
 	[comment Call the file block in 'daoimplhibernate' /]
 	[ aClass.generateDaoImplementHibernate() /]
@@ -179,7 +164,7 @@
 	[ aClass.generateJavaBusinessException() /]
 
 	[comment Call the file block in 'dto' /]
-	[ aClass.generateDto() /]
+	[ aClass.generateSpringDto() /]
 
 	[comment Call the file block in 'velocityview' /]
 	[ aClass.generateVelocityView() /]
@@ -206,19 +191,34 @@
 	[ aClass.generateServletController() /]
 
 	[comment Call the file block in 'uiimpl' /]
-	[ generateUiImpl() /]
+	[ aClass.generateUiImpl() /]
 
 	[comment Call the file block in 'ui' /]
-	[ generateUi() /]
+	[ aClass.generateUi() /]
 
 	[comment Call the file block in 'gwtserviceasync' /]
-	[ generateGwtServiceAsync() /]
+	[ aClass.generateGwtServiceAsync() /]
 
 	[comment Call the file block in 'gwtserviceimpl' /]
-	[ generateGwtServiceImpl() /]
+	[ aClass.generateGwtServiceImpl() /]
 
 	[comment Call the file block in 'gwtservice' /]
-	[ generateGwtService() /]
+	[ aClass.generateGwtService() /]
+
+	[comment Call the file block in 'servicehessiantestimpl' /]
+	[ aClass.generateSeviceHessianTestImpl() /]
+
+	[comment Call the file block in 'webserviceinterface' /]
+	[ aClass.generateWebServiceInterface() /]
+
+	[comment Call the file block in 'webservicemocktest' /]
+	[ aClass.generateWebServiceMockTest() /]
+
+	[comment Call the file block in 'servicexfiremocktest' /]
+	[ aClass.generateServiceFireMockTest() /]
+
+	[comment Call the file block in 'servicexfiretestimpl' /]
+	[ aClass.generateServiceFireTestImpl() /]
 
 		[/let]
 	[elseif (aType.oclIsTypeOf(Interface))]

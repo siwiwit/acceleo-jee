@@ -14,25 +14,22 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class)]
 [if (class.isEntity())]
 [class.pathToTestJava()/]/[class.daoImplPackage().toPath()/]/[class.name/]Helper.java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateEntityTestHelper(class : Class)]
+[template public generateEntityTestHelper(class : Class)? (class.isEntity())]
 [comment This template is called by the main module file /]
-[file (fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.daoImplPackage().toPath(), class.name.concat('Helper.java')), false))]
 package [class.daoImplPackage()/];
 
-// [protected ('imports')] 
-// for import
+// [protected ('imports')]
 import [class.getCompleteName()/];
-
 [class.generateImports()/]
-[class.classAttributes()/]
 [if (class.classAttributes()->select((upper = -1 or upper > 1))->notEmpty())]
 	[if (class.classAttributes()->select((upper = -1 or upper > 1) and isOrdered)->notEmpty())]
 import java.util.List;

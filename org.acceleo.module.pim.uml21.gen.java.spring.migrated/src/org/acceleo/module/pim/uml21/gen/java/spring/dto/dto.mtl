@@ -15,7 +15,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class) ? (class.isDto())]
 [if (class.isDto())]
 	[if (getProperty('useDtoPackage') = 'no')]
 [class.pathToMainJava()/]/[class.dtoPackage().toPath()/]/[class.name/].java
@@ -24,14 +24,27 @@
 	[/if]
 [/if]
 
-[/template]
+[/template][/comment]
+
+[query private dtoClassName(class : Class) : String = 
+if (getProperty('useDtoPackage') = 'no') then
+class.name 
+else
+class.name.concat('Dto')
+endif
+/]
+
+[query private pathToDtoClassName(class : Class) : String =
+class.fullFilePath(class.pathToMainJava(), class.dtoPackage().toPath(), class.dtoClassName().concat('.java')) 
+/]
 
 
-[template public generateDto(class : Class)]
+[template public generateSpringDto(class : Class) ? (class.isDto()) ]
+
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.pathToDtoClassName(), false))]
 package [class.dtoPackage()/];
-
+==[class.dtoPackage().toPath()/]==
 // [protected('import')]  
 // for import
 import java.io.Serializable;
@@ -58,11 +71,12 @@ import java.util.Collection;
 // [/protected]  for import
 
 [class.generateJavadoc()/]
-[if (getProperty('useDtoPackage') = 'no')]
+public class [class.dtoClassName()/][class.extensions()/] {
+[comment][if (getProperty('useDtoPackage') = 'no')]
 public class [class.name/][class.extensions()/] {
 [else]
 public class [class.name/]Dto[class.extensions()/] {
-[/if]
+[/if][/comment]
 
 	// serialVersionUID is used for serialization.
 	private static final long serialVersionUID = 1L;
@@ -72,10 +86,11 @@ public class [class.name/]Dto[class.extensions()/] {
 	protected [prop.convertToJavaType()/] [prop.name/];
 [/for]
 
+
 	/**
 	 * Default constructor 
 	 */
-	public [class.name/]() {
+	public [class.dtoClassName()/]() {
 		super();
 [comment  initialize list /]
 [for (prop:Property|class.classAttributes())]
@@ -96,7 +111,7 @@ public class [class.name/]Dto[class.extensions()/] {
 	 * @param [prop.name/] [prop.ownedComment._body/]
 	[/for]
 	 */	
-	public [name/]([getConstructorArgs()/]) {	
+	public [class.dtoClassName()/]([getConstructorArgs()/]) {	
 	[for (prop:Property|class.classAttributes())]
 		this.[prop.name/] = [prop.name/];
 	[/for]
@@ -259,7 +274,7 @@ public boolean equals(Object other) {
 [/template]
 
 
-[query classAttributes(class : Class) : Set(Property) = 
+[query public classAttributes(class : Class) : Set(Property) = 
 class.attribute->union(class.getAssociations().oppositeAttributeOf(class)->select(isNavigable())->asSet())
 /]
 
@@ -267,4 +282,5 @@ class.attribute->union(class.getAssociations().oppositeAttributeOf(class)->selec
 [template public convertDtoToJavaType(type : Type)]
 [if (type.hasStereotype('Dto'))][type.name/]Dto[else][type.convertToJavaType()/][/if]
 [/template]
+
 

@@ -22,7 +22,7 @@
 [/template]
 
 
-[template public daoPackage(namedElement : NamedElement)]
+[template public daoPackage(namedElement : NamedElement) post (trim())]
 [if (getProperty('useDaoPackage') = 'no')]
 [namedElement.eContainer(NamedElement).getCompleteName()/]
 [else]
