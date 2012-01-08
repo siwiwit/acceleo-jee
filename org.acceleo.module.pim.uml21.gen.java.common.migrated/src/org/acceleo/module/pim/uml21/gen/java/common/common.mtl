@@ -47,9 +47,14 @@
 [/template]
 
 
-[template public getCompleteName(namedElement:NamedElement)]
-[namedElement.qualifiedName.replaceAll('::','.')/]
-[/template]
+
+[comment][query public getCompleteName(namedElement:NamedElement):String = 
+(if (namedElement.ancestors(Package)->select(not oclIsTypeOf(Model))->notEmpty()) then
+	namedElement.ancestors(Package)->select(not oclIsTypeOf(Model)).name->reverse()->sep('.')->toString().concat('.')
+else
+	''
+endif).concat(namedElement.name)
+/][/comment]
 
 
 [template public getCompleteName(element:Element)]
@@ -166,5 +171,16 @@ public [operation.itfSignature()/]
 [operation.generateReturn()/] [operation.name/]([operation.generateParameters()/])
 [/template]
 
+[query public fullFilePath(element : Element, basedPath:String, packagePath:String, classFileName:String):String = 
+basedPath.appendPathSeparator().concat(packagePath.appendPathSeparator()).concat(classFileName)
+/]
+
+[query public appendPathSeparator(path : String) : String = 
+if(not path.oclIsUndefined() and  path.size() > 0) then 
+path.concat('/')
+else
+path
+endif
+/]
 
 
