@@ -15,14 +15,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(enumeration : Enumeration)]
+[comment][template private fullFilePath(enumeration : Enumeration)]
 [enumeration.pathToMainJava()/]/[enumeration._package.getCompleteName().toPath()/]/[enumeration.name/].java
-[/template]
+[/template][/comment]
 
 
 [template public generateEnum(enumeration : Enumeration)]
 [comment This template is called by the main module file /]
-[file (enumeration.fullFilePath(), false))]
+[file (enumeration.fullFilePath(enumeration.pathToMainJava(), enumeration._package.getCompleteName().toPath(), enumeration.name.concat('.java') ), false))]
 package [enumeration._package.getCompleteName()/];
 
 // [protected ('imports')] 
