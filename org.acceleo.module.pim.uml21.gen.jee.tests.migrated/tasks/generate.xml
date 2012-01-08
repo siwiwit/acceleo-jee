@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="org.acceleo.module.pim.uml21.gen.jee.tests.migrated">
-    <property name="ECLIPSE_HOME" value="../../../java/acceleo/eclipse"/>
+    <property name="ECLIPSE_HOME" value="C:/Java/eclipse-acceleo/eclipse"/>
     <property name="ECLIPSE_WORKSPACE" value="../.."/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="org.acceleo.module.pim.uml21.gen.jee.tests.migrated.libraryclasspath">
         <pathelement location="${ECLIPSE_WORKSPACE}/org.acceleo.module.pim.uml21.gen.jee.tests.migrated/bin"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.7.0.v20110110.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.7.0.v20110613.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.7.1.R37x_v20110808-1106.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/javax.transaction_1.1.1.v201105210645.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.common_3.6.0.v20110523.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.jobs_3.5.100.v20110404.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.0.v20110505/runtime_registry_compatibility.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry_3.5.100.v20110502.jar"/>
-        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.4.0.v20110502.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.4.1.R37x_v20110725.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.3.100.v20110321.jar"/>
         <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.uml2.uml_3.2.100.v201108110105.jar"/>
