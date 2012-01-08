@@ -15,17 +15,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class)]
 [if (class.isUi())]
 [class.pathToMainJava()/]/[class.uiPackage().toPath()/]/I[class.name/].java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateUi(class : Class)]
+[template public generateUi(class : Class)? (class.isUi())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(), class.uiPackage().toPath(), 'I'.concat(class.name).concat('.java')), false))]
 package [class.uiPackage()/];
 
 // [protected ('imports')] 
