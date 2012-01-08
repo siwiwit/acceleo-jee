@@ -31,7 +31,7 @@
 	[aModel.generateDaoFactory()/]
 	[aModel.generateDaoInterfaceDirectTestSuit()/]
 	[aModel.generateSqlCreate()/]
-	[aModel.genSqlConstraints()/]
+	[aModel.generateSqlConstraints()/]
 	[aModel.generateHibernateConfig()/]
 	[aModel.generateHibernateDaoProperties()/]
 	[for (class : Class | aModel.ownedElement->filter(Class))]
