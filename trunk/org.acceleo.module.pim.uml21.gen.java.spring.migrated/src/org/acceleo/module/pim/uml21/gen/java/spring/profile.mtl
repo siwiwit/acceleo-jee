@@ -27,7 +27,7 @@ parameter.type.isEntity()
 
 
 [query public isDto(type : Type) : Boolean =
-hasStereotype(getProperty('Dto'))
+type.hasStereotype(getProperty('Dto'))
 /]
 
 
@@ -82,53 +82,53 @@ hasStereotype(getProperty('Transactional'))
 
 
 [query public configs(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isConfig())
+model.eAllContents(Class)->select(isConfig())
 /]
 
 [query public daos(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isDao())
+model.eAllContents(Class)->select(isDao())
 /]
 
 [query public entities(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isEntity())
+model.eAllContents(Class)->select(isEntity())
 /]
 
 [query public controllers(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isController())
+model.eAllContents(Class)->select(isController())
 /]
 
 [query public uis(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isUi())
+model.eAllContents(Class)->select(isUi())
 /]
 
 [query public views(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isView())
+model.eAllContents(Class)->select(isView())
 /]
 
 [query public services(model : Model): Sequence(Class)=
-eAllContents(Class)->select(isService())->filter(Class)
+model.eAllContents(Class)->select(isService())->filter(Class)
 /]
 
 
 [query public webservices(model : Model) : Sequence(Class) =
-eAllContents(Class)->select(isService() and ownedOperation->select(isRemote())->size() > 0)
+model.eAllContents(Class)->select(isService() and ownedOperation->select(isRemote())->size() > 0)
 /]
 
 [query public viewDependencies(class : Class):Sequence(Classifier)=
-clientDependency.supplier->filter(Classifier)->select(isView())->asSequence()
+class.clientDependency.supplier->filter(Classifier)->select(isView())->asSequence()
 /]
 
 
 [query public serviceDependencies(class : Class):Sequence(Classifier)=
-clientDependency.supplier->filter(Classifier)->select(isService())->asSequence()
+class.clientDependency.supplier->filter(Classifier)->select(isService())->asSequence()
 /]
 
 
 [query public uiDependencies(class : Class):Sequence(Classifier)=
-clientDependency.supplier->filter(Classifier)->select(isUi())->asSequence()
+class.clientDependency.supplier->filter(Classifier)->select(isUi())->asSequence()
 /]
 
 
 [query public daoDependencies(class : Class):Sequence(Classifier)=
-clientDependency.supplier->filter(Classifier)->select(isDao())->asSequence()
+class.clientDependency.supplier->filter(Classifier)->select(isDao())->asSequence()
 /]

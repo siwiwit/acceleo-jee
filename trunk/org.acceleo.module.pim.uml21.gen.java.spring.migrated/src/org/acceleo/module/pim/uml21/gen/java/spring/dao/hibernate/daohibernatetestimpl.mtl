@@ -15,14 +15,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class)]
 [if (class.isDao())][class.pathToTestJava()/]/[class.daoImplPackage().toPath()/]/[class.name/]Test.java[/if]
-[/template]
+[/template][/comment]
 
 
-[template public generateDaoHibernateTestImpl(class : Class)]
+[template public generateDaoHibernateTestImpl(class : Class)? (class.isDao())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.daoImplPackage().toPath(), class.name.concat('Test.java')), false))]
 package [class.daoImplPackage()/];
 
 // [protected ('imports')]  

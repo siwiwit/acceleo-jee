@@ -15,17 +15,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class)]
 [if (class.isService() and ownedOperation->select(isRemote())->notEmpty())]
 [class.pathToMainJava()/]/[class.servicePackage().toPath()/]/I[class.name/]WebService.java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateWebService(class : Class)]
+[template public generateWebServiceInterface(class : Class)? (class.isService() and ownedOperation->select(isRemote())->notEmpty())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(), class.servicePackage().toPath(), 'I'.concat(class.name).concat('WebService.java')), false))]
 package [class.servicePackage()/];
 
 // [protected ('imports')] 

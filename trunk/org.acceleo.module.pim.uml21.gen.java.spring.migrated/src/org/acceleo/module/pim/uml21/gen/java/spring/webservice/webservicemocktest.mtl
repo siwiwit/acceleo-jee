@@ -15,19 +15,19 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template private fullFilePath(class : Class)]
 [if (class.isService())]
 	[if (class.hasRemoteOperations())]
 [class.pathToTestJava()/]/[class.serviceImplPackage().toPath()/]/Mock[class.name/]WebService.java
 	[/if]
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateWebService(class : Class)]
+[template public generateWebServiceMockTest(class : Class)? (class.isService())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.serviceImplPackage().toPath(), 'Mock'.concat(class.name).concat('WebService.java')), false))]
 package [class.serviceImplPackage()/];
 
 // [protected ('imports')] 

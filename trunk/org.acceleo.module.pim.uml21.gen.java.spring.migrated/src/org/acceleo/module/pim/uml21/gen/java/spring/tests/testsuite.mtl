@@ -15,14 +15,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(model : Model)]
+[comment][template private fullFilePath(model : Model)]
 [model.pathToTestJava()/]/[model.testPackage().toPath()/]/AllTests.java
-[/template]
+[/template][/comment]
 
 
-[template public generate(model : Model)]
+[template public generateTestSuit(model : Model)]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToTestJava(), model.testPackage().toPath(), 'AllTests.java'), false))]
 package [model.testPackage()/];
 
 // [protected ('imports')] 
