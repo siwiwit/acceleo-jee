@@ -12,14 +12,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 
-[template public fullFilePath(model : Model)]
+[comment][template private fullFilePath(model : Model)]
 [model.pathToMainResources()/]/META-INF/spring/component.xml
-[/template]
+[/template][/comment]
 
 
-[template public springApplicationContext(model : Model)]
+[template public generateComponetSpringApplicationContext(model : Model)]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainResources(), 'META-INF/spring', 'component.xml'), false))]
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
