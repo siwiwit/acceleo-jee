@@ -10,17 +10,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 [import org::acceleo::module::pim::uml21::gen::sql::services::sqltypeservices /]
 
-[template public fullFilePath(class:Class)]
+[comment][template private fullFilePath(class:Class)]
 	[if (class.isEntity() and class.superClass->isEmpty())]
 [class.pathToMainResources()/]/[class.hibernatePackage().toPath()/]/[class.name/].hbm.xml
 	[/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateDaoHibernateHbm(class:Class, arg:String)]
+[template public generateDaoHibernateHbm(class:Class, arg:String)? (class.isEntity() and class.superClass->isEmpty())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainResources(), class.hibernatePackage().toPath(), class.name.concat('.hbm.xml')), false))]
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping
     PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"

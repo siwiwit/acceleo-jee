@@ -9,7 +9,7 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class:Class)]
+[template private fullFilePath(class:Class)]
 	[if (class.isEntity())]
 [class.pathToTestJava()/]/[class.hibernateTestPackage().toPath()/]/[class.daoInterfaceName()/]Test.java
 	[/if]
@@ -17,9 +17,9 @@
 [/template]
 
 
-[template public generateHibernateDirectTest(class:Class)]
+[template public generateHibernateDirectTest(class:Class)? (class.isEntity())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.hibernateTestPackage().toPath(), class.daoInterfaceName().concat('Test.java')), false))]
 package [class.hibernateTestPackage()/];
 
 // [protected ('imports')] for import 
@@ -275,7 +275,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
 		[if (prop.lower <> 0)]
             
-        // [protected ('examples')] for example 2 of [prop.type.name/].[prop.name/] values        
+        // [protected ('examples2')] for example 2 of [prop.type.name/].[prop.name/] values        
 		[prop.type.name/] [prop.name.toLowerFirst()/]Example = new [prop.type.name/]();
 			[if (upper = 1)]
         [prop.association.oppositeAttributeOf(prop.type.oclAsType(Classifier)).type.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([prop.name.toLowerFirst()/]Example);
