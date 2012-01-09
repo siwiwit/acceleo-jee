@@ -9,9 +9,9 @@
 [/template]
 
 
-[template public generate(_package:Package)]
+[template public generateValidationXml(_package:Package)? (_package.nestingPackage.name = 'cinematic' and _package.name <> '')]
 [comment This template is called by the main module file /]
-[file (_package.fullFilePath(), false))]
+[file (_package.fullFilePath(_package.pathToMainWebapp(), 'WEB-INF/conf/validation', 'validation-'.concat(_package.name).concat('.xml')), false))]
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE form-validation PUBLIC
           "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"

@@ -5,14 +5,14 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public fullFilePath(class:Class)]
+[comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))][class.pathToMainWebapp()/]/generated/jsp/sidebar/[class.name/]Sidebar.jsp[/if]
-[/template]
+[/template][/comment]
 
 
-[template public generate(class:Class)]
+[template public generateJspSideBar(class:Class)? (class.hasStereotype(getProperty('Screen')))]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainWebapp(), 'generated/jsp/sidebar', class.name.concat('Sidebar.jsp')), false))]
 <%@ taglib
         uri="http://struts.apache.org/tags-html"
         prefix="html" %>

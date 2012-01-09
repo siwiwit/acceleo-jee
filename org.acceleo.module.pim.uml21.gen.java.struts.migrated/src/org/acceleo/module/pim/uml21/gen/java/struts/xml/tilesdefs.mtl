@@ -3,14 +3,14 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public fullFilePath(_package:Package)]
+[comment][template public fullFilePath(_package:Package)]
 [if (_package.nestingPackage.name = 'cinematic' and _package.name <> '')][_package.pathToMainWebapp() /]/WEB-INF/conf/tiles-defs/tiles-defs-[_package.name/].xml[/if]
-[/template]
+[/template][/comment]
 
 
-[template public generate(_package:Package)]
+[template public generateTilesDefs(_package:Package)? (_package.nestingPackage.name = 'cinematic' and _package.name <> '')]
 [comment This template is called by the main module file /]
-[file (_package.fullFilePath(), false))]
+[file (_package.fullFilePath(_package.pathToMainWebapp(), 'WEB-INF/conf/tiles-defs', 'tiles-defs-'.concat(_package.name).concat('.xml')), false))]
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE tiles-definitions PUBLIC
   "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"

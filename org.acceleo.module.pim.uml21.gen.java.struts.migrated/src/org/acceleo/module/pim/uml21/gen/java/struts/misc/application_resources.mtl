@@ -7,9 +7,9 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
-[template public generate(model:Model)]
+[template public generateApplicationResource(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.pathToMainResources().concat('/').concat(model.uiPackage().toPath()).concat('/').concat(model.projectName().toUpperFirst()).concat('Resources.properties'), false))]
+[file (model.fullFilePath(model.pathToMainResources(), model.uiPackage().toPath(), model.projectName().toUpperFirst().concat('Resources.properties')), false))]
 # [protected ('internationalization')]
 # Error messages for Validator framework validations
 errors.footer=
