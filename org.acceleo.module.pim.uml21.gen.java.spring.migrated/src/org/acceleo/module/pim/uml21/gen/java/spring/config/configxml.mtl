@@ -13,9 +13,9 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 
-[template private fullFilePath(model : Model)]
+[comment][template private fullFilePath(model : Model)]
 [if (model.configs()->notEmpty())][model.pathToMainResources()/]/META-INF/spring/[model.baseImports()/]/layer-configs.xml[/if]
-[/template]
+[/template][/comment]
 
 
 [template public generateConfigXml(model : Model) ? (model.configs()->notEmpty())]

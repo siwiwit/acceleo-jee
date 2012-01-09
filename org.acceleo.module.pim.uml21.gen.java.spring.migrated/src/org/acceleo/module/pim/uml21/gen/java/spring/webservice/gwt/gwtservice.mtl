@@ -15,17 +15,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template public fullFilePath(class : Class)]
 [if (class.isService() and ownedOperation->select(isRemote())->notEmpty())]
 [class.pathToMainJava()/]/[class.servicePackage().toPath()/]/IGwt[class.name.toUpperFirst()/].java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateGwtService(class : Class)]
+[template public generateGwtService(class : Class)? (class.isService() and ownedOperation->select(isRemote())->notEmpty())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(), class.servicePackage().toPath(), 'IGwt'.concat(class.name.toUpperFirst()).concat('.java')), false))]
 package [class.servicePackage()/];
 
 // [protected ('imports')] 

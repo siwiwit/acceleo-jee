@@ -25,24 +25,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * Entry point of the 'Main' generation module.
+ * Entry point of the 'BusinessLayer' generation module.
  *
  * @generated
  */
-public class Main extends AbstractAcceleoGenerator {
+public class BusinessLayer extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/org/acceleo/module/pim/uml21/gen/java/spring/migrated/files/main";
+    public static final String MODULE_FILE_NAME = "/org/acceleo/module/pim/uml21/gen/java/spring/migrated/files/businessLayer";
     
     /**
      * The name of the templates that are to be generated.
      *
      * @generated
      */
-    public static final String[] TEMPLATE_NAMES = { "generate" };
+    public static final String[] TEMPLATE_NAMES = { "businessLayerClass", "businessLayerModel" };
     
     /**
      * The list of properties files from the launch parameters (Launch configuration).
@@ -65,7 +65,7 @@ public class Main extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public Main() {
+    public BusinessLayer() {
         // Empty implementation
     }
 
@@ -85,7 +85,7 @@ public class Main extends AbstractAcceleoGenerator {
      *             the model cannot be loaded.
      * @generated
      */
-    public Main(URI modelURI, File targetFolder,
+    public BusinessLayer(URI modelURI, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(modelURI, targetFolder, arguments);
     }
@@ -106,7 +106,7 @@ public class Main extends AbstractAcceleoGenerator {
      *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
      * @generated
      */
-    public Main(EObject model, File targetFolder,
+    public BusinessLayer(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(model, targetFolder, arguments);
     }
@@ -134,7 +134,7 @@ public class Main extends AbstractAcceleoGenerator {
                  * add in "arguments" this "String" attribute.
                  */
                 
-                Main generator = new Main(modelURI, folder, arguments);
+                BusinessLayer generator = new BusinessLayer(modelURI, folder, arguments);
                 
                 /*
                  * Add the properties from the launch arguments.

@@ -15,14 +15,14 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(model : Model)]
+[comment][template public fullFilePath(model : Model)]
 [if (model.webservices()->size() > 0)][model.pathToMainResources()/]/[model.baseImports().toPath()/]/Services.gwt.xml[/if]
-[/template]
+[/template][/comment]
 
 
-[template public springApplicationContext(model : Model)]
+[template public springApplicationContext(model : Model)? (model.webservices()->notEmpty())]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainResources(), model.baseImports().toPath(), 'Services.gwt.xml'), false))]
 <module>
 	<inherits name="com.google.gwt.user.User"/>       
     
