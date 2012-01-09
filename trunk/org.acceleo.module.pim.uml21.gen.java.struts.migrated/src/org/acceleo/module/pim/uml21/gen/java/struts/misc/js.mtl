@@ -1,0 +1,22 @@
+[module js('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::acceleo::module::pim::uml21::services::uml2services /]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+
+[template public fullFilePath(class:Class)]
+[if (class.hasStereotype(getProperty('Screen')))]
+[class.pathToMainWebapp()/]/js/[class._package.name/]/[class.name/].js
+[/if]
+
+[/template]
+
+
+[template public generate(class:Class)]
+[comment This template is called by the main module file /]
+[file (class.fullFilePath(), false))]
+// [protected ('javascript')]
+// [/protected]
+[/file]
+[/template]
+
+
+
