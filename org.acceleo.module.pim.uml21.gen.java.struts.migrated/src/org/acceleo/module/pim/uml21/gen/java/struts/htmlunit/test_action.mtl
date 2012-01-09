@@ -5,7 +5,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::specifics /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
-
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))]
 [class.pathToTestJava()/]/[class.scenarioPackage().toPath()/]/test/htmlunit/Test[class.name/]Action.java
@@ -81,14 +81,14 @@ public class Test[class.name/]Action extends TestCase {
 	    final HtmlPage page1 = (HtmlPage)webClient.getPage(url);
 	    final HtmlForm form = page1.getFormByName("[class.name/]Form");
 [comment Iterates on each attribute of the class /]
-	[for (prop:Property|class.attribute)]
+	[for (prop:Property|class.classAttributes())]
 		[if (not (prop.hasStereotype(getProperty('Title'))) and not (prop.hasStereotype(getProperty('List'))) and not (prop.hasStereotype(getProperty('Table'))))]
 		final [prop.convertToHTMLUnitTypeFromStereotype()/] [prop.name/] = ([prop.convertToHTMLUnitTypeFromStereotype()/])form.get[prop.convertToHTMLUnitGetterTypeFromStereotype()/]ByName("[prop.name.toLowerFirst()/]");
 		[/if]
 	[/for]
 	    final HtmlSubmitInput [class.name/] = (HtmlSubmitInput)form.getInputByName("[class.name/]");
 	    
-	    assertEquals("[for (prop:Property|class.attribute)][if (prop.hasStereotype(getProperty('Title')))][prop.name/][/if][/for]", page1.getTitleText());
+	    assertEquals("[for (prop:Property|class.classAttributes())][if (prop.hasStereotype(getProperty('Title')))][prop.name/][/if][/for]", page1.getTitleText());
 
 		// [protected ('action')]	    
 	    //TODO : initialize form here

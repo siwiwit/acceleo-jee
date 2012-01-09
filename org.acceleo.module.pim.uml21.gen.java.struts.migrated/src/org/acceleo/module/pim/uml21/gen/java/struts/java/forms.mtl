@@ -6,7 +6,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
-
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))]
 [class.pathToMainJava()/]/[class.scenarioPackage().toPath()/]/forms/[class.name/]Form.java
@@ -42,7 +42,7 @@ public class [class.name/]Form extends ValidatorForm {
     /**
      * Attributes
      */
-[for (prop:Property|class.attribute)]
+[for (prop:Property|class.classAttributes())]
 	[if (not (prop.hasStereotype(getProperty('Title'))))]
 		[if (prop.hasStereotype(getProperty('List')) or prop.hasStereotype(getProperty('Table')))]
 	public [prop.convertToJavaTypeFromStereotype()/] [prop.name.toLowerFirst()/] = new ArrayList();	
@@ -55,7 +55,7 @@ public class [class.name/]Form extends ValidatorForm {
 	[/if]
 [/for]
 
-[for (prop:Property|attribute)]
+[for (prop:Property|class.classAttributes())]
 	[if (not (prop.hasStereotype(getProperty('Title'))))]
 		[if (prop.hasStereotype(getProperty('Combobox')))]
 	/**
@@ -116,17 +116,17 @@ public class [class.name/]Form extends ValidatorForm {
 	 * @param request The servlet request we are processing
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-[for (attribute)]
-[if (not (hasStereotype(getProperty('Title'))))]
-[if (hasStereotype(getProperty('List')) or hasStereotype(getProperty('Table')))]
-		this.[name.toLowerFirst()/].clear();
-[elseif (hasStereotype(getProperty('Combobox')))]
-		this.[name.toLowerFirst()/]Values.clear();
-		this.[name.toLowerFirst()/] = null;		
-[else]
-		this.[name.toLowerFirst()/] = null;
-[/if]
-[/if]
+[for (prop:Property|class.classAttributes())]
+	[if (not (prop.hasStereotype(getProperty('Title'))))]
+		[if (prop.hasStereotype(getProperty('List')) or prop.hasStereotype(getProperty('Table')))]
+		this.[prop.name.toLowerFirst()/].clear();
+		[elseif (prop.hasStereotype(getProperty('Combobox')))]
+		this.[prop.name.toLowerFirst()/]Values.clear();
+		this.[prop.name.toLowerFirst()/] = null;		
+		[else]
+		this.[prop.name.toLowerFirst()/] = null;
+		[/if]
+	[/if]
 [/for]
 	}
 

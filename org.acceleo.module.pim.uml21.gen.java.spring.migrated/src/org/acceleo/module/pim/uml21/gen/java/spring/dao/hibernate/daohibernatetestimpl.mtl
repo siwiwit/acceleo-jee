@@ -44,7 +44,7 @@ import [class.entityPackage()/].impl.[class.name/]Helper;
 [if (class.attribute->select(type.name = 'Date')->notEmpty())]
 import java.util.Date;
 [/if]
-[if (class.attribute->select(upper > 1 or upper = -1)->notEmpty())]
+[if (class.classAttributes()->select(upper > 1 or upper = -1)->notEmpty())]
 import java.util.ArrayList;
 import java.util.List;
 [/if]
@@ -131,7 +131,7 @@ public class [class.name/]Test extends AbstractBusinessLayerTests {
 		
         // Execute the tested code
 [comment  Member attributes /]
-[for (prop:Property|class.attribute)]
+[for (prop:Property|class.classAttributes())]
 	[if (not (isDerived) and not (isReadOnly))]
 		[if (upper = 1)]
 					[class.name.toLowerFirst()/].set[name.toUpperFirst()/]([myExempleValues()/]);

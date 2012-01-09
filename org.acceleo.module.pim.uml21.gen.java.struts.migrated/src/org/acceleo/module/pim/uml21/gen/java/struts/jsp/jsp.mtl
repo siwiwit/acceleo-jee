@@ -5,7 +5,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
-
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))]
 [class.pathToMainWebapp()/]/generated/jsp/[class._package.name/]/[class.name/].jsp
@@ -49,7 +49,7 @@
 <html:hidden property="event" value=""/>
 
 <table>
-[for (prop:Property|class.attribute)]
+[for (prop:Property|class.classAttributes())]
 	[if (not (prop.hasStereotype(getProperty('Title'))) and not (prop.hasStereotype(getProperty('List'))) and not (prop.hasStereotype(getProperty('Table'))) and not (prop.hasStereotype(getProperty('Combobox'))))]
 	<tr>
 		<td><bean:message key="[class.name/].[name.toLower()/]"/> :</td>

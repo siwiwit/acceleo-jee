@@ -336,7 +336,7 @@ public class [class.dtoName()/][class.extensions()/] implements Serializable[if 
         if (id != null) {
             result = id.hashCode();
         } else {[comment  This else is required to be synchro with the equals() method, otherwise we could generate different hashCodes for equal objects ! /]
-	[for (prop:Property|class.attribute->select(not (isPK())))]
+	[for (prop:Property|class.classAttributes()->select(not (isPK())))]
 		[if (prop.type.name = 'Boolean')]
             if ([prop.name/]) {
                 result++;
