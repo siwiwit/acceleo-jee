@@ -15,17 +15,17 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(model : Model)]
+[comment][template public fullFilePath(model : Model)]
 [if (model.webservices()->notEmpty())]
 [model.pathToMainJava()/]/[model.baseImports().toPath()/]/ws/WSClientFactory.java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateXfireWSClientFactory(model : Model)]
+[template public generateXfireWSClientFactory(model : Model)? (model.webservices()->notEmpty())]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(), false))]
+[file (model.fullFilePath(model.pathToMainJava(), model.baseImports().toPath(), '/ws/WSClientFactory.java'), false))]
 package [model.baseImports()/].ws;
 
 // [protected ('imports')] 

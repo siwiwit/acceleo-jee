@@ -20,7 +20,7 @@
 [/template][/comment]
 
 
-[template public generateAbstractBusinessLayerTests(model : Model)? (model.services()->union(model.daos())->notEmpty())]
+[template public generateAbstractBusinessLayerTestHessian(model : Model)? (model.services()->union(model.daos())->notEmpty())]
 [comment This template is called by the main module file /]
 [file (model.fullFilePath(model.pathToTestJava(), model.baseImports().toPath(), 'AbstractBusinessLayerTests.java'), false))]
 package [model.baseImports()/];

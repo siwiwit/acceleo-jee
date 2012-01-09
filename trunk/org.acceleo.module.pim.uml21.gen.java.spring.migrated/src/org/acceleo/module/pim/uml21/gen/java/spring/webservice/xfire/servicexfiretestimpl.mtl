@@ -15,19 +15,19 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daocommon /]
 
-[template public fullFilePath(class : Class)]
+[comment][template public fullFilePath(class : Class)]
 [if (not class.hasStereotype(getProperty('Extern')) and hasStereotype(getProperty('Service')))]
 [if (class.hasRemoteOperations())]
 [class.pathToTestJava()/]/[class.serviceImplPackage().toPath()/]/[class.name/]WebServiceTest.java
 [/if]
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generateWebServiceTest(class : Class)]
+[template public generateServiceFireTestImpl(class : Class)? ((not class.hasStereotype(getProperty('Extern')) and hasStereotype(getProperty('Service')) and class.hasRemoteOperations()))]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.serviceImplPackage().toPath(), class.name.concat('WebServiceTest.java')), false))]
 package [class.serviceImplPackage()/];
 
 // [protected ('imports')] 
