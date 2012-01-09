@@ -87,7 +87,7 @@ public class GenerateAll {
 		//};
 		//gen0.doGenerate(BasicMonitor.toMonitor(monitor));
 		monitor.subTask("Loading...");
-		org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Struts gen0 = new org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Struts(modelURI, targetFolder.getLocation().toFile(), arguments);
+		org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main gen0 = new org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main(modelURI, targetFolder.getLocation().toFile(), arguments);
 		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui/org/acceleo/module/pim/uml21/gen/java/struts/migrated/ui/popupMenus/basic.properties");
 		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/stereotypes.properties");
 		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/default.properties");

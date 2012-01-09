@@ -50,7 +50,7 @@
 [/if]
 
         <!-- Properties -->
-[class.attribute->select(not (isPK())).genProperties()/]
+[class.classAttributes()->select(not (isPK())).genProperties()/]
 
         <!-- Associations -->
 [class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()).genAssociations(arg)/]
@@ -235,7 +235,7 @@
             <key column="FK_INHERITS_[childClass.name.toSqlNotation()/]_ID"/>
             
             <!-- Properties -->
-[class.attribute.genProperties()/]
+[class.classAttributes().genProperties()/]
 
             <!-- Associations -->
 [class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()).genAssociations(arg)/]

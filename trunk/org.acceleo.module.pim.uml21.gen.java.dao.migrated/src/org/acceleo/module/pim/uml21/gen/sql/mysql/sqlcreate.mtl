@@ -6,7 +6,7 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::sql::services::sqltypeservices /]
-
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [template public generateSqlCreate(model:Model)]
 [comment This template is called by the main module file /]
 [file (model.pathToMainResources().concat('/').concat(model.projectName()).concat('-ddl.sql'), false))]
@@ -28,7 +28,7 @@ COMMENT ON COLUMN/]
     ID CHAR(32) NOT NULL,
 			[/if]
 [comment  Properties /]
-			[for (prop:Property|attribute)]
+			[for (prop:Property|class.classAttributes())]
 [comment  Array of primitives types are not generated /]
 				[if (not (prop.isDerived) and prop.upper = 1)]
     [prop.name.toSqlNotation()/] [prop.type.convertToSqlType() /] 

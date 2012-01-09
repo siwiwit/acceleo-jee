@@ -10,7 +10,7 @@
 [/template][/comment]
 
 
-[template public generateJs(class:Class)]
+[template public generateJs(class:Class)? (class.hasStereotype(getProperty('Screen')))]
 [comment This template is called by the main module file /]
 [file (class.fullFilePath(class.pathToMainWebapp(), 'js/'.concat(class._package.name), class.name.concat('.js')), false))]
 // [protected ('javascript')]
