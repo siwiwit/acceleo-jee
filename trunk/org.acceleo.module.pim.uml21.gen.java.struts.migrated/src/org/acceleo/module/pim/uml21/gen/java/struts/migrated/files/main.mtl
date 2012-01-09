@@ -84,6 +84,7 @@
 [template private generateHtmlUnit(aClass : Class)]
 	[aClass.generateTestAction()/]
 [/template]
+
 [template private generateHtmlUnit(aModel : Model)]
 	[aModel.generateUiFunctionalTests()/]
 [/template]
