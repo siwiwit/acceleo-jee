@@ -7,17 +7,17 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
-[template public fullFilePath(class:Class)]
+[comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))]
 [class.pathToMainJava()/]/[class.scenarioPackage().toPath()/]/forms/[class.name/]Form.java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generate(class:Class)]
+[template public generateForm(class:Class)? (class.hasStereotype(getProperty('Screen')))]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainJava(), class.scenarioPackage().toPath().concat('/forms'), class.name.concat('Form.java')), false))]
 package [class.scenarioPackage()/].forms;
 
 // [protected ('imports')] 

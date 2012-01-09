@@ -6,9 +6,9 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 
-[template public generate(model:Model)]
+[template public generateUiFunctionalTests(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.pathToTestJava().concat('/').concat(model.uiPackage().toPath()).concat('/test/htmlunit/UiFunctionnalTests.java'), false))]
+[file (fullFilePath(model.pathToTestJava(), model.uiPackage().toPath().concat('/test/htmlunit'), 'UiFunctionnalTests.java'), false))]
 package [model.uiPackage()/].test.htmlunit;
 
 import junit.framework.Test;

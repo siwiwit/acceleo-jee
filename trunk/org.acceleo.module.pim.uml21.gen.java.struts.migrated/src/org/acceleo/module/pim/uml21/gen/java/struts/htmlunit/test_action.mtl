@@ -6,17 +6,17 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 
-[template public fullFilePath(class:Class)]
+[comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))]
 [class.pathToTestJava()/]/[class.scenarioPackage().toPath()/]/test/htmlunit/Test[class.name/]Action.java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generate(class:Class)]
+[template public generateTestAction(class:Class)? (class.hasStereotype(getProperty('Screen')))]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToTestJava(), class.scenarioPackage().toPath().concat('/test/htmlunit'), 'Test'.concat(class.name).concat('Action.java')), false))]
 package [class.scenarioPackage()/].test.htmlunit;
 
 import java.net.URL;

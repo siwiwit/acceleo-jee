@@ -6,9 +6,9 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public generate(model:Model)]
+[template public generateContextTomcat(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.pathToMainWebapp().concat('/META-INF/context.xml'), false))]
+[file (model.fullFilePath(model.pathToMainWebapp(), 'META-INF', 'context.xml'), false))]
 <!--  [protected ('top of file')] for top of file -->
 <Context
 	path="/[model.projectName()/]"

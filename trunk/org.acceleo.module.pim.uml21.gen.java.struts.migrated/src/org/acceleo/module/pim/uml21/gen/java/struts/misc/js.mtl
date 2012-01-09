@@ -2,17 +2,17 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public fullFilePath(class:Class)]
+[comment][template public fullFilePath(class:Class)]
 [if (class.hasStereotype(getProperty('Screen')))]
 [class.pathToMainWebapp()/]/js/[class._package.name/]/[class.name/].js
 [/if]
 
-[/template]
+[/template][/comment]
 
 
-[template public generate(class:Class)]
+[template public generateJs(class:Class)]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(), false))]
+[file (class.fullFilePath(class.pathToMainWebapp(), 'js/'.concat(class._package.name), class.name.concat('.js')), false))]
 // [protected ('javascript')]
 // [/protected]
 [/file]

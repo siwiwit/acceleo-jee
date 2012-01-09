@@ -3,9 +3,9 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 
-[template public generate(model:Model)]
+[template public generateNavigation(model:Model)]
 [comment This template is called by the main module file /]
-[file (model.pathToMainWebapp().concat('/Navigation.jsp'), false))]
+[file (model.fullFilePath(model.pathToMainWebapp(), '', 'Navigation.jsp'), false))]
 <%@ taglib
         uri="http://struts.apache.org/tags-html"
         prefix="html" %>
