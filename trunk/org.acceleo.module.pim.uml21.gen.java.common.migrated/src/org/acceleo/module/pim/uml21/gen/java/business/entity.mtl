@@ -333,11 +333,15 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
      * @param aValueObject The value object to copy the values to.
      */
     public void updateFrom[class.dtoSuffix()/](final [class.dtoName()/] aValueObject) {
-	[if (class.superClass->size() > 0)]
+	[if (class.superClass->notEmpty())]
         super.updateFrom[class.dtoSuffix()/](aValueObject);
 	[/if]
-	[for (class.ownedAttribute->select(not (type.oclAsType(Class).isEntity()) and not (isPK()) and not (isDerived)))]
-        set[name.toUpperFirst()/](aValueObject.get[name.toUpperFirst()/]());
+	==[class.ownedAttribute->select((not type.oclAsType(Class).isEntity()))/]==
+	==[class.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived))/]==
+	==[class.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived))/]==
+	==[class.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived))/]==
+	[for (prop:Property|class.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived)))]
+        set[prop.name.toUpperFirst()/](aValueObject.get[prop.name.toUpperFirst()/]());
 	[/for]
     }
 

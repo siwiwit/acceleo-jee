@@ -21,12 +21,10 @@
 
 [template public generateStruts(aClass : Class)]
 	[comment @main /]
-	[aClass.generateUi()/]
 	[aClass.generatePage()/]
-	[aClass.generateMisc()/]
+	[comment][aClass.generateMisc()/][/comment]
 	[aClass.generateHtmlUnit()/]
 	[aClass.generateUi()/]
-	[aClass.generateHtmlUnit()/]
 [/template]
 
 [template public generateStruts(aPackage : Package)]
