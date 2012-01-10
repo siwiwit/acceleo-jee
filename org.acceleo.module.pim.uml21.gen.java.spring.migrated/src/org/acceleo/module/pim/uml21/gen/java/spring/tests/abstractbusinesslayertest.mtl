@@ -24,7 +24,6 @@
 [comment This template is called by the main module file /]
 [file (model.fullFilePath(model.pathToTestJava(), model.baseImports().toPath(), 'AbstractBusinessLayerTests.java'), false))]
 package [model.baseImports()/];
-
 // [protected ('imports')] 
 // for import
 [for (class:Class|model.services())]

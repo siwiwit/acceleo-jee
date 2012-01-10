@@ -20,9 +20,10 @@
 [/template][/comment]
 
 
-[template public springApplicationContext(model : Model) ? (model.webservices()->notEmpty())]
+[template public generateServiceFireSpringApplicationContext(model : Model) ? (model.webservices()->notEmpty())]
 [comment This template is called by the main module file /]
-[file (model.fullFilePath(model.pathToMainResources(), model.pathToMainResources().concat('/META-INF/spring'), 'layer-xfire-services.xml'), false))]
+[file (model.fullFilePath(model.pathToMainResources(), 'META-INF/spring/'.concat(model.baseImports()), 'layer-xfire-services.xml'), false))]
+[model.fullFilePath(model.pathToMainResources(), model.pathToMainResources().concat('/META-INF/spring'), 'layer-xfire-services.xml')/]
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"

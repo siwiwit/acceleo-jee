@@ -42,12 +42,12 @@
 [/template]
 
 
-[template public serviceImplPackage(class : Class)]
+[template public serviceImplPackage(class : Class) post (trim())]
 [if (getProperty('useServicePackage') = 'no')]
-[class._package.getCompleteName()/].impl[else]
+[class._package.getCompleteName()/].impl
+[else]
 [class.baseImports()/].[class.projectName()/].service.[class._package.normalizedName()/].impl
 [/if]
-
 [/template]
 
 
@@ -143,11 +143,11 @@
 [enumeration.ownedLiteral->first().name/]
 [/template]
 
-[query public classAttributes(class : Class) : Set(Property) =
+[comment][query public classAttributes(class : Class) : Set(Property) =
 class.attribute->union(
 class.getAssociations().oclAsType(Association).oppositeAttributeOf(class)
 ->select(isNavigable())->asSet())
-/]
+/][/comment]
 
 
 [query public operationsParameters(class : Class):Sequence(Parameter) = 
@@ -173,13 +173,3 @@ import java.util.Collection;
 
 [/template]
 
-
-
-[comment]
-[query private isNavigable(arg0 : Property) : Boolean = invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'isNavigable(org.eclipse.uml2.uml.Property)', Sequence{arg0})/]
-[query private isEmpty(arg0 : Sequence(OclAny)) : Boolean = invoke('org.acceleo.module.pim.uml21.services.ListServices', 'isEmpty(fr.obeo.acceleo.gen.template.eval.ENodeList)', Sequence{arg0})/]
-[query private uniqueCode(arg0 : String) : Integer = invoke('org.acceleo.module.pim.uml21.services.StringServices', 'uniqueCode(java.lang.String)', Sequence{arg0})/]
-[query private oppositeAttributeOf(arg0 : Association, arg1 : Classifier) : Property = invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'oppositeAttributeOf(org.eclipse.uml2.uml.Association, org.eclipse.uml2.uml.Classifier)', Sequence{arg0, arg1})/]
-[query private getAssociations(arg0 : Interface) : Sequence(OclAny) = invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'getAssociations(org.eclipse.uml2.uml.Interface)', Sequence{arg0})/]
-[query private getAssociations(arg0 : Class) : Sequence(OclAny) = invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'getAssociations(org.eclipse.uml2.uml.Class)', Sequence{arg0})/]
-[/comment]

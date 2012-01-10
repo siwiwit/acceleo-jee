@@ -49,7 +49,7 @@ import java.util.ArrayList;
 import java.util.List;
 [/if]
 
-[for (prop:Property|getAssociations().oclAsType(Association).oppositeAttributeOf(self)->select(isNavigable() and lower <> 0))]
+[for (prop:Property|class.getOppositeAttributes()->select(lower <> 0))]
 import [prop.baseImports()/].[prop.projectName()/].business.[prop.type._package.normalizedName()/].[prop.type.name/];
 [/for]
 

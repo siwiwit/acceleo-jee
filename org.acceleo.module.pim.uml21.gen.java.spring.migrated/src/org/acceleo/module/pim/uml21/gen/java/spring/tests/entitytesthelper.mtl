@@ -80,7 +80,7 @@ public class [class.name/]Helper {
 	[/if]
 [/for]
 		// Composite relation required 
-[for (prop:Property|class.getAssociations().oppositeAttributeOf(self)->select(isNavigable()))]
+[for (prop:Property|class.getOppositeAttributes())]
 	[if (lower <> 0)]
 			
 		// [protected ('values')] 
@@ -112,12 +112,6 @@ public class [class.name/]Helper {
 }
 [/file]
 [/template]
-
-
-[query public classAttributes(class : Class) : Set(Property)= 
-class.attribute->union(getAssociations().oppositeAttributeOf(self)->asSet())
-/]
-
 
 [template public globalType(property : Property)]
 [if (isOrdered)]List[elseif (isUnique)]Set[else]Collection[/if]

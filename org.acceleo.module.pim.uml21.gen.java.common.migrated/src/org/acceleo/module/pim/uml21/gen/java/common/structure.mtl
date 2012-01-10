@@ -4,16 +4,17 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 
 [query public classAttributes(class : Class) : Set(Property) =
-class.ownedAttribute->union(
-if(class.getAssociations()->notEmpty() and
-	class.getAssociations().oppositeAttributeOf(class)->notEmpty() and 
-	class.getAssociations().oppositeAttributeOf(class)->select(isNavigable())->notEmpty()) then
-	class.getAssociations().oppositeAttributeOf(class)->select(isNavigable())->asSet()
+class.ownedAttribute->union(class.getOppositeAttributes())
+/]
+
+[query public getOppositeAttributes(class : Class) : Set(Property) =
+if(class.getAssociations()->notEmpty()) then
+	class.getAssociations().memberEnd->select(type<>class and isNavigable())
 else
 	Set{}
 endif
-)
 /]
+
 
 [query public itfAttributes(interface : Interface) : Set(Property) =
 interface.getAssociations()->filter(Association).oppositeAttributeOf(interface)->select(isNavigable()) 
