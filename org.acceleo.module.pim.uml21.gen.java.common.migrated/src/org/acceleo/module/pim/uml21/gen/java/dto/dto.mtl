@@ -7,14 +7,18 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
-[template private fullFilePath(class:Class) ? (class.isEntity() or class.isDto())]
+[comment][template private fullFilePath(class:Class) ? (class.isEntity() or class.isDto())]
+[if (getProperty('useDtoPackage')='no')]
 [class.pathToMainJava()/]/[class.dtoPackage().toPath()/]/[class.dtoName()/].java
-[/template]
+[else]
+[class.pathToMainJava()/]/[class.dtoPackage().toPath()/]/[class.dtoName()/]Dto.java
+[/if]
+[/template][/comment]
 
 
 [template public generateDto(class:Class)? (class.isEntity() or class.isDto())]
 [comment This template is called by the main module file /]
-[file (class.fullFilePath(class.pathToMainJava(),class.dtoPackage().toPath(),class.dtoName().concat('.java')), false))]
+[file (class.fullFilePath(class.pathToMainJava(),class.dtoPackage().toPath(),class.dtoName().concat(if(getProperty('useDtoPackage')='no') then '.java' else 'Dto.java' endif )), false))]
 [if (class.isEntity() and getProperty('generate.dto.per.entity') = 'yes')]
 [class.genEntityDto()/]
 [else]

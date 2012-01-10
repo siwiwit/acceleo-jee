@@ -360,7 +360,6 @@ public class [class.dtoName()/][class.extensions()/] implements Serializable[if 
 
 [comment  N.B. It is mandatory to have identical lines for start and end user code !!! /]    
 	// [protected ('private Method')] 
-	// for private methods    
 	// TODO Remove this line and add your private methods here
     // [/protected] for private methods
 
