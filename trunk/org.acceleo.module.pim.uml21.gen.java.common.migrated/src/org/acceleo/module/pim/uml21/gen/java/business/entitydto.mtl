@@ -32,7 +32,7 @@ import java.util.Collection;
 import java.util.Date;
 [/if]
 
-[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+[for (prop:Property|class.getOppositeAttributes())]
 	[if (class.entityPackage() <> prop.type.entityPackage())]
 import [prop.type.entityPackage()/].[prop.type.name/];
 	[/if]

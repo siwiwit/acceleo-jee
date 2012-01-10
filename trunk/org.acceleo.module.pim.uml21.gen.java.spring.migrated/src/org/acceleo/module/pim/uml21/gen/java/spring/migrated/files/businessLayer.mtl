@@ -27,8 +27,9 @@
 	
 	[comment @main /]
 	[aClass.generateSpringDao()/]
-	[aClass.generateDaoHibernateTestImpl()/]
 	[aClass.generateDaoImplementHibernate()/]
+	[aClass.generateDaoHibernateTestImpl()/]
+	[aClass.generateDaoHibernateHbm('Object')/]
 	[aClass.generateSpringDto()/]
 	[aClass.generateService()/]
 	[aClass.generateServiceImpl()/]
@@ -38,7 +39,6 @@
 	[aClass.generateServiceFireMockTest()/]
 	[aClass.generateServiceFireTestImpl()/]
 	[aClass.generateEntity()/]
-	[aClass.generateDaoHibernateHbm('Object')/]
 	
 [/template]
 
@@ -52,6 +52,6 @@
 	[aModel.generateTestSpringApplicationContext()/]
 	[aModel.generateAbstractBusinessLayerTests()/]
 	[aModel.generateXfireWSClientFactory()/]
-	[aModel.springApplicationContext()/]
+	[aModel.generateServiceFireSpringApplicationContext()/]
 	
 [/template]

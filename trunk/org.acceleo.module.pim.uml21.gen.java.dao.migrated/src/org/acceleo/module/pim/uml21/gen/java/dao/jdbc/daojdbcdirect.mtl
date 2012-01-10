@@ -36,7 +36,7 @@ import java.util.Collection;
 [class.importDaoException()/]
 import [class.utilPackage()/].[class.projectName().toUpperFirst()/]ConnectionUtils;
 import [class.entityQualifiedName()/];
-	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+	[for (prop:Property|class.getOppositeAttributes())]
 import [prop.type.entityQualifiedName()/];
 	[/for]
 
@@ -58,7 +58,7 @@ protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
     protected static final String [prop.name.toUpper()/] = "[prop.name.toSqlNotation()/]";
 		[/if]
 	[/for]
-	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+	[for (prop:Property|class.getOppositeAttributes())]
     protected static final String [prop.name.toUpper()/] = "[prop.name.toSqlNotation()/]_ID";
 	[/for]
     
@@ -105,7 +105,7 @@ protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
 			[/if]
 		[/if]
 	[/for]
-	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+	[for (prop:Property|class.getOppositeAttributes())]
 
             [prop.type.name/] [prop.name/] = new [prop.type.name/]();
             [prop.name/].setId( rs.getString([prop.name.toUpper()/]) );

@@ -53,7 +53,7 @@
 [class.classAttributes()->select(not (isPK())).genProperties()/]
 
         <!-- Associations -->
-[class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()).genAssociations(arg)/]
+[class.getOppositeAttributes().genAssociations(arg)/]
 
         <!-- Inheritance -->
 [filterWithStereotype(class.subClass(), getProperty('Entity'))->filter(Class).genInheritance(class, arg)/]
@@ -238,7 +238,7 @@
 [class.classAttributes().genProperties()/]
 
             <!-- Associations -->
-[class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()).genAssociations(arg)/]
+[class.getOppositeAttributes().genAssociations(arg)/]
 
             <!-- Inheritance -->
 [class.subClass().genInheritance(class, arg)/]

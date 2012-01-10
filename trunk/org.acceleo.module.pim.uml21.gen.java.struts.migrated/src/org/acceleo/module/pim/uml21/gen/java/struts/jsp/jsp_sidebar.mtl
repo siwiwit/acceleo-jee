@@ -1,5 +1,6 @@
 [module jsp_sidebar('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::struts::common::common/]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
@@ -25,7 +26,7 @@
 		<td><html:image src="images/navig.gif"/></td>
 		<td>Navigation links : </td>
 	</tr>
-[for (prop:Property|class.getAssociations().oppositeAttributeOf(class)->select(isNavigable()))]
+[for (prop:Property|class.getOppositeAttributes())]
 	<tr>
 		<td>-</td>
 		<td><action="/[class._package.name/]/[prop.name.toLower()/]?event=init">[prop.type.name/]</html:link> Screen</td>

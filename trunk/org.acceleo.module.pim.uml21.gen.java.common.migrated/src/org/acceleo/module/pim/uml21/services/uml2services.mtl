@@ -1,11 +1,11 @@
 [comment encoding = Cp1252 /]
 [module uml2services('http://www.eclipse.org/uml2/3.0.0/UML')/]
 
-[query public getAssociations(arg0 : Class) : Sequence(Association)
+[comment][query public getAssociations(arg0 : Class) : Sequence(Association)
 	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'getAssociations(org.eclipse.uml2.uml.Class)', Sequence{arg0}) /]
 
 [query public getAssociations(arg0 : Interface) : Sequence(Association)
-	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'getAssociations(org.eclipse.uml2.uml.Interface)', Sequence{arg0}) /]
+	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'getAssociations(org.eclipse.uml2.uml.Interface)', Sequence{arg0}) /][/comment]
 
 [query public isNavigable(arg0 : Property) : Boolean
 	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'isNavigable(org.eclipse.uml2.uml.Property)', Sequence{arg0}) /]
@@ -41,7 +41,7 @@
 	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'oppositeAttribute(org.eclipse.uml2.uml.Property)', Sequence{arg0}) /]
 
 [query public oppositeAttributeOf(arg0 : Association, arg1 : Classifier) : Property
-	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'oppositeAttributeOf(org.eclipse.uml2.uml.Association, org.eclipse.uml2.uml.Classifier)', Sequence{arg0, arg1}) /]
+	= arg0.memberEnd->select(type<>arg1)->first() /]
 
 [query public getRealParameters(arg0 : Operation) : Sequence(Parameter)
 	= invoke('org.acceleo.module.pim.uml21.services.Uml2Services', 'getRealParameters(org.eclipse.uml2.uml.Operation)', Sequence{arg0}) /]

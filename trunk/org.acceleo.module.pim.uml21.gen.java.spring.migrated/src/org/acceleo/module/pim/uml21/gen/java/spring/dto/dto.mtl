@@ -272,12 +272,6 @@ public boolean equals(Object other) {
 	}
 [/template]
 
-
-[query public classAttributes(class : Class) : Set(Property) = 
-class.attribute->union(class.getAssociations().oppositeAttributeOf(class)->select(isNavigable())->asSet())
-/]
-
-
 [template public convertDtoToJavaType(type : Type)]
 [if (type.hasStereotype('Dto'))][type.name/]Dto[else][type.convertToJavaType()/][/if]
 [/template]

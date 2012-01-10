@@ -39,7 +39,7 @@ import junit.framework.TestCase;
 import [class.eContainer(Model).daoFactoryQualifiedClassName()/];
 import [class.daoInterfaceQualifiedName()/];
 import [class.entityQualifiedName()/];
-	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+	[for (prop:Property|class.getOppositeAttributes())]
 		[if (prop.lower <> 0)]
 import [prop.type.entityQualifiedName()/];
 		[/if]
@@ -224,7 +224,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 		[/if]
 	[/for]
 [comment  Composite relation required /]
-	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+	[for (prop:Property|class.getOppositeAttributes())]
 		[if (prop.lower <> 0)]
             
         //  [protected ('examples')] for example of [prop.type.name/].[prop.name/] values        
@@ -272,7 +272,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 		[/if]
 	[/for]
 [comment  Composite relation required /]
-	[for (prop:Property|class.getAssociations()->filter(Association).oppositeAttributeOf(class)->select(isNavigable()))]
+	[for (prop:Property|class.getOppositeAttributes())]
 		[if (prop.lower <> 0)]
             
         // [protected ('examples2')] for example 2 of [prop.type.name/].[prop.name/] values        

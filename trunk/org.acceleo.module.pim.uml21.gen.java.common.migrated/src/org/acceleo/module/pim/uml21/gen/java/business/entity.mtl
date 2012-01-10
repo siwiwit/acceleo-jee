@@ -19,7 +19,7 @@
 [file (class.fullFilePath(class.pathToMainJava(), class.entityPackage().toPath(), class.name.concat('.java')), false))]
 package [class.entityPackage()/];
 // [protected ('imports')] 
-// for imports
+
 import java.io.Serializable;
 [let manyProps : Set(Property) = class.classAttributes()->filter(Property)->select(p:Property|p.upper = -1 or p.upper > 1)]
 	[if (manyProps->size() > 0)]
@@ -465,14 +465,6 @@ int result = 0;
 [class.getAssociations()/]
 [/template]
 
-[query public getOppositeAttributes(class : Class) : Set(Property) =
-if(class.getAssociations()->notEmpty() and
-	class.getAssociations().oppositeAttributeOf(class)->notEmpty()) then
-	class.getAssociations().oppositeAttributeOf(class)->select(isNavigable())
-else
-	Set{}
-endif
-/]
 
 [query public isSupperAsEntity(class : Class) : Boolean = 
 class.superClass->notEmpty() and class.superClass->asSequence()->first().hasStereotype('Entity')/]
