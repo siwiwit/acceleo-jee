@@ -92,14 +92,24 @@ public class [model.projectName().toUpperFirst()/]DaoFactory {
 [/template]
 
 
-[template public packageDeclaration(class:Class)]
-[class.daoInterfacePackage()/].
-[/template]
+[query public packageDeclaration(class:Class) : String = 
+if (class.getModel().hashSameEntityName(class.name)) then
+class.daoInterfacePackage()
+else 
+''
+endif  
+/]
+
+[query public hashSameEntityName(model : Model, entityName : String) : Boolean = 
+	model.eAllContents(Class)->select(class:Class|class.name = entityName)->size() > 1
+/]
 
 
-[template public getterPrefix(class:Class)]
-[class._package.normalizedName().toUpperFirst()/]
-[/template]
-
-
+[query public getterPrefix(class:Class) : String =
+if (class.getModel().hashSameEntityName(class.name)) then
+class._package.normalizedName().toUpperFirst() 
+else 
+''
+endif 
+/]
 

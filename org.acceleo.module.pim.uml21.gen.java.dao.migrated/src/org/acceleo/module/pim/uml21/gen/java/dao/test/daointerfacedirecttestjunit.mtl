@@ -6,7 +6,7 @@
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
-
+[import org::acceleo::module::pim::uml21::gen::java::dao::api::daofactory /]
 [template private fullFilePath(class:Class)]
 [if (class.isEntity())]
 [class.pathToTestJava()/]/[class.objectsPackage().toPath()/]/[class.daoInterfaceName()/]Test.java
@@ -51,7 +51,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        this.dao = [class.projectName().toUpperFirst()/]DaoFactory.get[class.name/]Dao();
+        this.dao = [class.projectName().toUpperFirst()/]DaoFactory.get[class.getterPrefix()/][class.name/]Dao();
         // [protected ('setup')] 
 		// for setup        
 		// [/protected] for setup 
