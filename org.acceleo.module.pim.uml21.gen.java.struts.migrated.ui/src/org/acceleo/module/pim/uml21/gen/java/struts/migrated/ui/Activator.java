@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui;
+package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -21,7 +21,7 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID.
 	 */
-	public static final String PLUGIN_ID = "org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui";
+	public static final String PLUGIN_ID = "org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2";
 
 	/**
 	 * The shared instance.
