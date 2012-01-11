@@ -7,14 +7,18 @@ Bundle-Activator: org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.Activ
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.core.resources, 
+ org.eclipse.core.resources,
  org.acceleo.module.pim.uml21.gen.java.struts.migrated,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.ocl,
  org.eclipse.ocl.ecore,
  org.eclipse.acceleo.model,
- org.eclipse.acceleo.engine
+ org.eclipse.acceleo.engine,
+ org.acceleo.module.pim.uml21.gen.java.common.migrated;bundle-version="1.0.0",
+ org.acceleo.module.pim.uml21.gen.java.dao.migrated;bundle-version="1.0.0",
+ org.acceleo.module.pim.uml21.gen.java.hibernate.migrated;bundle-version="1.0.0",
+ org.acceleo.module.pim.uml21.gen.java.spring.migrated;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true

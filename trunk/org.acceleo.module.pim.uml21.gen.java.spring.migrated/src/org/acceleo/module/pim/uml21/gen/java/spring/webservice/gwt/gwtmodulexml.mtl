@@ -20,7 +20,7 @@
 [/template][/comment]
 
 
-[template public springApplicationContext(model : Model)? (model.webservices()->notEmpty())]
+[template public generateGwtModeleSpringApplicationContext(model : Model)? (model.webservices()->notEmpty())]
 [comment This template is called by the main module file /]
 [file (model.fullFilePath(model.pathToMainResources(), model.baseImports().toPath(), 'Services.gwt.xml'), false))]
 <module>

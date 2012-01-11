@@ -6,6 +6,6 @@
 [template public springDWRModel(aModel : Model)]
 	
 	[comment @main /]
-	[aModel.springApplicationContext()/]
+	[aModel.generateSerciveDwrSpringApplicationContext()/]
 	
 [/template]

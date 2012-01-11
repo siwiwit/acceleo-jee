@@ -9,7 +9,7 @@ class.ownedAttribute->union(class.getOppositeAttributes())
 
 [query public getOppositeAttributes(class : Class) : Set(Property) =
 if(class.getAssociations()->notEmpty()) then
-	class.getAssociations().memberEnd->select(type<>class and isNavigable())
+	class.getAssociations().memberEnd->select(prop:Property|prop.type<>class and prop.isNavigable())
 else
 	Set{}
 endif

@@ -21,17 +21,18 @@ package [class.entityPackage()/];
 // [protected ('imports')] 
 
 import java.io.Serializable;
-[let manyProps : Set(Property) = class.classAttributes()->filter(Property)->select(p:Property|p.upper = -1 or p.upper > 1)]
-	[if (manyProps->size() > 0)]
-		[if (manyProps->select(isOrdered)->size() > 0)]
+
+[let manyProps : Set(Property) = class.classAttributes()->select(p:Property|p.upper = -1 or p.upper > 1)]
+	[if (manyProps->notEmpty())]
+		[if (manyProps->select(isOrdered)->notEmpty())]
 import java.util.List;
 import java.util.ArrayList;
 		[/if]
-		[if (manyProps->select(isUnique and not isOrdered)->size() > 0)]
+		[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
 import java.util.Set;
 import java.util.HashSet;
 		[/if]
-		[if (manyProps->select(not isUnique and not isOrdered)->size() > 0)]
+		[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
 import java.util.Collection;
 		[/if]
 	[/if]

@@ -20,7 +20,7 @@
 
 [template public generateDaoJdbcDirect(class:Class)? (class.isEntity())]
 [comment This template is called by the main module file /]
-	[file (class.fullFilePath(class.pathToMainJava(),class.jdbcPackage().toPath(), '/Jdbc'.concat(class.name).concat('Dao.java')), false))]
+	[file (class.fullFilePath(class.pathToMainJava(),class.jdbcPackage().toPath(), 'Jdbc'.concat(class.name).concat('Dao.java')), false))]
 package [class.jdbcPackage()/];
 
 // [protected ('imports')] for import 
@@ -53,7 +53,7 @@ public class Jdbc[class.name/]Dao implements [class.daoInterfaceName()/] {
 [comment  Generates static declaration for database fields /]    
 protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
 
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)] 
 		[if (not (prop.isDerived))]
     protected static final String [prop.name.toUpper()/] = "[prop.name.toSqlNotation()/]";
 		[/if]
@@ -95,10 +95,10 @@ protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
 
     protected Collection<[class.name/]> createList(ResultSet rs) throws SQLException {
         Collection<[class.name/]> result = new ArrayList<[class.name/]>();
-        [class.name/] [class.name.toLower()/] = null;
+        [class.name/] [class.name.toLowerFirst()/] = null;
         while (rs.next()) {
             [class.name.toLowerFirst()/] = new [class.name/]();
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)]
 		[if (not (prop.isDerived))]
 			[if (prop.upper = 1)]
             [class.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]( rs.get[prop.genRsType()/]([prop.name.toUpper()/]) );
@@ -106,17 +106,16 @@ protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
 		[/if]
 	[/for]
 	[for (prop:Property|class.getOppositeAttributes())]
-
-            [prop.type.name/] [prop.name/] = new [prop.type.name/]();
-            [prop.name/].setId( rs.getString([prop.name.toUpper()/]) );
+            [prop.type.name/] [prop.type.name.toLowerFirst()/] = new [prop.type.name/]();
+            [prop.type.name.toLowerFirst()/].setId( rs.getString([prop.name.toUpper()/]) );
 		[if (prop.upper = 1)]
-            [prop.association.oppositeAttributeOf(class).type.name.toLower()/].set[prop.name.toUpper()/]( [prop.name/] );
+            [class.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]( [prop.type.name.toLowerFirst()/] );
 		[else]
-            [prop.association.oppositeAttributeOf(class).type.name.toLower()/].get[prop.name.toUpper()/]().add( [prop.name/] );
+            [class.name.toLowerFirst()/].get[prop.name.toUpperFirst()/]().add( [prop.type.name.toLowerFirst()/] );
 		[/if]
 	[/for]
 
-            result.add([class.name.toLower()/]);
+            result.add([class.name.toLowerFirst()/]);
         }
         return result;
     }
@@ -163,18 +162,18 @@ protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
         PreparedStatement statement = null;
 
         try {
-            cnx = [class.projectName().toUpper()/]ConnectionUtils.getInstance().getConnection();
+            cnx = [class.projectName().toUpperFirst()/]ConnectionUtils.getInstance().getConnection();
             statement = cnx.prepareStatement(UPDATE_QUERY);
              // [protected ('update')]
 	[for (prop:Property|class.attribute)]
 		[if (not (prop.isDerived))]
 			[if (prop.upper = 1)]
 				[if (prop.type.name = 'String')]
-	        statement.setString([i + 1/], element.get[prop.name.toUpper()/]());
+	        statement.setString([i + 1/], element.get[prop.name.toUpperFirst()/]());
 				[elseif (prop.type.name = 'Date')]
-            statement.setDate([i + 1/], new Date(element.get[prop.name.toUpper()/]().getTime()));
+            statement.setDate([i + 1/], new Date(element.get[prop.name.toUpperFirst()/]().getTime()));
 				[elseif (prop.type.name = 'Integer')]
-            statement.setInt([i + 1/], element.get[prop.name.toUpper()/]());
+            statement.setInt([i + 1/], element.get[prop.name.toUpperFirst()/]());
 				[/if]
 			[/if]
 		[/if]
@@ -267,7 +266,7 @@ protected static final String TABLE_NAME = "[class.name.toSqlNotation()/]";
             rs = statement.executeQuery(FIND_BY_ID);
 
             [class.name/] result = new [class.name/]();
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)]
 		[if (not (prop.isDerived))]
 			[if (prop.upper = 1)]
             result.set[prop.name.toUpperFirst()/]( rs.get[prop.genRsType()/]([prop.name.toUpper()/]) );

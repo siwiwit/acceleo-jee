@@ -20,7 +20,7 @@
 [/template][/comment]
 
 
-[template public springApplicationContext(model : Model)? (model.webservices()->notEmpty())]
+[template public generateServiceGwtRpcSpringApplicationContext(model : Model)? (model.webservices()->notEmpty())]
 [comment This template is called by the main module file /]
 [file (fullFilePath(model.pathToMainResources(), 'META-INF/spring/'.concat(model.baseImports()), 'layer-gwtrpc-services.xml'), false))]
 <beans xmlns="http://www.springframework.org/schema/beans"
