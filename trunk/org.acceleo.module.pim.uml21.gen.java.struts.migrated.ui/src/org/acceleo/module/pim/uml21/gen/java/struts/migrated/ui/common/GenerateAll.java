@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.common;
+package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.common;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,11 +23,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.Bundle;
 
 
 /**
- * Main entry point of the 'StrutsSpringHibernate' generation module.
+ * Main entry point of the 'Struts Spring Hibernate' generation module.
  */
 public class GenerateAll {
 
@@ -46,6 +47,10 @@ public class GenerateAll {
 	 */
 	List<? extends Object> arguments;
 
+	private static final String PLATFORM_PATH = "platform:/plugin/org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2";
+	
+	private static final String PROPERTY_FILE_PATH = GenerateAll.PLATFORM_PATH + "/org/acceleo/module/pim/uml21/gen/java/struts/migrated/ui2/common/application.properties";
+	
 	/**
 	 * Constructor.
 	 * 
@@ -79,27 +84,159 @@ public class GenerateAll {
 			targetFolder.getLocation().toFile().mkdirs();
 		}
 		
-		// final URI template0 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.struts.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/struts/migrated/files/struts.emtl"));
-		// org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Struts gen0 = new org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Struts(modelURI, targetFolder.getLocation().toFile(), arguments) {
+		// final URI template0 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.common.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/common/migrated/files/main.emtl"));
+		// org.acceleo.module.pim.uml21.gen.java.common.migrated.files.Main gen0 = new org.acceleo.module.pim.uml21.gen.java.common.migrated.files.Main(modelURI, targetFolder.getLocation().toFile(), arguments) {
 		//	protected URI createTemplateURI(String entry) {
 		//		return template0;
 		//	}
 		//};
 		//gen0.doGenerate(BasicMonitor.toMonitor(monitor));
 		monitor.subTask("Loading...");
-		org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main gen0 = new org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main(modelURI, targetFolder.getLocation().toFile(), arguments);
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui/org/acceleo/module/pim/uml21/gen/java/struts/migrated/ui/popupMenus/basic.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/stereotypes.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/default.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/java.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/dao.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/dto.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/hibernate.properties");
-		gen0.addPropertiesFile("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/profile.properties");
+		org.acceleo.module.pim.uml21.gen.java.common.migrated.files.Main gen0 = new org.acceleo.module.pim.uml21.gen.java.common.migrated.files.Main(modelURI, targetFolder.getLocation().toFile(), arguments);
 		monitor.worked(1);
-		String generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.struts.migrated", "org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Struts", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+		String generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.common.migrated", "org.acceleo.module.pim.uml21.gen.java.common.migrated.files.Main", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
 		gen0.setGenerationID(generationID);
 		gen0.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+		EObject model = gen0.getModel();
+		if (model != null) {
+				
+			//final URI template1 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.dao.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/dao/migrated/files/jdbc.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Jdbc gen1 = new org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Jdbc(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template1;
+			//	}
+			//};
+			//gen1.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Jdbc gen1 = new org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Jdbc(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.dao.migrated", "org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Jdbc", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen1.setGenerationID(generationID);
+			gen1.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen1.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template2 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.dao.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/dao/migrated/files/main.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Main gen2 = new org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Main(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template2;
+			//	}
+			//};
+			//gen2.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Main gen2 = new org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Main(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.dao.migrated", "org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Main", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen2.setGenerationID(generationID);
+			gen2.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen2.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template3 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.dao.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/dao/migrated/files/memcache.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Memcache gen3 = new org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Memcache(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template3;
+			//	}
+			//};
+			//gen3.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Memcache gen3 = new org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Memcache(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.dao.migrated", "org.acceleo.module.pim.uml21.gen.java.dao.migrated.files.Memcache", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen3.setGenerationID(generationID);
+			gen3.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen3.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template4 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.hibernate.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/hibernate/migrated/files/hibernate.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.hibernate.migrated.files.Hibernate gen4 = new org.acceleo.module.pim.uml21.gen.java.hibernate.migrated.files.Hibernate(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template4;
+			//	}
+			//};
+			//gen4.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.hibernate.migrated.files.Hibernate gen4 = new org.acceleo.module.pim.uml21.gen.java.hibernate.migrated.files.Hibernate(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.hibernate.migrated", "org.acceleo.module.pim.uml21.gen.java.hibernate.migrated.files.Hibernate", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen4.setGenerationID(generationID);
+			gen4.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen4.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template5 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.spring.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/spring/migrated/files/businessLayer.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.BusinessLayer gen5 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.BusinessLayer(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template5;
+			//	}
+			//};
+			//gen5.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.BusinessLayer gen5 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.BusinessLayer(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.spring.migrated", "org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.BusinessLayer", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen5.setGenerationID(generationID);
+			gen5.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen5.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template6 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.spring.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/spring/migrated/files/springDWR.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringDWR gen6 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringDWR(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template6;
+			//	}
+			//};
+			//gen6.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringDWR gen6 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringDWR(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.spring.migrated", "org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringDWR", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen6.setGenerationID(generationID);
+			gen6.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen6.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template7 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.spring.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/spring/migrated/files/springGWT.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringGWT gen7 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringGWT(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template7;
+			//	}
+			//};
+			//gen7.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringGWT gen7 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringGWT(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.spring.migrated", "org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringGWT", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen7.setGenerationID(generationID);
+			gen7.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen7.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template8 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.spring.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/spring/migrated/files/springHibernateHessian.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringHibernateHessian gen8 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringHibernateHessian(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template8;
+			//	}
+			//};
+			//gen8.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringHibernateHessian gen8 = new org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringHibernateHessian(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.spring.migrated", "org.acceleo.module.pim.uml21.gen.java.spring.migrated.files.SpringHibernateHessian", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen8.setGenerationID(generationID);
+			gen8.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen8.doGenerate(BasicMonitor.toMonitor(monitor));
+			//final URI template9 = getTemplateURI("org.acceleo.module.pim.uml21.gen.java.struts.migrated", new Path("/org/acceleo/module/pim/uml21/gen/java/struts/migrated/files/main.emtl"));
+			//org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main gen9 = new org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main(model, targetFolder.getLocation().toFile(), arguments) {
+			//	protected URI createTemplateURI(String entry) {
+			//		return template9;
+			//	}
+			//};
+			//gen9.doGenerate(BasicMonitor.toMonitor(monitor));
+			
+			monitor.subTask("Loading...");
+			org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main gen9 = new org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main(model, targetFolder.getLocation().toFile(), arguments);
+			monitor.worked(1);
+			generationID = org.eclipse.acceleo.engine.utils.AcceleoLaunchingUtil.computeUIProjectID("org.acceleo.module.pim.uml21.gen.java.struts.migrated", "org.acceleo.module.pim.uml21.gen.java.struts.migrated.files.Main", modelURI.toString(), targetFolder.getFullPath().toString(), new ArrayList<String>());
+			gen9.setGenerationID(generationID);
+			gen9.addPropertiesFile(GenerateAll.PROPERTY_FILE_PATH);
+			gen9.doGenerate(BasicMonitor.toMonitor(monitor));
+		}
 			
 		
 	}

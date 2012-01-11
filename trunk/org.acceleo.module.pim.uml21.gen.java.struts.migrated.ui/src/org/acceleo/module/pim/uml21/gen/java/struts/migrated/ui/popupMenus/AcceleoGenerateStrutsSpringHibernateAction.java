@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.popupMenus;
+package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.popupMenus;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -28,28 +28,25 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.Activator;
-import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.common.GenerateAll;
+import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.Activator;
+import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.common.GenerateAll;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
 
 /**
- * StrutsSpringHibernate code generation.
+ * Struts Spring Hibernate code generation.
  */
-public class AcceleoGenerateStrutsSpringHibernateAction extends ActionDelegate
-		implements IActionDelegate {
-
+public class AcceleoGenerateStrutsSpringHibernateAction extends ActionDelegate implements IActionDelegate {
+	
 	/**
 	 * Selected model files.
 	 */
 	protected List<IFile> files;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.ui.actions.ActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
-	 *      org.eclipse.jface.viewers.ISelection)
+	/**{@inheritDoc}
+	 *
+	 * @see org.eclipse.ui.actions.ActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -59,9 +56,8 @@ public class AcceleoGenerateStrutsSpringHibernateAction extends ActionDelegate
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
+	/**{@inheritDoc}
+	 *
 	 * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
 	 * @generated
 	 */
@@ -72,41 +68,32 @@ public class AcceleoGenerateStrutsSpringHibernateAction extends ActionDelegate
 					try {
 						Iterator<IFile> filesIt = files.iterator();
 						while (filesIt.hasNext()) {
-							IFile model = (IFile) filesIt.next();
-							URI modelURI = URI.createPlatformResourceURI(model
-									.getFullPath().toString(), true);
+							IFile model = (IFile)filesIt.next();
+							URI modelURI = URI.createPlatformResourceURI(model.getFullPath().toString(), true);
 							try {
-								IContainer target = model.getProject()
-										.getFolder("src-gen");
-								GenerateAll generator = new GenerateAll(
-										modelURI, target, getArguments());
+								IContainer target = model.getProject().getFolder("src");
+								GenerateAll generator = new GenerateAll(modelURI, target, getArguments());
 								generator.doGenerate(monitor);
 							} catch (IOException e) {
-								IStatus status = new Status(IStatus.ERROR,
-										Activator.PLUGIN_ID, e.getMessage(), e);
+								IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
 								Activator.getDefault().getLog().log(status);
 							} finally {
-								model.getProject().refreshLocal(
-										IResource.DEPTH_INFINITE, monitor);
+								model.getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 							}
 						}
 					} catch (CoreException e) {
-						IStatus status = new Status(IStatus.ERROR,
-								Activator.PLUGIN_ID, e.getMessage(), e);
+						IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
 						Activator.getDefault().getLog().log(status);
 					}
 				}
 			};
 			try {
-				PlatformUI.getWorkbench().getProgressService()
-						.run(true, true, operation);
+				PlatformUI.getWorkbench().getProgressService().run(true, true, operation);
 			} catch (InvocationTargetException e) {
-				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-						e.getMessage(), e);
+				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
 				Activator.getDefault().getLog().log(status);
 			} catch (InterruptedException e) {
-				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-						e.getMessage(), e);
+				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
 				Activator.getDefault().getLog().log(status);
 			}
 		}
@@ -119,25 +106,7 @@ public class AcceleoGenerateStrutsSpringHibernateAction extends ActionDelegate
 	 * @generated
 	 */
 	protected List<? extends Object> getArguments() {
-		ArrayList<String> arguments = new ArrayList<String>();
-		
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui/org/acceleo/module/pim/uml21/gen/java/struts/migrated/ui/popupMenus/basic.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/stereotypes.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/default.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/gen/java/common/java.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/dao.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/dto.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/hibernate.properties");
-//		arguments
-//				.add("platform:/plugin/org.acceleo.module.pim.uml21.gen.java.common.migrated/org/acceleo/module/pim/uml21/profile.properties");
-
-		return arguments;
+		return new ArrayList<String>();
 	}
+
 }
