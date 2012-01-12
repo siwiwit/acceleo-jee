@@ -138,7 +138,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
         // Verify result
         boolean found = false;
         for([class.name/] current[class.name/] : dao.findAll[class.name/]s()) {
-            if (class.current[class.name/].equals([class.name.toLowerFirst()/])) {
+            if (current[class.name/].equals([class.name.toLowerFirst()/])) {
                 found = true;                
             }
         }
