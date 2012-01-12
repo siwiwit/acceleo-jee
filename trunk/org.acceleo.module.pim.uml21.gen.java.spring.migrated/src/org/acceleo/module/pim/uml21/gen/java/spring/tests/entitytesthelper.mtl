@@ -51,7 +51,7 @@ import java.util.HashSet;
 import java.util.Date;
 [/if]
 
-[if (class.classAttributes()->select(upper > 1 or upper = -1)->notEmpty())]
+[if (class.ownedAttribute->select(upper > 1 or upper = -1)->notEmpty())]
 import java.util.ArrayList;
 import java.util.List;
 [/if]
@@ -68,7 +68,7 @@ public class [class.name/]Helper {
 		[class.name/] [class.name.toLowerFirst()/] = new [class.name/]();
 
 [comment  Member attributes /]
-[for (prop:Property|class.classAttributes())]
+[for (prop:Property|class.ownedAttribute)]
 	[if (not (prop.isDerived) and not (prop.isReadOnly))]
 		[if (prop.upper = 1)]
 		[class.name.toLowerFirst()/].set[name.toUpperFirst()/]([prop.myExempleValues()/]);

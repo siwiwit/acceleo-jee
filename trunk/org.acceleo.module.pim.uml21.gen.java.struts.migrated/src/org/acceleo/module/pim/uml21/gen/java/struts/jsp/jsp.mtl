@@ -49,7 +49,7 @@
 <html:hidden property="event" value=""/>
 
 <table>
-[for (prop:Property|class.classAttributes())]
+[for (prop:Property|class.ownedAttribute)]
 	[if (not (prop.hasStereotype(getProperty('Title'))) and not (prop.hasStereotype(getProperty('List'))) and not (prop.hasStereotype(getProperty('Table'))) and not (prop.hasStereotype(getProperty('Combobox'))))]
 	<tr>
 		<td><bean:message key="[class.name/].[name.toLower()/]"/> :</td>

@@ -42,7 +42,7 @@ public class [class.name/]Form extends ValidatorForm {
     /**
      * Attributes
      */
-[for (prop:Property|class.classAttributes())]
+[for (prop:Property|class.ownedAttribute)]
 	[if (not (prop.hasStereotype(getProperty('Title'))))]
 		[if (prop.hasStereotype(getProperty('List')) or prop.hasStereotype(getProperty('Table')))]
 	public [prop.convertToJavaTypeFromStereotype()/] [prop.name.toLowerFirst()/] = new ArrayList();	
@@ -55,7 +55,7 @@ public class [class.name/]Form extends ValidatorForm {
 	[/if]
 [/for]
 
-[for (prop:Property|class.classAttributes())]
+[for (prop:Property|class.ownedAttribute)]
 	[if (not (prop.hasStereotype(getProperty('Title'))))]
 		[if (prop.hasStereotype(getProperty('Combobox')))]
 	/**
@@ -116,7 +116,7 @@ public class [class.name/]Form extends ValidatorForm {
 	 * @param request The servlet request we are processing
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-[for (prop:Property|class.classAttributes())]
+[for (prop:Property|class.ownedAttribute)]
 	[if (not (prop.hasStereotype(getProperty('Title'))))]
 		[if (prop.hasStereotype(getProperty('List')) or prop.hasStereotype(getProperty('Table')))]
 		this.[prop.name.toLowerFirst()/].clear();

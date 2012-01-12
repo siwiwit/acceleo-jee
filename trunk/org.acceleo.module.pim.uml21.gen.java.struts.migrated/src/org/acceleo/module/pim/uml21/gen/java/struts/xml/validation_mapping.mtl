@@ -3,7 +3,7 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
 [template public generateValidator(class:Class)]
-[for (prop:Property|class.attribute)]
+[for (prop:Property|class.ownedAttribute)]
 	[if (not (prop.hasStereotype(getProperty('Title'))) and not (prop.hasStereotype(getProperty('List'))) and not (hasStereotype(getProperty('Table'))))]
 		[if (prop.type.name = 'Integer')]
             <field property="[prop.name.toLowerFirst()/]" depends="integer">

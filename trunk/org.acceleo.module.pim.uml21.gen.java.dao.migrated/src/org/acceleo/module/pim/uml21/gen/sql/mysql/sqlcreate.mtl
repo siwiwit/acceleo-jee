@@ -28,7 +28,7 @@ COMMENT ON COLUMN/]
     ID CHAR(32) NOT NULL,
 			[/if]
 [comment  Properties /]
-			[for (prop:Property|class.classAttributes())]
+			[for (prop:Property|class.ownedAttribute)]
 [comment  Array of primitives types are not generated /]
 				[if (not (prop.isDerived) and prop.upper = 1)]
     [prop.name.toSqlNotation()/] [prop.type.convertToSqlType() /] 
