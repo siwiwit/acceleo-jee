@@ -22,7 +22,7 @@
 [for (class:Class|_package.ownedElement->filter(Class))]
 [if (class.hasStereotype(getProperty('Screen')))]
 	<definition name=".view.[name/]" extends="layout">
-	    <put name="title" 		value="[for (prop:Property|class.attribute)][if (prop.hasStereotype(getProperty('Title')))][prop.name/][/if][/for]"/>
+	    <put name="title" 		value="[for (prop:Property|class.ownedAttribute)][if (prop.hasStereotype(getProperty('Title')))][prop.name/][/if][/for]"/>
 	    <put name="scenario"  	value="[class._package.name/]"/>
 	    <put name="pageName"  	value="[class.name/]"/>
 	    <put name="body" 		value="/jsp/[class._package.name/]/[class.name/].jsp"/>

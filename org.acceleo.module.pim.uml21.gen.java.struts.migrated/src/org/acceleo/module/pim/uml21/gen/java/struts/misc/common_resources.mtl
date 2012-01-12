@@ -12,13 +12,13 @@
 		[if (class.hasStereotype(getProperty('Screen')))]
 ################################# Page [name/].jsp #################################
 #Label and text
-			[for (prop:Property|class.classAttributes())]
+			[for (prop:Property|class.ownedAttribute)]
 				[if (not (prop.hasStereotype(getProperty('Title'))))]
 [class.name/].[prop.name.toLower()/]=[prop.name.toUpperFirst()/]
 				[/if]
 			[/for]
 #Error Messages
-			[for (prop:Property|class.classAttributes())]
+			[for (prop:Property|class.ownedAttribute)]
 				[if (not (prop.hasStereotype(getProperty('Title'))) and not (hasStereotype(getProperty('List'))) and not (hasStereotype(getProperty('Table'))))]
 					[if (prop.type.name = 'Integer')]
 [class.name/].errors.integer.[prop.name.toLower()/]=[prop.name.toUpperFirst()/]

@@ -20,7 +20,7 @@
 <div class="post">
 	[for (class:Class|pack.ownedElement->filter(Class))]
 		[if (class.hasStereotype(getProperty('Screen')))]
-	<h3 class="post-title"><html:link action="/[class._package.name/]/[class.name.toLower()/]?event=init">Screen [class.name/]</html:link> : [for (prop:Property|class.classAttributes())][if (prop.hasStereotype(getProperty('Title')))][prop.name/][/if][/for]</h3>
+	<h3 class="post-title"><html:link action="/[class._package.name/]/[class.name.toLower()/]?event=init">Screen [class.name/]</html:link> : [for (prop:Property|class.ownedAttribute)][if (prop.hasStereotype(getProperty('Title')))][prop.name/][/if][/for]</h3>
 		[/if]
 	[/for]
 </div>

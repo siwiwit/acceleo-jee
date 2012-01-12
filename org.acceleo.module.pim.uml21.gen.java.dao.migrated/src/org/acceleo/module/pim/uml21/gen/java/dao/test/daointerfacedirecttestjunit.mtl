@@ -7,12 +7,12 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::acceleo::module::pim::uml21::gen::java::dao::api::daofactory /]
-[template private fullFilePath(class:Class)]
+[comment][template private fullFilePath(class:Class)]
 [if (class.isEntity())]
 [class.pathToTestJava()/]/[class.objectsPackage().toPath()/]/[class.daoInterfaceName()/]Test.java
 [/if]
 
-[/template]
+[/template][/comment]
 
 
 [template public generateInterfaceDirectTest(class:Class)? (class.isEntity())]
@@ -22,7 +22,7 @@ package [class.objectsPackage()/];
 
 // [protected ('imports')] 
 // for import
-[if (class.attribute->select(type.name = 'Date')->notEmpty())]
+[if (class.ownedAttribute->select(type.name = 'Date')->notEmpty())]
 import java.util.Date;
 	[/if]
 	[if (class.classAttributes()->select(upper > 1 or upper = -1)->notEmpty())]
@@ -99,7 +99,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
         dao.create[class.name/]([class.name.toLowerFirst()/]);
 
         // Execute the tested code
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)]
 		[if (not (prop.hasStereotype('id')) and prop.upper = 1 and not (prop.isDerived) and not (prop.isReadOnly))]
         [class.name.toLowerFirst()/].set[name.toUpperFirst()/]([prop.exempleValues2()/]);
 		[/if]
@@ -111,7 +111,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
         for([class.name/] current[class.name/] : dao.findAll[class.name/]s()) {
             if (current[class.name/].equals([class.name.toLowerFirst()/])) {
                 found = true;
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)]
 		[if (not (prop.hasStereotype('id')) and prop.upper = 1 and not (prop.isDerived) and not (prop.isReadOnly))]
                 Assert.assertEquals("Value [prop.name.toLowerFirst()/] not modified", [prop.exempleValues2()/], [featuringClassifier.name.toLowerFirst()/].get[name.toUpperFirst()/]());
 		[/if]
@@ -179,10 +179,10 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
        // fill attributes with exemple values
         [class.name/] [class.name.toLowerFirst()/] = new [class.name/]();
 [comment  Member attributes /]
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)]
 		[if (not (prop.isDerived) and not (prop.isReadOnly))]
 			[if (prop.upper = 1)]
-        [prop.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([prop.exempleValues()/]);
+        [class.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([prop.exempleValues()/]);
 			[else]
         List<[prop.type.name/]> list[prop.name.toUpperFirst()/] = new ArrayList<[prop.type.name/]>();
         list[prop.name.toUpperFirst()/].add([prop.exempleValues()/]);
@@ -191,7 +191,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 		[/if]
 	[/for]
 [comment  Composite relation required /]
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.getOppositeAttributes())]
 		[if (prop.lower <> 0)]
             
         // [protected ('relations1')] 
@@ -210,11 +210,10 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
         [name.toLowerFirst()/]Exemple.get[opposite.name.toUpperFirst()/]().add([class.name.toLowerFirst()/]);        
 				[/if]
 			[/if]
-        [prop.projectName().toUpperFirst()/]DaoFactory.get[type.name/]Dao().create[type.name/]([name.toLowerFirst()/]Exemple);
         // [/protected] for [type.name/].[name/]
 		[/if]
 	[/for]
-        
+        [class.projectName().toUpperFirst()/]DaoFactory.get[class.name/]Dao().create[class.name/]([class.name.toLowerFirst()/]);
         return [class.name.toLowerFirst()/];
     }
     
@@ -225,10 +224,10 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
        // fill attributes with exemple values
         [class.name/] [class.name.toLowerFirst()/] = new [class.name/]();
 [comment  Member attributes /]
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.ownedAttribute)]
 		[if (not (prop.isDerived) and not (prop.isReadOnly))]
 			[if (prop.upper = 1)]
-        [prop.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([prop.exempleValues2()/]);
+        [class.name.toLowerFirst()/].set[prop.name.toUpperFirst()/]([prop.exempleValues2()/]);
 			[else]
         List<[prop.type.name/]> list[prop.name.toUpperFirst()/] = new ArrayList<[prop.type.name/]>();
         list[name.toLowerFirst()/].add([prop.exempleValues2()/]);
@@ -237,7 +236,7 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 		[/if]
 	[/for]
 [comment  Composite relation required /]
-	[for (prop:Property|class.classAttributes())]
+	[for (prop:Property|class.getOppositeAttributes())]
 		[if (prop.lower <> 0)]
             
         // [protected ('relations2')] 
@@ -251,21 +250,20 @@ public class [class.daoInterfaceName()/]Test extends TestCase {
 			[if (prop.opposite <> null and prop.opposite.lower <> 0)]
 [comment  for bidirectionnal relation /]
 				[if (opposite.upper = 1)]
-        [prop.name.toLowerFirst()/]Exemple.set[prop.opposite.name.toUpperFirst()/]([class.name.toLowerFirst()/]);        
+        [name.toLowerFirst()/]Exemple.set[prop.opposite.name.toUpperFirst()/]([class.name.toLowerFirst()/]);        
 				[else]
-        [prop.name.toLowerFirst()/]Exemple.get[prop.opposite.name.toUpperFirst()/]().add([class.name.toLowerFirst()/]);        
+        [name.toLowerFirst()/]Exemple.get[prop.opposite.name.toUpperFirst()/]().add([class.name.toLowerFirst()/]);        
 				[/if]
 			[/if]
-        [prop.projectName().toUpperFirst()/]DaoFactory.get[prop.type.name/]Dao().create[prop.type.name/]([prop.name.toLowerFirst()/]Exemple);
         // [/protected] for [prop.type.name/].[name/]
 		[/if]
 	[/for]
-        
+        [class.projectName().toUpperFirst()/]DaoFactory.get[class.name/]Dao().create[class.name/]([class.name.toLowerFirst()/]);
         return [class.name.toLowerFirst()/];
     }
     
-    // [protected ('testSpecific')] of specific tests    
-	// [/protected] of specific tests
+    // [protected ('testSpecific')]    
+	// [/protected]
 
 }
 

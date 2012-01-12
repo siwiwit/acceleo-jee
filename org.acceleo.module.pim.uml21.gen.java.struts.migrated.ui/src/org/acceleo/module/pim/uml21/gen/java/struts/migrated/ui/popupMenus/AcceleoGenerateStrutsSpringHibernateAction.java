@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.popupMenus;
+package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.popupMenus;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -28,8 +28,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.Activator;
-import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.common.GenerateAll;
+import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.Activator;
+import org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.common.GenerateAll;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;

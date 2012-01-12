@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2.common;
+package org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui.common;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,9 +47,9 @@ public class GenerateAll {
 	 */
 	List<? extends Object> arguments;
 
-	private static final String PLATFORM_PATH = "platform:/plugin/org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui2";
+	private static final String PLATFORM_PATH = "platform:/plugin/org.acceleo.module.pim.uml21.gen.java.struts.migrated.ui";
 	
-	private static final String PROPERTY_FILE_PATH = GenerateAll.PLATFORM_PATH + "/org/acceleo/module/pim/uml21/gen/java/struts/migrated/ui2/common/application.properties";
+	private static final String PROPERTY_FILE_PATH = GenerateAll.PLATFORM_PATH + "/org/acceleo/module/pim/uml21/gen/java/struts/migrated/ui/common/application.properties";
 	
 	/**
 	 * Constructor.
