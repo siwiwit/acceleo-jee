@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Acceleo Profiles Plug-in
+Bundle-SymbolicName: org.acceleo.module.pim.uml21.profiles;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.acceleo.module.pim.uml21.profiles.AcceleoProfilesPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: acceleo.org

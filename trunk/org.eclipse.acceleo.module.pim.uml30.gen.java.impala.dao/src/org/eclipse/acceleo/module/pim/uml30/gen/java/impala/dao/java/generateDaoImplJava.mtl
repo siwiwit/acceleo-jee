@@ -1,0 +1,110 @@
+[comment encoding = UTF-8 /]
+[module generateDaoImplJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoPathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+[import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
+[import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::requests /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoUtil /]
+[template public generateDaoImplJava(aClass : Class)]
+[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('DaoImpl.java'), false, 'UTF-8')]
+package [aClass.generateJavaPackage()/];
+
+//[protected ('import')]
+
+[for (aDtoClass:Class | aClass.getRelatedDtos())]
+	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
+import [if(aDtoClass.generateJavaPackage().trim().size()>0)][aDtoClass.generateJavaPackage()/].[/if][aDtoClass.name/];
+	[/if]
+[/for]
+
+//[/protected]
+/**
+ * @see [aClass.name/]
+ */
+public class [aClass.name/]DaoImpl
+    extends [aClass.name/]DaoBase {
+[for (anSimpleOperation : Operation | aClass.ownedOperation->select(oper:Operation|oper.isFinder()))]
+[anSimpleOperation.generateJavadoc()/]
+    protected [anSimpleOperation.generateReturn()/] handle[anSimpleOperation.name.toUpperFirst()/]([anSimpleOperation.generateParameters()/])
+        throws Exception {
+	}
+[/for]
+
+[for (aDtoClass:Class | aClass.getRelatedDtos())]
+    /**
+     * @see [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/]#to[aDtoClass.name.toUpperFirst()/]([aClass.name.toUpperFirst()/], [aDtoClass.name.toUpperFirst()/])
+     */
+    
+    public void to[aDtoClass.name.toUpperFirst()/](
+        [aClass.name.toUpperFirst()/] sourceEntity,
+        [aDtoClass.name.toUpperFirst()/] targetVO)
+    {
+        super.to[aDtoClass.name.toUpperFirst()/](sourceEntity, targetVO);
+    }
+
+	/**
+     * @see [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/]#[aDtoClass.name.toLowerFirst()/]ToEntity([aDtoClass.name.toUpperFirst()/])
+     */
+    public [aClass.name.toUpperFirst()/] [aDtoClass.name.toLowerFirst()/]ToEntity([aDtoClass.name.toUpperFirst()/] [aDtoClass.name.toLowerFirst()/])
+    {
+        // TODO verify behavior of [aDtoClass.name.toLowerFirst()/]ToEntity
+        [aClass.name.toUpperFirst()/] entity = this.load[aClass.name.toUpperFirst()/]From[aDtoClass.name.toUpperFirst()/]([aDtoClass.name.toLowerFirst()/]);
+        this.[aDtoClass.name.toLowerFirst()/]ToEntity([aDtoClass.name.toLowerFirst()/], entity, true);
+        return entity;
+    }
+
+    /**
+     * @see [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/]#to[aDtoClass.name.toUpperFirst()/]([aClass.name.toUpperFirst()/], [aDtoClass.name.toUpperFirst()/]) 
+     */
+    public void to[aDtoClass.name.toUpperFirst()/](
+        [aClass.name.toUpperFirst()/] sourceEntity,
+        [aDtoClass.name.toUpperFirst()/] targetVO)
+    {
+        // TODO verify behavior of to[aDtoClass.name.toUpperFirst()/]
+        super.to[aDtoClass.name.toUpperFirst()/](sourceEntity, targetVO);
+    }
+
+	 /**
+     * Retrieves the entity object that is associated with the specified value object
+     * from the object store. If no such entity object exists in the object store,
+     * a new, blank entity is created
+     */
+    private [aClass.name.toUpperFirst()/] load[aClass.name.toUpperFirst()/]From[aDtoClass.name.toUpperFirst()/]([aDtoClass.name.toUpperFirst()/] [aDtoClass.name.toLowerFirst()/])
+    {
+        // TODO implement load[aClass.name.toUpperFirst()/]From[aDtoClass.name.toUpperFirst()/]
+        throw new UnsupportedOperationException("[if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/].load[aClass.name.toUpperFirst()/]From[aDtoClass.name.toUpperFirst()/]([aDtoClass.name.toUpperFirst()/]) not yet implemented.");
+
+        /* A typical implementation looks like this:
+        [aClass.name.toUpperFirst()/] [aClass.name.toLowerFirst()/] = this.load([aDtoClass.name.toLowerFirst()/].getId());
+        if ([aClass.name.toLowerFirst()/] == null)
+        {
+            [aClass.name.toLowerFirst()/] = [aClass.name.toUpperFirst()/].Factory.newInstance();
+        }
+        return [aClass.name.toLowerFirst()/];
+        */
+    }
+
+    /**
+     * @see [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name.toUpperFirst()/]#[aDtoClass.name.toLowerFirst()/]ToEntity([aDtoClass.name.toUpperFirst()/], [aClass.name.toUpperFirst()/], boolean) 
+     */
+    public void [aDtoClass.name.toLowerFirst()/]ToEntity(
+        [aDtoClass.name.toUpperFirst()/] sourceVO,
+        [aClass.name.toUpperFirst()/] targetEntity,
+        boolean copyIfNull)
+    {
+        // TODO verify behavior of timecardVOToEntity
+        super.[aDtoClass.name.toLowerFirst()/]ToEntity(sourceVO, targetEntity, copyIfNull);
+    }
+    
+[/for]
+    
+	//[protected ('other methods')]
+
+	//[/protected]
+}
+[/file]
+[/template]

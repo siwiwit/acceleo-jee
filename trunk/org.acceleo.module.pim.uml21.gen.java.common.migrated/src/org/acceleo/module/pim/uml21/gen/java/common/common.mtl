@@ -91,6 +91,10 @@ endif).concat(namedElement.name)
 [getProperty('path.to.test.webapp')/]
 [/template]
 
+[template public pathToGeneratedMainJava(eObject : ecore::EObject) post(trim())]
+[getProperty('path.to.generated.main.java')/]
+[/template]
+
 
 [template public getPKName(class : Class) post(trim())]
 [if (class.hasPrimaryKey())]

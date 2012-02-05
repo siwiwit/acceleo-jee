@@ -22,20 +22,19 @@
 
 [/template][/comment]
 
-
-[template public generateJavaClass(class : Class) ? (class.isJavaClassifier()->notEmpty())]
+[template public generateJavaClass(class : Class)]
 [comment This template is called by the main module file /]
 [file (class.fullFilePath(class.pathToMainJava(), class.classPackage().toPath(), class.name.concat('.java')), false))]
 package [class.classPackage()/];
 
 // [protected ('imports')] 
-// for import
+
 [for (classifier:Classifier|class.operationsParametersTypes())]
 import [classifier.getCompleteName()/];	
 [/for]
 [class.genCollectionImports()/]
 
-// [/protected] for import
+// [/protected]
 
 [class.generateJavadoc()/]
 [class.genModifiers()/] class [class.name/][class.extensions()/] {
@@ -128,4 +127,3 @@ import [classifier.getCompleteName()/];
 [/if]
 
 [/template]
-
