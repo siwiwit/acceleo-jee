@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   
+   <!-- define embedded profile -->
+   <extension
+         id="org.acceleo.module.pim.uml21.profiles"
+         name="org.acceleo.module.pim.uml21.profiles"
+         point="org.eclipse.emf.ecore.uri_mapping">
+         <mapping
+            source="pathmap://ACCELEO_PROFILES/Acceleo.Business.profile.uml"
+            target="platform:/plugin/org.acceleo.module.pim.uml21.profiles/profiles/Acceleo.Business.profile.uml"/>
+         <mapping
+               source="pathmap://ACCELEO_PROFILES/Acceleo.UI.profile.uml"
+               target="platform:/plugin/org.acceleo.module.pim.uml21.profiles/profiles/Acceleo.UI.profile.uml">
+         </mapping>
+	</extension>
+  
+</plugin>

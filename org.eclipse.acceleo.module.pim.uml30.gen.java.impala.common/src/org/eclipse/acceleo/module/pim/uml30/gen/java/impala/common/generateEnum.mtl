@@ -1,0 +1,24 @@
+[comment encoding = UTF-8 /]
+[module generateEnum('http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::structureUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javaclass /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::common /]
+
+
+[template public generateEnum(anEnumeration : Enumeration)]
+package [anEnumeration._package.getCompleteName()/];
+
+// [protected ('imports')] 
+// for import
+// [/protected] for import
+
+	[anEnumeration.generateJavadoc()/]
+public enum [anEnumeration.name/]{
+	[anEnumeration.ownedLiteral.name->sep(',\n')/]		
+}
+[/template]

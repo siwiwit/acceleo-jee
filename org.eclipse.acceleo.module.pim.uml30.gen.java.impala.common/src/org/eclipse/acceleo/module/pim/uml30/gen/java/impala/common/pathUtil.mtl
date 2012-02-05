@@ -1,0 +1,35 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateProjectFolder.
+ */]
+[module pathUtil('http://www.eclipse.org/uml2/3.0.0/UML')]
+
+
+[**
+ * 
+ */]
+[template public generateSpecificProjectFolder(aModel : Model, postFix:String) post (trim())]
+[aModel.getDefaultPojectFolder().concat(postFix)/]
+[/template]
+
+[query private getDefaultPojectFolder (aModel : Model) : String = 
+if(aModel.name.oclIsUndefined() or aModel.name.size()=0) then 
+	'no-name'
+else
+	aModel.name
+endif
+/]
+
+[query public generateJavaPackage(aType : Type) : String =
+	aType.ancestors(Package)->select(aPackage:Package|not aPackage.oclIsTypeOf(Model)).name->reverse()->sep('.')->toString()
+/]
+
+[query public generateJavaPackagePath(aType : Type) : String =
+	aType.generateJavaPackage().replaceAll('\\.', '/')
+/]
+
+[template public extensions(class:Class)]
+[if (not (class.superClass->isEmpty()))] extends [class.superClass.name/][/if]
+[/template]
+
+

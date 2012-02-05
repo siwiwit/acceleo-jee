@@ -158,18 +158,35 @@ class.ownedOperation.ownedParameter
 [query public operationsParametersTypes(class : Class):Sequence(Classifier) = 
 class.operationsParameters().type->filter(Classifier)->select(not (name.endsWith('String')) and not (name.endsWith('Integer')) and not (name.endsWith('Float')) and not (name.endsWith('Long')) and not (name.endsWith('Double')) and not (name.endsWith('Boolean')) and not (name.startsWith('byte')) and not (name.endsWith('Object')))->asOrderedSet()->asSequence()
 /]
+[template public name(arg : Property)]
+	[arg.upper/]
+[/template]
 
+[query public getMultiplicity(aClass : Class) : Set(MultiplicityElement) = 
+(if(aClass.classAttributes()->notEmpty()) then
+	aClass.classAttributes().oclAsType(MultiplicityElement)->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->asSet()
+else
+	Set{}
+endif)->union(
+	if(aClass.operationsParameters()->notEmpty()) then
+	aClass.operationsParameters().oclAsType(MultiplicityElement)->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->asSet()
+	else
+	Set{}
+	endif
+)
+/]
 
-[template public genCollectionImports(class : Class)]
-[if (class.operationsParameters()->select((upper = -1 or upper > 1) and isOrdered)->notEmpty())]
+[template public genCollectionImports(aClass : Class) post (trim())]
+[if (aClass.getMultiplicity()->notEmpty())]
+	[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isOrdered)->notEmpty())]
 import java.util.List;
-[/if]
-[if (class.operationsParameters()->select((upper = -1 or upper > 1) and (not (isOrdered) and isUnique))->notEmpty())]
+	[/if]
+	[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
 import java.util.Set;
-[/if]
-[if (class.operationsParameters()->select((upper = -1 or upper > 1) and (not (isOrdered) and not (isUnique)))->notEmpty())]
+	[/if]
+	[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
 import java.util.Collection;
+	[/if]
 [/if]
-
 [/template]
 

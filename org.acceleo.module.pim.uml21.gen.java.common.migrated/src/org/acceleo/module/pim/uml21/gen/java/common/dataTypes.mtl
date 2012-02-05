@@ -1,8 +1,20 @@
 [module dataTypes('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::common::requests/]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
-[template public convertToJavaType(parameter:Parameter)]
-[if (parameter.upper = -1)][if (isOrdered)]List<[parameter.type.convertToJavaType()/]>[elseif (isUnique)]Set<[type.convertToJavaType()/]>[else]Collection<[type.convertToJavaType()/]>[/if][else][type.convertToJavaType()/][/if]
+[template public convertToJavaType(parameter:Parameter) post (trim())]
+[if (parameter <> null)]
+	[if (parameter.upper = -1)]
+		[if (isOrdered)]
+List<[parameter.type.convertToJavaType()/]>
+		[elseif (isUnique)]
+Set<[type.convertToJavaType()/]>
+		[else]
+Collection<[type.convertToJavaType()/]>
+		[/if]
+	[else]
+[type.convertToJavaType()/]
+	[/if]
+[/if]
 [/template]
 
 
@@ -62,7 +74,11 @@
 
 
 [template public convertToJavaType(primitiveType:PrimitiveType)]
-[getProperty('java.typeconversion.')/][primitiveType.name/]
+[getProperty('java.typeconversion.'.concat(primitiveType.name))/]
+[/template]
+
+[template public convertToJavaWrapperType(primitiveType:PrimitiveType)]
+[getProperty('java.wrapper.' + primitiveType.convertToJavaType())/]
 [/template]
 
 
@@ -97,7 +113,6 @@
 [template public defaultPKTypeWrapper(element:Element)]
 [getProperty('java.wrapper.' + element.defaultPKType())/]
 [/template]
-
 
 [query public isJavaPrimitiveType(type : Type) : Boolean =
 type.convertToJavaType().isPrimitiveType()

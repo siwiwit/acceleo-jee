@@ -225,23 +225,23 @@
 [/template]
 
 
-[template public genInheritance(class:Class, childClass:Class, arg:String)]
+[template public genInheritance(childClass:Class, parentClass:Class, arg:String)]
 
         <joined-subclass            
-            name="[class.entityPackage()/].[class.name/]" 
-            table="[class.name.toSqlNotation()/]"
+            name="[childClass.entityPackage()/].[childClass.name/]" 
+            table="[childClass.name.toSqlNotation()/]"
             dynamic-update="true">
             
-            <key column="FK_INHERITS_[childClass.name.toSqlNotation()/]_ID"/>
+            <key column="FK_INHERITS_[parentClass.name.toSqlNotation()/]_ID"/>
             
             <!-- Properties -->
-[class.ownedAttribute.genProperties()/]
+[childClass.ownedAttribute.genProperties()/]
 
             <!-- Associations -->
-[class.getOppositeAttributes().genAssociations(arg)/]
+[childClass.getOppositeAttributes().genAssociations(arg)/]
 
             <!-- Inheritance -->
-[class.subClass().genInheritance(class, arg)/]
+[childClass.subClass().genInheritance(childClass, arg)/]
         </joined-subclass>
 [/template]
 

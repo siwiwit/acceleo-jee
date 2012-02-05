@@ -1,0 +1,90 @@
+[comment encoding = Cp1252 /]
+[module generateHibernateServiceImpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::requests /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javaclass /]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::structureUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
+[template public generateHibernateServiceImpl(aModel : Model)]
+	[file (aModel.generateProjectFolder().concat(aModel.pathToMainJava()).concat('/org/springframework/').concat(aModel.generateSpecificProjectFolder('')).concat('/hibernate/Hibernate').concat(aModel.generateSpecificProjectFolder('').normalizeJavaName()).concat('.java'), false, 'Cp1252')]
+package org.springframework.[aModel.generateSpecificProjectFolder('')/].hibernate;
+
+import java.util.Collection;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+import [anEntity.generateJavaPackage()/].[anEntity.name/];
+[/for]
+[protected ('user imports')]
+[/protected]
+/**
+ * Hibernate implementation of the [aModel.generateSpecificProjectFolder('')/] interface.
+ *
+ * <p>The mappings are defined in "[aModel.generateSpecificProjectFolder('')/].hbm.xml",
+ * located in the root of the class path.
+ *
+ */
+@SuppressWarnings("unchecked")
+public class Hibernate[aModel.generateSpecificProjectFolder('').normalizeJavaName()/] extends HibernateDaoSupport implements Clinic {
+
+	[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+    public Collection get[anEntity.name/]s() throws DataAccessException {
+		//[protected ('getList')]
+		return getHibernateTemplate().find("from [anEntity.name/] [anEntity.name.toLowerFirst()/]");
+		//[/protected]        
+    }
+
+    public Owner load[anEntity.name/](int id) throws DataAccessException {
+        return ([anEntity.name/]) getHibernateTemplate().load([anEntity.name/].class, new Integer(id));
+    }
+
+    public void store[anEntity.name/]([anEntity.name/] [anEntity.name.toLowerFirst()/]) throws DataAccessException {
+        // Note: Hibernate3's merge operation does not reassociate the object with the
+        // current Hibernate Session. Instead, it will always copy the state over to
+        // a registered representation of the entity. In case of a new entity, it will
+        // register a copy as well, but will not update the id of the passed-in object.
+        // To still update the ids of the original objects too, we need to register
+        // Spring's IdTransferringMergeEventListener on our SessionFactory.
+        getHibernateTemplate().merge([anEntity.name.toLowerFirst()/]);
+    }
+
+		[for (aFinderOperation : Operation | anEntity.getOperations()->select(anOperation:Operation|anOperation.isFinder()))]
+    public Collection [aFinderOperation.getFinderMethodeName()/]([aFinderOperation.generateRawParameters()/]) throws DataAccessException {
+        //return getHibernateTemplate().find("from [anEntity.name/] [anEntity.name.toLowerFirst()/] where "[aFinderOperation.generateFinderQLSample()/]", [aFinderOperation.generateFinderParamArray()/]);
+		[protected ('protected')]
+			throw new java.lang.UnsupportedOperationException();
+		[/protected]
+    }
+		[/for]
+	[/for]
+
+	
+}
+	[/file]
+[/template]
+
+[comment][template public generateFinderParamArray(aFinderOperation : Operation) post (trim())]
+new Object['['/][']'/]{[aFinderOperation.ownedParameter.name->sep(', ')/]}
+[/template]
+
+[template public generateQLSampleTemplate(aParameter : Parameter, prefix : String) post (trim())]
+[prefix/].aParameter = ?
+[/template]
+
+[template public generateFinderQLSample(aFinderOperation : Operation)]
+from [aFinderOperation.owner.oclAsType(Class).name/] [aFinderOperation.owner.oclAsType(Class).name.toLowerFirst()/] where [aFinderOperation.ownedParameter.generateQLSampleTemplate(aFinderOperation.owner.oclAsType(Class).name.toLowerFirst())->sep(' and ')/]
+[/template]
+
+
+[query public getFinderMethodeName(aFinderOperation : Operation) : String = 
+if(aFinderOperation.name.toLowerFirst().startsWith('find')) then
+aFinderOperation.name.toLowerFirst()
+else
+'find'.concat(aFinderOperation.name.toUpperFirst())
+endif 
+/][/comment]

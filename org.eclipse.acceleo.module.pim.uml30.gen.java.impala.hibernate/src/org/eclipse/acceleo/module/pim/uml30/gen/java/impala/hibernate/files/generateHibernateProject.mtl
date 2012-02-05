@@ -1,0 +1,23 @@
+[comment encoding = UTF-8 /]
+[module generateHibernateProject('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::java::HibernateMappingsDAOTest/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::pom::generatePomXml/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::resources::generateHbmXml/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::resources::generateHibenateContextXml/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::resources::generateHsqldbProperties/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::resources::generateModuleProperties/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::hibernate::resources::generateMysqlProperties/]
+
+
+[template public generateHibernateProjectModel(aModel : Model)]
+	
+	[comment @main /]
+	[aModel.HibernateMappingsDAOTest()/]
+	[aModel.generatePomXml()/]
+	[aModel.generateHbmXml()/]
+	[aModel.generateHibenateContextXml()/]
+	[aModel.generateHsqldbProperties()/]
+	[aModel.generateModuleProperties()/]
+	[aModel.generateMysqlProperties()/]
+	
+[/template]

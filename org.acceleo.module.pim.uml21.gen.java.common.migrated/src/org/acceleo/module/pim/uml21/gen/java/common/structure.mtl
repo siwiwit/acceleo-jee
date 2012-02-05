@@ -7,9 +7,17 @@
 class.ownedAttribute->union(class.getOppositeAttributes())
 /]
 
+[query public classAttributes(class : Class, mustBeNavigable : Boolean) : Set(Property) =
+class.ownedAttribute->union(class.getOppositeAttributes(mustBeNavigable))
+/]
+
 [query public getOppositeAttributes(class : Class) : Set(Property) =
+	class.getOppositeAttributes(true)
+/]
+
+[query public getOppositeAttributes(class : Class, mustBeNavigable : Boolean) : Set(Property) =
 if(class.getAssociations()->notEmpty()) then
-	class.getAssociations().memberEnd->select(prop:Property|prop.type<>class and prop.isNavigable())
+	class.getAssociations().memberEnd->select(prop:Property|prop.type<>class and (not mustBeNavigable or prop.isNavigable()))
 else
 	Set{}
 endif
