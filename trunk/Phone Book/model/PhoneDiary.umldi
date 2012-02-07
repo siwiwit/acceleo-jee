@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_8DuuwDx8EeGQ_MNP92IR4Q" activeDiagram="_fg8OQTx9EeGQ_MNP92IR4Q">
+  <model href="PhoneDiary.uml#_0"/>
+  <diagrams xmi:id="_8DuuwTx8EeGQ_MNP92IR4Q" position="0,0" size="100,100" name="No name" viewport="0,0">
+    <property xmi:id="_8Hd_QDx8EeGQ_MNP92IR4Q" key="pageFormatName" value="A4"/>
+    <property xmi:id="_8Hd_QTx8EeGQ_MNP92IR4Q" key="diagramWidth" value="840"/>
+    <property xmi:id="_8Hd_Qjx8EeGQ_MNP92IR4Q" key="diagramHeight" value="1188"/>
+    <property xmi:id="_8Hd_Qzx8EeGQ_MNP92IR4Q" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_8Hd_RDx8EeGQ_MNP92IR4Q" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_8Hd_RTx8EeGQ_MNP92IR4Q" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_8Hd_Rjx8EeGQ_MNP92IR4Q" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_8Hd_Rzx8EeGQ_MNP92IR4Q" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_8Hd_SDx8EeGQ_MNP92IR4Q" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_8Duuwjx8EeGQ_MNP92IR4Q" presentation="org.topcased.modeler.uml.classdiagram">
+      <element href="PhoneDiary.uml#_0"/>
+    </semanticModel>
+  </diagrams>
+  <subdiagrams xmi:id="_fg8OQDx9EeGQ_MNP92IR4Q">
+    <model href="PhoneDiary.uml#PhoneDiary-entity"/>
+    <diagrams xmi:id="_fg8OQTx9EeGQ_MNP92IR4Q" position="0,0" size="100,100" name="entity" viewport="0,261">
+      <property xmi:id="_fhlHcDx9EeGQ_MNP92IR4Q" key="pageFormatName" value="A4"/>
+      <property xmi:id="_fhlHcTx9EeGQ_MNP92IR4Q" key="diagramWidth" value="840"/>
+      <property xmi:id="_fhlHcjx9EeGQ_MNP92IR4Q" key="diagramHeight" value="1188"/>
+      <property xmi:id="_fhlHczx9EeGQ_MNP92IR4Q" key="pageMarginName" value="Small Margin"/>
+      <property xmi:id="_fhlHdDx9EeGQ_MNP92IR4Q" key="diagramTopMargin" value="20"/>
+      <property xmi:id="_fhlHdTx9EeGQ_MNP92IR4Q" key="diagramBottomMargin" value="20"/>
+      <property xmi:id="_fhlHdjx9EeGQ_MNP92IR4Q" key="diagramLeftMargin" value="20"/>
+      <property xmi:id="_fhlHdzx9EeGQ_MNP92IR4Q" key="diagramRightMargin" value="20"/>
+      <property xmi:id="_fhlHeDx9EeGQ_MNP92IR4Q" key="orientation" value="portrait"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fg81UDx9EeGQ_MNP92IR4Q" presentation="org.topcased.modeler.uml.classdiagram">
+        <element href="PhoneDiary.uml#PhoneDiary-entity"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_f-Ut0Dx9EeGQ_MNP92IR4Q" position="319,4" size="342,-1">
+        <anchorage xmi:id="_hOnRADx9EeGQ_MNP92IR4Q" graphEdge="_hPD88Dx9EeGQ_MNP92IR4Q"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_f-Ut0Tx9EeGQ_MNP92IR4Q" presentation="default">
+          <element href="PhoneDiary.uml#PhoneDiary-entity-PhoneDiary"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_f-Ut0jx9EeGQ_MNP92IR4Q">
+          <property xmi:id="_f-Ut0zx9EeGQ_MNP92IR4Q" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_f-Ut1Dx9EeGQ_MNP92IR4Q" presentation="default">
+            <element href="PhoneDiary.uml#PhoneDiary-entity-PhoneDiary"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_f-Ut1Tx9EeGQ_MNP92IR4Q">
+          <property xmi:id="_f-Ut1jx9EeGQ_MNP92IR4Q" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_f-Ut1zx9EeGQ_MNP92IR4Q" presentation="default">
+            <element href="PhoneDiary.uml#PhoneDiary-entity-PhoneDiary"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_gaP00Dx9EeGQ_MNP92IR4Q" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gaP00Tx9EeGQ_MNP92IR4Q" presentation="default">
+              <element href="PhoneDiary.uml#PhoneDiary-entity-PhoneDiary-getListOfContacts"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_hCkZEDx9EeGQ_MNP92IR4Q" position="351,224" size="282,-1">
+        <anchorage xmi:id="_hOnRATx9EeGQ_MNP92IR4Q" graphEdge="_hPD88Dx9EeGQ_MNP92IR4Q"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hCkZETx9EeGQ_MNP92IR4Q" presentation="default">
+          <element href="PhoneDiary.uml#PhoneDiary-entity-Contact"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_hCkZEjx9EeGQ_MNP92IR4Q">
+          <property xmi:id="_hCkZEzx9EeGQ_MNP92IR4Q" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hCkZFDx9EeGQ_MNP92IR4Q" presentation="default">
+            <element href="PhoneDiary.uml#PhoneDiary-entity-Contact"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_hOcR4Dx9EeGQ_MNP92IR4Q" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hOcR4Tx9EeGQ_MNP92IR4Q" presentation="default">
+              <element href="PhoneDiary.uml#PhoneDiary-entity-Contact-name"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_hOgjUDx9EeGQ_MNP92IR4Q" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hOgjUTx9EeGQ_MNP92IR4Q" presentation="default">
+              <element href="PhoneDiary.uml#PhoneDiary-entity-Contact-address"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_hOhxcDx9EeGQ_MNP92IR4Q" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hOhxcTx9EeGQ_MNP92IR4Q" presentation="default">
+              <element href="PhoneDiary.uml#PhoneDiary-entity-Contact-phoneNumber"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_hCkZFTx9EeGQ_MNP92IR4Q">
+          <property xmi:id="_hCkZFjx9EeGQ_MNP92IR4Q" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hCkZFzx9EeGQ_MNP92IR4Q" presentation="default">
+            <element href="PhoneDiary.uml#PhoneDiary-entity-Contact"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_hOiYgDx9EeGQ_MNP92IR4Q" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hOiYgTx9EeGQ_MNP92IR4Q" presentation="default">
+              <element href="PhoneDiary.uml#PhoneDiary-entity-Contact-getPhoneDiary"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_hPD88Dx9EeGQ_MNP92IR4Q" anchor="_hOnRADx9EeGQ_MNP92IR4Q _hOnRATx9EeGQ_MNP92IR4Q">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hPD88Tx9EeGQ_MNP92IR4Q" presentation="default">
+          <element href="PhoneDiary.uml#PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_hPD88jx9EeGQ_MNP92IR4Q" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_hPD88zx9EeGQ_MNP92IR4Q" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_hPD89Dx9EeGQ_MNP92IR4Q" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_hPD89Tx9EeGQ_MNP92IR4Q" id="targetNameEdgeObject" uDistance="26" vDistance="12"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_hPD89jx9EeGQ_MNP92IR4Q" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_hPD89zx9EeGQ_MNP92IR4Q" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_hPD8-Dx9EeGQ_MNP92IR4Q" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_hPD8-Tx9EeGQ_MNP92IR4Q" id="stereotypeEdgeObject" offset="0,-10"/>
+        <waypoints>[5, 101, 0, -117]</waypoints>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_dPGhoE8MEeGJtYLooK--HA" position="59,524" size="100,-1">
+        <anchorage xmi:id="_gv7kEE8MEeGJtYLooK--HA" graphEdge="_gwqj4E8MEeGJtYLooK--HA"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_dPGhoU8MEeGJtYLooK--HA" presentation="default">
+          <element href="PhoneDiary.uml#_dQEyAE8MEeGJtYLooK--HA"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_dPGhok8MEeGJtYLooK--HA">
+          <property xmi:id="_dPGho08MEeGJtYLooK--HA" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_dPGhpE8MEeGJtYLooK--HA" presentation="default">
+            <element href="PhoneDiary.uml#_dQEyAE8MEeGJtYLooK--HA"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_dPGhpU8MEeGJtYLooK--HA">
+          <property xmi:id="_dPGhpk8MEeGJtYLooK--HA" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_dPGhp08MEeGJtYLooK--HA" presentation="default">
+            <element href="PhoneDiary.uml#_dQEyAE8MEeGJtYLooK--HA"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_dgtPAE8MEeGJtYLooK--HA" position="323,520" size="100,-1">
+        <anchorage xmi:id="_gv7kEU8MEeGJtYLooK--HA" graphEdge="_gwqj4E8MEeGJtYLooK--HA"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_dgtPAU8MEeGJtYLooK--HA" presentation="default">
+          <element href="PhoneDiary.uml#_dhRPsE8MEeGJtYLooK--HA"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_dgtPAk8MEeGJtYLooK--HA">
+          <property xmi:id="_dgtPA08MEeGJtYLooK--HA" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_dgtPBE8MEeGJtYLooK--HA" presentation="default">
+            <element href="PhoneDiary.uml#_dhRPsE8MEeGJtYLooK--HA"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_dgtPBU8MEeGJtYLooK--HA">
+          <property xmi:id="_dgtPBk8MEeGJtYLooK--HA" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_dgtPB08MEeGJtYLooK--HA" presentation="default">
+            <element href="PhoneDiary.uml#_dhRPsE8MEeGJtYLooK--HA"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_gwqj4E8MEeGJtYLooK--HA" anchor="_gv7kEE8MEeGJtYLooK--HA _gv7kEU8MEeGJtYLooK--HA">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gwqj4U8MEeGJtYLooK--HA" presentation="default">
+          <element href="PhoneDiary.uml#_gxRn4E8MEeGJtYLooK--HA"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gwqj4k8MEeGJtYLooK--HA" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gwqj408MEeGJtYLooK--HA" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gwqj5E8MEeGJtYLooK--HA" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gwqj5U8MEeGJtYLooK--HA" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gwqj5k8MEeGJtYLooK--HA" visible="false" id="middleNameEdgeObject" offset="0,20"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gwqj508MEeGJtYLooK--HA" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:GraphNode" xmi:id="_gwqj6E8MEeGJtYLooK--HA" position="166,641" size="100,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gwqj6U8MEeGJtYLooK--HA" presentation="default">
+            <element href="PhoneDiary.uml#_gxRn4E8MEeGJtYLooK--HA"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_gwqj6k8MEeGJtYLooK--HA">
+            <property xmi:id="_gwqj608MEeGJtYLooK--HA" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gwqj7E8MEeGJtYLooK--HA" presentation="default">
+              <element href="PhoneDiary.uml#_gxRn4E8MEeGJtYLooK--HA"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_gwqj7U8MEeGJtYLooK--HA">
+            <property xmi:id="_gwqj7k8MEeGJtYLooK--HA" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gwqj708MEeGJtYLooK--HA" presentation="default">
+              <element href="PhoneDiary.uml#_gxRn4E8MEeGJtYLooK--HA"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+    </diagrams>
+  </subdiagrams>
+</diagrams:Diagrams>
