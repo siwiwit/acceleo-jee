@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:persistence="http:///schemas/persistence/_cJBbIDxvEeCI66ZuyT0eiA/0" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/persistence/_cJBbIDxvEeCI66ZuyT0eiA/0 pathmap://APP_PROFILES/org.andromda.profile.persistence.profile.uml#_cJfWpTxvEeCI66ZuyT0eiA">
+  <uml:Model xmi:id="_0" name="phone-diary">
+    <elementImport xmi:id="_elementImport.0">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.1">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.2">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.3">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.4">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.5">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.6">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.7">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.8">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.9">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </elementImport>
+    <elementImport xmi:id="_elementImport.10">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="PhoneDiary" name="PhoneDiary">
+      <packagedElement xmi:type="uml:Package" xmi:id="PhoneDiary-dao" name="dao"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="PhoneDiary-dto" name="dto"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="PhoneDiary-entity" name="entity">
+        <packagedElement xmi:type="uml:Class" xmi:id="PhoneDiary-entity-PhoneDiary" name="PhoneDiary">
+          <ownedOperation xmi:id="PhoneDiary-entity-PhoneDiary-getListOfContacts" name="getListOfContacts">
+            <ownedParameter xmi:id="PhoneDiary-entity-PhoneDiary-getListOfContacts-return" name="return" type="PhoneDiary-entity-Contact" direction="return">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="PhoneDiary-entity-PhoneDiary-getListOfContacts-return-_upperValue" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PhoneDiary-entity-PhoneDiary-getListOfContacts-return-_lowerValue"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="PhoneDiary-entity-Contact" name="Contact">
+          <ownedAttribute xmi:id="PhoneDiary-entity-Contact-name" name="name">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="PhoneDiary-entity-Contact-address" name="address">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="PhoneDiary-entity-Contact-phoneNumber" name="phoneNumber">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="PhoneDiary-entity-Contact-getPhoneDiary" name="getPhoneDiary">
+            <ownedParameter xmi:id="PhoneDiary-entity-Contact-getPhoneDiary-return" name="return" type="PhoneDiary-entity-PhoneDiary" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E" name="A_&lt;phoneDiary>_&lt;contact>" memberEnd="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-phoneDiary PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-contacts" navigableOwnedEnd="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-phoneDiary PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-contacts">
+          <ownedEnd xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-phoneDiary" name="phoneDiary" type="PhoneDiary-entity-PhoneDiary" association="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-phoneDiary-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-phoneDiary-_lowerValue" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-contacts" name="contacts" type="PhoneDiary-entity-Contact" association="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-contacts-_upperValue" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PhoneDiary-entity-A_3CphoneDiary3E_3Ccontact3E-contacts-_lowerValue"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="PhoneDiary-entity-Class1" name="Class1"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="PhoneDiary-entity-Class2" name="Class2"/>
+        <packagedElement xmi:type="uml:AssociationClass" xmi:id="PhoneDiary-entity-A12" name="A12" memberEnd="PhoneDiary-entity-A12-class1 PhoneDiary-entity-A12-class2" navigableOwnedEnd="PhoneDiary-entity-A12-class2">
+          <ownedEnd xmi:id="PhoneDiary-entity-A12-class1" name="class1" type="PhoneDiary-entity-Class1" association="PhoneDiary-entity-A12">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="PhoneDiary-entity-A12-class1-_upperValue" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PhoneDiary-entity-A12-class1-_lowerValue"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="PhoneDiary-entity-A12-class2" name="class2" type="PhoneDiary-entity-Class2" association="PhoneDiary-entity-A12">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="PhoneDiary-entity-A12-class2-_upperValue" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PhoneDiary-entity-A12-class2-_lowerValue"/>
+          </ownedEnd>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="PhoneDiary-controller" name="controller"/>
+    </packagedElement>
+    <profileApplication xmi:id="_profileApplication.0">
+      <eAnnotations xmi:id="_profileApplication.0-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://APP_PROFILES/org.andromda.profile.persistence.profile.uml#_cJfWpTxvEeCI66ZuyT0eiA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://APP_PROFILES/org.andromda.profile.persistence.profile.uml#_11_5_e240333_1154527540265_181005_899"/>
+    </profileApplication>
+  </uml:Model>
+  <persistence:Entity xmi:id="_1" base_Class="PhoneDiary-entity-Contact"/>
+  <persistence:Entity xmi:id="_2" base_Class="PhoneDiary-entity-PhoneDiary"/>
+</xmi:XMI>
