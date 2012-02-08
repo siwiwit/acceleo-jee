@@ -10,6 +10,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoUtil /]
+[import org::acceleo::module::pim::uml21::services::uml2services /]
 [template public generateDaoBase(aClass : Class)]
 	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToGeneratedMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('DaoBase.java'), false, 'UTF-8')]
 package [aClass.generateJavaPackage()/];
@@ -187,10 +188,8 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public Collection<?> loadAll(final int transform, final int pageNumber, final int pageSize)
-    {
-        try
-        {
+    public Collection<?> loadAll(final int transform, final int pageNumber, final int pageSize)  {
+        try {
             final Criteria criteria = this.getSession(false).createCriteria([aClass.name/]Impl.class);
             if (pageNumber > 0 && pageSize > 0)
             {
@@ -201,8 +200,7 @@ public abstract class [aClass.name/]DaoBase
             this.transformEntities(transform, results);
             return results;
         }
-        catch (HibernateException ex)
-        {
+        catch (HibernateException ex) {
             throw super.convertHibernateAccessException(ex);
         }
     }
@@ -213,8 +211,7 @@ public abstract class [aClass.name/]DaoBase
      * @param pageSize
      * @return firstResult
      */
-    protected int calculateFirstResult(int pageNumber, int pageSize)
-    {
+    protected int calculateFirstResult(int pageNumber, int pageSize) {
         int firstResult = 0;
         if (pageNumber > 0)
         {
@@ -227,8 +224,7 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public [aClass.name/] create([aClass.name/] [aClass.name/])
-    {
+    public [aClass.name/] create([aClass.name/] [aClass.name/]) {
         return ([aClass.name/])this.create([aClass.name/]Dao.TRANSFORM_NONE, [aClass.name/]);
     }
 
@@ -236,8 +232,7 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public Object create(final int transform, final [aClass.name/] [aClass.name/])
-    {
+    public Object create(final int transform, final [aClass.name/] [aClass.name/]) {
         if ([aClass.name/] == null)
         {
             throw new IllegalArgumentException(
@@ -252,8 +247,7 @@ public abstract class [aClass.name/]DaoBase
      */
     
     @SuppressWarnings({"unchecked"})
-    public Collection<[aClass.name/]> create(final Collection<[aClass.name/]> entities)
-    {
+    public Collection<[aClass.name/]> create(final Collection<[aClass.name/]> entities) {
         return (Collection<[aClass.name/]>) create([aClass.name/]Dao.TRANSFORM_NONE, entities);
     }
 
@@ -261,8 +255,7 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public Collection<?> create(final int transform, final Collection<[aClass.name/]> entities)
-    {
+    public Collection<?> create(final int transform, final Collection<[aClass.name/]> entities) {
         if (entities == null)
         {
             throw new IllegalArgumentException(
@@ -288,35 +281,8 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-	
-
-    [comment]public [aClass.name/] create([aClass.ownedAttribute.asParameter()->sep(', ')/])
-    {
-        return ([aClass.name/])this.create([aClass.name/]Dao.TRANSFORM_NONE, [aClass.ownedAttribute.name->sep(', ')/]);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    
-    public Object create(
-        final int transform,
-        [aClass.ownedAttribute.asParameter()->sep(', ')/])
-    {
-        [aClass.name/] entity = new [aClass.name/]Impl();
-		[for (aProp : Property | aClass.ownedAttribute)]
-	    entity.set[aProp.name.toUpperFirst()/]([aProp.name.toLowerFirst()/]);
-		[/for]
-        return this.create(transform, entity);
-    }[/comment]
-
-    /**
-     * {@inheritDoc}
-     */
-    
     public [aClass.name/] create(
-        [aClass.classAttributes()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/])
-    {
+        [aClass.classAttributes()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/]) {
         return ([aClass.name/])this.create([aClass.name/]Dao.TRANSFORM_NONE
 		[if (aClass.classAttributes()->filter(Property)->select(not (isPK()))->notEmpty())]
 			, [aClass.classAttributes()->filter(Property)->select(not (isPK())).name->sep(', ')/]
@@ -330,8 +296,7 @@ public abstract class [aClass.name/]DaoBase
     
     public Object create(
         final int transform[if (aClass.classAttributes()->notEmpty())], [aClass.classAttributes()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/][/if]
-        )
-    {
+        ) {
         [aClass.name/] entity = new [aClass.name/]Impl();
 		[for (aProp : Property | aClass.classAttributes())]
 	    entity.set[aProp.name.toUpperFirst()/]([aProp.name.toLowerFirst()/]);
@@ -431,7 +396,7 @@ public abstract class [aClass.name/]DaoBase
 	[for (aFinderMethod : Operation | aClass.ownedOperation->select(anOper:Operation|anOper.isFinder()))]
     public [aFinderMethod.generateReturn()/] [aFinderMethod.name.toLowerFirst()/]([aFinderMethod.generateParameters()/])
     {
-		[for (aParam : Parameter | aFinderMethod.ownedParameter)]
+		[for (aParam : Parameter | aFinderMethod.getRealParameters())]
         if ([aParam.name.toLowerFirst()/] == null)
         {
             throw new IllegalArgumentException(
@@ -838,33 +803,6 @@ public abstract class [aClass.name/]DaoBase
     }
 
     // spring-hibernate-dao-base merge-point
-
-		[for (anSimpleOperation : Operation | aClass.ownedOperation->select(oper:Operation|oper.isFinder()))]
-[anSimpleOperation.generateJavadoc()/]
-    protected abstract [anSimpleOperation.generateReturn()/] handle[anSimpleOperation.name.toUpperFirst()/]([anSimpleOperation.generateParameters()/])
-        throws Exception;
-
-[anSimpleOperation.generateJavadoc()/]
-    public [anSimpleOperation.generateReturn()/] [anSimpleOperation.name.toLowerFirst()/]([anSimpleOperation.generateParameters()/])
-    {
-        if (criteria == null)
-        {
-            throw new IllegalArgumentException(
-                "[if (aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/]Dao.[anSimpleOperation.name.toLowerFirst()/]([anSimpleOperation.generateParameters()/]) - 'criteria' can not be null");
-        }
-        try
-        {
-            return this.handle[anSimpleOperation.name.toUpperFirst()/](criteria);
-        }
-        catch (Throwable th)
-        {
-            throw new RuntimeException(
-            "Error performing '[name.toUpperFirst()/].[anSimpleOperation.name.toLowerFirst()/]([anSimpleOperation.generateParameters()/])' --> " + th,
-            th);
-        }
-    }
-
-		[/for]
 
 }	[/file]
 [/template]
