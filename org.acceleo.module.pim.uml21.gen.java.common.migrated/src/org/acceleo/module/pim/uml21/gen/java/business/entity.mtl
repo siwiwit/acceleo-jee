@@ -74,7 +74,7 @@ public class [class.name/][class.extensions()/] implements Serializable[if (clas
 
 [/if]
 
-[for (prop:Property|class.classAttributes()->union(class.getOtherPKProperties()))]
+[for (prop:Property|class.classAttributes()->union(class.getOtherPKProperties()->asSequence()))]
     /**
      * Constant representing the name of the field [prop.name/].
      */
