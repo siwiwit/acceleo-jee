@@ -73,7 +73,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
      */
     public static final String PROP_ID = "id";
 
-[for (prop:Property|aClass.classAttributes()->union(aClass.getOtherPKProperties())->asSet())]
+[for (prop:Property|aClass.classAttributes()->union(aClass.getOtherPKProperties()->asSequence()))]
     /**
      * Constant representing the name of the field [prop.name/].
      */
