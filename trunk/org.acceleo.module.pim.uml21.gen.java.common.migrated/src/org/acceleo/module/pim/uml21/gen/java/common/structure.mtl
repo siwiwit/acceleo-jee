@@ -3,19 +3,19 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 [import org::acceleo::module::pim::uml21::services::stringservice /]
 
-[query public classAttributes(class : Class) : Set(Property) =
-class.ownedAttribute->union(class.getOppositeAttributes())
+[query public classAttributes(class : Class) : Sequence(Property) =
+class.ownedAttribute->asSequence()->union(class.getOppositeAttributes())->asSequence()
 /]
 
-[query public classAttributes(class : Class, mustBeNavigable : Boolean) : Set(Property) =
-class.ownedAttribute->union(class.getOppositeAttributes(mustBeNavigable))
+[query public classAttributes(class : Class, mustBeNavigable : Boolean) : Sequence(Property) =
+class.ownedAttribute->asSequence()->union(class.getOppositeAttributes(mustBeNavigable))
 /]
 
-[query public getOppositeAttributes(class : Class) : Set(Property) =
+[query public getOppositeAttributes(class : Class) : Sequence(Property) =
 	class.getOppositeAttributes(true)
 /]
 
-[query public getOppositeAttributes(class : Class, mustBeNavigable : Boolean) : Set(Property) =
+[query public getOppositeAttributes(class : Class, mustBeNavigable : Boolean) : Sequence(Property) =
 if(class.getAssociations()->notEmpty()) then
 	class.getAssociations().memberEnd->select(prop:Property|prop.type<>class and (not mustBeNavigable or prop.isNavigable()))
 else
