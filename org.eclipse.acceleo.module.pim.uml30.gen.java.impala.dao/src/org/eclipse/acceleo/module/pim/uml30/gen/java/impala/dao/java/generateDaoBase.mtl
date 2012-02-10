@@ -57,7 +57,7 @@ import [prop.type.generateJavaPackage()/].[prop.type.name/];
 	[/if]
 [/for]
 
-[for (aDtoClass:Class | aClass.getRelatedDtos())]
+[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [aDtoClass.generateJavaPackage()/].[aDtoClass.name/];
 	[/if]
@@ -94,9 +94,9 @@ public abstract class [aClass.name/]DaoBase
      * Sets the reference to <code>[aDao.name/]Dao</code>.
      * @param [aDao.name/]DaoIn
      */
-    public void set[aDao.name/]Dao([aDao.name/]Dao [aDao.name/]DaoIn)
+    public void set[aDao.name/]Dao([aDao.name/]Dao [aDao.name.toLowerFirst()/]DaoIn)
     {
-        this.[aDao.name/]Dao = [aDao.name/]DaoIn;
+        this.[aDao.name.toLowerFirst()/]Dao = [aDao.name.toLowerFirst()/]DaoIn;
     }
 
     /**
@@ -105,7 +105,7 @@ public abstract class [aClass.name/]DaoBase
      */
     protected [aDao.name/]Dao get[aDao.name/]Dao()
     {
-        return this.[aDao.name/]Dao;
+        return this.[aDao.name.toLowerFirst()/]Dao;
     }
 	[/for]
 
@@ -652,7 +652,9 @@ public abstract class [aClass.name/]DaoBase
 		
 		[for (aProperty : Property | aClass.ownedAttribute)]
 			[if (aDtoClass.ownedAttribute.name->exists(name:String|name = aProperty.name))]
+				[if (aDtoClass.ownedAttribute->select(aDtoProp:Property|aDtoProp.name = aProperty.name ).type->first()=aProperty.type)]
         target.set[aProperty.name.toUpperFirst()/](source.get[aProperty.name.toUpperFirst()/]());
+				[/if]
 			[/if]
 		[/for]
     }
@@ -682,10 +684,12 @@ public abstract class [aClass.name/]DaoBase
         boolean copyIfNull)
     {
 		[for (aProperty : Property | aClass.ownedAttribute)]
-			[if (aDtoClass.ownedAttribute.name->exists(name:String|name = aProperty.name))]
-        if (copyIfNull || source.get[aProperty.name.toUpperFirst()/]() != null) {
+			[if (aDtoClass.ownedAttribute->exists(aDtoProp:Property|aDtoProp.name = aProperty.name ))]
+				[if (aDtoClass.ownedAttribute->select(aDtoProp:Property|aDtoProp.name = aProperty.name ).type->first()=aProperty.type)]
+        if (copyIfNull[if (not aProperty.type.isJavaPrimitiveType())] || source.get[aProperty.name.toUpperFirst()/]() != null[/if]) {
             target.set[aProperty.name.toUpperFirst()/](source.get[aProperty.name.toUpperFirst()/]());
         }
+				[/if]
 			[/if]
 		[/for]
     }

@@ -15,7 +15,7 @@ package [aClass.generateJavaPackage()/];
 
 //[protected ('import')]
 
-[for (aDtoClass:Class | aClass.getRelatedDtos())]
+[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' or aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [if(aDtoClass.generateJavaPackage().trim().size()>0)][aDtoClass.generateJavaPackage()/].[/if][aDtoClass.name/];
 	[/if]
