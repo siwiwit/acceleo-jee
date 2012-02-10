@@ -36,11 +36,12 @@ import [prop.type.generateJavaPackage()/].[prop.type.name/];
 import [aClass.superClass.generateJavaPackage()/].[aClass.superClass.name/];
 [/if]
 
-[for (aDtoClass:Class | aClass.getRelatedDtos())]
+[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [aDtoClass.generateJavaPackage()/].[aDtoClass.name/];
 	[/if]
 [/for]
+
 
 import dao.common.Search;
 // [/protected] for imports
@@ -111,7 +112,7 @@ public interface [aClass.name.toUpperFirst()/]Dao
      * @param copyIfNull If FALSE, the value object's field will not be copied to the entity if the value is NULL. If TRUE,
      * it will be copied regardless of its value.
      */
-    void [aClass.name.toLowerFirst()/]ToEntity(
+    void [aDtoClass.name.toLowerFirst()/]ToEntity(
         [aDtoClass.name.toUpperFirst()/] source,
         [aClass.name.toUpperFirst()/] target,
         boolean copyIfNull);
@@ -352,7 +353,7 @@ public interface [aClass.name.toUpperFirst()/]Dao
 
 	[for (anSimpleOperation : Operation | aClass.ownedOperation->select(oper:Operation|oper.isFinder()))]
 [anSimpleOperation.generateJavadoc()/]
-    [anSimpleOperation.generateReturn()/] [anSimpleOperation.name.toLowerFirst()/]([anSimpleOperation.generateParameters()/])
+    [anSimpleOperation.generateReturn()/] [anSimpleOperation.name.toLowerFirst()/]([anSimpleOperation.generateParameters()/]);
 	[/for]
 	
     /**
@@ -442,10 +443,10 @@ public interface [aClass.name.toUpperFirst()/]Dao
 
     // spring-dao merge-point
 
-		[for (anSimpleOperation : Operation | aClass.ownedOperation->select(oper:Operation|oper.isFinder()))]
+		[comment][for (anSimpleOperation : Operation | aClass.ownedOperation->select(oper:Operation|oper.isFinder()))]
 	[anSimpleOperation.generateJavadoc()/]
 	[anSimpleOperation.generateReturn()/] [anSimpleOperation.name/]([anSimpleOperation.generateParameters()/]);
-		[/for]
+		[/for][/comment]
 }	[/file]
 	
 [/template]
