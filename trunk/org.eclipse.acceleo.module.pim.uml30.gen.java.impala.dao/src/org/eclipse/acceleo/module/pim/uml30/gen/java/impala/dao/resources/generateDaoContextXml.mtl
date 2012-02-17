@@ -17,7 +17,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/schema/service-registry.xsd">
 
-	<service:export-array beanNames="[aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()).name.toLower()->sep(',')/]"/>
+	<service:export-array beanNames="[aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()).name.toLower().concat('dao')->sep(',')/]"/>
 	<service:import id = "dataSource" proxyTypes = "javax.sql.DataSource"/>
     
 	<service:import id = "sessionFactory" proxyTypes = "org.hibernate.SessionFactory"/> 
@@ -39,7 +39,7 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
 [/for]    
   
 [for (aEntityClass : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
-	<bean id="[aEntityClass.name.toLower()/]dao" class="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]Dao">
+	<bean id="[aEntityClass.name.toLower()/]dao" class="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]DaoImpl">
 	    <property name="sessionFactory" ref = "sessionFactory"/>
 	</bean>
 [/for]

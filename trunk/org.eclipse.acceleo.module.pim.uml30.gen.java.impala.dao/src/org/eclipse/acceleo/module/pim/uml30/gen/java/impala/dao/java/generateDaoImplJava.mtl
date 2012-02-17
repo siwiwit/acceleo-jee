@@ -9,17 +9,59 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::requests /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::common /]
 [template public generateDaoImplJava(aClass : Class)]
 [file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('DaoImpl.java'), false, 'UTF-8')]
 package [aClass.generateJavaPackage()/];
 
 //[protected ('import')]
+[comment][let manyProps : Sequence(Property) = aClass.classAttributes()->select(p:Property|p.upper = -1 or p.upper > 1)]
+	[if (manyProps->notEmpty())]
+		[if (manyProps->select(isOrdered)->notEmpty())]
+import java.util.List;
+import java.util.ArrayList;
+		[/if]
+		[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
+import java.util.Set;
+import java.util.HashSet;
+		[/if]
+		[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
+import java.util.Collection;
+		[/if]
+	[/if]
+[/let][/comment]
 
-[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' or aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
+[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [if(aDtoClass.generateJavaPackage().trim().size()>0)][aDtoClass.generateJavaPackage()/].[/if][aDtoClass.name/];
 	[/if]
 [/for]
+
+[if (aClass.getMultiplicity()->notEmpty())]
+	[let manyProps : Set(MultiplicityElement) = aClass.getMultiplicity()]
+		[if (manyProps->notEmpty())]
+			[if (manyProps->select(isOrdered)->notEmpty())]
+import java.util.List;
+import java.util.ArrayList;
+			[/if]
+			[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
+import java.util.Set;
+import java.util.HashSet;
+			[/if]
+			[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
+import java.util.Collection;
+			[/if]
+		[/if]
+	[/let]
+	[for (aMultiplicityElement:MultiplicityElement | aClass.getMultiplicity())]
+		[if (aMultiplicityElement.oclIsTypeOf(Type))]
+			[if (aClass.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
+import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
+			[/if]
+		[/if]		
+	[/for]
+[/if]
+
 
 //[/protected]
 /**
@@ -31,6 +73,7 @@ public class [aClass.name/]DaoImpl
 [anSimpleOperation.generateJavadoc()/]
     protected [anSimpleOperation.generateReturn()/] handle[anSimpleOperation.name.toUpperFirst()/]([anSimpleOperation.generateParameters()/])
         throws Exception {
+		throw new UnsupportedOperationException();
 	}
 [/for]
 
@@ -57,7 +100,7 @@ public class [aClass.name/]DaoImpl
         return entity;
     }
 
-    /**
+    [comment]/**
      * @see [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/]#to[aDtoClass.name.toUpperFirst()/]([aClass.name.toUpperFirst()/], [aDtoClass.name.toUpperFirst()/]) 
      */
     public void to[aDtoClass.name.toUpperFirst()/](
@@ -66,7 +109,7 @@ public class [aClass.name/]DaoImpl
     {
         // TODO verify behavior of to[aDtoClass.name.toUpperFirst()/]
         super.to[aDtoClass.name.toUpperFirst()/](sourceEntity, targetVO);
-    }
+    }[/comment]
 
 	 /**
      * Retrieves the entity object that is associated with the specified value object
