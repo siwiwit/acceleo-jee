@@ -166,6 +166,16 @@ else
 endif
 /]
 
+[query public getHighestEntity(anEntity : Class) : Class = 
+if(anEntity.superClass->notEmpty() and anEntity.superClass->asSequence()->first().isEntity()) then
+	anEntity.superClass->asSequence()->first().getHighestEntity()
+else
+	anEntity
+endif
+/]
+
+
+
 [comment][query public getFields(anEntity : Class) : Set(Property) = 
 anEntity.classAttributes()->filter(Property)->select(aProperty:Property|not aProperty.isPK() and (aProperty.type.isSimpleType() or aProperty.type.oclIsTypeOf(Enumeration))) 
 /][/comment]
