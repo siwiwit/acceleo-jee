@@ -30,7 +30,7 @@ arg0
 [for (anEntity:Class | aModel.eAllContents(Class)->select(anEntity:Class|anEntity.isEntity() and anEntity.hasNoEntityParent()))]
 	[let arg : String = anEntity.name.concat('Object')]
     <class 
-        name="[anEntity.generateJavaPackage()/].[anEntity.name/]" 
+        name="[anEntity.generateJavaPackage()/].[anEntity.name/]Impl" 
         table="[anEntity.name.toSqlNotation()/]" 
         dynamic-update="true">
 		<!-- ID from the model -->
@@ -82,6 +82,11 @@ arg0
 [if (not (property.isDerived) and property.upper = 1)]
         <property name="[property.name/]">
             <column name="[property.name.toSqlNotation()/]"/>
+	[if (property.type.oclIsTypeOf(Enumeration))]
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name.toUpperFirst()/]</param>
+			</type>
+	[/if]
         </property>
 [/if]
 
@@ -99,7 +104,7 @@ arg0
 	[property.genDiagram(arg)/]
         <many-to-one 
             name="[property.name/]" 
-            class="[property.type.generateJavaPackage()/].[property.type.name/]" 
+            class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl" 
             column="FK_[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"
             cascade="persist,merge,save-update[if (property.isComposite)],delete[/if]"
             [if (property.lower > 0)]unique="true"[/if]/>
@@ -108,7 +113,7 @@ arg0
 	[property.genDiagram(arg)/]
         <many-to-one 
             name="[property.name/]" 
-            class="[property.type.generateJavaPackage()/].[property.type.name/]" 
+            class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl" 
             column="FK_[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"
             />
 		[/if]
@@ -121,13 +126,13 @@ arg0
         <list name="[property.name/]" lazy="true"[if (property.isComposite or property.aggregation = 'shared')] cascade="all"[/if]>
             <key column="[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"/>             
             <list-index column="IDX"/>            
-            <one-to-many class="[property.type.generateJavaPackage()/].[property.type.name/]"/>
+            <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
         </list>                
 			[else]
                 <!-- Aggregation Type : [property.aggregation/] -->
         <set name="[property.name/]" lazy="true"[if (property.isComposite or property.aggregation = 'shared')] cascade="all"[/if]> 
             <key column="[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"/>            
-            <one-to-many class="[property.type.generateJavaPackage()/].[property.type.name/]"/>
+            <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
         </set>
 			[/if]
 		[else]
@@ -138,14 +143,14 @@ arg0
             <key column="[property.oppositeAttribute().type.name.toSqlNotation()/]_ID"/>
             <index column="IDX"/>
             <many-to-many                 
-                class="[property.type.generateJavaPackage()/].[property.type.name/]"
+                class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
                 column="[property.type.name.toSqlNotation() /]_ID"/>
          </list>                
 			[else]
         <set name="[property.name/]" table="[property.oppositeAttribute().type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]">
             <key column="[property.oppositeAttribute().type.name.toSqlNotation()/]_ID"/>
             <many-to-many                 
-                class="[property.type.generateJavaPackage()/].[property.type.name/]"
+                class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
                 column="[property.type.name.toSqlNotation()/]_ID"/>
          </set>
 			[/if]
@@ -163,7 +168,7 @@ arg0
 	[property.genDiagram(arg)/]
         <one-to-one 
             name="[property.name/]"             
-            class="[property.type.generateJavaPackage()/].[property.type.name/]" 
+            class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl" 
             property-ref="[property.opposite.name/]"
             cascade="all"/>
 			[else]
@@ -171,7 +176,7 @@ arg0
 	[property.genDiagram(arg)/]
         <many-to-one 
             name="[property.name/]"             
-            class="[property.type.generateJavaPackage()/].[property.type.name/]" 
+            class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl" 
             column="FK_[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"
             cascade="all"
 				[if (property.lower > 0)]unique="true"[/if]/>
@@ -180,7 +185,7 @@ arg0
 [comment  *<-->1 /][comment if (    isMainEndPoint()  == "true" || opposite.upper != 1 ){/][comment  |*|<-->1 /]        
 	[property.genDiagram(arg)/]
         <many-to-one             
-            class="[property.type.generateJavaPackage()/].[property.type.name/]"
+            class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
             column="FK_[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"
             name="[property.name/]"
 			[if (property.opposite.isComposite())] cascade="all"[/if]
@@ -203,12 +208,12 @@ arg0
          		        <list name="[property.name/]" [if (property.isComposite())] cascade="all-delete-orphan"[/if]>
          		            <key column="FK_[property.oppositeAttribute().type.name.toSqlNotation()/]_[property.oppositeAttribute().name.toSqlNotation()/]_ID" not-null="true"/>
          		            <list-index column="[property.name.toSqlNotation()/]_IDX"/>
-         		            <one-to-many class="[property.type.generateJavaPackage()/].[property.type.name/]"/>
+         		            <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
          		         </list>
          	[else]
          		        <set name="[property.name/]" inverse="true"[if (property.isComposite())] cascade="all-delete-orphan"[/if]>
                      <key column="FK_[property.opposite.type.name.toSqlNotation()/]_[opposite.name.toSqlNotation() /]_ID"/>            
-                     <one-to-many class="[property.type.generateJavaPackage() /].[type.name/]"/>
+                     <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
                   </set>
          	[/if]
          [else]
@@ -219,7 +224,7 @@ arg0
                  <set name="[property.name/]" table="[property.name.toSqlNotation()/]_[property.opposite.name.toSqlNotation()/]">
                      <key column="FK_[property.name.toSqlNotation()/]_ID"/>
                      <many-to-many                 
-                         class="[property.type.generateJavaPackage()/].[type.name/]"
+                         class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
                          column="[property.name.toSqlNotation()/]_ID"/>
                   </set>
          	[else]
@@ -228,7 +233,7 @@ arg0
                  <set name="[property.name/]" inverse="true">
                      <key column="FK_[property.name.toSqlNotation()/]_ID"/>
                      <many-to-many                 
-                         class="[property.type.generateJavaPackage()/].[property.type.name/]"
+                         class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
                          column="[property.name.toSqlNotation()/]_ID"/>
                   </set>
          	[/if]
@@ -240,9 +245,8 @@ arg0
 
 
 [template public genInheritance(childClass:Class, parentClass:Class, arg:String)]
-
         <joined-subclass            
-            name="[childClass.generateJavaPackage()/].[childClass.name/]" 
+            name="[if (childClass.generateJavaPackage().trim().size()>0)][childClass.generateJavaPackage()/].[/if][childClass.name/]Impl" 
             table="[childClass.name.toSqlNotation()/]"
             dynamic-update="true">
 		[if (parentClass.hasPrimaryKey())]
