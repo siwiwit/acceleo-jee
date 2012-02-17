@@ -13,11 +13,13 @@
 [import org::acceleo::module::pim::uml21::gen::java::spring::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::entityUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon/]
+
 [template public generateAbstractEntityJava(aClass : Class)]
 [aClass.generateJavaClass()/]
 [/template]
 
-[template private generateJavaClass(aClass : Class) overrides generateJavaClass ]
+[template private generateJavaClass(aClass : Class) overrides generateJavaClass ? (not aClass.hasEntityParent()) ]
 [comment This template is called by the main module file /]
 	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToGeneratedMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('.java'), false, 'ISO-8859-1')]
 package [aClass.generateJavaPackage()/];
@@ -65,7 +67,7 @@ import [aClass.superClass.generateJavaPackage()/].[aClass.superClass.name/];
  * Warning: no comment in the model for interface [name/].
 [/if]
  */
-public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0)] extends [aClass.implementedInterfaces()/][/if]
+public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0)] implementes [aClass.implementedInterfaces()/][/if]
  {
 
     /**
@@ -126,7 +128,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
     public void setId(final [aClass.getPrimaryTypeName()/] id) {
         this.id = id;
     }
-[let props : Set(Property) = aClass.classAttributes()->filter(Property)->select(not (isPK()))]
+[let props : Sequence(Property) = aClass.classAttributes()->filter(Property)->select(not (isPK()))]
 	[if (props->size() > 0)]
 
     /**
@@ -276,62 +278,6 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
 [/if]
 [comment  Recopie vers et depuis les value objects /]
 
-[if (aClass.dtoPerEntity())]
-    /**
-     * Provides a Data value object corresponding to this entity.
-     * @return Returns a new instance of [aClass.dtoName()/] which contains
-     * the same values as the current entity.
-     */
-    public [aClass.dtoName()/] get[aClass.dtoSuffix()/]() {
-        [aClass.dtoName()/] result = new [aClass.dtoName()/]();
-        copyTo[aClass.dtoSuffix()/](result);
-        return result;
-    }
-
-    /**
-     * Copies the current entity to the given value object. Associations are
-     * NOT copied.
-     * @param aValueObject The value object to get the values from.
-     */
-    public void copyTo[aClass.dtoSuffix()/](final [aClass.dtoName()/] aValueObject) {
-	[if (aClass.superClass->size()>0)]
-        super.copyTo[aClass.dtoSuffix()/](aValueObject);
-	[/if]
-	[for (aClass.ownedAttribute->select(not (type.oclAsType(Class).isEntity()) and not (isDerived)))]
-        aValueObject.set[name.toUpperFirst()/](get[name.toUpperFirst()/]());
-	[/for]
-    }
-
-    /**
-     * Updates the values of this entity from those of the given value object.
-     * Associations are NOT updated.
-     * <strong>N.B.</strong> The PK value is not updated.
-     * @param aValueObject The value object to copy the values to.
-     */
-    public void updateFrom[aClass.dtoSuffix()/](final [aClass.dtoName()/] aValueObject) {
-	[if (aClass.superClass->notEmpty())]
-        super.updateFrom[aClass.dtoSuffix()/](aValueObject);
-	[/if]
-	==[aClass.ownedAttribute->select((not type.oclAsType(Class).isEntity()))/]==
-	==[aClass.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived))/]==
-	==[aClass.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived))/]==
-	==[aClass.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived))/]==
-	[for (prop:Property|aClass.ownedAttribute->select((not type.oclAsType(Class).isEntity()) and (not isPK()) and (not isDerived)))]
-        set[prop.name.toUpperFirst()/](aValueObject.get[prop.name.toUpperFirst()/]());
-	[/for]
-    }
-
-[/if]
-[comment][for (oper:Operation|aClass.ownedOperation->select(anOpeation:Operation|not (anOpeation.hasStereotype(getProperty('find')))))]
-[oper.generateJavadoc()/]
-    [oper.signature()/] {
-        // [protected ('finder')]
-        // TODO implement [oper.name/]
-        throw new UnsupportedOperationException("Method not yet implemented");
-        // [/protected]
-    }
-
-[/for][/comment]
     /**
      * Equality test based on attributes values.
      * @param other Value to compare

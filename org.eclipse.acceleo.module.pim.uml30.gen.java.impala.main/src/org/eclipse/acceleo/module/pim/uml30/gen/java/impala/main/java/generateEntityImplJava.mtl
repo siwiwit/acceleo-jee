@@ -13,6 +13,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::spring::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::entityUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
 [template public generateEntityImplJava(aClass : Class)]
 [aClass.generateJavaClass()/]
 [/template]
@@ -65,7 +66,7 @@ import [aClass.superClass.generateJavaPackage()/].[aClass.superClass.name/];
  * Warning: no comment in the model for interface [name/].
 [/if]
  */
-public class [aClass.name/]Impl extends [aClass.name/] {
+public class [aClass.name/]Impl extends [if (aClass.hasEntityParent())][aClass.superClass.name.toUpperFirst()/]Impl[else][aClass.name.toUpperFirst()/][/if] {
 
     /**
      * serialVersionUID is used for serialization.
