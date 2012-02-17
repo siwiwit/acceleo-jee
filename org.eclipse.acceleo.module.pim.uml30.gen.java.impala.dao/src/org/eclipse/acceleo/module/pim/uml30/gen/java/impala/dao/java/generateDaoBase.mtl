@@ -11,6 +11,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoUtil /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoCommon /]
 [template public generateDaoBase(aClass : Class)]
 	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToGeneratedMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('DaoBase.java'), false, 'UTF-8')]
 package [aClass.generateJavaPackage()/];
@@ -122,15 +123,15 @@ public abstract class [aClass.name/]DaoBase
                 "[aClass.name/].get - 'id' can not be null");
         }
         final Object entity = this.getHibernateTemplate().get([aClass.name/]Impl.class, id);
-        return transformEntity(transform, ([aClass.name/])entity);
+        return transformEntity(transform, ([aClass.genEntityClassName()/])entity);
     }
     /**
      * {@inheritDoc}
      */
     
-    public [aClass.name/] get([aClass.getPrimaryTypeName(true)/] id)
+    public [aClass.genEntityClassName()/] get([aClass.getPrimaryTypeName(true)/] id)
     {
-        return ([aClass.name/])this.get(TRANSFORM_NONE, id);
+        return ([aClass.genEntityClassName()/])this.get(TRANSFORM_NONE, id);
     }
 
     /**
@@ -145,25 +146,25 @@ public abstract class [aClass.name/]DaoBase
                 "[aClass.name/].load - 'id' can not be null");
         }
         final Object entity = this.getHibernateTemplate().get([aClass.name/]Impl.class, id);
-        return transformEntity(transform, ([aClass.name/])entity);
+        return transformEntity(transform, ([aClass.genEntityClassName()/])entity);
     }
 
     /**
      * {@inheritDoc}
      */
     
-    public [aClass.name/] load([aClass.getPrimaryTypeName(true)/] id)
+    public [aClass.genEntityClassName()/] load([aClass.getPrimaryTypeName(true)/] id)
     {
-        return ([aClass.name/])this.load(TRANSFORM_NONE, id);
+        return ([aClass.genEntityClassName()/])this.load(TRANSFORM_NONE, id);
     }
 
     /**
      * {@inheritDoc}
      */
     @SuppressWarnings({"unchecked"})
-    public Collection<[aClass.name/]> loadAll()
+    public Collection<[aClass.genEntityClassName()/]> loadAll()
     {
-        return (Collection<[aClass.name/]>) this.loadAll([aClass.name/]Dao.TRANSFORM_NONE);
+        return (Collection<[aClass.genEntityClassName()/]>) this.loadAll([aClass.name/]Dao.TRANSFORM_NONE);
     }
 
     /**
@@ -224,15 +225,15 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public [aClass.name/] create([aClass.name/] [aClass.name/]) {
-        return ([aClass.name/])this.create([aClass.name/]Dao.TRANSFORM_NONE, [aClass.name/]);
+    public [aClass.genEntityClassName()/] create([aClass.genEntityClassName()/] [aClass.name/]) {
+        return ([aClass.genEntityClassName()/])this.create([aClass.name/]Dao.TRANSFORM_NONE, [aClass.name/]);
     }
 
     /**
      * {@inheritDoc}
      */
     
-    public Object create(final int transform, final [aClass.name/] [aClass.name/]) {
+    public Object create(final int transform, final [aClass.genEntityClassName()/] [aClass.name/]) {
         if ([aClass.name/] == null)
         {
             throw new IllegalArgumentException(
@@ -247,19 +248,19 @@ public abstract class [aClass.name/]DaoBase
      */
     
     @SuppressWarnings({"unchecked"})
-    public Collection<[aClass.name/]> create(final Collection<[aClass.name/]> entities) {
-        return (Collection<[aClass.name/]>) create([aClass.name/]Dao.TRANSFORM_NONE, entities);
+    public Collection<[aClass.genEntityClassName()/]> create(final Collection<[aClass.genEntityClassName()/]> entities) {
+        return (Collection<[aClass.genEntityClassName()/]>) create([aClass.name/]Dao.TRANSFORM_NONE, entities);
     }
 
     /**
      * {@inheritDoc}
      */
     
-    public Collection<?> create(final int transform, final Collection<[aClass.name/]> entities) {
+    public Collection<?> create(final int transform, final Collection<[aClass.genEntityClassName()/]> entities) {
         if (entities == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].create - 'entities' can not be null");
+                "[aClass.genEntityClassName()/].create - 'entities' can not be null");
         }
         this.getHibernateTemplate().executeWithNativeSession(
             new HibernateCallback()
@@ -267,7 +268,7 @@ public abstract class [aClass.name/]DaoBase
                 public Object doInHibernate(Session session)
                     throws HibernateException
                 {
-                    for ([aClass.name/] entity : entities)
+                    for ([aClass.genEntityClassName()/] entity : entities)
                     {
                         create(transform, entity);
                     }
@@ -281,9 +282,9 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public [aClass.name/] create(
+    public [aClass.genEntityClassName()/] create(
         [aClass.classAttributes()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/]) {
-        return ([aClass.name/])this.create([aClass.name/]Dao.TRANSFORM_NONE
+        return ([aClass.genEntityClassName()/])this.create([aClass.name/]Dao.TRANSFORM_NONE
 		[if (aClass.classAttributes()->filter(Property)->select(not (isPK()))->notEmpty())]
 			, [aClass.classAttributes()->filter(Property)->select(not (isPK())).name->sep(', ')/]
 		[/if] );
@@ -297,7 +298,7 @@ public abstract class [aClass.name/]DaoBase
     public Object create(
         final int transform[if (aClass.classAttributes()->notEmpty())], [aClass.classAttributes()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/][/if]
         ) {
-        [aClass.name/] entity = new [aClass.name/]Impl();
+        [aClass.genEntityClassName()/] entity = new [aClass.name/]Impl();
 		[for (aProp : Property | aClass.classAttributes())]
 	    entity.set[aProp.name.toUpperFirst()/]([aProp.name.toLowerFirst()/]);
 		[/for]
@@ -308,26 +309,26 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public void update([aClass.name/] [aClass.name/])
+    public void update([aClass.genEntityClassName()/] [aClass.name.toLowerFirst()/])
     {
-        if ([aClass.name/] == null)
+        if ([aClass.name.toLowerFirst()/] == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].update - '[aClass.name/]' can not be null");
+                "[aClass.genEntityClassName()/].update - '[aClass.name.toLowerFirst()/]' can not be null");
         }
-        this.getHibernateTemplate().update([aClass.name/]);
+        this.getHibernateTemplate().update([aClass.name.toLowerFirst()/]);
     }
 
     /**
      * {@inheritDoc}
      */
     
-    public void update(final Collection<[aClass.name/]> entities)
+    public void update(final Collection<[aClass.genEntityClassName()/]> entities)
     {
         if (entities == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].update - 'entities' can not be null");
+                "[aClass.genEntityClassName()/].update - 'entities' can not be null");
         }
         this.getHibernateTemplate().executeWithNativeSession(
             new HibernateCallback()
@@ -335,7 +336,7 @@ public abstract class [aClass.name/]DaoBase
                 public Object doInHibernate(Session session)
                     throws HibernateException
                 {
-                    for ([aClass.name/] entity : entities)
+                    for ([aClass.genEntityClassName()/] entity : entities)
                     {
                         update(entity);
                     }
@@ -348,14 +349,14 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public void remove([aClass.name.toUpperFirst()/] [aClass.name/])
+    public void remove([aClass.genEntityClassName()/] [aClass.name.toLowerFirst()/])
     {
-        if ([aClass.name/] == null)
+        if ([aClass.name.toLowerFirst()/] == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].remove - '[aClass.name/]' can not be null");
+                "[aClass.genEntityClassName()/].remove - '[aClass.name.toLowerFirst()/]' can not be null");
         }
-        this.getHibernateTemplate().delete([aClass.name/]);
+        this.getHibernateTemplate().delete([aClass.name.toLowerFirst()/]);
     }
 
     /**
@@ -367,9 +368,9 @@ public abstract class [aClass.name/]DaoBase
         if (id == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].remove - 'id' can not be null");
+                "[aClass.genEntityClassName()/].remove - 'id' can not be null");
         }
-        [aClass.name/] entity = this.get(id);
+        [aClass.genEntityClassName()/] entity = this.get(id);
         if (entity != null)
         {
             this.remove(entity);
@@ -380,12 +381,12 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public void remove(Collection<[aClass.name/]> entities)
+    public void remove(Collection<[aClass.genEntityClassName()/]> entities)
     {
         if (entities == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].remove - 'entities' can not be null");
+                "[aClass.genEntityClassName()/].remove - 'entities' can not be null");
         }
         this.getHibernateTemplate().deleteAll(entities);
     }
@@ -434,7 +435,7 @@ public abstract class [aClass.name/]DaoBase
      * <p>
      * This method will return instances of these types:
      * <ul>
-     *   <li>{@link [aClass.name/]} - {@link #TRANSFORM_NONE}</li>
+     *   <li>{@link [aClass.genEntityClassName()/]} - {@link #TRANSFORM_NONE}</li>
 	 [for (aDtoClass : Class | aClass.getRelatedDtos())]
      *   <li>{@link [aDtoClass.name.toUpperFirst()/]} - {@link #TRANSFORM_[aDtoClass.name.toUpper()/]}</li>
 	 [/for]
@@ -445,9 +446,9 @@ public abstract class [aClass.name/]DaoBase
      * @param transform one of the constants declared in {@link [aClass.name/]Dao}
      * @param entity an entity that was found
      * @return the transformed entity (i.e. new value object, etc)
-     * @see [aClass.name/]Dao#transformEntity(int, [aClass.name/])
+     * @see [aClass.name/]Dao#transformEntity(int, [aClass.genEntityClassName()/])
      */
-    public Object transformEntity(final int transform, final [aClass.name/] entity)
+    public Object transformEntity(final int transform, final [aClass.genEntityClassName()/] entity)
     {
         Object target = null;
         if (entity != null)
@@ -499,7 +500,7 @@ public abstract class [aClass.name/]DaoBase
 
     /**
      * This anonymous transformer is designed to transform report query results
-     * (which result in an array of entities) to {@link [aClass.name/]}
+     * (which result in an array of entities) to {@link [aClass.genEntityClassName()/]}
      * using the Jakarta Commons-Collections Transformation API.
      */
     private Transformer ENTITYTRANSFORMER =
@@ -512,7 +513,7 @@ public abstract class [aClass.name/]DaoBase
                 {
                     result = toEntity((Object['['/][']'/])input);
                 }
-                else if (input instanceof [aClass.name/])
+                else if (input instanceof [aClass.genEntityClassName()/])
                 {
                     result = input;
                 }
@@ -522,20 +523,20 @@ public abstract class [aClass.name/]DaoBase
 
     /**
      * @param row
-     * @return [aClass.name/]
+     * @return [aClass.genEntityClassName()/]
      */
-    protected [aClass.name/] toEntity(Object['['/][']'/] row)
+    protected [aClass.genEntityClassName()/] toEntity(Object['['/][']'/] row)
     {
-        [aClass.name/] target = null;
+        [aClass.genEntityClassName()/] target = null;
         if (row != null)
         {
             final int numberOfObjects = row.length;
             for (int ctr = 0; ctr < numberOfObjects; ctr++)
             {
                 final Object object = row['['/]ctr[']'/];
-                if (object instanceof [aClass.name/])
+                if (object instanceof [aClass.genEntityClassName()/])
                 {
-                    target = ([aClass.name/])object;
+                    target = ([aClass.genEntityClassName()/])object;
                     break;
                 }
             }
@@ -766,9 +767,9 @@ public abstract class [aClass.name/]DaoBase
      */
     
     @SuppressWarnings("unchecked")
-    public Set<[aClass.name/]> search(final Search search)
+    public Set<[aClass.genEntityClassName()/]> search(final Search search)
     {
-        return (Set<[aClass.name/]>) this.search([aClass.name/]Dao.TRANSFORM_NONE, search);
+        return (Set<[aClass.genEntityClassName()/]>) this.search([aClass.name/]Dao.TRANSFORM_NONE, search);
     }
 
     /**
