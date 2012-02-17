@@ -1,5 +1,5 @@
 [comment encoding = Cp1252 /]
-[module generateTestHibernateServiceIlmpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[module generateTestServiceIlmpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
@@ -10,9 +10,9 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::structureUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
-
-[template public generateTestHibernateServiceIlmpl(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToTestJava()).concat('/tests/integration/Hibernate').concat(aModel.generateSpecificProjectFolder('').normalizeJavaName()).concat('Test.java'), false, 'Cp1252')]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
+[template public generateTestServiceIlmpl(aClass : Class)]
+	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToTestJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name.toUpperFirst()).concat('Test.java'), false, 'Cp1252')]
 /*
  * Copyright 2002-2006 the original author or authors.
  *
@@ -28,8 +28,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package tests.integration;
+[if (aClass.generateJavaPackage().trim().size()>0)]
+package [aClass.generateJavaPackage()/];
+[/if]
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -49,11 +50,13 @@ import org.impalaframework.module.RootModuleDefinition;
 import org.impalaframework.module.source.SimpleModuleDefinitionSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
-import [anEntity.generateJavaPackage()/].[anEntity.name/];
+[for (anEntity : Class | aClass.getModel().eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+import [if(anEntity.generateJavaPackage().trim().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name/][if(anEntity.hasEntityParent())]Impl[/if];
 [/for]
 
-import org.springframework.[aModel.generateSpecificProjectFolder('')/].util.EntityUtils;
+//import org.springframework.[aClass.getModel().generateSpecificProjectFolder('')/].util.EntityUtils;
+
+import [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/];
 
 
 import org.springframework.util.FileCopyUtils;
@@ -74,27 +77,27 @@ import org.springframework.util.FileCopyUtils;
  * @author Juergen Hoeller
  * @author Phil Zoio
  */
-public class Hibernate[aModel.generateSpecificProjectFolder('').normalizeJavaName()/]Test.java extends TestCase implements
+public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
         ModuleDefinitionSource {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
     public static void main(String['['/][']'/] args) {
-        InteractiveTestRunner.run(HibernateClinicTest.class);
+        InteractiveTestRunner.run([aClass.name.toUpperFirst()/]Test.class);
     }
 
     private JdbcTemplate jdbcTemplate;
 
-    private [aModel.generateSpecificProjectFolder('').toUpperFirst()/] [aModel.generateSpecificProjectFolder('').toLowerFirst()/];
+    private [aClass.name.toUpperFirst()/] [aClass.name.toLowerFirst()/];
 
     public void setUp() throws Exception {
         super.setUp();
         Impala.init(this);
-        [aModel.generateSpecificProjectFolder('').toLowerFirst()/] = Impala.getBean("[aModel.generateSpecificProjectFolder('').toLowerFirst()/]", [aModel.generateSpecificProjectFolder('').toUpperFirst()/].class);
+        [aClass.name.toLowerFirst()/] = Impala.getBean("[aClass.name.toLower()/]", [aClass.name.toUpperFirst()/].class);
         jdbcTemplate = new JdbcTemplate(Impala.getBean(
                 "dataSource", DataSource.class));
 
-        runScript("../aModel.generateSpecificProjectFolder('-build')/db/emptyDB.txt");
-        runScript("../aModel.generateSpecificProjectFolder('-build')/db/populateDB.txt");
+        runScript("../[aClass.getModel().generateSpecificProjectFolder('-build')/]/src/main/resources/db/emptyDB.txt");
+        runScript("../[aClass.getModel().generateSpecificProjectFolder('-build')/]/src/main/resources/db/populateDB.txt");
     }
 
     private void runScript(String file) throws IOException,
@@ -112,14 +115,18 @@ public class Hibernate[aModel.generateSpecificProjectFolder('').normalizeJavaNam
      * Dependency Injection injection behaviour of the superclass from the
      * <code>org.springframework.test</code> package.
      * 
-     * @param [aModel.generateSpecificProjectFolder('').toLowerFirst()/]
-     *            [aModel.generateSpecificProjectFolder('').toLowerFirst()/] to test
+     * @param [aClass.name.toLowerFirst()/]
+     *            [aClass.name.toLowerFirst()/] to test
      */
-    public void set[aModel.generateSpecificProjectFolder('').toUpperFirst()/]([aModel.generateSpecificProjectFolder('').toUpperFirst()/] [aModel.generateSpecificProjectFolder('').toLowerFirst()/]) {
-        this.[aModel.generateSpecificProjectFolder('').toLowerFirst()/] = [aModel.generateSpecificProjectFolder('').toLowerFirst()/];
+    public void set[aClass.name.toUpperFirst()/]([aClass.name.toUpperFirst()/] [aClass.name.toLowerFirst()/]) {
+        this.[aClass.name.toLowerFirst()/] = [aClass.name.toLowerFirst()/];
     }
     
-[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+	[for (aServicrMethod : Operation | aClass.ownedOperation->select(anOper:Operation|anOper.visibility = VisibilityKind::public))]
+	public void test[aServicrMethod.name.toUpperFirst()/]() {
+	}
+	[/for]
+[comment][for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
 	public void testGet[anEntity.name/]s() {
         Collection<?> [anEntity.name.toLowerFirst()/]s = this.[aModel.generateSpecificProjectFolder('').toLowerFirst()/].get[anEntity.name/]s();
 
@@ -214,14 +221,14 @@ public class Hibernate[aModel.generateSpecificProjectFolder('').normalizeJavaNam
 		[/for]
     }
 	
-[/for]
+[/for][/comment]
 
     public RootModuleDefinition getModuleDefinition() {
 
-        return new SimpleModuleDefinitionSource("[aModel.generateSpecificProjectFolder('-main')/]",
-                new String['['/][']'/] { "[aModel.generateSpecificProjectFolder('-context')/].xml" }, new String['['/][']'/] {
-                        "[aModel.generateSpecificProjectFolder('-hibernate')/]", 
-                        "[aModel.generateSpecificProjectFolder('-service')/]" })
+        return new SimpleModuleDefinitionSource("[aClass.getModel().generateSpecificProjectFolder('-main')/]",
+                new String['['/][']'/] { "[aClass.getModel().generateSpecificProjectFolder('-context')/].xml" }, new String['['/][']'/] {
+                        "[aClass.getModel().generateSpecificProjectFolder('-hibernate')/]", 
+                        "[aClass.getModel().generateSpecificProjectFolder('-service')/]" })
                 .getModuleDefinition();
     }
 

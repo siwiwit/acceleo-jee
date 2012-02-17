@@ -107,7 +107,7 @@ public class [aClass.name/][aClass.extensions()/] implements Serializable[if (aC
 [/for]
     }
 
-[let props : Set(Property) = aClass.classAttributes()]
+[let props : Sequence(Property) = aClass.classAttributes()]
 	[if (props->size() > 0)]
 
     /**
@@ -210,7 +210,7 @@ public class [aClass.name/][aClass.extensions()/] implements Serializable[if (aC
 	}
 
 	public void set[aDaoClass.name/]Dao([aDaoClass.name/]Dao the[aDaoClass.name/]Dao) {
-		return this.[aDaoClass.name.toLowerFirst()/]Dao;
+		this.[aDaoClass.name.toLowerFirst()/]Dao = the[aDaoClass.name/]Dao;
 	}
 		[/if]
 	[/for]

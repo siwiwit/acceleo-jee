@@ -1,5 +1,5 @@
 [comment encoding = Cp1252 /]
-[module generateHibernateServiceImpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[module generateServiceImpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
@@ -55,7 +55,6 @@ public class Hibernate[aModel.generateSpecificProjectFolder('').normalizeJavaNam
 
 		[for (aFinderOperation : Operation | anEntity.getOperations()->select(anOperation:Operation|anOperation.isFinder()))]
     public Collection [aFinderOperation.getFinderMethodeName()/]([aFinderOperation.generateRawParameters()/]) throws DataAccessException {
-        //return getHibernateTemplate().find("from [anEntity.name/] [anEntity.name.toLowerFirst()/] where "[aFinderOperation.generateFinderQLSample()/]", [aFinderOperation.generateFinderParamArray()/]);
 		[protected ('protected')]
 			throw new java.lang.UnsupportedOperationException();
 		[/protected]
