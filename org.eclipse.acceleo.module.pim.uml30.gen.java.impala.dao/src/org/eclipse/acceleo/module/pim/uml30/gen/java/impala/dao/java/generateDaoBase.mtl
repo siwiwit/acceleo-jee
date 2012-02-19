@@ -58,7 +58,7 @@ import [prop.type.generateJavaPackage()/].[prop.type.name/];
 	[/if]
 [/for]
 
-[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
+[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos()->filter(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [aDtoClass.generateJavaPackage()/].[aDtoClass.name/];
 	[/if]
@@ -191,7 +191,7 @@ public abstract class [aClass.name/]DaoBase
     
     public Collection<?> loadAll(final int transform, final int pageNumber, final int pageSize)  {
         try {
-            final Criteria criteria = this.getSession(false).createCriteria([aClass.name/]Impl.class);
+            final Criteria criteria = this.getSession(true).createCriteria([aClass.name/]Impl.class);
             if (pageNumber > 0 && pageSize > 0)
             {
                 criteria.setFirstResult(this.calculateFirstResult(pageNumber, pageSize));
@@ -225,22 +225,22 @@ public abstract class [aClass.name/]DaoBase
      * {@inheritDoc}
      */
     
-    public [aClass.genEntityClassName()/] create([aClass.genEntityClassName()/] [aClass.name/]) {
-        return ([aClass.genEntityClassName()/])this.create([aClass.name/]Dao.TRANSFORM_NONE, [aClass.name/]);
+    public [aClass.genEntityClassName()/] create([aClass.genEntityClassName()/] [aClass.name.toLowerFirst()/]) {
+        return ([aClass.genEntityClassName()/])this.create([aClass.name/]Dao.TRANSFORM_NONE, [aClass.name.toLowerFirst()/]);
     }
 
     /**
      * {@inheritDoc}
      */
     
-    public Object create(final int transform, final [aClass.genEntityClassName()/] [aClass.name/]) {
-        if ([aClass.name/] == null)
+    public Object create(final int transform, final [aClass.genEntityClassName()/] [aClass.name.toLowerFirst()/]) {
+        if ([aClass.name.toLowerFirst()/] == null)
         {
             throw new IllegalArgumentException(
-                "[aClass.name/].create - '[aClass.name/]' can not be null");
+                "[aClass.name/].create - '[aClass.name.toLowerFirst()/]' can not be null");
         }
-        this.getHibernateTemplate().save([aClass.name/]);
-        return this.transformEntity(transform, [aClass.name/]);
+        this.getHibernateTemplate().save([aClass.name.toLowerFirst()/]);
+        return this.transformEntity(transform, [aClass.name.toLowerFirst()/]);
     }
 
     /**
