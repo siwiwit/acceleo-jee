@@ -8,3 +8,11 @@ else
 	false
 endif
 /]
+
+[query public getAllEntityParents(anEntity : Class) : Sequence(Class)=
+if(anEntity.hasEntityParent()) then
+	anEntity.superClass->asSequence()->union(anEntity.superClass->asSequence()->first().getAllEntityParents())
+else
+	Sequence{}
+endif 
+/]
