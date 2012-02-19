@@ -253,18 +253,6 @@ Comment:.
           <ownedAttribute xmi:id="org.andromda.timetracker-domain-Timecard-status" name="status" visibility="public" type="org.andromda.timetracker-domain-TimecardStatus" isUnique="false"/>
           <ownedAttribute xmi:id="org.andromda.timetracker-domain-Timecard-startDate" name="startDate" visibility="public" type="datatype-Date" isUnique="false"/>
           <ownedAttribute xmi:id="org.andromda.timetracker-domain-Timecard-comments" name="comments" visibility="public" type="datatype-String" isUnique="false"/>
-          <ownedAttribute xmi:id="org.andromda.timetracker-domain-Timecard-submitter" name="submitter" visibility="public" type="org.andromda.timetracker-domain-User" isUnique="false" association="org.andromda.timetracker-domain-_packagedElement.2">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-Timecard-submitter-_upperValue" name="" value="1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-Timecard-submitter-_lowerValue" name="" value="1"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:id="org.andromda.timetracker-domain-Timecard-approver" name="approver" visibility="public" type="org.andromda.timetracker-domain-User" isUnique="false" association="org.andromda.timetracker-domain-_packagedElement.3">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-Timecard-approver-_upperValue" name="" value="1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-Timecard-approver-_lowerValue" name=""/>
-          </ownedAttribute>
-          <ownedAttribute xmi:id="org.andromda.timetracker-domain-Timecard-allocations" name="allocations" visibility="public" type="org.andromda.timetracker-domain-TimeAllocation" isUnique="false" association="org.andromda.timetracker-domain-_packagedElement.5">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-Timecard-allocations-_upperValue" name="" value="*"/>
-            <lowerValue xmi:type="uml:LiteralString" xmi:id="org.andromda.timetracker-domain-Timecard-allocations-_lowerValue" name="" value="*"/>
-          </ownedAttribute>
           <ownedOperation xmi:id="org.andromda.timetracker-domain-Timecard-findByCriteria" name="findByCriteria" visibility="public" isStatic="true">
             <ownedParameter xmi:id="org.andromda.timetracker-domain-Timecard-findByCriteria-criteria" name="criteria" visibility="public" type="org.andromda.timetracker-vo-TimecardSearchCriteriaVO" direction="inout"/>
             <ownedParameter xmi:id="org.andromda.timetracker-domain-Timecard-findByCriteria-_ownedParameter.1" name="" visibility="public" type="org.andromda.timetracker-vo-TimecardVO" direction="return">
@@ -277,42 +265,21 @@ Comment:.
             <ownedParameter xmi:id="org.andromda.timetracker-domain-Timecard-addTimeAllocation-_ownedParameter.1" name="" visibility="public" type="datatype-void" direction="return"/>
           </ownedOperation>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-_packagedElement.2" name="" memberEnd="org.andromda.timetracker-domain-Timecard-submitter org.andromda.timetracker-domain-_packagedElement.2-_ownedEnd.0">
+        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-_packagedElement.2" name="" memberEnd="org.andromda.timetracker-domain-_packagedElement.2-_ownedEnd.0">
           <ownedEnd xmi:id="org.andromda.timetracker-domain-_packagedElement.2-_ownedEnd.0" name="" visibility="private" type="org.andromda.timetracker-domain-Timecard" association="org.andromda.timetracker-domain-_packagedElement.2">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-_packagedElement.2-_ownedEnd.0-_upperValue" name="" value="*"/>
             <lowerValue xmi:type="uml:LiteralString" xmi:id="org.andromda.timetracker-domain-_packagedElement.2-_ownedEnd.0-_lowerValue" name="" value="*"/>
-          </ownedEnd>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-_packagedElement.3" name="" memberEnd="org.andromda.timetracker-domain-_packagedElement.3-_ownedEnd.0 org.andromda.timetracker-domain-Timecard-approver">
-          <ownedEnd xmi:id="org.andromda.timetracker-domain-_packagedElement.3-_ownedEnd.0" name="" visibility="public" type="org.andromda.timetracker-domain-Timecard" association="org.andromda.timetracker-domain-_packagedElement.3">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-_packagedElement.3-_ownedEnd.0-_upperValue" name="" value="*"/>
-            <lowerValue xmi:type="uml:LiteralString" xmi:id="org.andromda.timetracker-domain-_packagedElement.3-_ownedEnd.0-_lowerValue" name="" value="*"/>
           </ownedEnd>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="org.andromda.timetracker-domain-TimeAllocation" name="TimeAllocation" clientDependency="org.andromda.timetracker-vo-_packagedElement.14">
           <ownedComment xmi:id="org.andromda.timetracker-domain-TimeAllocation-_ownedComment.0" annotatedElement="org.andromda.timetracker-domain-TimeAllocation">
             <body>TimeAllocation represents a time period for which the timecard submitter worked on the associated task.</body>
           </ownedComment>
-          <ownedAttribute xmi:id="org.andromda.timetracker-domain-TimeAllocation-timecard" name="timecard" visibility="public" type="org.andromda.timetracker-domain-Timecard" isUnique="false" association="org.andromda.timetracker-domain-_packagedElement.5">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-TimeAllocation-timecard-_upperValue" name="" value="1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-TimeAllocation-timecard-_lowerValue" name="" value="1"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:id="org.andromda.timetracker-domain-TimeAllocation-task" name="task" visibility="public" type="org.andromda.timetracker-domain-Task" isUnique="false" association="org.andromda.timetracker-domain-_packagedElement.6">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-TimeAllocation-task-_upperValue" name="" value="1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-TimeAllocation-task-_lowerValue" name="" value="1"/>
-          </ownedAttribute>
           <ownedAttribute xmi:id="org.andromda.timetracker-domain-TimeAllocation-startTime" name="startTime" visibility="public" type="datatype-Date" isUnique="false">
             <qualifier xmi:id="org.andromda.timetracker-domain-TimeAllocation-startTime-endTime" name="endTime" visibility="public" isUnique="false"/>
             <qualifier xmi:id="org.andromda.timetracker-domain-TimeAllocation-startTime-endTime.1" name="endTime" visibility="public" isUnique="false"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="org.andromda.timetracker-domain-TimeAllocation-endTime" name="endTime" type="datatype-Date"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-_packagedElement.5" name="" memberEnd="org.andromda.timetracker-domain-TimeAllocation-timecard org.andromda.timetracker-domain-Timecard-allocations"/>
-        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-_packagedElement.6" name="" memberEnd="org.andromda.timetracker-domain-_packagedElement.6-_ownedEnd.0 org.andromda.timetracker-domain-TimeAllocation-task">
-          <ownedEnd xmi:id="org.andromda.timetracker-domain-_packagedElement.6-_ownedEnd.0" name="" visibility="public" type="org.andromda.timetracker-domain-TimeAllocation" association="org.andromda.timetracker-domain-_packagedElement.6">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-_packagedElement.6-_ownedEnd.0-_upperValue" name="" value="*"/>
-            <lowerValue xmi:type="uml:LiteralString" xmi:id="org.andromda.timetracker-domain-_packagedElement.6-_ownedEnd.0-_lowerValue" name="" value="*"/>
-          </ownedEnd>
         </packagedElement>
         <packagedElement xmi:type="uml:Enumeration" xmi:id="org.andromda.timetracker-domain-Role" name="Role">
           <ownedLiteral xmi:id="org.andromda.timetracker-domain-Role-StandardUser" name="StandardUser"/>
@@ -345,6 +312,46 @@ Comment:.
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="org.andromda.timetracker-domain-TestInheristance" name="TestInheristance">
           <generalization xmi:id="org.andromda.timetracker-domain-TestInheristance-_generalization.0" general="org.andromda.timetracker-domain-TimeAllocation"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E" name="A_&lt;timeAllocation>_&lt;timecard>" memberEnd="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timeAllocation org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timecard" navigableOwnedEnd="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timecard">
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timeAllocation" name="timeAllocation" type="org.andromda.timetracker-domain-TimeAllocation" association="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timeAllocation-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timeAllocation-_lowerValue" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timecard" name="timecard" type="org.andromda.timetracker-domain-Timecard" association="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timecard-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E-timecard-_lowerValue" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E" name="A_&lt;timeAllocation>_&lt;task>" memberEnd="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-timeAllocation org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-task" navigableOwnedEnd="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-task">
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-timeAllocation" name="timeAllocation" type="org.andromda.timetracker-domain-TimeAllocation" association="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-timeAllocation-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-timeAllocation-_lowerValue" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-task" name="task" type="org.andromda.timetracker-domain-Task" association="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-task-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E-task-_lowerValue" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E" name="A_&lt;timecard>_&lt;user>" memberEnd="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-timecard org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-approver" navigableOwnedEnd="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-approver">
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-timecard" name="timecard" type="org.andromda.timetracker-domain-Timecard" association="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-timecard-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-timecard-_lowerValue" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-approver" name="approver" type="org.andromda.timetracker-domain-User" association="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-approver-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E-approver-_lowerValue"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2" name="A_&lt;timecard>_&lt;user>_2" memberEnd="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-timecard org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-submitter" navigableOwnedEnd="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-submitter">
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-timecard" name="timecard" type="org.andromda.timetracker-domain-Timecard" association="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-timecard-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-timecard-_lowerValue" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-submitter" name="submitter" type="org.andromda.timetracker-domain-User" association="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-submitter-_upperValue" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2-submitter-_lowerValue" value="1"/>
+          </ownedEnd>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="org.andromda.timetracker-web" name="web">
