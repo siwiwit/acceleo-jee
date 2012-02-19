@@ -15,12 +15,14 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::pom::generatePomXml/]
 [import org::acceleo::module::pim::uml21::gen::java::common::requests /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::resources::generateDaoContextXml /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::java::generateDaoTestJava /]
 [template public generateDaoProjectClass(aClass : Class) ? (aClass.isEntity())]
 	
 	[comment @main /]
 	[aClass.generateDaoInterfaceJava()/]
 	[aClass.generateDaoBase()/]
 	[aClass.generateDaoImplJava()/]
+	[aClass.generateDaoTestJava()/]
 	
 [/template]
 [template public generateDaoProjectModel(aModel : Model)]

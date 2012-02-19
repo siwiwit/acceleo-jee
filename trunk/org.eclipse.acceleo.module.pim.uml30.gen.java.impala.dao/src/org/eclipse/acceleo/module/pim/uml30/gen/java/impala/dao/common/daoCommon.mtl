@@ -1,0 +1,5 @@
+[comment encoding = UTF-8 /]
+[module daoCommon('http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
+[template public genEntityClassName(anEntity : Class) post (trim())]
+[if (anEntity.hasEntityParent())][anEntity.name.toUpperFirst()/]Impl[else][anEntity.name.toUpperFirst()/][/if][/template]
