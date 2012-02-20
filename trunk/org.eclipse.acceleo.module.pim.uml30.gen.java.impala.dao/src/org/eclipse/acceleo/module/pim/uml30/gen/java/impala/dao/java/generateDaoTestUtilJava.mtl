@@ -1,0 +1,165 @@
+[comment encoding = Cp1252 /]
+[module generateDaoTestUtilJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoPathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::common /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::requests /]
+[import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
+[import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoUtil /]
+[import org::acceleo::module::pim::uml21::services::uml2services /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoCommon /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
+[template public generateDaoTestUtilJava(aModel : Model)]
+[file (aModel.generateProjectFolder().concat(aModel.pathToTestJava()).concat('/tests/integration/DaoTestUtil.java'), false, 'UTF-8')]
+package tests.integration;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collection;
+import javax.sql.DataSource;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Arrays;
+	[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+		[if (anEntity.generateJavaPackage() <> 'tests.integration')]
+			[if (not anEntity.hasEntityParent())]
+import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/];
+			[/if]
+import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/]Impl;
+		[/if]
+	[/for]
+	[let entities : Set(Class) = aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity())->asSet()]
+		[let enumTypes : Set(Type) = entities.ownedAttribute.type->filter(Enumeration)->union(entities.ownedOperation.ownedParameter.type->filter(Enumeration))->asSet() ]
+			[for (enumType : Type | enumTypes)]
+		[if (enumType.generateJavaPackage() <> 'tests.integration')]
+import [if (enumType.generateJavaPackage().size()>0)][enumType.generateJavaPackage()/].[/if][enumType.name.toUpperFirst()/];
+		[/if]
+			[/for]
+		[/let]
+	[/let]
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Collection;
+
+
+public final class DaoTestUtil {
+
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+	private DaoTestUtil() {
+	}
+	
+	public static Date increaseOneDay(Date firstDate) {
+		Calendar calendar =  Calendar.getInstance();
+		calendar.setTime(firstDate);
+		calendar.set(Calendar.DATE, calendar.get(Calendar.DATE)+1);
+		return calendar.getTime(); 
+	}
+
+	public static String createStringFieldValue(String fieldName, long index) {
+		return fieldName+index; 
+	}
+	
+	public static boolean createBooleanFieldValue(String fieldName, long index) {
+		return index % 2==1; 
+	}
+
+	public static int createNumberFieldValue(String fieldName, long index) {
+		return Long.valueOf(index).intValue(); 
+	}
+	
+	public static Date createDateFieldValue(String fieldName, long index) {
+		try {
+			return DaoTestUtil.dateFormat.parse("2012/01/"+index);
+        } catch (ParseException ex) {
+			throw new RuntimeException(ex);
+        }
+		
+	}
+	
+	[for (anEnumeration : Enumeration | aModel.eAllContents(Enumeration))]
+	public static [anEnumeration.name.toUpperFirst()/] create[anEnumeration.name.toUpperFirst()/]Value(String fieldName, long index) {
+		switch(Long.valueOf(index%[anEnumeration.ownedLiteral->size()/]).intValue()) {
+			[for (anEnumeration.ownedLiteral)]
+			case [i-1/]: return [anEnumeration.name.toUpperFirst()/].[self.name/];
+			[/for]
+			default: throw new RuntimeException("Unknown problem");
+		}
+	}
+	[/for]
+
+	[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+	public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] create[anEntity.name.toUpperFirst()/]Object(long index) {
+		Map<String, Long> childIndexMap = new HashMap<String, Long>();
+		Long childIndex = null;	
+	    [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] [anEntity.name.toLowerFirst()/] = new [anEntity.name.toUpperFirst()/]Impl();
+		[let classStructures : Sequence(Class) = anEntity.getAllEntityParents()->including(anEntity)]
+			[for (aStructureClass : Class | classStructures)]
+				[if (aStructureClass.ownedAttribute->notEmpty())]
+					[for (aProperty : Property | aStructureClass.ownedAttribute)]
+	    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 'index')/]);
+					[/for]
+					[for (aProperty : Property | aStructureClass.getOppositeAttributes()->select(aField:Property | aField.lower=1))]
+						[if (aProperty.type.isJavaPrimitiveType())]
+	    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 'index')/]);
+						[elseif (aProperty.type.oclIsTypeOf(Class) and aProperty.type.oclAsType(Class).isEntity())]
+		childIndex = childIndexMap.get([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if].class.getName()); 
+		if(childIndex == null) {
+			childIndex = Long.valueOf(index);
+		} else {
+			childIndex = Long.valueOf(childIndex.longValue() + 1);
+		}
+		childIndexMap.put([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if].class.getName(), childIndex);
+							[if (aProperty.upper = 1)]
+	    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex));
+							[else]
+								[if (aProperty.isOrdered)]
+	    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](Arrays.asList(DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex)));
+								[/if]
+								[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
+	    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](new HashSet(Arrays.asList(DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex))));
+								[/if]
+								[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
+	    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](Arrays.asList(DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex)));
+								[/if]
+							[/if]
+						[/if]						
+					[/for]
+				[/if]
+			[/for]
+		[/let]
+		[anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);
+		return [anEntity.name.toLowerFirst()/];
+	}
+	[/for]
+
+}
+[/file]
+[/template]
+
+[comment][template public generateSampleParameterValue(aType : Type, prefix : String, indexName : String) post (trim())]
+		[if (getProperty('java.typeconversion.' + aType.name) = 'Date')]
+DaoTestUtil.createDateFieldValue("prefix", indexName)
+		[elseif (getProperty('java.typeconversion.' + aType.name) = 'Boolean' or getProperty('java.typeconversion.' + aType.name) = 'boolean')]
+DaoTestUtil.createBooleanFieldValue("prefix", indexName)
+		[elseif (getProperty('java.typeconversion.' + aType.name) = 'String')]
+DaoTestUtil.createStringFieldValue("prefix", indexName)
+		[elseif (aType.oclIsTypeOf(Enumeration))]
+DaoTestUtil.create[aType.oclAsType(Enumeration).name.toUpperFirst()/]Value("prefix", indexName)
+		[else]
+DaoTestUtil.createNumberFieldValue("prefix", indexName)
+		[/if]
+[/template][/comment]

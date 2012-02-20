@@ -16,6 +16,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::requests /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::resources::generateDaoContextXml /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::java::generateDaoTestJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::java::generateDaoTestUtilJava /]
 [template public generateDaoProjectClass(aClass : Class) ? (aClass.isEntity())]
 	
 	[comment @main /]
@@ -39,5 +40,6 @@
 	[aModel.generateSearchParameter()/]
 	[aModel.generatePomXml()/]
 	[aModel.generateDaoContextXml()/]
+	[aModel.generateDaoTestUtilJava()/]
 	
 [/template]
