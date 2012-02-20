@@ -100,11 +100,16 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
     public void testMappings() throws Exception {
         System.out.println("[anEntity.name.toLowerFirst()/]dao bean: " + Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class));
     }
+	
+	public static [anEntity.name.toUpperFirst()/]Dao get[anEntity.name.toUpperFirst()/]Dao() {
+		return Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
+	}
 
     public void setUp() throws Exception {
         super.setUp();
         Impala.init(this);
-        this.[anEntity.name.toLowerFirst()/]Dao = Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
+        //this.[anEntity.name.toLowerFirst()/]Dao = Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
+        this.[anEntity.name.toLowerFirst()/]Dao = [anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao();
         this.jdbcTemplate = new JdbcTemplate(Impala.getBean(
                 "dataSource", DataSource.class));
 
@@ -243,6 +248,14 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
         }
 						[/if]
 					[/for]
+					[for (aProperty : Property | aStructureClass.getOppositeAttributes()->select(aField:Property | aField.lower=1 and aField.upper=1))]
+						[if (aProperty.type.isJavaPrimitiveType())]
+        [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 4)/]);
+						[elseif (aProperty.type.oclIsTypeOf(Class) and aProperty.type.oclAsType(Class).isEntity())]
+
+						[/if]						
+
+					[/for]
 				[/if]
 			[/for]
 		[/let]
@@ -250,6 +263,7 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
         [anEntity.name.convertSingularToPlural().toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]Dao.loadAll();
         assertEquals(found + 1, [anEntity.name.convertSingularToPlural().toLowerFirst()/].size());
     }
+
 
     public void testUpdate[anEntity.name/]() throws Exception {
         [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] o1 = this.[anEntity.name.toLowerFirst()/]Dao.get(Long.valueOf(1));
@@ -325,4 +339,13 @@ true
 [aParameter.type.name/]
 [aParameter.type.generateSampleParameterValue(aParameter.name, 1)/]
 	[/for]
+[/template]
+
+[template public createReferenceObject(referenceProperty : Property, index : Integer)]
+public static [referenceProperty.type.name.toUpperFirst()/] create[referenceProperty.type.name.toUpperFirst()/]() {
+}
+[/template]
+[template public createReferenceObject(referenceProperty : Property)? (referenceProperty.type.oclIsTypeOf(Class))]
+public static [referenceProperty.type.name.toUpperFirst()/] create[referenceProperty.type.name.toUpperFirst()/]([referenceProperty.type.oclAsType(Class).attribute.asP/]) {
+}
 [/template]
