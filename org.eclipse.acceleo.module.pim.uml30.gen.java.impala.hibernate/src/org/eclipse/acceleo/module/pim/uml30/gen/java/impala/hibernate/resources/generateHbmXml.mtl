@@ -124,14 +124,14 @@ arg0
 	[property.genDiagram(arg)/]
 			[if (property.isOrdered)]
         <list name="[property.name/]" lazy="true"[if (property.isComposite or property.aggregation = 'shared')] cascade="all"[/if]>
-            <key column="[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"/>             
+            <key column="[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]"/>             
             <list-index column="IDX"/>            
             <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
         </list>                
 			[else]
                 <!-- Aggregation Type : [property.aggregation/] -->
         <set name="[property.name/]" lazy="true"[if (property.isComposite or property.aggregation = 'shared')] cascade="all"[/if]> 
-            <key column="[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]_ID"/>            
+            <key column="[property.type.name.toSqlNotation()/]_id"/>            
             <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
         </set>
 			[/if]
@@ -212,7 +212,7 @@ arg0
          		         </list>
          	[else]
          		        <set name="[property.name/]" inverse="true"[if (property.isComposite())] cascade="all-delete-orphan"[/if]>
-                     <key column="FK_[property.opposite.type.name.toSqlNotation()/]_[opposite.name.toSqlNotation() /]_ID"/>            
+                     <key column="[property.opposite.type.name.toSqlNotation()/]_[opposite.name.toSqlNotation() /]"/>            
                      <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
                   </set>
          	[/if]
@@ -222,7 +222,7 @@ arg0
          [comment  |*|<-->* /]        
 	[property.genDiagram(arg)/]
                  <set name="[property.name/]" table="[property.name.toSqlNotation()/]_[property.opposite.name.toSqlNotation()/]">
-                     <key column="FK_[property.name.toSqlNotation()/]_ID"/>
+                     <key column="[property.name.toSqlNotation()/]"/>
                      <many-to-many                 
                          class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
                          column="[property.name.toSqlNotation()/]_ID"/>
@@ -231,7 +231,7 @@ arg0
          [comment  *<-->|*| /]        
 	[genDiagram(arg)/]
                  <set name="[property.name/]" inverse="true">
-                     <key column="FK_[property.name.toSqlNotation()/]_ID"/>
+                     <key column="[property.name.toSqlNotation()/]"/>
                      <many-to-many                 
                          class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"
                          column="[property.name.toSqlNotation()/]_ID"/>
