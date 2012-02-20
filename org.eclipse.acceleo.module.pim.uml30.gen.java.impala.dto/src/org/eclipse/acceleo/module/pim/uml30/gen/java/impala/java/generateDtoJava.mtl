@@ -22,9 +22,8 @@
 [template public genEntityDto(aClass:Class) overrides genEntityDto ]
 package [aClass.generateJavaPackage()/];
 // [protected ('for imports')]
-// for imports
 import java.io.Serializable;
-	[let props:Set(Property)  = aClass.classAttributes()->select(upper = -1 or upper > 1)]
+	[let props:Sequence(Property) = aClass.classAttributes()->select(upper = -1 or upper > 1)]
 		[if (props->size() > 0)]
 			[if (props->select(isOrdered)->size() > 0)]
 import java.util.List;
