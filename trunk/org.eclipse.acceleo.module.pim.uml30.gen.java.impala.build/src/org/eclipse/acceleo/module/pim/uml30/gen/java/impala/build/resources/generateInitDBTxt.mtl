@@ -77,8 +77,7 @@ anEntity.ownedAttribute->select(aProperty:Property|not aProperty.isPK() and aPro
 ,[otherEnd.type.oclAsType(Class).name.toLower()/]_[otherEnd.name.toLower()/] [anEntity.defaultPKType().simpleMySQLType()/] NOT NULL UNIQUE REFERENCES [otherEnd.type.name.convertSingularToPlural().toLower()/]([otherEnd.type.name.toLower()/]_id)
 								[/if]
 							[/if]
-						[elseif ((ownedEnd.upper>=0 and ownedEnd.upper<=1) and (otherEnd.upper>1 or otherEnd.upper<0))] [comment] *-1[/comment]
-							[if (otherEnd.isNavigable() and not ownedEnd.isNavigable())]
+						[elseif ((ownedEnd.upper>1 or ownedEnd.upper<0) and (otherEnd.upper>=0 and otherEnd.upper<=1))] [comment] *-1[/comment]
 								[if (otherEnd.type.oclAsType(Class).hasPrimaryKey())]
 									[if (not otherEnd.type.oclAsType(Class).isCirclePKReferece(Set{}))]
 										[for (aPK : Property | otherEnd.type.oclAsType(Class).getPrimaryProperties(Sequence{})) separator (',')]
@@ -88,7 +87,6 @@ anEntity.ownedAttribute->select(aProperty:Property|not aProperty.isPK() and aPro
 								[else]
 ,[otherEnd.type.oclAsType(Class).name.toLower()/]_[otherEnd.getReferenceColumnName()/] [anEntity.defaultPKType().simpleMySQLType()/] NOT NULL REFERENCES [otherEnd.type.name.convertSingularToPlural().toLower()/]([otherEnd.type.name.toLower()/]_id)
 								[/if]
-							[/if]
 						[/if]
 					[/if]
 				[/let]
