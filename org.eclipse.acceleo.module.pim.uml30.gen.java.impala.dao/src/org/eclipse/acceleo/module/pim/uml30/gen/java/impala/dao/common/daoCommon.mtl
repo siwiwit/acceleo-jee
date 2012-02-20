@@ -2,4 +2,19 @@
 [module daoCommon('http://www.eclipse.org/uml2/3.0.0/UML')]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
 [template public genEntityClassName(anEntity : Class) post (trim())]
-[if (anEntity.hasEntityParent())][anEntity.name.toUpperFirst()/]Impl[else][anEntity.name.toUpperFirst()/][/if][/template]
+[if (anEntity.hasEntityParent())][anEntity.name.toUpperFirst()/]Impl[else][anEntity.name.toUpperFirst()/][/if]
+[/template]
+
+[template public generateSampleParameterValue(aType : Type, prefix : String, indexName : String) post (trim())]
+	[if (getProperty('java.typeconversion.' + aType.name) = 'Date')]
+DaoTestUtil.createDateFieldValue("[prefix/]", [indexName/])
+	[elseif (getProperty('java.typeconversion.' + aType.name) = 'Boolean' or getProperty('java.typeconversion.' + aType.name) = 'boolean')]
+DaoTestUtil.createBooleanFieldValue("[prefix/]", [indexName/])
+	[elseif (getProperty('java.typeconversion.' + aType.name) = 'String')]
+DaoTestUtil.createStringFieldValue("[prefix/]", [indexName/])
+	[elseif (aType.oclIsTypeOf(Enumeration))]
+DaoTestUtil.create[aType.oclAsType(Enumeration).name.toUpperFirst()/]Value("[prefix/]", [indexName/])
+	[else]
+DaoTestUtil.createNumberFieldValue("[prefix/]", [indexName/])
+	[/if]
+[/template]

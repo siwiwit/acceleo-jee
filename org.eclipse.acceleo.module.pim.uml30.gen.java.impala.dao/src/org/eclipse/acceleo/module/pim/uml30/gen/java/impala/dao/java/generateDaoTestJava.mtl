@@ -23,8 +23,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 import javax.sql.DataSource;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
+//import java.text.SimpleDateFormat;
+//import java.text.ParseException;
 import java.util.Calendar;
 [comment]import java.util.Date;[/comment]
 import org.apache.commons.logging.Log;
@@ -88,7 +88,7 @@ import org.springframework.util.FileCopyUtils;
 
 public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
         ModuleDefinitionSource {
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	//private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     private [anEntity.name.toUpperFirst()/]Dao [anEntity.name.toLowerFirst()/]Dao = null;
     private JdbcTemplate jdbcTemplate = null;
     private static final Log log = LogFactory.getLog([anEntity.name.toUpperFirst()/]DaoTest.class);
@@ -174,15 +174,9 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
 					[if (aStructureClass.ownedAttribute->notEmpty())]
 						[for (aProperty : Property | aStructureClass.ownedAttribute)]
 							[if (aProperty.type.getProperty('java.typeconversion.' + aProperty.type.name) = 'Date')]
-		try{
-							[/if]
-        assertEquals([aProperty.type.generateSampleParameterValue(aProperty.name, it)/], [anEntity.name.toLowerFirst()/][it/].get[aProperty.name.toUpperFirst()/]());
-							[if (aProperty.type.getProperty('java.typeconversion.' + aProperty.type.name) = 'Date')]
-        } catch (ParseException ex) {
-            if(log.isDebugEnabled()) {
-                log.debug(ex.getMessage(), ex);
-            }
-        }
+        assertEquals([aProperty.type.generateSampleParameterValue(aProperty.name, it.toString())/].getTime(), [anEntity.name.toLowerFirst()/][it/].get[aProperty.name.toUpperFirst()/]().getTime());
+							[else]
+        assertEquals([aProperty.type.generateSampleParameterValue(aProperty.name, it.toString())/], [anEntity.name.toLowerFirst()/][it/].get[aProperty.name.toUpperFirst()/]());
 							[/if]
 						[/for]
 					[/if]
@@ -199,18 +193,12 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
 					[if (aStructureClass.ownedAttribute->notEmpty())]
 						[for (aProperty : Property | aStructureClass.ownedAttribute)]
 							[if (aProperty.type.getProperty('java.typeconversion.' + aProperty.type.name) = 'Date')]
-		try{
-	        assertEquals(o[it/].get[aProperty.name.toUpperFirst()/]().getTime(), [aProperty.type.generateSampleParameterValue(aProperty.name, it)/].getTime());
-        } catch (ParseException ex) {
-            if(log.isDebugEnabled()) {
-                log.debug(ex.getMessage(), ex);
-            }
-        }
+	    assertEquals(o[it/].get[aProperty.name.toUpperFirst()/]().getTime(), [aProperty.type.generateSampleParameterValue(aProperty.name, it.toString())/].getTime());
 							[else]
 								[if (aProperty.type.isJavaPrimitiveType())]
-        assertEquals(o[it/].get[aProperty.name.toUpperFirst()/](), [aProperty.type.generateSampleParameterValue(aProperty.name, it)/]);
+        assertEquals(o[it/].get[aProperty.name.toUpperFirst()/](), [aProperty.type.generateSampleParameterValue(aProperty.name, it.toString())/]);
 								[else]
-        assertEquals(o[it/].get[aProperty.name.toUpperFirst()/](), [aProperty.type.generateSampleParameterValue(aProperty.name, it)/]);
+        assertEquals(o[it/].get[aProperty.name.toUpperFirst()/](), [aProperty.type.generateSampleParameterValue(aProperty.name, it.toString())/]);
 								[/if]
 							[/if]
 						[/for]
@@ -231,35 +219,8 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
     public void testInsert[anEntity.name.toUpperFirst()/]() {
         Collection<[anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if]> [anEntity.name.convertSingularToPlural().toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]Dao.loadAll();
         int found = [anEntity.name.convertSingularToPlural().toLowerFirst()/].size();
-        [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] [anEntity.name.toLowerFirst()/] = new [anEntity.name.toUpperFirst()/]Impl();
-		[let classStructures : Sequence(Class) = anEntity.getAllEntityParents()->including(anEntity)]
-			[for (aStructureClass : Class | classStructures)]
-				[if (aStructureClass.ownedAttribute->notEmpty())]
-					[for (aProperty : Property | aStructureClass.ownedAttribute)]
-						[if (getProperty('java.typeconversion.' + aProperty.type.name) = 'Date')]
-		try{
-						[/if]
-        [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 4)/]);
-						[if (getProperty('java.typeconversion.' + aProperty.type.name) = 'Date')]
-        } catch (ParseException ex) {
-            if(log.isDebugEnabled()) {
-                log.debug(ex.getMessage(), ex);
-            }
-        }
-						[/if]
-					[/for]
-					[for (aProperty : Property | aStructureClass.getOppositeAttributes()->select(aField:Property | aField.lower=1 and aField.upper=1))]
-						[if (aProperty.type.isJavaPrimitiveType())]
-        [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 4)/]);
-						[elseif (aProperty.type.oclIsTypeOf(Class) and aProperty.type.oclAsType(Class).isEntity())]
-
-						[/if]						
-
-					[/for]
-				[/if]
-			[/for]
-		[/let]
-        this.[anEntity.name.toLowerFirst()/]Dao.create([anEntity.name.toLowerFirst()/]);
+        [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] [anEntity.name.toLowerFirst()/] =
+			DaoTestUtil.create[anEntity.name.toUpperFirst()/]Object(4); 
         [anEntity.name.convertSingularToPlural().toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]Dao.loadAll();
         assertEquals(found + 1, [anEntity.name.convertSingularToPlural().toLowerFirst()/].size());
     }
@@ -271,7 +232,7 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
         [anAttribute.convertToJavaType()/] old[anAttribute.name.toUpperFirst()/] = o1.get[anAttribute.name.toUpperFirst()/]();
 		[/for]
 		[for (anAttribute : Property | anEntity.ownedAttribute)]
-			o1.set[anAttribute.name.toUpperFirst()/]([anAttribute.type.generateSampleParameterValue(anAttribute.name, 4)/]);
+			o1.set[anAttribute.name.toUpperFirst()/]([anAttribute.type.generateSampleParameterValue(anAttribute.name, '4')/]);
 			[comment][if (getProperty('java.typeconversion.' + anAttribute.type.name) = 'Date')]
         o1.set[anAttribute.name.toUpperFirst()/](this.increaseOneDay(old[anAttribute.name.toUpperFirst()/]));
 			[elseif (getProperty('java.typeconversion.' + anAttribute.type.name) = 'String')]
@@ -283,7 +244,7 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
 		this.[anEntity.name.toLowerFirst()/]Dao.update(o1);
         o1 = this.[anEntity.name.toLowerFirst()/]Dao.get(Long.valueOf(1));
 		[for (anAttribute : Property | anEntity.ownedAttribute)]
-        assertEquals([anAttribute.type.generateSampleParameterValue(anAttribute.name, 4)/], o1.get[anAttribute.name.toUpperFirst()/]());
+        assertEquals([anAttribute.type.generateSampleParameterValue(anAttribute.name, '4')/], o1.get[anAttribute.name.toUpperFirst()/]());
 			
 			[comment][if (getProperty('java.typeconversion.' + anAttribute.type.name) = 'Date')]
         assertEquals(this.increaseOneDay(old[anAttribute.name.toUpperFirst()/]), o1.get[anAttribute.name.toUpperFirst()/]());
@@ -304,48 +265,27 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
                 new String['['/][']'/]{"newtimetracker-dao", "newtimetracker-hibernate"}).getModuleDefinition();
     }
 	
-		[if (anEntity.attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
-	private Date increaseOneDay(Date firstDate) {
-		Calendar calendar =  Calendar.getInstance();
-		calendar.setTime(firstDate);
-		calendar.set(Calendar.DATE, calendar.get(Calendar.DATE)+1);
-		return calendar.getTime(); 
-	}
-		[/if]
 }
 	[/file]
 [/template]
-[template public generateSampleParameterValue(aType : Type, prefix : String, postfix : Integer)]
+	
+[comment][template public generateSampleParameterValue(aType : Type, prefix : String, postfix : Integer) post (trim())]
 		[if (getProperty('java.typeconversion.' + aType.name) = 'Date')]
-dateFormat.parse("2012/01/[postfix/]")
+DaoTestUtil.createDateFieldValue("prefix", postfix)
 		[elseif (getProperty('java.typeconversion.' + aType.name) = 'Boolean' or getProperty('java.typeconversion.' + aType.name) = 'boolean')]
-			[if (postfix.mod(2)=0)]
-false
-			[else]
-true				
-			[/if]
+DaoTestUtil.createBooleanFieldValue("prefix", postfix)
 		[elseif (getProperty('java.typeconversion.' + aType.name) = 'String')]
-"[prefix/][postfix/]"		
+DaoTestUtil.createStringFieldValue("prefix", postfix)
 		[elseif (aType.oclIsTypeOf(Enumeration))]
-			[let literalIndex : Integer = postfix.mod(aType.oclAsType(Enumeration).ownedLiteral->size())+1]
-[aType.name.toUpperFirst()/].[aType.oclAsType(Enumeration).ownedLiteral->at(literalIndex).name/]
-			[/let]
+DaoTestUtil.create[aType.oclAsType(Enumeration).name.toUpperFirst()/]Value("prefix", postfix)
 		[else]
-[postfix/]		
+DaoTestUtil.createNumberFieldValue("prefix", postfix)
 		[/if]
-[/template]
+[/template][/comment]
 [template public generateSampleParameterValues(anOperation : Operation) post (trim())]
 	[for (aParameter : Parameter | anOperation.ownedParameter) separator (', ')]
 [aParameter.type.name/]
-[aParameter.type.generateSampleParameterValue(aParameter.name, 1)/]
+[aParameter.type.generateSampleParameterValue(aParameter.name, '1')/]
 	[/for]
 [/template]
 
-[template public createReferenceObject(referenceProperty : Property, index : Integer)]
-public static [referenceProperty.type.name.toUpperFirst()/] create[referenceProperty.type.name.toUpperFirst()/]() {
-}
-[/template]
-[template public createReferenceObject(referenceProperty : Property)? (referenceProperty.type.oclIsTypeOf(Class))]
-public static [referenceProperty.type.name.toUpperFirst()/] create[referenceProperty.type.name.toUpperFirst()/]([referenceProperty.type.oclAsType(Class).attribute.asP/]) {
-}
-[/template]
