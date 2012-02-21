@@ -26,7 +26,7 @@ arg0
     PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping>
+<hibernate-mapping> 
 [for (anEntity:Class | aModel.eAllContents(Class)->select(anEntity:Class|anEntity.isEntity() and anEntity.hasNoEntityParent()))]
 	[let arg : String = anEntity.name.concat('Object')]
     <class 
