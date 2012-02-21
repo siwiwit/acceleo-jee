@@ -65,7 +65,8 @@ arg0
 		[/if]
 
         <!-- Associations -->
-[anEntity.getOppositeAttributes()->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType()).genAssociations(arg)/]
+[anEntity.getOppositeAttributes(false)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType()).genAssociations(arg)/]
+[comment][anEntity.getOppositeAttributes()->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType()).genAssociations(arg)/][/comment]
 
         <!-- Inheritance -->
 [filterWithStereotype(anEntity.subClass(), getProperty('Entity'))->filter(Class).genInheritance(anEntity, arg)/]
