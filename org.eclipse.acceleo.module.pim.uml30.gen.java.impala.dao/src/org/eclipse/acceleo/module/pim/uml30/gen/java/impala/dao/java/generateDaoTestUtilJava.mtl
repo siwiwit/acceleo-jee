@@ -153,17 +153,55 @@ public final class DaoTestUtil {
 }
 [/file]
 [/template]
+[template public createObjectFuction(anEntity : Class)]
+[anEntity.createObjectFuction(null, null)/]
+[/template]
 
-[comment][template public generateSampleParameterValue(aType : Type, prefix : String, indexName : String) post (trim())]
-		[if (getProperty('java.typeconversion.' + aType.name) = 'Date')]
-DaoTestUtil.createDateFieldValue("prefix", indexName)
-		[elseif (getProperty('java.typeconversion.' + aType.name) = 'Boolean' or getProperty('java.typeconversion.' + aType.name) = 'boolean')]
-DaoTestUtil.createBooleanFieldValue("prefix", indexName)
-		[elseif (getProperty('java.typeconversion.' + aType.name) = 'String')]
-DaoTestUtil.createStringFieldValue("prefix", indexName)
-		[elseif (aType.oclIsTypeOf(Enumeration))]
-DaoTestUtil.create[aType.oclAsType(Enumeration).name.toUpperFirst()/]Value("prefix", indexName)
-		[else]
-DaoTestUtil.createNumberFieldValue("prefix", indexName)
-		[/if]
-[/template][/comment]
+[template public createObjectFuction(anEntity : Class, refPropName : String, aRefEntity : Class)]
+[for (anOppositeProp : Property | anEntity.getOppositeAttributes(false)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType() and aProperty.upper<=1 and aProperty.upper>=1))]
+public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] create[anEntity.name.toUpperFirst()/]Object(long index) {
+	Map<String, Long> childIndexMap = new HashMap<String, Long>();
+	Long childIndex = null;	
+    [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] [anEntity.name.toLowerFirst()/] = new [anEntity.name.toUpperFirst()/]Impl();
+	[let classStructures : Sequence(Class) = anEntity.getAllEntityParents()->including(anEntity)]
+		[for (aStructureClass : Class | classStructures)]
+			[if (aStructureClass.ownedAttribute->notEmpty())]
+				[for (aProperty : Property | aStructureClass.ownedAttribute)]
+    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 'index')/]);
+				[/for]
+				[for (aProperty : Property | aStructureClass.getOppositeAttributes()->select(aField:Property | aField.lower=1))]
+					[if (aProperty.type.isJavaPrimitiveType())]
+    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([aProperty.type.generateSampleParameterValue(aProperty.name, 'index')/]);
+					[elseif (aProperty.type.oclIsTypeOf(Class) and aProperty.type.oclAsType(Class).isEntity())]
+	childIndex = childIndexMap.get([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if].class.getName()); 
+	if(childIndex == null) {
+		childIndex = Long.valueOf(index);
+	} else {
+		childIndex = Long.valueOf(childIndex.longValue() + 1);
+	}
+	childIndexMap.put([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if].class.getName(), childIndex);
+						[if (aProperty.upper = 1)]
+    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex));
+						[else]
+							[if (aProperty.isOrdered)]
+    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](Arrays.asList(DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex)));
+							[/if]
+							[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
+    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](new HashSet(Arrays.asList(DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex))));
+							[/if]
+							[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
+    [anEntity.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](Arrays.asList(DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object(childIndex)));
+							[/if]
+						[/if]
+					[/if]						
+				[/for]
+			[/if]
+		[/for]
+	[/let]
+	[anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);
+	return [anEntity.name.toLowerFirst()/];
+[/for]
+}
+[/template]
+
+
