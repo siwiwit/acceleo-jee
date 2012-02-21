@@ -14,6 +14,8 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoCommon /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::entityUtil /]
+
 [template public generateDaoTestUtilJava(aModel : Model)]
 [file (aModel.generateProjectFolder().concat(aModel.pathToTestJava()).concat('/tests/integration/DaoTestUtil.java'), false, 'UTF-8')]
 package tests.integration;
@@ -102,6 +104,7 @@ public final class DaoTestUtil {
 	[/for]
 
 	[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+			[for (anOppositeProp : Property | anEntity.getOppositeAttributes(false)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType() and aProperty.upper<=1 and aProperty.upper>=1))]
 	public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] create[anEntity.name.toUpperFirst()/]Object(long index) {
 		Map<String, Long> childIndexMap = new HashMap<String, Long>();
 		Long childIndex = null;	
@@ -144,6 +147,7 @@ public final class DaoTestUtil {
 		[anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);
 		return [anEntity.name.toLowerFirst()/];
 	}
+			[/for]
 	[/for]
 
 }

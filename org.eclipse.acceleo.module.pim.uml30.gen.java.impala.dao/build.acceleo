@@ -18,7 +18,7 @@
         <acceleoCompiler 
             sourceFolder="${target.folder}"
             outputFolder="${target.folder}"
-            dependencies="${target.folder}/../../org.eclipse.acceleo.module.pim.uml30.gen.java.impala.common;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.common.migrated;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.spring.migrated;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.dao.migrated;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.hibernate.migrated;"
+            dependencies="${target.folder}/../../org.eclipse.acceleo.module.pim.uml30.gen.java.impala.common;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.common.migrated;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.spring.migrated;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.dao.migrated;${target.folder}/../../org.acceleo.module.pim.uml21.gen.java.hibernate.migrated;${target.folder}/../../org.eclipse.acceleo.module.pim.uml30.gen.java.impala.main;${target.folder}/../../org.eclipse.acceleo.module.pim.uml30.gen.java.impala.build;"
             binaryResource="false"
             packagesToRegister="">
         </acceleoCompiler>
