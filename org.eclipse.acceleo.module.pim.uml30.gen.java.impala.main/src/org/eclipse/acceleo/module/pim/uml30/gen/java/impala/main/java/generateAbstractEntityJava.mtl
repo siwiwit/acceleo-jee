@@ -75,12 +75,12 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
      */
     public static final String PROP_ID = "id";
 
-[for (prop:Property|aClass.classAttributes()->union(aClass.getOtherPKProperties()->asSequence()))]
+[for (prop:Property|aClass.getAvailableProperties()->union(aClass.getOtherPKProperties()->asSequence()))]
     /**
      * Constant representing the name of the field [prop.name/].
      */
     public static final String PROP_[prop.name.toUpper()/] = "[prop.name/]";
-
+	
 [/for]
 
     /**
@@ -88,7 +88,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
      */
     private static final long serialVersionUID = 1L;
 	private [aClass.getPrimaryTypeName()/] id;
-[for (prop:Property|aClass.classAttributes()->filter(Property)->select(not (isPK())))]
+[for (prop:Property|aClass.getAvailableProperties()->filter(Property)->select(not (isPK())))]
     /**
      * Field [prop.name/].
      */
@@ -102,7 +102,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
      */
     public [aClass.name/]() {
         super();
-[for (prop:Property|aClass.classAttributes())]
+[for (prop:Property|aClass.getAvailableProperties())]
 	[if (prop.upper <> 1)]
 		[if (prop.isOrdered)]
 		        [prop.name/] = new ArrayList<[prop.type.name/]>();
@@ -128,7 +128,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
     public void setId(final [aClass.getPrimaryTypeName()/] id) {
         this.id = id;
     }
-[let props : Sequence(Property) = aClass.classAttributes()->filter(Property)->select(not (isPK()))]
+[let props : Sequence(Property) = aClass.getAvailableProperties()->filter(Property)->select(not (isPK()))]
 	[if (props->size() > 0)]
 
     /**
@@ -142,7 +142,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
 			[/if]
 		[/for]
      */
-    public [aClass.name/]([aClass.classAttributes()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/]) {
+    public [aClass.name/]([aClass.getAvailableProperties()->filter(Property)->select(not (isPK())).asParameter()->sep(', ')/]) {
 		[for (prop:Property|props)]
         this.[prop.name/] = [prop.paramName()/];
 		[/for]
@@ -310,7 +310,7 @@ public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0
         if (id != null && castedOther.getId() != null) {
             return id.equals(castedOther.getId());
         }
-	[for (prop:Property|aClass.classAttributes()->filter(Property)->select(not (isPK())))]
+	[for (prop:Property|aClass.getAvailableProperties()->filter(Property)->select(not (isPK())))]
 		[if (prop.type.isJavaPrimitiveType())]
         if ([prop.name/] != castedOther.get[prop.name.toUpperFirst()/]()) {
             return false;
@@ -421,3 +421,6 @@ else
 endif
 /]
 
+[query public getAvailableProperties(aClass : Class) : Sequence(Property) = 
+aClass.ownedAttribute->asSequence()->union(aClass.getOppositeAttributes(false)->select(anOppProp:Property|anOppProp.isNavigable() or (anOppProp.upper=1 and (anOppProp.oppositeAttribute().upper>1 or anOppProp.oppositeAttribute().upper<0))))
+/]
