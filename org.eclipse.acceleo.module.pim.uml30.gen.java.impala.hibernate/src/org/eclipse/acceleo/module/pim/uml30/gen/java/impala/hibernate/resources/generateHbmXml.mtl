@@ -24,7 +24,7 @@ arg0
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping
     PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping> 
 [for (anEntity:Class | aModel.eAllContents(Class)->select(anEntity:Class|anEntity.isEntity() and anEntity.hasNoEntityParent()))]
@@ -84,8 +84,9 @@ arg0
         <property name="[property.name/]">
             <column name="[property.name.toSqlNotation()/]"/>
 	[if (property.type.oclIsTypeOf(Enumeration))]
-			<type name="org.hibernate.type.EnumType">
+			<type name="org.hibernate.type.EnumType" length="200">
 				<param name="enumClass">[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name.toUpperFirst()/]</param>
+				<param name="type">12</param>
 			</type>
 	[/if]
         </property>
@@ -101,14 +102,16 @@ arg0
 	[if (property.upper = 1)]
 [comment  |n|-->1 /]
 		[if (property.oppositeAttribute().upper = 1)]
-[comment  |1|-->1 /]        
+[comment  |1|-->1 /]   
+			[if (property.isNavigable())]
 	[property.genDiagram(arg)/]
         <many-to-one 
             name="[property.name/]" 
             class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl" 
             column="[property.type.name.toSqlNotation()/]_[property.name.toSqlNotation()/]"
             cascade="persist,merge,save-update[if (property.isComposite)],delete[/if]"
-            [if (property.lower > 0)]unique="true"[/if]/>
+            [if (property.lower > 0)]unique="true" [else]unique="true" not-found="ignore" [/if]/>
+			[/if]     
 		[else]
 [comment  |*|-->1 /]        
 	[property.genDiagram(arg)/]
