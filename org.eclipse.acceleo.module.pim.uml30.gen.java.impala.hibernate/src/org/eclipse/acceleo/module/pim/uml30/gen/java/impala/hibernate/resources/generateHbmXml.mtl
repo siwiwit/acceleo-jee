@@ -84,7 +84,7 @@ arg0
         <property name="[property.name/]">
             <column name="[property.name.toSqlNotation()/]"/>
 	[if (property.type.oclIsTypeOf(Enumeration))]
-			<type name="org.hibernate.type.EnumType" length="200">
+			<type name="org.hibernate.type.EnumType">
 				<param name="enumClass">[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name.toUpperFirst()/]</param>
 				<param name="type">12</param>
 			</type>
