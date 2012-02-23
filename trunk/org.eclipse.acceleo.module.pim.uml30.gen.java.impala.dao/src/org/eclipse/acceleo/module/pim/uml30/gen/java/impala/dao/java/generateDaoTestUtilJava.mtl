@@ -327,7 +327,6 @@ childIndexMap.put([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent()
 	[elseif (not ownedProperty.isOrdered and not ownedProperty.isUnique)]
 [anEntity.name.toLowerFirst()/].set[ownedProperty.name.toUpperFirst()/](Arrays.asList([refProperty.name.toLowerFirst()/]));
 	[/if]
-
 [/template]
 
 

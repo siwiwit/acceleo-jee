@@ -21,11 +21,12 @@
 	<name>[aModel.generateSpecificProjectFolder('')/]-build Parent build project for multi-module Impala build</name>
     <modules>
 		<module>../[aModel.generateSpecificProjectFolder('-main')/]</module>
-		<module>../[aModel.generateSpecificProjectFolder('-web')/]</module>
-		<module>../[aModel.generateSpecificProjectFolder('-host')/]</module>
+		<module>../[aModel.generateSpecificProjectFolder('-dto')/]</module>
 		<module>../[aModel.generateSpecificProjectFolder('-hibernate')/]</module>
+		<module>../[aModel.generateSpecificProjectFolder('-dao')/]</module>
 		<module>../[aModel.generateSpecificProjectFolder('-service')/]</module>
-		[aModel.generateModules()/]
+		[comment]<module>../[aModel.generateSpecificProjectFolder('-web')/]</module>[/comment]
+		[comment]<module>../[aModel.generateSpecificProjectFolder('-host')/]</module>[/comment]
 	</modules>
     <repositories>
 		<!-- 

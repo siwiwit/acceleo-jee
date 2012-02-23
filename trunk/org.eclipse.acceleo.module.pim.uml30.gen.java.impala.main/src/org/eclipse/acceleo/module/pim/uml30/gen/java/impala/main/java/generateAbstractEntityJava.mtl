@@ -67,6 +67,7 @@ import [aClass.superClass.generateJavaPackage()/].[aClass.superClass.name/];
  * Warning: no comment in the model for interface [name/].
 [/if]
  */
+// [aClass.getAvailableProperties().name->sep(', ')/]
 public abstract class [aClass.name/][if (aClass.interfaceRealization->size() > 0)] implementes [aClass.implementedInterfaces()/][/if]
  {
 
