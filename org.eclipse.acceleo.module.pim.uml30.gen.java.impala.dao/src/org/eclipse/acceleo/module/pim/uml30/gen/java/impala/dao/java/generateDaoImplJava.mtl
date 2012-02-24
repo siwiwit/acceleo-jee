@@ -73,7 +73,9 @@ public class [aClass.name/]DaoImpl
 [anSimpleOperation.generateJavadoc()/]
     protected [anSimpleOperation.generateReturn()/] handle[anSimpleOperation.name.toUpperFirst()/]([anSimpleOperation.generateParameters()/])
         throws Exception {
+		//[protected ('implementation of finder')]
 		throw new UnsupportedOperationException();
+		//[/protected]
 	}
 [/for]
 

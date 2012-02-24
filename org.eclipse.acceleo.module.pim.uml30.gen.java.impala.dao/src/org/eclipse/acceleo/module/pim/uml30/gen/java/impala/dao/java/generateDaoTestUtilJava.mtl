@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Arrays;
 	[for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
 		[if (anEntity.generateJavaPackage() <> 'tests.integration')]
+import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/]DaoTest;
 			[if (not anEntity.hasEntityParent())]
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/];
 			[/if]
@@ -49,7 +50,6 @@ import [if (enumType.generateJavaPackage().size()>0)][enumType.generateJavaPacka
 			[/for]
 		[/let]
 	[/let]
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
@@ -213,9 +213,18 @@ public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Im
 						[/let][/comment]
 			[/if]								
 		[/for]
+		[for (aRefProperty : Property | classStructures.getOppositeAttributes(false)->select(aField:Property | (aField.lower=1 or aField.lower=0) and ((aField.oppositeAttribute().upper<0 or aField.oppositeAttribute().upper>1) or aField.isNavigable())))]
+	[anEntity.generateReferences(aRefProperty, refProperty)/]		
+		[/for]
+	[anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);
+		[comment][for (aRefProperty : Property | classStructures.getOppositeAttributes(false)->select(aField:Property | (aField.lower=1 or aField.lower=0) and ((aField.oppositeAttribute().upper=0 or aField.oppositeAttribute().upper=1) and not aField.isNavigable())))]
+	[anEntity.generateReferences(aRefProperty, refProperty)/]		
+		[/for][/comment]
+
+
+		[comment]
 		[for (aRefProperty : Property | classStructures.getOppositeAttributes(false)->select(aField:Property | aField.lower=1 or aField.lower=0))]
 			[let aProperty : Property = aRefProperty.oppositeAttribute()]							
-			[comment][let aProperty : Property = classStructures.getAssociations()->select(anAss : Association|anAss.memberEnd->exists(aMember : Property | aMember=aRefProperty)).memberEnd->select(aMember : Property | aMember<>aRefProperty)->asSequence()->first()][/comment]							
 				[if (not aRefProperty.type.isSimpleType() and aRefProperty.type.oclIsTypeOf(Class) and aRefProperty.type.oclAsType(Class).isEntity())]
 					//----------[aRefProperty.name/] ==[refProperty.name/]--[ownedProperty.name/]-----
 					//----------[aRefProperty = refProperty/] 
@@ -275,8 +284,9 @@ public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Im
 				[/if]
 			[/let]
 		[/for]
+	[/comment]
 	[/let]
-	[anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);
+	[comment][anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);[/comment]
 	return [anEntity.name.toLowerFirst()/];
 }
 [/template]
@@ -329,4 +339,62 @@ childIndexMap.put([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent()
 	[/if]
 [/template]
 
-
+[template public generateReferences(anEntity : Class, aRefPropertyOfEntity : Property, refProperty : Property)]
+	[let aProperty : Property = aRefPropertyOfEntity.oppositeAttribute()]							
+		[if (not aRefPropertyOfEntity.type.isSimpleType() and aRefPropertyOfEntity.type.oclIsTypeOf(Class) and aRefPropertyOfEntity.type.oclAsType(Class).isEntity())]
+			[if (aRefPropertyOfEntity = refProperty)]
+				[if (aProperty.lower=1)]
+					[if (aProperty.isNavigable())]
+if([refProperty.type.name.toLowerFirst()/] == null) {
+	childIndex = childIndexMap.get([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if].class.getName()); 
+	if(childIndex == null) {
+		childIndex = Long.valueOf(index);
+	} else {
+		childIndex = Long.valueOf(childIndex.longValue() + 1);
+	}
+	childIndexMap.put([anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if].class.getName(), childIndex);
+	[refProperty.type.name.toLowerFirst()/] = DaoTestUtil.create[refProperty.type.name.toUpperFirst()/]Object(childIndex);
+}
+					[/if]
+				[/if]
+if([refProperty.type.name.toLowerFirst()/] != null) {
+				[if (aProperty.upper >= 0 and aProperty.upper <= 1)]
+					[if (aProperty.isNavigable())]
+    [refProperty.type.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/]([anEntity.name.toLowerFirst()/]);
+					[/if]
+				[elseif (aProperty.isOrdered)]
+	[refProperty.type.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](Arrays.asList([anEntity.name.toLowerFirst()/]));
+				[elseif (aProperty.isUnique)]
+	[refProperty.type.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](new HashSet(Arrays.asList([anEntity.name.toLowerFirst()/])));
+				[elseif (not aProperty.isOrdered and not aProperty.isUnique)]
+	[refProperty.type.name.toLowerFirst()/].set[aProperty.name.toUpperFirst()/](Arrays.asList([anEntity.name.toLowerFirst()/]));
+				[/if]
+				[let refAssociations : Sequence(Association) = refProperty.type.oclAsType(Class).getAllEntityParents()->including(refProperty.type.oclAsType(Class)).getAssociations()->select(anAss : Association|anAss.memberEnd->exists(aMember : Property | aMember=aProperty))->asSequence()]
+					[if (refAssociations->notEmpty())]
+						[let refField : Property = refAssociations.memberEnd->select(aMember : Property | aMember <> aProperty)->first()]
+							[if (refField.upper >= 0 and refField.upper <= 1)]
+								[comment][if (refField.isNavigable())][/comment]
+	[anEntity.name.toLowerFirst()/].set[refField.name.toUpperFirst()/]([refProperty.type.name.toLowerFirst()/]);
+								[comment][/if][/comment]
+							[elseif (refField.isOrdered)]
+	[anEntity.name.toLowerFirst()/].set[refField.name.toUpperFirst()/](Arrays.asList([refProperty.type.name.toLowerFirst()/]));
+							[elseif (refField.isUnique)]
+	[anEntity.name.toLowerFirst()/].set[refField.name.toUpperFirst()/](new HashSet(Arrays.asList([refProperty.type.name.toLowerFirst()/])));
+							[elseif (not refField.isOrdered and not refField.isUnique)]
+	[anEntity.name.toLowerFirst()/].set[refField.name.toUpperFirst()/](Arrays.asList([refProperty.type.name.toLowerFirst()/]));
+							[/if]
+						[/let]
+					[else]
+					[/if]								
+				[/let]
+				[if (aRefPropertyOfEntity.isNavigable())]
+} else {
+	[anEntity.generateObjectProperty(aRefPropertyOfEntity, aProperty, aRefPropertyOfEntity.name.toLowerFirst()<>refProperty.type.name.toLowerFirst())/]	
+				[/if]
+}
+			[else]
+[anEntity.generateObjectProperty(aRefPropertyOfEntity, aProperty, aRefPropertyOfEntity.name.toLowerFirst()<>refProperty.type.name.toLowerFirst())/]	
+			[/if]								
+		[/if]
+	[/let]
+[/template]

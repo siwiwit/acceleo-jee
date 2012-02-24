@@ -15,8 +15,8 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
 [template public generateDaoTestJava(anEntity : Class)]
-	[file (anEntity.getModel().generateProjectFolder().concat(anEntity.getModel().pathToTestJava()).concat('/tests/integration/').concat(anEntity.name.toUpperFirst()).concat('DaoTest.java'), false, 'UTF-8')]
-package tests.integration;
+	[file (anEntity.getModel().generateProjectFolder().concat(anEntity.getModel().pathToTestJava()).concat('/').concat(anEntity.generateJavaPackagePath()).concat('/').concat(anEntity.name.toUpperFirst()).concat('DaoTest.java'), false, 'UTF-8')]
+package [anEntity.generateJavaPackage()/];
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -29,10 +29,10 @@ import java.util.Calendar;
 [comment]import java.util.Date;[/comment]
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
+import tests.integration.DaoTestUtil;
 import junit.framework.TestCase;
 
-[if ('tests.integration' <> anEntity.generateJavaPackage())]
+[if (anEntity.generateJavaPackage() <> anEntity.generateJavaPackage())]
 	[if (not anEntity.hasEntityParent())]
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/];
 	[/if]
@@ -59,7 +59,7 @@ import java.util.Date;
 [/if]
 [for (aField : Property | anEntity.ownedAttribute)]
 	[if (aField.type.name<>'Date' and aField.type.name<>'String' and aField.type.name<>'boolean' and aField.type.name<>'Boolean')]
-		[if ('tests.integration' <> aField.type.generateJavaPackage())]
+		[if (anEntity.generateJavaPackage() <> aField.type.generateJavaPackage())]
 import [if (aField.type.generateJavaPackage().size()>0)][aField.type.generateJavaPackage()/].[/if][aField.type.name/];
 		[/if]
 	[/if]
@@ -67,14 +67,14 @@ import [if (aField.type.generateJavaPackage().size()>0)][aField.type.generateJav
 [if (anEntity.getMultiplicity()->notEmpty())]
 	[for (aMultiplicityElement:MultiplicityElement | anEntity.getMultiplicity())]
 		[if (aMultiplicityElement.oclIsTypeOf(Type))]
-			[if ('tests.integration' <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
+			[if (anEntity.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
 import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
 			[/if]
 		[/if]		
 	[/for]
 [/if]
 [if (not (anEntity.superClass->isEmpty()))]
-	[if ('tests.integration' <> anEntity.superClass->asSequence()->first().generateJavaPackage())]
+	[if (anEntity.generateJavaPackage() <> anEntity.superClass->asSequence()->first().generateJavaPackage())]
 import [anEntity.superClass.generateJavaPackage()/].[anEntity.superClass.name/];
 	[/if]
 [/if]
@@ -264,6 +264,10 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
                 new String['['/][']'/]{"newtimetracker-dao-context.xml"},
                 new String['['/][']'/]{"newtimetracker-dao", "newtimetracker-hibernate"}).getModuleDefinition();
     }
+
+	//[protected ('other unit tests')]
+
+	//[/protected]
 	
 }
 	[/file]
