@@ -19,24 +19,22 @@ package [aService.generateJavaPackage()/];
 // [protected ('imports')] 
 
 import java.io.Serializable;
-[if (aService.getMultiplicity()->notEmpty())]
-	[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isOrdered)->notEmpty())]
+[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->notEmpty())]
+	[let manyProps : Set(MultiplicityElement) = aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)]
+		[if (manyProps->notEmpty())]
+			[if (manyProps->select(isOrdered)->notEmpty())]
 import java.util.List;
 import java.util.ArrayList;
-	[/if]
-	[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
+			[/if]
+			[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
 import java.util.Set;
 import java.util.HashSet;
-	[/if]
-	[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
+			[/if]
+			[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
 import java.util.Collection;
-	[/if]
-[/if]
-
-[if (attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
-import java.util.Date;
-[/if]
-[if (aService.getMultiplicity()->notEmpty())]
+			[/if]
+		[/if]
+	[/let]
 	[for (aMultiplicityElement:MultiplicityElement | aService.getMultiplicity())]
 		[if (aMultiplicityElement.oclIsTypeOf(Type))]
 			[if (aService.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
@@ -45,6 +43,20 @@ import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplic
 		[/if]		
 	[/for]
 [/if]
+
+
+[if (attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
+import java.util.Date;
+[/if]
+[comment][if (aService.getMultiplicity()->notEmpty())]
+	[for (aMultiplicityElement:MultiplicityElement | aService.getMultiplicity())]
+		[if (aMultiplicityElement.oclIsTypeOf(Type))]
+			[if (aService.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
+import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
+			[/if]
+		[/if]		
+	[/for]
+[/if][/comment]
 [if (not (aService.superClass->isEmpty()))]
 	[if (aService.generateJavaPackage() <> aService.superClass->asSequence()->first().generateJavaPackage())]
 import [aService.superClass.generateJavaPackage()/].[aService.superClass.name/];
