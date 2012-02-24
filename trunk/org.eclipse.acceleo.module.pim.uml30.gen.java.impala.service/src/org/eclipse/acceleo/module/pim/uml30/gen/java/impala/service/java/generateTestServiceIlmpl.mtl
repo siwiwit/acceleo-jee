@@ -13,25 +13,10 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
 [template public generateTestServiceIlmpl(aClass : Class)]
 	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToTestJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name.toUpperFirst()).concat('Test.java'), false, 'Cp1252')]
-/*
- * Copyright 2002-2006 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 [if (aClass.generateJavaPackage().trim().size()>0)]
 package [aClass.generateJavaPackage()/];
 [/if]
-
+//[protected ('imports')]
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -49,17 +34,11 @@ import org.impalaframework.module.ModuleDefinitionSource;
 import org.impalaframework.module.RootModuleDefinition;
 import org.impalaframework.module.source.SimpleModuleDefinitionSource;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 [for (anEntity : Class | aClass.getModel().eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
 import [if(anEntity.generateJavaPackage().trim().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name/][if(anEntity.hasEntityParent())]Impl[/if];
 [/for]
-
-//import org.springframework.[aClass.getModel().generateSpecificProjectFolder('')/].util.EntityUtils;
-
 import [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPackage()/].[/if][aClass.name/];
-
-
-import org.springframework.util.FileCopyUtils;
+//[/protected]
 
 /**
  * Base class for Clinic tests. Allows subclasses to specify context locations.
@@ -80,6 +59,9 @@ import org.springframework.util.FileCopyUtils;
 public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
         ModuleDefinitionSource {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	//[protected ('addition properties')]
+
+	//[/protected]
 
     public static void main(String['['/][']'/] args) {
         InteractiveTestRunner.run([aClass.name.toUpperFirst()/]Test.class);
@@ -89,6 +71,7 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
 
     private [aClass.name.toUpperFirst()/] [aClass.name.toLowerFirst()/];
 
+	@Override
     public void setUp() throws Exception {
         super.setUp();
         Impala.init(this);
@@ -112,6 +95,9 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
 
 	[for (aServicrMethod : Operation | aClass.ownedOperation->select(anOper:Operation|anOper.visibility = VisibilityKind::public))]
 	public void test[aServicrMethod.name.toUpperFirst()/]() {
+		//[protected ('test service method')]
+		throw new UnsupportedOperationException("test[aServicrMethod.name.toUpperFirst()/] hasn't been implemented yet.");
+		//[/protected]		
 	}
 	[/for]
 [comment][for (anEntity : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
