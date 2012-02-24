@@ -151,7 +151,7 @@ class.getAssociations().oclAsType(Association).oppositeAttributeOf(class)
 
 
 [query public operationsParameters(class : Class):Sequence(Parameter) = 
-class.ownedOperation.ownedParameter
+class.ownedOperation.ownedParameter->union(if(class.ownedOperation.returnResult()->notEmpty())then class.ownedOperation.returnResult()->asSequence() else Sequence{} endif )
 /]
 
 
@@ -164,29 +164,28 @@ class.operationsParameters().type->filter(Classifier)->select(not (name.endsWith
 
 [query public getMultiplicity(aClass : Class) : Set(MultiplicityElement) = 
 (if(aClass.classAttributes()->notEmpty()) then
-	aClass.classAttributes().oclAsType(MultiplicityElement)->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->asSet()
+	aClass.classAttributes().oclAsType(MultiplicityElement)->asSet()
 else
 	Set{}
 endif)->union(
 	if(aClass.operationsParameters()->notEmpty()) then
-	aClass.operationsParameters().oclAsType(MultiplicityElement)->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->asSet()
+		aClass.operationsParameters()->filter(MultiplicityElement)->asSet()
 	else
-	Set{}
+		Set{}
 	endif
 )
 /]
+[comment]aClass.operationsParameters()->filter(MultiplicityElement)->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->asSet()[/comment]
 
-[template public genCollectionImports(aClass : Class) post (trim())]
-[if (aClass.getMultiplicity()->notEmpty())]
-	[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isOrdered)->notEmpty())]
+[template public genCollectionImports(class : Class)]
+[if (class.operationsParameters()->select((upper = -1 or upper > 1) and isOrdered)->notEmpty())]
 import java.util.List;
-	[/if]
-	[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
-import java.util.Set;
-	[/if]
-	[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
-import java.util.Collection;
-	[/if]
 [/if]
-[/template]
+[if (class.operationsParameters()->select((upper = -1 or upper > 1) and (not (isOrdered) and isUnique))->notEmpty())]
+import java.util.Set;
+[/if]
+[if (class.operationsParameters()->select((upper = -1 or upper > 1) and (not (isOrdered) and not (isUnique)))->notEmpty())]
+import java.util.Collection;
+[/if]
 
+[/template]
