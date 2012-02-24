@@ -650,13 +650,8 @@ public abstract class [aClass.name/]DaoBase
         [aDtoClass.name.toUpperFirst()/] target)
     {
         target.setId(source.getId());
-		
-		[for (aProperty : Property | aClass.ownedAttribute)]
-			[if (aDtoClass.ownedAttribute.name->exists(name:String|name = aProperty.name))]
-				[if (aDtoClass.ownedAttribute->select(aDtoProp:Property|aDtoProp.name = aProperty.name ).type->first()=aProperty.type)]
+		[for (aProperty : Property | aDtoClass.getAllStrutureClasses().ownedAttribute->select(dtoAttr:Property | aClass.ownedAttribute->exists(aProp:Property|aProp.name=dtoAttr.name and aProp.type = dtoAttr.type)))]
         target.set[aProperty.name.toUpperFirst()/](source.get[aProperty.name.toUpperFirst()/]());
-				[/if]
-			[/if]
 		[/for]
     }
 
@@ -816,4 +811,13 @@ public abstract class [aClass.name/]DaoBase
 [property.convertToJavaType()/] [property.name/]
 [/template]
 
+[query public getAllStrutureClasses(aClass : Class) : Sequence(Class) = 
+aClass->asSequence()->union(
+if(aClass.superClass->notEmpty()) then
+	aClass.superClass->asSequence()->first().getAllStrutureClasses()
+else
+	Sequence{}
+endif)
+ 
+/]
 

@@ -31,14 +31,14 @@ import java.util.Collection;
 	[/if]
 [/let][/comment]
 
-[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
+[comment][for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [if(aDtoClass.generateJavaPackage().trim().size()>0)][aDtoClass.generateJavaPackage()/].[/if][aDtoClass.name/];
 	[/if]
-[/for]
+[/for][/comment]
 
-[if (aClass.getMultiplicity()->notEmpty())]
-	[let manyProps : Set(MultiplicityElement) = aClass.getMultiplicity()]
+[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->notEmpty())]
+	[let manyProps : Set(MultiplicityElement) = aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)]
 		[if (manyProps->notEmpty())]
 			[if (manyProps->select(isOrdered)->notEmpty())]
 import java.util.List;
