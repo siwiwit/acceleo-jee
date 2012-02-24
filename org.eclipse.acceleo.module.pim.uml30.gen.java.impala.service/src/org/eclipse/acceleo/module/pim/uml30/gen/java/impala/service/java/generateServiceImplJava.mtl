@@ -1,0 +1,97 @@
+[comment encoding = Cp1252 /]
+[module generateServiceImplJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::requests /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::java::javaclass /]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::structureUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::spring::common /]
+[import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::serviceCommon /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::entityUtil /]
+[template public generateServiceImplJava(aService : Class)]
+	[file (aService.getModel().generateProjectFolder().concat(aService.getModel().pathToMainJava()).concat('/').concat(aService.generateJavaPackagePath()).concat('/').concat(aService.name.toUpperFirst()).concat('Impl.java'), false, 'Cp1252')]
+package [aService.generateJavaPackage()/];
+//[protected ('user imports')]
+import java.io.Serializable;
+[if (aService.getMultiplicity()->notEmpty())]
+	[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isOrdered)->notEmpty())]
+import java.util.List;
+import java.util.ArrayList;
+	[/if]
+	[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
+import java.util.Set;
+import java.util.HashSet;
+	[/if]
+	[if (aService.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
+import java.util.Collection;
+	[/if]
+[/if]
+
+[if (attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
+import java.util.Date;
+[/if]
+[if (aService.classAttributes().type->union(aService.operationsParameters().type)->filter(Classifier)->notEmpty())]
+	[for (aClassifier : Classifier | aService.classAttributes().type->union(aService.operationsParameters().type)->filter(Classifier)->select(not isSimpleType()))]
+		[if (aService.generateJavaPackage() <> aClassifier.generateJavaPackage())]
+import [aClassifier.generateJavaPackage()/].[aClassifier.name.toUpperFirst()/];
+		[/if]		
+	[/for]
+[/if]
+[if (not (aService.superClass->isEmpty()))]
+	[if (aService.generateJavaPackage() <> aService.superClass->asSequence()->first().generateJavaPackage())]
+import [aService.superClass.generateJavaPackage()/].[aService.superClass.name/];
+	[/if]
+[/if]
+[for (aDaoClass : Class | aService.getRelatedDaos())]
+	[if (aService.generateJavaPackage() <> aDaoClass.generateJavaPackage())]
+import [aDaoClass.generateJavaPackage()/].[aDaoClass.name/]Dao;
+	[/if]
+[/for]
+//[/protected]
+public class [aService.name.toUpperFirst()/]Impl extends [aService.name.toUpperFirst()/]BaseImpl {
+	    /**
+     * Default constructor.
+     */
+    public [aService.name/]Impl() {
+        super();
+    }
+
+[let props : Sequence(Property) = aService.classAttributes()]
+	[if (props->size() > 0)]
+
+    /**
+     * Constructor with all parameters initialized.
+		[for (prop:Property|props)]
+     * @param [prop.paramName()/]
+			[if (prop.ownedComment._body->size() > 0)]
+     *            [prop.ownedComment._body.replaceAll('n', '\n     *            ')/]
+			[else]
+     *            Warning, no comment in the model.
+			[/if]
+		[/for]
+     */
+    public [aService.name/]Impl([aService.classAttributes().asParameter()->sep(', ')/]) {
+		super([aService.classAttributes().name.toLowerFirst()->sep(', ')/]);
+    }
+	[/if]
+[/let]
+[for (anSimpleOperation : Operation | aService.ownedOperation->select(oper:Operation|not oper.isFinder()))]
+	[anSimpleOperation.generateJavadoc()/]
+	[anSimpleOperation.genModifiers()/] [anSimpleOperation.generateReturn()/] [anSimpleOperation.name/]([anSimpleOperation.generateParameters()/])
+    {
+		//[protected ('user code')]
+        // TODO implement public void addTimeAllocation(TimeAllocation timeAllocation)
+        throw new UnsupportedOperationException("[if (aService.generateJavaPackage().trim().size()>0)][aService.generateJavaPackage()/].[/if][aService.name/].[anSimpleOperation.name/]([anSimpleOperation.generateParameters()/]) Not implemented!");
+		//[/protected]
+    }
+[/for]
+
+}
+	[/file]
+[/template]
+
