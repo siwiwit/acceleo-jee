@@ -110,18 +110,6 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
         }
     }
 
-    /**
-     * This method is provided to set the Clinic instance being tested by the
-     * Dependency Injection injection behaviour of the superclass from the
-     * <code>org.springframework.test</code> package.
-     * 
-     * @param [aClass.name.toLowerFirst()/]
-     *            [aClass.name.toLowerFirst()/] to test
-     */
-    public void set[aClass.name.toUpperFirst()/]([aClass.name.toUpperFirst()/] [aClass.name.toLowerFirst()/]) {
-        this.[aClass.name.toLowerFirst()/] = [aClass.name.toLowerFirst()/];
-    }
-    
 	[for (aServicrMethod : Operation | aClass.ownedOperation->select(anOper:Operation|anOper.visibility = VisibilityKind::public))]
 	public void test[aServicrMethod.name.toUpperFirst()/]() {
 	}
@@ -226,17 +214,22 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
     public RootModuleDefinition getModuleDefinition() {
 
         return new SimpleModuleDefinitionSource("[aClass.getModel().generateSpecificProjectFolder('-main')/]",
-                new String['['/][']'/] { "[aClass.getModel().generateSpecificProjectFolder('-context')/].xml" }, new String['['/][']'/] {
+                new String['['/][']'/] { "[aClass.getModel().generateSpecificProjectFolder('-service-context')/].xml" }, new String['['/][']'/] {
                         "[aClass.getModel().generateSpecificProjectFolder('-hibernate')/]", 
+                        "[aClass.getModel().generateSpecificProjectFolder('-dao')/]", 
                         "[aClass.getModel().generateSpecificProjectFolder('-service')/]" })
                 .getModuleDefinition();
     }
 
+	//[protected ('other unit tests')]
+
+	//[/protected]
 }
+	
 	[/file]
 [/template]
 
-[template public generateSampleParameterValue(aType : Type, prefix : String, postfix : String)]
+[comment][template public generateSampleParameterValue(aType : Type, prefix : String, postfix : String)]
 		[if ((getProperty('java.typeconversion.' + aType.name) = 'Date')->notEmpty())]
 dateFormat.parse("2012/01/01")
 		[elseif ((getProperty('java.typeconversion.' + aType.name) = 'String')->notEmpty())]
@@ -249,4 +242,4 @@ dateFormat.parse("2012/01/01")
 	[for (aParameter : Parameter | anOperation.ownedParameter) separator (', ')]
 [aParameter.type.generateSampleParameterValue(aParameter.name, '0')/]
 	[/for]
-[/template]
+[/template][/comment]

@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module serviceCommon('http://www.eclipse.org/uml2/3.0.0/UML')]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+[query public getRelatedDaos(aService : Class) : Set(Class) = 
+if(aService.clientDependency->notEmpty()) then
+	aService.clientDependency.supplier->filter(Class)->select(aService : Class|aService.isEntity())->asSet()
+else
+	Set{}
+endif
+/]

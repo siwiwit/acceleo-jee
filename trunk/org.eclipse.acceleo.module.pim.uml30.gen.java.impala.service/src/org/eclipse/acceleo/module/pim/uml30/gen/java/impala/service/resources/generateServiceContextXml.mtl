@@ -16,13 +16,15 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
 
     <service:export-array beanNames="[aModel.eAllContents(Class)->select(aClass:Class|aClass.isService()).name.toLower()->sep(',')/]"/>
 	[for (aEntityClass : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity())->asSet())]
-	<service:import id = "[aEntityClass.name.toLower()/]dao" proxyTypes = "[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]"/>
+	<service:import id = "[aEntityClass.name.toLower()/]dao" proxyTypes = "[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]Dao"/>
 	[/for]
+	<service:import id = "transactionManager" proxyTypes = "org.springframework.transaction.PlatformTransactionManager"/>  
+	<service:import id = "dataSource" proxyTypes = "javax.sql.DataSource"/>
 	[for (aService : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isService())->asSet())]
     <bean id="[aService.name.toLower()/]" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
         <property name="transactionManager" ref="transactionManager"/>
         <property name="target">
-            <bean class="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name/]">
+            <bean class="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name/]Impl">
 				[if (aService.clientDependency->notEmpty() and aService.clientDependency.supplier->filter(Class)->exists(aClass:Class|aClass.isEntity()))]
 					[for (aEntityClass : Class | aService.clientDependency.supplier->filter(Class)->select(aClass:Class|aClass.isEntity()))]
                 <property name="[aEntityClass.name.toLowerFirst()/]Dao" ref = "[aEntityClass.name.toLower()/]dao"/>
