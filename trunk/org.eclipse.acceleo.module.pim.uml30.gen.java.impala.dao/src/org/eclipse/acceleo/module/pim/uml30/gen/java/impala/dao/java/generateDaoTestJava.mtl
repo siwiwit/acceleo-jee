@@ -17,7 +17,7 @@
 [template public generateDaoTestJava(anEntity : Class)]
 	[file (anEntity.getModel().generateProjectFolder().concat(anEntity.getModel().pathToTestJava()).concat('/').concat(anEntity.generateJavaPackagePath()).concat('/').concat(anEntity.name.toUpperFirst()).concat('DaoTest.java'), false, 'UTF-8')]
 package [anEntity.generateJavaPackage()/];
-
+//[protected ('imports')]
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,19 +39,29 @@ import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPacka
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/]Dao;
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/]Impl;
 [/if]
-
-[if (anEntity.getMultiplicity()->notEmpty())]
-	[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isOrdered)->notEmpty())]
+[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->notEmpty())]
+	[let manyProps : Set(MultiplicityElement) = anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)]
+		[if (manyProps->notEmpty())]
+			[if (manyProps->select(isOrdered)->notEmpty())]
 import java.util.List;
 import java.util.ArrayList;
-	[/if]
-	[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.isUnique)->notEmpty())]
+			[/if]
+			[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
 import java.util.Set;
 import java.util.HashSet;
-	[/if]
-	[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|not (aMultiplicityElement.isOrdered) and not (aMultiplicityElement.isUnique))->notEmpty())]
+			[/if]
+			[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
 import java.util.Collection;
-	[/if]
+			[/if]
+		[/if]
+	[/let]
+	[for (aMultiplicityElement:MultiplicityElement | anEntity.getMultiplicity())]
+		[if (aMultiplicityElement.oclIsTypeOf(Type))]
+			[if (anEntity.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
+import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
+			[/if]
+		[/if]		
+	[/for]
 [/if]
 
 [if (anEntity.attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
@@ -64,7 +74,7 @@ import [if (aField.type.generateJavaPackage().size()>0)][aField.type.generateJav
 		[/if]
 	[/if]
 [/for]
-[if (anEntity.getMultiplicity()->notEmpty())]
+[comment][if (anEntity.getMultiplicity()->notEmpty())]
 	[for (aMultiplicityElement:MultiplicityElement | anEntity.getMultiplicity())]
 		[if (aMultiplicityElement.oclIsTypeOf(Type))]
 			[if (anEntity.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
@@ -72,7 +82,7 @@ import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplic
 			[/if]
 		[/if]		
 	[/for]
-[/if]
+[/if][/comment]
 [if (not (anEntity.superClass->isEmpty()))]
 	[if (anEntity.generateJavaPackage() <> anEntity.superClass->asSequence()->first().generateJavaPackage())]
 import [anEntity.superClass.generateJavaPackage()/].[anEntity.superClass.name/];
@@ -85,6 +95,7 @@ import org.impalaframework.module.RootModuleDefinition;
 import org.impalaframework.module.source.SimpleModuleDefinitionSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.FileCopyUtils;
+//[/protected]
 
 public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
         ModuleDefinitionSource {
@@ -92,7 +103,9 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
     private [anEntity.name.toUpperFirst()/]Dao [anEntity.name.toLowerFirst()/]Dao = null;
     private JdbcTemplate jdbcTemplate = null;
     private static final Log log = LogFactory.getLog([anEntity.name.toUpperFirst()/]DaoTest.class);
+	//[protected ('addition properties')]
 
+	//[/protected]
     public static void main(String['['/][']'/] args) {
         InteractiveTestRunner.run([anEntity.name.toUpperFirst()/]DaoTest.class);
     }
@@ -105,6 +118,7 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
 		return Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
 	}
 
+	@Override
     public void setUp() throws Exception {
         super.setUp();
         Impala.init(this);
@@ -211,7 +225,7 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends TestCase implements
 	[for (aFinder:Operation| anEntity.ownedOperation->select(anOperation:Operation|anOperation.isFinder()))]
     public void test[aFinder.name.toUpperFirst()/]() {
 		//[protected ('finder')]
-        [comment]Collection<[anEntity.name.toUpperFirst()/]> [anEntity.name.convertSingularToPlural().toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]Dao.[aFinder.name.toLowerFirst()/]([aFinder.generateSampleParameterValues()/]);[/comment]
+		throw new UnsupportedOperationException("test[aFinder.name.toUpperFirst()/] hasn't been implemented yet.");
 		//[/protected]
     }
 	[/for]

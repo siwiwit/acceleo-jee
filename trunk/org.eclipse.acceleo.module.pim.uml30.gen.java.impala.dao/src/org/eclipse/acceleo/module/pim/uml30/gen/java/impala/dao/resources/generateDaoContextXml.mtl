@@ -5,8 +5,8 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::acceleo::module::pim::uml21::gen::java::common::requests /]
 [import org::acceleo::module::pim::uml21::gen::java::spring::profile /]
-[template public generateDaoContextXml(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/').concat(aModel.generateProjectFolder()).concat('-context.xml'), false, 'UTF-8')]
+[template public generateDaoContextXml(aModel : Model, path : String)]
+	[file (aModel.generateProjectFolder().concat(path).concat('/').concat(aModel.generateProjectFolder()).concat('-context.xml'), false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" 
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -23,21 +23,7 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
 	<service:import id = "sessionFactory" proxyTypes = "org.hibernate.SessionFactory"/> 
     
 	<service:import id = "transactionManager" proxyTypes = "org.springframework.transaction.PlatformTransactionManager"/>  
-[for (aService : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isService()))]
-	<service:import id = "[aService.name.toLower()/]" proxyTypes = "[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]"/>
- 	<!--  The rest is just variations on a theme - not actually required for the application -->
- 
-	<service:import id = "[aService.name.toLower()/]a" exportName="[aService.name.toLower()/]" proxyTypes =
-	"[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]"/>
 
-	<service:import id = "[aService.name.toLower()/]b" exportTypes =
-	"[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]"/>" proxyTypes =
-	"[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/][aService.name.toLower().toUpperFirst()/]"/>
-
-	<service:import id = "[aService.name.toLower()/]c" exportTypes =
-	"[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]"/>
-[/for]    
-  
 [for (aEntityClass : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
 	<bean id="[aEntityClass.name.toLower()/]dao" class="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]DaoImpl">
 	    <property name="sessionFactory" ref = "sessionFactory"/>
