@@ -18,8 +18,8 @@
 arg0
  /]
 
-[template public generateHbmXml(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/').concat(aModel.generateSpecificProjectFolder('').concat('.hbm.xml')), false, 'UTF-8')]
+[template public generateHbmXml(aModel : Model, resourceFoler : String)]
+	[file (aModel.generateProjectFolder().concat(resourceFoler).concat('/').concat(aModel.generateSpecificProjectFolder('').concat('.hbm.xml')), false, 'UTF-8')]
 [comment This template is called by the main module file /]
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping
