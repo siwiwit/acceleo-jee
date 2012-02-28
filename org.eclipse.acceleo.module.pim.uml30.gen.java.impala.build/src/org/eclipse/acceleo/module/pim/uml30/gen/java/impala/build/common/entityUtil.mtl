@@ -9,6 +9,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::requests /]
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
 [import org::acceleo::module::pim::uml21::services::uml2services /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
 [query public isSimpleType(aType : Type) : Boolean =
 aType.name.isSimpleType()
 /] 
@@ -80,7 +81,7 @@ TIME
 			[let enumLiteralCount : Integer = anEnum.ownedLiteral->size()]
 				[if (enumLiteralCount > 0)]
 					[let literalIndex : Integer = index.mod(enumLiteralCount)+1]
-'[anEnum.ownedLiteral->at(literalIndex).name/]'
+'[anEnum.ownedLiteral->at(literalIndex).name.toUpper()/]'
 					[/let]
 				[else]
 ''
@@ -122,7 +123,7 @@ anEntity.ownedAttribute->select(aProperty:Property|not aProperty.isPK() and (aPr
 
 
 [query public getReferenceFields(anEntity : Class) : Set(Property) = 
-anEntity.getOppositeAttributes(false)->filter(Property)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.oclIsTypeOf(Enumeration) and not aProperty.type.isSimpleType())
+anEntity.getOppositeAttributes(false)->filter(Property)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.oclIsTypeOf(Enumeration) and not aProperty.type.isSimpleType())->asSet()
 /]
 
 [query public getInheritancePrimaryProperties(anEntity : Class, list : Sequence(Property)) : Set(Property) = 
@@ -174,8 +175,52 @@ else
 endif
 /]
 
+[query public sortByRef(entities : Sequence(Class)) : Sequence(Class) = 
+invoke('org.eclipse.acceleo.module.pim.uml30.gen.java.impala.build.common.EntityRefSort', 'sortByRef(java.util.List)', Sequence{entities})
+/]
 
 
 [comment][query public getFields(anEntity : Class) : Set(Property) = 
 anEntity.classAttributes()->filter(Property)->select(aProperty:Property|not aProperty.isPK() and (aProperty.type.isSimpleType() or aProperty.type.oclIsTypeOf(Enumeration))) 
 /][/comment]
+		[comment](entity.classAttributes().type->select(aType:Type|aType.oclIsTypeOf(Class) and aType.oclAsType(Class).isEntity()).oclAsType(Class).entityRate())->sum()
+		+ entity.classAttributes().type->select(aType:Type|aType.oclIsTypeOf(Class) and aType.oclAsType(Class).isEntity())->size()[/comment]
+
+[query public entityRate(entity : Class) : Integer =
+	if(entity.isEntity()) then
+		if (entity.hasEntityParent()) then
+			entity.superClass->asSequence()->first().entityRate() + 1 
+		else
+			0
+		endif		
+		+
+		if(entity.classAttributes(false)->select(aProp:Property|aProp.type.oclIsTypeOf(Class) and aProp.type.oclAsType(Class).isEntity())->notEmpty()) then
+			entity.classAttributes(false)->select(aProp:Property|aProp.type.oclIsTypeOf(Class) and aProp.type.oclAsType(Class).isEntity()).propertyRate()->sum()
+		else
+			0
+		endif
+	else
+		0
+	endif
+	
+/]
+
+[query public propertyRate(aProp:Property) : Integer =
+	if(aProp.upper=1 or aProp.upper=0) then
+		if(aProp.oppositeAttribute().upper=1 or aProp.oppositeAttribute().upper=0) then
+			if(aProp.isNavigable()) then
+				aProp.type.oclAsType(Class).entityRate() + 1
+			else
+				0
+			endif
+		else
+			aProp.type.oclAsType(Class).entityRate() + 1
+		endif
+	else
+		if(aProp.oppositeAttribute().upper=1 or aProp.oppositeAttribute().upper=0) then
+			0
+		else
+			0
+		endif
+	endif
+/]

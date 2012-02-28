@@ -12,7 +12,8 @@
 	
 [template public generatePopulateDBTxt(aModel : Model)]
 	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/db/populateDB.txt'), false, 'Cp1252')]
-		[for (anEntity:Class| aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+[let entities : Sequence(Class) = aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity())->sortedBy(aClass:Class|aClass.entityRate())]
+	[for (anEntity:Class| entities)]
 			[for (index : Integer | Sequence{1,2,3})]
 INSERT INTO [anEntity.name.toLower().convertSingularToPlural()/] 
 (
@@ -27,7 +28,8 @@ VALUES (
 			[anEntity.generateForeignKeyValues(index)/]
 );
 			[/for]
-		[/for]
+	[/for]
+[/let]	
 [aModel.generateAsociationTableValues()/]
 	[/file]
 [/template]
