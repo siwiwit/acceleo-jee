@@ -4,8 +4,8 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
 
-[template public generateMysqlProperties(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToTestResources()).concat('/mysql.properties'), false, 'ISO-8859-1')]
+[template public generateMysqlProperties(aModel : Model, resourceFoler : String)]
+	[file (aModel.generateProjectFolder().concat(resourceFoler).concat('/mysql.properties'), false, 'ISO-8859-1')]
 jdbc.driverClassName=com.mysql.jdbc.Driver
 jdbc.url=jdbc:mysql://localhost/[aModel.generateSpecificProjectFolder('')/]test?autoReconnect=false&useUnicode=true&characterEncoding=utf-8
 [protected ('protected')]
