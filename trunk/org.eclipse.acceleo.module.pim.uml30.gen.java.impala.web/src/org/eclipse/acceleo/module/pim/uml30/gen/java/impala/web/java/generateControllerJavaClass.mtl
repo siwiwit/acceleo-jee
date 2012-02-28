@@ -21,6 +21,7 @@
 package [aClass.generateJavaPackage()/];
 
 // [protected ('imports')] 
+import org.springframework.stereotype.Controller;
 
 [for (classifier:Classifier|aClass.operationsParametersTypes())]
 import [classifier.getCompleteName()/];	
@@ -65,8 +66,8 @@ import [classifier.getCompleteName()/];
 	[oper.generateJavadoc()/]
 	[oper.genModifiers()/] [oper.generateReturn()/] [oper.name/]([oper.generateRawParameters()/]) [if (oper.raisedException->notEmpty())]throws [oper.raisedException.name->sep(', ')/][/if][oper.genOperationBody()/]
 [/for]
-	[/file]
 }
+	[/file]
 
 [/template]
 
