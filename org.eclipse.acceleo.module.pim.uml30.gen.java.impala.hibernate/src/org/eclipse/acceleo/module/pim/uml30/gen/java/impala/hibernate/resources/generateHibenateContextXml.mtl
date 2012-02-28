@@ -4,8 +4,8 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
 
-[template public generateHibenateContextXml(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/').concat(aModel.generateProjectFolder()).concat('-context.xml'), false, 'UTF-8')]
+[template public generateHibenateContextXml(aModel : Model, resourceFoler : String)]
+	[file (aModel.generateProjectFolder().concat(resourceFoler).concat('/').concat(aModel.generateProjectFolder()).concat('-context.xml'), false, 'UTF-8')]
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" 
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -34,17 +34,29 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
         <property name="password" value="${jdbc.password}" />
     </bean>
     
+    <!-- applicationContext merge-point -->
+    <bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.default_batch_fetch_size">16</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+                <prop key="hibernate.cache.query_cache_factory">org.hibernate.cache.StandardQueryCacheFactory</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <!-- add specific (non-supported in the Spring cartridge) hibernate properties here -->
+            </props>
+        </property>
+    </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource"><ref local="dataSource"/></property>
         <property name="mappingResources">
             <value>[aModel.generateSpecificProjectFolder('')/].hbm.xml</value>
         </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.show_sql">true</prop>      
-            </props>
+        <property name="hibernateProperties" ref="hibernateProperties"/>
+        <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
         </property>
         <property name="eventListeners">
             <map>
@@ -57,6 +69,12 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory"><ref local="sessionFactory"/></property>
+    </bean>
+
+    <!-- The Hibernate interceptor -->
+    <bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <!-- applicationContext hibernateInterceptor merge-point -->
     </bean>
 
 </beans>
