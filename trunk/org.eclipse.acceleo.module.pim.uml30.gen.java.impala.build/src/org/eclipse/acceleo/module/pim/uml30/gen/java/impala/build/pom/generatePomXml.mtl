@@ -25,7 +25,7 @@
 		<module>../[aModel.generateSpecificProjectFolder('-hibernate')/]</module>
 		<module>../[aModel.generateSpecificProjectFolder('-dao')/]</module>
 		<module>../[aModel.generateSpecificProjectFolder('-service')/]</module>
-		[comment]<module>../[aModel.generateSpecificProjectFolder('-web')/]</module>[/comment]
+		<module>../[aModel.generateSpecificProjectFolder('-web')/]</module>
 		[comment]<module>../[aModel.generateSpecificProjectFolder('-host')/]</module>[/comment]
 	</modules>
     <repositories>
@@ -251,6 +251,16 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.8.3</version>
 		</dependency>
+	    <dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.5.1</version>
+	    </dependency>
+	    <dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-terracotta</artifactId>
+			<version>2.1.1</version>
+	    </dependency>
 
 	</dependencies>
 	<build>

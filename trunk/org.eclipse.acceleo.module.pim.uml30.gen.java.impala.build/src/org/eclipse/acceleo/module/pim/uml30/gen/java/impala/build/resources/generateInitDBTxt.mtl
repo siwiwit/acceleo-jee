@@ -13,13 +13,23 @@
 
 [template public generateInitDBTxt(aModel : Model)]
 	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/db/initDB.txt'), false, 'Cp1252')]
-		[for (anEntity:Class| aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
+[let entities : Sequence(Class) = aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity())->sortedBy(aClass:Class|aClass.entityRate())]
+	[for (anEntity:Class| sortByRef(entities))]
 CREATE TABLE [anEntity.name.toLower().convertSingularToPlural()/] (
 	[anEntity.generatePrimaryKeys()/]
 	[anEntity.generateFields()/]
 	[anEntity.generateForeignKeys()/]
 );
-		[/for]
+	[/for]
+[/let]	
+
+		[comment][for (anEntity:Class| sortByRef(aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity())))]
+CREATE TABLE [anEntity.name.toLower().convertSingularToPlural()/] (
+	[anEntity.generatePrimaryKeys()/]
+	[anEntity.generateFields()/]
+	[anEntity.generateForeignKeys()/]
+);
+		[/for][/comment]
 [aModel.generateAsociationTables()/]	
 	[/file]
 [/template]
