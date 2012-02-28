@@ -1,0 +1,105 @@
+[comment encoding = Cp1252 /]
+[module generateManageableDaoInterfaceJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::structure /]
+[import org::acceleo::module::pim::uml21::gen::java::common::compositeUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoPathUtil /]
+[import org::acceleo::module::pim::uml21::gen::java::common::common /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoCommon /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::entityUtil /]
+[import org::acceleo::module::pim::uml21::services::uml2services /]
+[template public generateManageableDaoInterfaceJava(anEntity : Class) ? (anEntity.isManageableEntity())]
+	[file (anEntity.getModel().generateProjectFolder().concat(anEntity.getModel().pathToGeneratedMainJava()).concat('/').concat(anEntity.generateJavaPackagePath()).concat('/crud/').concat(anEntity.name.toUpperFirst()).concat('ManageableDao.java'), false, 'UTF-8')]
+package [anEntity.generateJavaPackage()/].crud;
+
+[anEntity.generateImports()/]
+	[for (aDao : Class | anEntity.classAttributes().type->filter(Class)->select(aClass:Class|aClass.isEntity())->including(anEntity))]
+		[if (aDao.generateJavaPackage()<>anEntity.generateJavaPackage().concat('.crud'))]
+import [if (aDao.generateJavaPackage().size()>0)][aDao.generateJavaPackage()/].[/if][aDao.genEntityClassName()/];
+		[/if]
+	[/for]
+import java.util.List;
+
+public interface [anEntity.name.toUpperFirst()/]ManageableDao {
+    /**
+	[for (aProp : Property | anEntity.classAttributes())]
+     * @param [aProp.name/] 
+	[/for]
+     * @return [anEntity.name.toUpperFirst()/]
+     */
+    public [anEntity.name.toUpperFirst()/] create([anEntity.generateDaoManagerFunctionParam()/]);
+
+    /**
+     * @param id
+     * @return [anEntity.name.toUpperFirst()/]
+     */
+    public [anEntity.name.toUpperFirst()/] readById(Long id);
+
+    /**
+	[for (aProp : Property | anEntity.classAttributes())]
+     * @param [aProp.name/] 
+	[/for]
+     * @return List<[anEntity.name.toUpperFirst()/]>
+     */
+    public List<[anEntity.name.toUpperFirst()/]> read([anEntity.generateDaoManagerFunctionParam()/]);
+
+
+    /**
+     * @return List<[anEntity.name.toUpperFirst()/]>
+     */
+    public List<[anEntity.name.toUpperFirst()/]> readAll();
+
+    /**
+	[for (aProp : Property | anEntity.classAttributes())]
+     * @param [aProp.name/] 
+	[/for]
+     * @return [anEntity.name.toUpperFirst()/]
+     */
+    public [anEntity.name.toUpperFirst()/] update([anEntity.generateDaoManagerFunctionParam()/]);
+
+    /**
+     * @param ids
+     */
+    public void delete(Long['['/][']'/] ids);
+}
+	[/file]
+[/template]
+
+[comment][template public generateDaoManagerFunctionParam (anEntity : Class) post (trim()) ]
+	[anEntity.getPrimaryTypeName(true)/] id
+	[let classStructures : Sequence(Class) = anEntity.getAllEntityParents()->including(anEntity)]
+		[for (aProperty : Property | classStructures.ownedAttribute->select(aProp: Property|not aProp.isPK() and (aProp.type.isSimpleType() or aProp.type.oclIsTypeOf(Enumeration))))]
+					, [aProperty.asParameter()/]
+		[/for]
+		[for (aProperty : Property | classStructures.ownedAttribute->select(aProp: Property|not aProp.isPK() and not (aProp.type.isSimpleType() or aProp.type.oclIsTypeOf(Enumeration))))]
+			[if (aProperty.upper=0 or aProperty.upper=1)]
+					, [aProperty.type.oclAsType(Class).getPrimaryTypeName(true)/] [aProperty.name.toLowerFirst()/]Id
+			[else]
+					, [aProperty.type.oclAsType(Class).getPrimaryTypeName(true)/]['[]'/] [aProperty.name.toLowerFirst()/]Ids
+			[/if]
+		[/for]
+		[for (aRefProperty : Property | classStructures.getOppositeAttributes(false)->select(aField:Property | (aField.lower=1 or aField.lower=0) and ((aField.oppositeAttribute().upper<0 or aField.oppositeAttribute().upper>1) or aField.isNavigable())))]
+			[if (aRefProperty.upper=0 or aRefProperty.upper=1)]
+					, [aRefProperty.type.oclAsType(Class).getPrimaryTypeName(true)/] [aRefProperty.name.toLowerFirst()/]Id
+			[else]
+					, [aRefProperty.type.oclAsType(Class).getPrimaryTypeName(true)/]['[]'/] [aRefProperty.name.toLowerFirst()/]Ids
+			[/if]
+		[/for]
+	[/let]
+
+[/template]
+
+[template public asParameter(property:Property) ]
+[if (property.type.oclIsTypeOf(Class) and property.type.oclAsType(Class).isEntity() )]
+	[if (property.upper=0 or property.upper=1)]
+[property.type.oclAsType(Class).getPrimaryTypeName(true).toUpperFirst()/] [property.paramName()/]
+	[else]
+[property.type.oclAsType(Class).getPrimaryTypeName(true).toUpperFirst()/]['['/][']'/] [property.paramName()/]
+	[/if]
+[else]
+[property.convertToJavaType().convertToJavaWrapperType()/] [property.paramName()/]
+[/if]
+[/template][/comment]

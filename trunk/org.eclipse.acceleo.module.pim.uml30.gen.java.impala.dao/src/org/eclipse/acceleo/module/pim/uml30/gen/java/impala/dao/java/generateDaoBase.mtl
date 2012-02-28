@@ -52,27 +52,14 @@ import [prop.type.generateJavaPackage()/].[prop.type.name/];
 	[/if]
 [/for]
 
-[for (prop:Property | aClass.getAllAttributes())]
-	[if (prop.type.oclIsTypeOf(Classifier) and class.generateJavaPackage() <> prop.type.generateJavaPackage())]
-import [prop.type.generateJavaPackage()/].[prop.type.name/];
-	[/if]
-[/for]
-
 [for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos()->filter(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [aDtoClass.generateJavaPackage()/].[aDtoClass.name/];
 	[/if]
 [/for]
 
-[if (aClass.getMultiplicity()->notEmpty())]
-	[for (aMultiplicityElement:MultiplicityElement | aClass.getMultiplicity())]
-		[if (aMultiplicityElement.oclIsTypeOf(Type))]
-			[if (aClass.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
-import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
-			[/if]
-		[/if]		
-	[/for]
-[/if]
+[aClass.generateImports()/]
+
 
 
 //[/protected]
@@ -82,9 +69,9 @@ import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplic
  * objects of type <code>Timecard</code>.
  * </p>
  *
- * @see Timecard
+ * @see [aClass.name.toUpperFirst()/]
  */
-public abstract class [aClass.name/]DaoBase
+public abstract class [aClass.name.toUpperFirst()/]DaoBase
     extends HibernateDaoSupport
     implements [aClass.name/]Dao
 {

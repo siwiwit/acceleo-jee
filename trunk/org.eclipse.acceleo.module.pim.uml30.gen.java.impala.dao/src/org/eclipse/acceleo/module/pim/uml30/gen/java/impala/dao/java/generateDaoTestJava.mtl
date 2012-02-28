@@ -39,34 +39,8 @@ import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPacka
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/]Dao;
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/]Impl;
 [/if]
-[if (anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->notEmpty())]
-	[let manyProps : Set(MultiplicityElement) = anEntity.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)]
-		[if (manyProps->notEmpty())]
-			[if (manyProps->select(isOrdered)->notEmpty())]
-import java.util.List;
-import java.util.ArrayList;
-			[/if]
-			[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
-import java.util.Set;
-import java.util.HashSet;
-			[/if]
-			[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
-import java.util.Collection;
-			[/if]
-		[/if]
-	[/let]
-	[for (aMultiplicityElement:MultiplicityElement | anEntity.getMultiplicity())]
-		[if (aMultiplicityElement.oclIsTypeOf(Type))]
-			[if (anEntity.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
-import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
-			[/if]
-		[/if]		
-	[/for]
-[/if]
+[anEntity.generateImports()/]
 
-[if (anEntity.attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
-import java.util.Date;
-[/if]
 [for (aField : Property | anEntity.ownedAttribute)]
 	[if (aField.type.name<>'Date' and aField.type.name<>'String' and aField.type.name<>'boolean' and aField.type.name<>'Boolean')]
 		[if (anEntity.generateJavaPackage() <> aField.type.generateJavaPackage())]
