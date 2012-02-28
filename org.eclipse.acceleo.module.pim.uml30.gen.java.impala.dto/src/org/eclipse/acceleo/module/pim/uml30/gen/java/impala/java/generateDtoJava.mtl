@@ -21,38 +21,10 @@
 
 [template public genEntityDto(aClass:Class) overrides genEntityDto ]
 package [aClass.generateJavaPackage()/];
-// [protected ('for imports')]
+//[protected ('for imports')]
 import java.io.Serializable;
-	[let props:Sequence(Property) = aClass.classAttributes()->select(upper = -1 or upper > 1)]
-		[if (props->size() > 0)]
-			[if (props->select(isOrdered)->size() > 0)]
-import java.util.List;
-import java.util.ArrayList;
-			[/if]
-			[if (props->select(isUnique and not isOrdered)->size() > 0)]
-import java.util.Set;
-import java.util.HashSet;
-			[/if]
-			[if (props->select(not isUnique and not isOrdered)->size() > 0)]
-import java.util.Collection;
-			[/if]
-		[/if]
-	[/let]
-
-[if (aClass.attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->size() > 0)]
-import java.util.Date;
-[/if]
-
-[for (prop:Property|aClass.getOppositeAttributes())]
-	[if (class.generateJavaPackage() <> prop.type.generateJavaPackage())]
-import [prop.type.generateJavaPackage()/].[prop.type.name/];
-	[/if]
-[/for]
-[if (aClass.superClass->asSequence()->notEmpty())]
-import [aClass.superClass.generateJavaPackage()/].[aClass.superClass.name/];
-[/if]
-
-// [/protected] for imports
+[aClass.generateImports()/]
+//[/protected]
 
 /**
 [if (aClass.ownedComment._body->size() > 0)]
