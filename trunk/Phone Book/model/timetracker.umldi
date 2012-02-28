@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_RYL4EETGEeGqxJ_g6a2nMQ" activeDiagram="_lPHsoETOEeGMTJednmAV4g">
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_RYL4EETGEeGqxJ_g6a2nMQ" activeDiagram="_Tu6cUFzXEeGzELk4iHFH-A">
   <model href="timetracker.uml#_0"/>
   <diagrams xmi:id="_RYL4EUTGEeGqxJ_g6a2nMQ" position="0,0" size="100,100" name="No name" viewport="0,0">
     <property xmi:id="_fY1S4ETHEeGMTJednmAV4g" key="pageFormatName" value="A4"/>
@@ -17,7 +17,7 @@
   </diagrams>
   <subdiagrams xmi:id="_lPHFkETOEeGMTJednmAV4g">
     <model href="timetracker.uml#org.andromda.timetracker-domain"/>
-    <diagrams xmi:id="_lPHsoETOEeGMTJednmAV4g" position="0,0" size="100,100" name="domain" viewport="0,251">
+    <diagrams xmi:id="_lPHsoETOEeGMTJednmAV4g" position="0,0" size="100,100" name="domain" viewport="0,610">
       <property xmi:id="_lP2FYETOEeGMTJednmAV4g" key="pageFormatName" value="A4"/>
       <property xmi:id="_lP2FYUTOEeGMTJednmAV4g" key="diagramWidth" value="840"/>
       <property xmi:id="_lP2FYkTOEeGMTJednmAV4g" key="diagramHeight" value="1188"/>
@@ -31,7 +31,7 @@
         <element href="timetracker.uml#org.andromda.timetracker-domain"/>
       </semanticModel>
       <contained xsi:type="di:GraphNode" xmi:id="_ppci4ETOEeGMTJednmAV4g" position="20,127" size="298,-1">
-        <anchorage xmi:id="_Y5-h0EUDEeGT8JvudWfvaA" graphEdge="_Y5_v8EUDEeGT8JvudWfvaA _G4H2MEUUEeGT8JvudWfvaA _T2ilUFN2EeGx1eko3puVYQ _SI2fAFN3EeGx1eko3puVYQ"/>
+        <anchorage xmi:id="_Y5-h0EUDEeGT8JvudWfvaA" graphEdge="_Y5_v8EUDEeGT8JvudWfvaA"/>
         <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ppci4UTOEeGMTJednmAV4g" presentation="default">
           <element href="timetracker.uml#org.andromda.timetracker-domain-User"/>
         </semanticModel>
@@ -179,7 +179,7 @@
         </contained>
       </contained>
       <contained xsi:type="di:GraphNode" xmi:id="_GsJPsEUUEeGT8JvudWfvaA" position="176,806" size="510,-1">
-        <anchorage xmi:id="_G3iAUEUUEeGT8JvudWfvaA" graphEdge="_G3p8IEUUEeGT8JvudWfvaA _G4H2MEUUEeGT8JvudWfvaA _ZGTrQFN1EeGx1eko3puVYQ _T2ilUFN2EeGx1eko3puVYQ _SI2fAFN3EeGx1eko3puVYQ"/>
+        <anchorage xmi:id="_G3iAUEUUEeGT8JvudWfvaA" graphEdge="_G3p8IEUUEeGT8JvudWfvaA _ZGTrQFN1EeGx1eko3puVYQ"/>
         <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_GsJPsUUUEeGT8JvudWfvaA" presentation="default">
           <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard"/>
         </semanticModel>
@@ -229,21 +229,6 @@
         <contained xsi:type="di:EdgeObjectOffset" xmi:id="_G3p8I0UUEeGT8JvudWfvaA" visible="false" id="middleNameEdgeObject"/>
         <waypoints>[-106, -102, 236, 152]</waypoints>
         <waypoints>[-106, -254, 236, 0]</waypoints>
-      </contained>
-      <contained xsi:type="di:GraphEdge" xmi:id="_G4H2MEUUEeGT8JvudWfvaA" anchor="_G3iAUEUUEeGT8JvudWfvaA _Y5-h0EUDEeGT8JvudWfvaA">
-        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_G4H2MUUUEeGT8JvudWfvaA" presentation="default">
-          <element href="timetracker.uml#org.andromda.timetracker-domain-_packagedElement.4"/>
-        </semanticModel>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_G4H2MkUUEeGT8JvudWfvaA" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_G4H2M0UUEeGT8JvudWfvaA" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_G4H2NEUUEeGT8JvudWfvaA" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_G4H2NUUUEeGT8JvudWfvaA" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_G4H2NkUUEeGT8JvudWfvaA" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_G4H2N0UUEeGT8JvudWfvaA" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
-        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_G4H2OEUUEeGT8JvudWfvaA" visible="false" id="middleNameEdgeObject" offset="0,10"/>
-        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_G4H2OUUUEeGT8JvudWfvaA" id="stereotypeEdgeObject" offset="0,-10"/>
-        <waypoints>[80, -109, 342, 534]</waypoints>
-        <waypoints>[80, -643, 342, 0]</waypoints>
       </contained>
       <contained xsi:type="di:GraphNode" xmi:id="_JvhoME3HEeGJtYLooK--HA" position="165,657" size="117,-1">
         <anchorage xmi:id="_J6oE8E3HEeGJtYLooK--HA" graphEdge="_J65xwE3HEeGJtYLooK--HA"/>
@@ -321,33 +306,281 @@
         <waypoints>[-62, 83, -80, -311]</waypoints>
         <waypoints>[-62, 284, -80, -110]</waypoints>
       </contained>
-      <contained xsi:type="di:GraphEdge" xmi:id="_T2ilUFN2EeGx1eko3puVYQ" anchor="_G3iAUEUUEeGT8JvudWfvaA _Y5-h0EUDEeGT8JvudWfvaA">
-        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_T2ilUVN2EeGx1eko3puVYQ" presentation="default">
-          <element href="timetracker.uml#_T27m4FN2EeGx1eko3puVYQ"/>
+    </diagrams>
+    <diagrams xmi:id="_Tu6cUFzXEeGzELk4iHFH-A" position="0,0" size="100,100" name="domain1" viewport="68,254">
+      <property xmi:id="_TxlV0FzXEeGzELk4iHFH-A" key="pageFormatName" value="A4"/>
+      <property xmi:id="_TxlV0VzXEeGzELk4iHFH-A" key="diagramWidth" value="840"/>
+      <property xmi:id="_TxlV0lzXEeGzELk4iHFH-A" key="diagramHeight" value="1188"/>
+      <property xmi:id="_TxlV01zXEeGzELk4iHFH-A" key="pageMarginName" value="Small Margin"/>
+      <property xmi:id="_TxlV1FzXEeGzELk4iHFH-A" key="diagramTopMargin" value="20"/>
+      <property xmi:id="_TxlV1VzXEeGzELk4iHFH-A" key="diagramBottomMargin" value="20"/>
+      <property xmi:id="_TxlV1lzXEeGzELk4iHFH-A" key="diagramLeftMargin" value="20"/>
+      <property xmi:id="_TxlV11zXEeGzELk4iHFH-A" key="diagramRightMargin" value="20"/>
+      <property xmi:id="_Txl84FzXEeGzELk4iHFH-A" key="orientation" value="portrait"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Tu6cUVzXEeGzELk4iHFH-A" presentation="org.topcased.modeler.uml.classdiagram">
+        <element href="timetracker.uml#org.andromda.timetracker-domain"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_VWmL0FzXEeGzELk4iHFH-A" position="420,32" size="234,-1">
+        <anchorage xmi:id="_Z-argFzXEeGzELk4iHFH-A" graphEdge="_Z-b5oFzXEeGzELk4iHFH-A _Z-pVAFzXEeGzELk4iHFH-A _gPQUAF1yEeGzELk4iHFH-A _gPdvYF1yEeGzELk4iHFH-A"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VWmL0VzXEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard"/>
         </semanticModel>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_T2ilUlN2EeGx1eko3puVYQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_T2ilU1N2EeGx1eko3puVYQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_T2ilVFN2EeGx1eko3puVYQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_T2ilVVN2EeGx1eko3puVYQ" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_T2ilVlN2EeGx1eko3puVYQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_T2ilV1N2EeGx1eko3puVYQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
-        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_T2ilWFN2EeGx1eko3puVYQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
-        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_T2ilWVN2EeGx1eko3puVYQ" id="stereotypeEdgeObject" offset="0,-10"/>
-        <waypoints>[0, -578, 262, 65]</waypoints>
+        <contained xsi:type="di:GraphNode" xmi:id="_VWmL0lzXEeGzELk4iHFH-A">
+          <property xmi:id="_VWmL01zXEeGzELk4iHFH-A" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VWmL1FzXEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_ViujUFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ViujUVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard-status"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_VivxcFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VivxcVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard-startDate"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_ViwYgFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ViwYgVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard-comments"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_VWmL1VzXEeGzELk4iHFH-A">
+          <property xmi:id="_VWmL1lzXEeGzELk4iHFH-A" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VWmL11zXEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_Viw_kFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Viw_kVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard-findByCriteria"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Viw_klzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Viw_k1zXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-Timecard-addTimeAllocation"/>
+            </semanticModel>
+          </contained>
+        </contained>
       </contained>
-      <contained xsi:type="di:GraphEdge" xmi:id="_SI2fAFN3EeGx1eko3puVYQ" anchor="_G3iAUEUUEeGT8JvudWfvaA _Y5-h0EUDEeGT8JvudWfvaA">
-        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_SI2fAVN3EeGx1eko3puVYQ" presentation="default">
-          <element href="timetracker.uml#_SJcU4FN3EeGx1eko3puVYQ"/>
+      <contained xsi:type="di:GraphNode" xmi:id="_Zyr8oFzXEeGzELk4iHFH-A" position="327,253" size="409,-1">
+        <anchorage xmi:id="_Z-argVzXEeGzELk4iHFH-A" graphEdge="_Z-b5oFzXEeGzELk4iHFH-A _Z-pVAFzXEeGzELk4iHFH-A _D87I0F1cEeGzELk4iHFH-A"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Zyr8oVzXEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-User"/>
         </semanticModel>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_SI2fAlN3EeGx1eko3puVYQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_SI2fA1N3EeGx1eko3puVYQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_SI2fBFN3EeGx1eko3puVYQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_SI2fBVN3EeGx1eko3puVYQ" id="targetNameEdgeObject" uDistance="15"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_SI2fBlN3EeGx1eko3puVYQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
-        <contained xsi:type="di:EdgeObjectUV" xmi:id="_SI2fB1N3EeGx1eko3puVYQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
-        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_SI2fCFN3EeGx1eko3puVYQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
-        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_SI2fCVN3EeGx1eko3puVYQ" id="stereotypeEdgeObject" offset="0,-10"/>
-        <waypoints>[-31, -430, 231, 213]</waypoints>
+        <contained xsi:type="di:GraphNode" xmi:id="_Zyr8olzXEeGzELk4iHFH-A">
+          <property xmi:id="_Zyr8o1zXEeGzELk4iHFH-A" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Zyr8pFzXEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-User"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-N3MFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-N3MVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-username"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-PFUFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-PFUVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-password"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-PsYFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-PsYVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-firstName"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-QTcFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-QTcVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-lastName"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-Q6gFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-Q6gVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-email"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-RhkFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-RhkVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-isActive"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-SIoFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-SIoVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-creationDate"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-SvsFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-SvsVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-comment"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_Zyr8pVzXEeGzELk4iHFH-A">
+          <property xmi:id="_Zyr8plzXEeGzELk4iHFH-A" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Zyr8p1zXEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-User"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_Z-TWwFzXEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-TWwVzXEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-User-getUserDetails"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_Z-b5oFzXEeGzELk4iHFH-A" anchor="_Z-argFzXEeGzELk4iHFH-A _Z-argVzXEeGzELk4iHFH-A">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-b5oVzXEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-b5olzXEeGzELk4iHFH-A" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-b5o1zXEeGzELk4iHFH-A" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-b5pFzXEeGzELk4iHFH-A" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-b5pVzXEeGzELk4iHFH-A" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-b5plzXEeGzELk4iHFH-A" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-b5p1zXEeGzELk4iHFH-A" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Z-b5qFzXEeGzELk4iHFH-A" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Z-b5qVzXEeGzELk4iHFH-A" id="stereotypeEdgeObject" offset="0,-10"/>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_Z-pVAFzXEeGzELk4iHFH-A" anchor="_Z-argFzXEeGzELk4iHFH-A _Z-argVzXEeGzELk4iHFH-A">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Z-pVAVzXEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-A_3Ctimecard3E_3Cuser3E_2"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-pVAlzXEeGzELk4iHFH-A" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-pVA1zXEeGzELk4iHFH-A" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-p8EFzXEeGzELk4iHFH-A" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-p8EVzXEeGzELk4iHFH-A" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-p8ElzXEeGzELk4iHFH-A" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_Z-p8E1zXEeGzELk4iHFH-A" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Z-p8FFzXEeGzELk4iHFH-A" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Z-p8FVzXEeGzELk4iHFH-A" id="stereotypeEdgeObject" offset="0,-10"/>
+        <waypoints>[242, 0, 248, -257]</waypoints>
+        <waypoints>[242, 249, 248, -8]</waypoints>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_Dx2hQF1cEeGzELk4iHFH-A" position="85,448" size="89,-1">
+        <anchorage xmi:id="_D82QUF1cEeGzELk4iHFH-A" graphEdge="_D87I0F1cEeGzELk4iHFH-A"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Dx2hQV1cEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-UserRole"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_Dx2hQl1cEeGzELk4iHFH-A">
+          <property xmi:id="_Dx2hQ11cEeGzELk4iHFH-A" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Dx2hRF1cEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-UserRole"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_D8jVYF1cEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_D8jVYV1cEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-UserRole-role"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_Dx2hRV1cEeGzELk4iHFH-A">
+          <property xmi:id="_Dx2hRl1cEeGzELk4iHFH-A" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Dx2hR11cEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-UserRole"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_D87I0F1cEeGzELk4iHFH-A" anchor="_Z-argVzXEeGzELk4iHFH-A _D82QUF1cEeGzELk4iHFH-A">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_D87I0V1cEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-A_3Cuser3E_3Crole3E"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_D87I0l1cEeGzELk4iHFH-A" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_D87I011cEeGzELk4iHFH-A" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_D87I1F1cEeGzELk4iHFH-A" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_D87I1V1cEeGzELk4iHFH-A" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_D87I1l1cEeGzELk4iHFH-A" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_D87I111cEeGzELk4iHFH-A" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_D87I2F1cEeGzELk4iHFH-A" visible="false" id="middleNameEdgeObject" offset="66,22"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_D87I2V1cEeGzELk4iHFH-A" id="stereotypeEdgeObject" offset="0,-10"/>
+        <waypoints>[6, 127, 408, 0]</waypoints>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_gFcQsF1yEeGzELk4iHFH-A" position="150,75" size="122,-1">
+        <anchorage xmi:id="_gPPs8F1yEeGzELk4iHFH-A" graphEdge="_gPQUAF1yEeGzELk4iHFH-A _gPdvYF1yEeGzELk4iHFH-A _bai-UF2zEeGzELk4iHFH-A"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gFc3wF1yEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-TimeAllocation"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_gFc3wV1yEeGzELk4iHFH-A">
+          <property xmi:id="_gFc3wl1yEeGzELk4iHFH-A" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gFc3w11yEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-TimeAllocation"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_gPMpoF1yEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gPMpoV1yEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-TimeAllocation-startTime"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_gPNQsF1yEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gPNQsV1yEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-TimeAllocation-endTime"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_gFc3xF1yEeGzELk4iHFH-A">
+          <property xmi:id="_gFc3xV1yEeGzELk4iHFH-A" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gFc3xl1yEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-TimeAllocation"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_gPQUAF1yEeGzELk4iHFH-A" anchor="_Z-argFzXEeGzELk4iHFH-A _gPPs8F1yEeGzELk4iHFH-A">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gPQUAV1yEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-vo-_packagedElement.15"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gPQUAl1yEeGzELk4iHFH-A" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gPQUA11yEeGzELk4iHFH-A" visible="false" id="middleNameEdgeObject"/>
+        <waypoints>[-150, -63, 176, -83]</waypoints>
+        <waypoints>[-326, -63, 0, -83]</waypoints>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_gPdvYF1yEeGzELk4iHFH-A" anchor="_gPPs8F1yEeGzELk4iHFH-A _Z-argFzXEeGzELk4iHFH-A">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gPdvYV1yEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctimecard3E"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gPdvYl1yEeGzELk4iHFH-A" id="srcNameEdgeObject" uDistance="32"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gPdvY11yEeGzELk4iHFH-A" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gPdvZF1yEeGzELk4iHFH-A" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gPdvZV1yEeGzELk4iHFH-A" id="targetNameEdgeObject" uDistance="38" vDistance="-6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gPdvZl1yEeGzELk4iHFH-A" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_gPdvZ11yEeGzELk4iHFH-A" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gPdvaF1yEeGzELk4iHFH-A" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gPdvaV1yEeGzELk4iHFH-A" id="stereotypeEdgeObject" offset="0,-10"/>
+        <waypoints>[0, 62, -326, 82]</waypoints>
+        <waypoints>[182, 62, -144, 82]</waypoints>
+        <waypoints>[182, -12, -144, 8]</waypoints>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_bOxzMF2zEeGzELk4iHFH-A" position="83,321" size="168,-1">
+        <anchorage xmi:id="_bahwMF2zEeGzELk4iHFH-A" graphEdge="_bai-UF2zEeGzELk4iHFH-A"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_bOxzMV2zEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-Task"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_bOxzMl2zEeGzELk4iHFH-A">
+          <property xmi:id="_bOxzM12zEeGzELk4iHFH-A" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_bOxzNF2zEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-Task"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_baYmQF2zEeGzELk4iHFH-A" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_baYmQV2zEeGzELk4iHFH-A" presentation="default">
+              <element href="timetracker.uml#org.andromda.timetracker-domain-Task-name"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_bOxzNV2zEeGzELk4iHFH-A">
+          <property xmi:id="_bOxzNl2zEeGzELk4iHFH-A" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_bOxzN12zEeGzELk4iHFH-A" presentation="default">
+            <element href="timetracker.uml#org.andromda.timetracker-domain-Task"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_bai-UF2zEeGzELk4iHFH-A" anchor="_gPPs8F1yEeGzELk4iHFH-A _bahwMF2zEeGzELk4iHFH-A">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_bai-UV2zEeGzELk4iHFH-A" presentation="default">
+          <element href="timetracker.uml#org.andromda.timetracker-domain-A_3CtimeAllocation3E_3Ctask3E"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_bai-Ul2zEeGzELk4iHFH-A" id="srcNameEdgeObject" uDistance="12" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_bai-U12zEeGzELk4iHFH-A" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_bai-VF2zEeGzELk4iHFH-A" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_bai-VV2zEeGzELk4iHFH-A" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_bai-Vl2zEeGzELk4iHFH-A" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_bai-V12zEeGzELk4iHFH-A" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_bai-WF2zEeGzELk4iHFH-A" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_bai-WV2zEeGzELk4iHFH-A" id="stereotypeEdgeObject" offset="0,-10"/>
+        <waypoints>[-149, 0, -105, -237]</waypoints>
+        <waypoints>[-149, 228, -105, -9]</waypoints>
       </contained>
     </diagrams>
   </subdiagrams>
