@@ -33,8 +33,8 @@ import [prop.type.generateJavaPackage()/].[prop.type.name/];
 [if (aClass.superClass->asSequence()->notEmpty())]
 import [aClass.superClass.generateJavaPackage()/].[aClass.superClass.name/];
 [/if]
-
-[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
+[for (aDtoClass:Classifier | aClass.ownedOperation.ownedParameter.type->select(aType:Type|aType.name.toLower() <> 'void' and aType.name.toLower() <> 'string')
+	->filter(Classifier)->asSet()->union(aClass.getRelatedDtos().oclAsType(Classifier)->asSet()))]
 	[if (aClass.generateJavaPackage() <> aDtoClass.generateJavaPackage())]
 import [aDtoClass.generateJavaPackage()/].[aDtoClass.name/];
 	[/if]

@@ -24,10 +24,23 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
     
 	<service:import id = "transactionManager" proxyTypes = "org.springframework.transaction.PlatformTransactionManager"/>  
 
+	<service:import id = "hibernateInterceptor" proxyTypes = "org.aopalliance.intercept.MethodInterceptor"/>  
+
 [for (aEntityClass : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
-	<bean id="[aEntityClass.name.toLower()/]dao" class="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]DaoImpl">
+	<bean id="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]DaoImpl" class="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]DaoImpl">
 	    <property name="sessionFactory" ref = "sessionFactory"/>
 	</bean>
+    <!-- [aEntityClass.name.toUpperFirst()/] Entity Proxy with inner [aEntityClass.name.toUpperFirst()/] Entity implementation -->
+    <bean id="[aEntityClass.name.toLower()/]dao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]DaoImpl"/>
+        <property name="proxyInterfaces" value="[if (aEntityClass.generateJavaPackage().size()>0)][aEntityClass.generateJavaPackage()/].[/if][aEntityClass.name/]Dao"/>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
 [/for]
 	
 </beans>	
