@@ -25,34 +25,8 @@ package [aClass.generateJavaPackage()/];
 // [protected ('imports')] 
 
 import java.io.Serializable;
-[if (aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->notEmpty())]
-	[let manyProps : Set(MultiplicityElement) = aClass.getMultiplicity()->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)]
-		[if (manyProps->notEmpty())]
-			[if (manyProps->select(isOrdered)->notEmpty())]
-import java.util.List;
-import java.util.ArrayList;
-			[/if]
-			[if (manyProps->select(isUnique and not isOrdered)->notEmpty())]
-import java.util.Set;
-import java.util.HashSet;
-			[/if]
-			[if (manyProps->select(not isUnique and not isOrdered)->notEmpty())]
-import java.util.Collection;
-			[/if]
-		[/if]
-	[/let]
-	[for (aMultiplicityElement:MultiplicityElement | aClass.getMultiplicity())]
-		[if (aMultiplicityElement.oclIsTypeOf(Type))]
-			[if (aClass.generateJavaPackage() <> aMultiplicityElement.oclAsType(Type).generateJavaPackage())]
-import [aMultiplicityElement.oclAsType(Type).generateJavaPackage()/].[aMultiplicityElement.oclAsType(Type).name/];
-			[/if]
-		[/if]		
-	[/for]
-[/if]
+[aClass.generateImports()/]
 
-[if (attribute.type->select(getProperty('java.typeconversion.' + name) = 'Date')->notEmpty())]
-import java.util.Date;
-[/if]
 [comment][if (aClass.getMultiplicity()->notEmpty())]
 	[for (aMultiplicityElement:MultiplicityElement | aClass.getMultiplicity())]
 		[if (aMultiplicityElement.oclIsTypeOf(Type))]
