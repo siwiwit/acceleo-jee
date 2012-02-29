@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateInitDBTxt('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::buildPathUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
@@ -12,7 +12,7 @@
 [import org::acceleo::module::pim::uml21::services::uml2services /]
 
 [template public generateInitDBTxt(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/db/initDB.txt'), false, 'Cp1252')]
+	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/db/initDB.txt'), false, 'UTF-8')]
 [let entities : Sequence(Class) = aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity())->sortedBy(aClass:Class|aClass.entityRate())]
 	[for (anEntity:Class| sortByRef(entities))]
 CREATE TABLE [anEntity.name.toLower().convertSingularToPlural()/] (
