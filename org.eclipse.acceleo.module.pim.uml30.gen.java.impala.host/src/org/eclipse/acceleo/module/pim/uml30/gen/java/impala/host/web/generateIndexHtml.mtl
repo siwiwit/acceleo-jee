@@ -1,9 +1,9 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateIndexHtml('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::host::common::hostPathUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [template public generateIndexHtml(aModel : Model)]
-	[file (aModel.generateProjectFolder().concat(aModel.pathToMainWebapp()).concat('/index.html'), false, 'Cp1252')]
+	[file (aModel.generateProjectFolder().concat(aModel.pathToMainWebapp()).concat('/index.html'), false, 'UTF-8')]
 <html>
 <head>
 </head>
