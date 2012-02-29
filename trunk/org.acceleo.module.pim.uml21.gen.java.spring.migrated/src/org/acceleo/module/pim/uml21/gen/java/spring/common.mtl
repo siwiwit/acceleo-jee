@@ -175,6 +175,9 @@ endif)->union(
 	endif
 )
 /]
+
+
+
 [comment]aClass.operationsParameters()->filter(MultiplicityElement)->select(aMultiplicityElement:MultiplicityElement|aMultiplicityElement.upper = -1 or aMultiplicityElement.upper > 1)->asSet()[/comment]
 
 [template public genCollectionImports(class : Class)]

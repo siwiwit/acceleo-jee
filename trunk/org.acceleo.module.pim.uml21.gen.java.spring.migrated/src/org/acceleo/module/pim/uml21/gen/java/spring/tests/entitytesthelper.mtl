@@ -29,7 +29,7 @@ package [class.daoImplPackage()/];
 
 // [protected ('imports')]
 import [class.getCompleteName()/];
-[class.generateImports()/]
+[comment][class.generateImports()/][/comment]
 [if (class.classAttributes()->select((upper = -1 or upper > 1))->notEmpty())]
 	[if (class.classAttributes()->select((upper = -1 or upper > 1) and isOrdered)->notEmpty())]
 import java.util.List;
