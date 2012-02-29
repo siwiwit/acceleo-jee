@@ -39,7 +39,7 @@ import [class.entityPackage()/].[class.name/];
 
 import [class.entityPackage()/].impl.[class.name/]Helper;
 
-[class.generateImports()/]
+[comment][class.generateImports()/][/comment]
 
 [if (class.attribute->select(type.name = 'Date')->notEmpty())]
 import java.util.Date;

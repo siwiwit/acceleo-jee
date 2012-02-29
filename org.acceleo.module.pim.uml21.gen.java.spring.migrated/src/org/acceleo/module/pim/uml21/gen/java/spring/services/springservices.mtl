@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module springservices('http://www.eclipse.org/uml2/3.0.0/UML')/]
 
 [query public getSpecifiedBeanId(arg0 : Element) : String
