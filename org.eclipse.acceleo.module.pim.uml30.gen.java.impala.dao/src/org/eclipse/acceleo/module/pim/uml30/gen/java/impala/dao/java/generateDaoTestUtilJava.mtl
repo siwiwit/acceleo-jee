@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateDaoTestUtilJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::common::daoPathUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
@@ -122,8 +122,13 @@ public final class DaoTestUtil {
 [/file]
 [/template]
 [template public createObjectFuction(anEntity : Class)]
+	[let refProperties : Sequence(Property) = anEntity.getAllEntityParents()->including(anEntity).getOppositeAttributes(false)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType() and not aProperty.type.oclIsTypeOf(Enumeration) and (((aProperty.oppositeAttribute().upper>1 or aProperty.oppositeAttribute().upper<0) and aProperty.upper=1) or ((aProperty.oppositeAttribute().upper>=0 or aProperty.oppositeAttribute().upper<=1) and aProperty.upper=1) and aProperty.isNavigable()))->asSequence()]
 public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Impl[/if] create[anEntity.name.toUpperFirst()/]Object(long index) {
-
+		[if (refProperties->notEmpty())]
+			[let anOppositeProp : Property = refProperties->first()]
+	return DaoTestUtil.create[anEntity.name.toUpperFirst()/]ObjectRefTo[anOppositeProp.type.name.toUpperFirst()/]OfField[anOppositeProp.name.toUpperFirst()/](index, null);
+			[/let]
+		[else]
 	Map<String, Long> childIndexMap = new HashMap<String, Long>();
 	Long childIndex = null;
 			
@@ -142,8 +147,8 @@ public static [anEntity.name.toUpperFirst()/][if (anEntity.hasEntityParent())]Im
 			[/let]
 	[anEntity.name.toUpperFirst()/]DaoTest.get[anEntity.name.toUpperFirst()/]Dao().create([anEntity.name.toLowerFirst()/]);
 	return [anEntity.name.toLowerFirst()/];	
+		[/if]
 }
-	[let refProperties : Sequence(Property) = anEntity.getAllEntityParents()->including(anEntity).getOppositeAttributes(false)->select(aProperty:Property|not aProperty.isPK() and not aProperty.type.isSimpleType() and not aProperty.type.oclIsTypeOf(Enumeration) and (((aProperty.oppositeAttribute().upper>1 or aProperty.oppositeAttribute().upper<0) and aProperty.upper=1) or ((aProperty.oppositeAttribute().upper>=0 or aProperty.oppositeAttribute().upper<=1) and aProperty.upper=1) and aProperty.isNavigable()))->asSequence()]
 //-------------
 		[if (refProperties->notEmpty())]
 			[for (refProperty : Property | refProperties)]

@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateManageableDaoBaseJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
@@ -39,7 +39,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 /**
  * 
  */
-public final class [anEntity.name.toUpperFirst()/]ManageableDaoBase
+public abstract class [anEntity.name.toUpperFirst()/]ManageableDaoBase
     extends HibernateDaoSupport
     implements [anEntity.name.toUpperFirst()/]ManageableDao {
 	
@@ -65,7 +65,7 @@ public final class [anEntity.name.toUpperFirst()/]ManageableDaoBase
     private Set<[aDao.genEntityClassName()/]> find[aDao.name.toUpperFirst()/]ByIds([aDao.getPrimaryTypeName(true).toUpperFirst()/]['['/][']'/] ids) {
         final Session session = this.getSession(false);
         try {
-            final Criteria criteria = session.createCriteria([anEntity.name.toUpperFirst()/]Impl.class);
+            final Criteria criteria = session.createCriteria([aDao.name.toUpperFirst()/]Impl.class);
             criteria.add(Restrictions.in("id", ids));
             return new HashSet<[aDao.genEntityClassName()/]>(criteria.list());
         }
@@ -256,7 +256,9 @@ public final class [anEntity.name.toUpperFirst()/]ManageableDaoBase
             throw super.convertHibernateAccessException(ex);
         }
     }
-}	[/file]
+
+}	
+	[/file]
 [/template]
 
 [template public asParameter(property:Property) ]
