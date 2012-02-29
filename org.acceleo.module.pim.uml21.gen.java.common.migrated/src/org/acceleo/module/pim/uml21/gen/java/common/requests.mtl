@@ -14,6 +14,10 @@ class.hasStereotype(getProperty('Dao'))
 class.hasStereotype(getProperty('Dto'))
 /]
 
+[query public isManageableEntity(class:Class) : Boolean =
+class.hasStereotype(getProperty('Manageable'))
+/]
+
 
 [query public isPK(property:Property) : Boolean =
 property.hasStereotype(getProperty('pk'))
