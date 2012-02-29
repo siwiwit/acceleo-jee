@@ -15,7 +15,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::entityUtil /]
 [template public generateServiceInterfaceJava(aService : Class)]
 [comment This template is called by the main module file /]
-	[file (aService.getModel().generateProjectFolder().concat(aService.getModel().pathToGeneratedMainJava()).concat('/').concat(aService.generateJavaPackagePath()).concat('/').concat(aService.name.toUpperFirst()).concat('.java'), false, 'Cp1252')]
+	[file (aService.getModel().generateProjectFolder().concat(aService.getModel().pathToGeneratedMainJava()).concat('/').concat(aService.generateJavaPackagePath()).concat('/').concat(aService.name.toUpperFirst()).concat('.java'), false, 'UTF-8')]
 package [aService.generateJavaPackage()/];
 
 import java.io.Serializable;

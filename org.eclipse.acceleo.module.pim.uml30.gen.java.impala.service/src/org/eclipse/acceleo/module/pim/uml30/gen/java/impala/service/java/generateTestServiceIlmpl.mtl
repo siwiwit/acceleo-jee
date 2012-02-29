@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateTestServiceIlmpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
@@ -12,7 +12,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
 [template public generateTestServiceIlmpl(aClass : Class)]
-	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToTestJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name.toUpperFirst()).concat('Test.java'), false, 'Cp1252')]
+	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToTestJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name.toUpperFirst()).concat('Test.java'), false, 'UTF-8')]
 [if (aClass.generateJavaPackage().trim().size()>0)]
 package [aClass.generateJavaPackage()/];
 [/if]
@@ -200,7 +200,11 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
     public RootModuleDefinition getModuleDefinition() {
 
         return new SimpleModuleDefinitionSource("[aClass.getModel().generateSpecificProjectFolder('-main')/]",
-                new String['['/][']'/] { "[aClass.getModel().generateSpecificProjectFolder('-service-context')/].xml" }, new String['['/][']'/] {
+                new String['[]'/] { "[aClass.getModel().generateSpecificProjectFolder('-service-context')/].xml"
+				[if (aClass.getModel().eAllContents(Class)->select(aClass:Class|aClass.isManageableEntity())->notEmpty())]
+									, "[aClass.getModel().generateProjectFolder()/]-manageable.xml"
+				[/if] 
+				 }, new String['[]'/] {
                         "[aClass.getModel().generateSpecificProjectFolder('-hibernate')/]", 
                         "[aClass.getModel().generateSpecificProjectFolder('-dao')/]", 
                         "[aClass.getModel().generateSpecificProjectFolder('-service')/]" })
