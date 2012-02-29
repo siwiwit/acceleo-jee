@@ -55,7 +55,7 @@ import java.util.Collection;
 				[if (getProperty('java.typeconversion.' + aType.name) = 'Date')]
 import java.util.Date;
 				[/if]	
-			[elseif (aClass.generateJavaPackage() <> aType.oclAsType(Type).generateJavaPackage())]
+			[elseif (aType.name.toLower()<>'void' and aClass.generateJavaPackage() <> aType.oclAsType(Type).generateJavaPackage())]
 import [aType.generateJavaPackage()/].[aType.name.toUpperFirst()/];
 			[/if]
 		[/for]
