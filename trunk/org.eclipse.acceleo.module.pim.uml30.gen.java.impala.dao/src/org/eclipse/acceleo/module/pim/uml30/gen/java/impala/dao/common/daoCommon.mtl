@@ -21,8 +21,8 @@
 [/template]
 
 [template public generateSampleParameterValue(aType : Type, prefix : String, indexName : String, isWrapped : Boolean) post (trim())]
-	[if (getProperty('java.typeconversion.' + aType.name)=null)]
-null				
+	[if (aType.oclIsTypeOf(Enumeration))]
+DaoTestUtil.create[aType.name.toUpperFirst()/]Value("[prefix/]", [indexName/])
 	[elseif (getProperty('java.typeconversion.' + aType.name) = 'Date')]
 DaoTestUtil.createDateFieldValue("[prefix/]", [indexName/])
 	[comment][elseif (getProperty('java.typeconversion.' + aType.name).toLower() = 'boolean')]

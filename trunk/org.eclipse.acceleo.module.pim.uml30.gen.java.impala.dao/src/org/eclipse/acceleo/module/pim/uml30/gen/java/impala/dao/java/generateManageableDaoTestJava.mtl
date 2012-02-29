@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateManageableDaoTestJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
@@ -18,34 +18,17 @@ package [anEntity.generateJavaPackage()/].crud;
 //[protected ('imports')]
 [comment][anEntity.generateImports()/][/comment]
 
-import java.util.List;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Collection;
-import javax.sql.DataSource;
-//import java.text.SimpleDateFormat;
-//import java.text.ParseException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import tests.integration.DaoTestUtil;
-import junit.framework.TestCase;
+import tests.integration.AbstractDaoTest;
 
 import [if (anEntity.generateJavaPackage().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name.toUpperFirst()/];
 import org.impalaframework.facade.Impala;
 import org.impalaframework.interactive.InteractiveTestRunner;
-import org.impalaframework.module.ModuleDefinitionSource;
-import org.impalaframework.module.RootModuleDefinition;
-import org.impalaframework.module.source.SimpleModuleDefinitionSource;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.util.FileCopyUtils;
 //[/protected]
-public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends TestCase implements
-        ModuleDefinitionSource {
-	//private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends AbstractDaoTest {
+
     private [anEntity.name.toUpperFirst()/]ManageableDao [anEntity.name.toLowerFirst()/]ManageableDao  = null;
-    private JdbcTemplate jdbcTemplate = null;
-    private static final Log log = LogFactory.getLog([anEntity.name.toUpperFirst()/]ManageableDaoTest.class);
 	//Start of user code addition properties
 
     //End of user code
@@ -64,25 +47,7 @@ public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends TestCase i
 	@Override
     public void setUp() throws Exception {
         super.setUp();
-        Impala.init(this);
-        //this.[anEntity.name.toLowerFirst()/]Dao = Impala.getBean("[anEntity.name.toLowerFirst()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
         this.[anEntity.name.toLowerFirst()/]ManageableDao = [anEntity.name.toUpperFirst()/]ManageableDaoTest.get[anEntity.name.toUpperFirst()/]ManageableDao();
-        this.jdbcTemplate = new JdbcTemplate(Impala.getBean(
-                "dataSource", DataSource.class));
-
-        runScript("../newtimetracker-build/src/main/resources/db/emptyDB.txt");
-        runScript("../newtimetracker-build/src/main/resources/db/populateDB.txt");
-    }
-
-    private void runScript(String file) throws IOException,
-            FileNotFoundException {
-        String empty = FileCopyUtils.copyToString(new FileReader(file));
-        String['['/][']'/] statements = empty.split(";");
-        for (String sql : statements) {
-            if (sql.trim().length() > 0) {
-                jdbcTemplate.execute(sql);
-            }
-        }
     }
 
 	public void testReadById() {
@@ -147,28 +112,19 @@ public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends TestCase i
 
 
     public void testUpdate() throws Exception {
-        [anEntity.name.toUpperFirst()/] [anEntity.name.toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]ManageableDao.readById([anEntity.generateSamplePKValue('1', null)/]);
+        [anEntity.name.toUpperFirst()/] [anEntity.name.toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]ManageableDao.readById([anEntity.generateSamplePKValue('1', true)/]);
 		this.[anEntity.name.toLowerFirst()/]ManageableDao.update(	
 				[anEntity.generateSamplePKValue('1', true)/]
 		[if (anEntity.getEntityDaoManagerProperties()->notEmpty())]
 				[anEntity.generateDaoManagerFunctionNoPKParamValuesForUpdate('4', anEntity.name.toLowerFirst())/] 
 		[/if]
 				);
-        [anEntity.name.toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]ManageableDao.readById([anEntity.generateSamplePKValue('1', null)/]);
+        [anEntity.name.toLowerFirst()/] = this.[anEntity.name.toLowerFirst()/]ManageableDao.readById([anEntity.generateSamplePKValue('1', true)/]);
 		[for (aProp : Property | anEntity.getAllEntityParents().ownedAttribute)]
 		assertEquals([aProp.generateSampleParameterValue('4')/], [anEntity.name.toLowerFirst()/].get[aProp.name.toUpperFirst()/]());
 		[/for]
         
 			
-    }
-	
-
-
-    public RootModuleDefinition getModuleDefinition() {
-
-        return new SimpleModuleDefinitionSource("newtimetracker-main",
-                new String['['/][']'/]{"newtimetracker-dao-context.xml","newtimetracker-dao-manageable.xml"},
-                new String['['/][']'/]{"newtimetracker-dao", "newtimetracker-hibernate"}).getModuleDefinition();
     }
 
 	//Start of user code other unit tests
@@ -202,7 +158,7 @@ public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends TestCase i
 , DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object([indexName/]).getId()
 			[else]
 , new [aProperty.type.oclAsType(Class).getPrimaryTypeName(true)/]['[]'/]{
-				[for (it : Integer | Sequence{1,2,3}) separator(', ')]
+				[for (it : Integer | Sequence{4,5,6}) separator(', ')]
 		DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object([it/]).getId()
 				[/for]
 	[comment]DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object([indexName/]).getId()[/comment]
@@ -234,7 +190,8 @@ public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends TestCase i
 			[/if]
 		[else]
 			[if (aProperty.upper=0 or aProperty.upper=1)]
-, [comment]DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]ObjectRefTo[anEntity.name.toUpperFirst()/]OfField[aProperty.oppositeAttribute().name.toUpperFirst()/]([indexName/], [ownerName/]).getId()[/comment]
+, DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]Object([1/]).getId()
+[comment]DaoTestUtil.create[aProperty.type.name.toUpperFirst()/]ObjectRefTo[anEntity.name.toUpperFirst()/]OfField[aProperty.oppositeAttribute().name.toUpperFirst()/]([indexName/], [ownerName/]).getId()[/comment]
 			[else]
 , new [aProperty.type.oclAsType(Class).getPrimaryTypeName(true)/]['[]'/]{
 	

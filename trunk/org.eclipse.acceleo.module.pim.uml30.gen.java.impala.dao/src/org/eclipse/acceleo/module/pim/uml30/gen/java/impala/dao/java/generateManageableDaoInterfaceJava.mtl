@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateManageableDaoInterfaceJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::structure /]
@@ -22,6 +22,7 @@ import [if (aDao.generateJavaPackage().size()>0)][aDao.generateJavaPackage()/].[
 		[/if]
 	[/for]
 import java.util.List;
+import java.util.Map;
 
 public interface [anEntity.name.toUpperFirst()/]ManageableDao {
     /**
@@ -36,7 +37,7 @@ public interface [anEntity.name.toUpperFirst()/]ManageableDao {
      * @param id
      * @return [anEntity.name.toUpperFirst()/]
      */
-    public [anEntity.name.toUpperFirst()/] readById(Long id);
+    public [anEntity.name.toUpperFirst()/] readById([anEntity.getPrimaryTypeName(true)/] id);
 
     /**
 	[for (aProp : Property | anEntity.classAttributes())]
@@ -63,43 +64,15 @@ public interface [anEntity.name.toUpperFirst()/]ManageableDao {
     /**
      * @param ids
      */
-    public void delete(Long['['/][']'/] ids);
+    public void delete([anEntity.getPrimaryTypeName(true)/]['[]'/] ids);
+
+    /**
+     * @return BackingLists Map<String,Object>
+     */
+    public Map<String,Object> readBackingLists();
+
+
 }
 	[/file]
 [/template]
 
-[comment][template public generateDaoManagerFunctionParam (anEntity : Class) post (trim()) ]
-	[anEntity.getPrimaryTypeName(true)/] id
-	[let classStructures : Sequence(Class) = anEntity.getAllEntityParents()->including(anEntity)]
-		[for (aProperty : Property | classStructures.ownedAttribute->select(aProp: Property|not aProp.isPK() and (aProp.type.isSimpleType() or aProp.type.oclIsTypeOf(Enumeration))))]
-					, [aProperty.asParameter()/]
-		[/for]
-		[for (aProperty : Property | classStructures.ownedAttribute->select(aProp: Property|not aProp.isPK() and not (aProp.type.isSimpleType() or aProp.type.oclIsTypeOf(Enumeration))))]
-			[if (aProperty.upper=0 or aProperty.upper=1)]
-					, [aProperty.type.oclAsType(Class).getPrimaryTypeName(true)/] [aProperty.name.toLowerFirst()/]Id
-			[else]
-					, [aProperty.type.oclAsType(Class).getPrimaryTypeName(true)/]['[]'/] [aProperty.name.toLowerFirst()/]Ids
-			[/if]
-		[/for]
-		[for (aRefProperty : Property | classStructures.getOppositeAttributes(false)->select(aField:Property | (aField.lower=1 or aField.lower=0) and ((aField.oppositeAttribute().upper<0 or aField.oppositeAttribute().upper>1) or aField.isNavigable())))]
-			[if (aRefProperty.upper=0 or aRefProperty.upper=1)]
-					, [aRefProperty.type.oclAsType(Class).getPrimaryTypeName(true)/] [aRefProperty.name.toLowerFirst()/]Id
-			[else]
-					, [aRefProperty.type.oclAsType(Class).getPrimaryTypeName(true)/]['[]'/] [aRefProperty.name.toLowerFirst()/]Ids
-			[/if]
-		[/for]
-	[/let]
-
-[/template]
-
-[template public asParameter(property:Property) ]
-[if (property.type.oclIsTypeOf(Class) and property.type.oclAsType(Class).isEntity() )]
-	[if (property.upper=0 or property.upper=1)]
-[property.type.oclAsType(Class).getPrimaryTypeName(true).toUpperFirst()/] [property.paramName()/]
-	[else]
-[property.type.oclAsType(Class).getPrimaryTypeName(true).toUpperFirst()/]['['/][']'/] [property.paramName()/]
-	[/if]
-[else]
-[property.convertToJavaType().convertToJavaWrapperType()/] [property.paramName()/]
-[/if]
-[/template][/comment]
