@@ -23,32 +23,14 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
 	<service:import id = "hibernateInterceptor" proxyTypes = "org.aopalliance.intercept.MethodInterceptor"/>  
 
 	[for (aService : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isService())->asSet())]
-    [comment]<bean id="[aService.name.toLower()/]" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionManager" ref="transactionManager"/>
-        <property name="target">
-            <bean class="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name/]Impl">
-				[if (aService.clientDependency->notEmpty() and aService.clientDependency.supplier->filter(Class)->exists(aClass:Class|aClass.isEntity()))]
-					[for (aEntityClass : Class | aService.clientDependency.supplier->filter(Class)->select(aClass:Class|aClass.isEntity()))]
-                <property name="[aEntityClass.name.toLowerFirst()/]Dao" ref = "[aEntityClass.name.toLower()/]dao"/>
-					[/for]
-				[/if]
-            </bean>
-        </property>
-        <property name="transactionAttributes">
-            <props>
-                <prop key="*">PROPAGATION_REQUIRED</prop>
-            </props>
-        </property>
-    </bean>[/comment]
-    <bean id="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]Impl" class="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]Impl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+    <bean id="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toUpperFirst()/]Impl" class="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toUpperFirst()/]Impl">
         <!-- Task entity property merge-point -->
     </bean>
 
 	<!-- TimeTrackingService Service Proxy with inner TimeTrackingService Service Implementation -->
     <bean id="[aService.name.toLower()/]" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]Impl"/>
-        <property name="proxyInterfaces" value="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/]"/>
+        <property name="target" ref="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toUpperFirst()/]Impl"/>
+        <property name="proxyInterfaces" value="[if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toUpperFirst()/]"/>
         <property name="interceptorNames">
             <list>
                 <value>serviceTransactionInterceptor</value>
@@ -66,7 +48,7 @@ http://www.impalaframework.org/schema/service http://impala.googlecode.com/svn/s
             <value>
 				[for (anOperation : Operation | aModel.eAllContents(Class)->select(aClass:Class|aClass.isService()).ownedOperation)]
 					[let aService : Class = anOperation.owner.oclAsType(Class)]
-                [if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toLower().toUpperFirst()/].[anOperation.name/]=PROPAGATION_REQUIRED
+                [if (aService.generateJavaPackage().size()>0)][aService.generateJavaPackage()/].[/if][aService.name.toUpperFirst()/].[anOperation.name/]=PROPAGATION_REQUIRED
 					[/let]					
 				[/for]
             </value>

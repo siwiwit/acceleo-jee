@@ -11,6 +11,12 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateServiceBaseImplJava /]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::acceleo::module::pim::uml21::gen::java::spring::profile /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::resources::generateManageableServiceContextXml /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateManageableServiceInterfaceJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateManageableServiceBaseJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateManageableServiceImplJava /]
+[import org::acceleo::module::pim::uml21::gen::java::common::requests /]
+
 [template public generateServiceProjectModel(aModel : Model)] 
 	
 	[comment @main /]
@@ -25,6 +31,8 @@
 	[aModel.generateServiceContextXml(aModel.pathToMainResources())/]
 	[aModel.generateServiceContextXml(aModel.pathToTestResources())/]
 	[aModel.generatePomXml()/]
+	[aModel.generateManageableServiceContextXml(aModel.pathToMainResources())/]
+	[aModel.generateManageableServiceContextXml(aModel.pathToTestResources())/]
 
 [/template]
 
@@ -35,3 +43,12 @@
 	[aClass.generateServiceImplJava()/]
 	[aClass.generateTestServiceIlmpl()/]
 [/template]
+
+[template public generateServiceProjectModel(aClass : Class) ? (aClass.isManageableEntity())] 
+	[comment @main /]
+	[aClass.generateManageableServiceInterfaceJava()/]
+	[aClass.generateManageableServiceBaseJava()/]
+	[aClass.generateManageableServiceImplJava()/]
+	
+[/template]
+

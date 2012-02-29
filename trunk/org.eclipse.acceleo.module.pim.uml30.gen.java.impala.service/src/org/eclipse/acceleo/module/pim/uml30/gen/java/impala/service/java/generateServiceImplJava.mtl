@@ -1,4 +1,4 @@
-[comment encoding = Cp1252 /]
+[comment encoding = UTF-8 /]
 [module generateServiceImplJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
@@ -14,7 +14,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::serviceCommon /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::entityUtil /]
 [template public generateServiceImplJava(aService : Class)]
-	[file (aService.getModel().generateProjectFolder().concat(aService.getModel().pathToMainJava()).concat('/').concat(aService.generateJavaPackagePath()).concat('/').concat(aService.name.toUpperFirst()).concat('Impl.java'), false, 'Cp1252')]
+	[file (aService.getModel().generateProjectFolder().concat(aService.getModel().pathToMainJava()).concat('/').concat(aService.generateJavaPackagePath()).concat('/').concat(aService.name.toUpperFirst()).concat('Impl.java'), false, 'UTF-8')]
 package [aService.generateJavaPackage()/];
 //[protected ('user imports')]
 import java.io.Serializable;
