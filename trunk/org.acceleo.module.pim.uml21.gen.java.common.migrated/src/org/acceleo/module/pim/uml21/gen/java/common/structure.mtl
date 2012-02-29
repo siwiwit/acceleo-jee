@@ -29,7 +29,7 @@ interface.getAssociations()->filter(Association).oppositeAttributeOf(interface)-
 ->including(interface.ownedAttribute)->asSet()
 /]
 
-[template public generateImports(class:Class) post (trim())]
+[comment][template public generateImports(class:Class) post (trim())]
 [for (prop:Property|class.classAttributes()->select(type.oclIsTypeOf(NamedElement)))]
 	[let propType : Type = prop.type]
 		[let typeName : String = propType.name]
@@ -44,7 +44,7 @@ import [propType.getCompleteName()/];
 
 [/for]
 
-[/template]
+[/template][/comment]
 
 
 [template public generateParameters(operation:Operation)]
@@ -96,10 +96,11 @@ some[name.toUpperFirst()/]
 
 [template public generateJavadocBody(namedElement:NamedElement)]
  
- * <!-- [protected ('protected')]
+ * <!-- [protected ('function java doc')] -->
  * <p>
  * </p>
- * <!-- [/protected] for [name/] -->[if (ownedComment._body->size() > 0)]
+ * <!-- [/protected] -->
+	[if (ownedComment._body->size() > 0)]
  * <p>[ownedComment._body/]</p>
 	[/if]
 [/template]
@@ -113,7 +114,7 @@ some[name.toUpperFirst()/]
 
 
 [template public generateJavadocBody(operation:Operation)]
-	 * <!-- [protected ('protected')]	 
+	 * <!-- [protected ('function java doc')] -->	 
 	 * <p>
 	 * </p>
 [for (param:Parameter | operation.getRealParameters())]

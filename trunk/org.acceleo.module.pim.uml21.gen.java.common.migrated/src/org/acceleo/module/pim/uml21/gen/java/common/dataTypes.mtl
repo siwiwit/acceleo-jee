@@ -43,8 +43,12 @@ Collection<[type.convertToJavaType()/]>
 [/template]
 
 
-[template public convertToJavaType(type:Type)]
-[type.name/]
+[template public convertToJavaType(type:Type) post (trim())]
+[if (getProperty('java.typeconversion.'+type.name)<>null)]
+	[getProperty('java.typeconversion.'+type.name)/]
+[else]
+	[type.name/]
+[/if]
 [/template]
 
 
@@ -78,9 +82,16 @@ Collection<[type.convertToJavaType()/]>
 [/template]
 
 [template public convertToJavaWrapperType(primitiveType:PrimitiveType)]
-[getProperty('java.wrapper.' + primitiveType.convertToJavaType())/]
+[getProperty('java.wrapper.'.concat(primitiveType.convertToJavaType()))/]
 [/template]
 
+[query public convertToJavaWrapperType(javaPrimityTypeName:String) : String = 
+if (getProperty('java.wrapper.'.concat(javaPrimityTypeName))<>null) then
+	getProperty('java.wrapper.'.concat(javaPrimityTypeName))
+else
+	javaPrimityTypeName
+endif
+/]
 
 [template public convertToJavaDtoType(primitiveType:PrimitiveType)]
 [primitiveType.convertToJavaType()/]
