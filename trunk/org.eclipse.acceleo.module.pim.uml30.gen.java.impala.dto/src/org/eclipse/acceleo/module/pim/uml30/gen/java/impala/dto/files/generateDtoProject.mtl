@@ -4,7 +4,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::java::generateDtoJava/] 
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::resources::generateModuleProperties/]
 [import org::acceleo::module::pim::uml21::gen::java::common::requests /]
-
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::java::generateManageableDtoJava /]
 [template public generateDtoProjectClass(aClass : Class) ? (aClass.isDto())]
 	
 	[comment @main /]
@@ -18,3 +18,10 @@
 	[aModel.generateModuleProperties()/]
 	
 [/template]
+[template public generateDtoProjectClass(aClass : Class) ? (aClass.isManageableEntity())]
+	
+	[comment @main /]
+	[aClass.generateManageableDtoJava()/]
+	
+[/template]
+

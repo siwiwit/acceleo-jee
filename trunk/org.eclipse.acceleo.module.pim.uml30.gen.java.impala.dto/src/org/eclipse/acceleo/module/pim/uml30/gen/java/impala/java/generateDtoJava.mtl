@@ -14,7 +14,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::entityUtil /]
 
 [template public generateDtoJava(aClass : Class)]
-[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('.java'), false, 'Cp1252')]
+[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToGeneratedMainJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name).concat('.java'), false, 'UTF-8')]
 	[aClass.genEntityDto()/]
 [/file]
 [/template]
@@ -42,9 +42,9 @@ public class [aClass.name.toUpperFirst()/][aClass.extensions()/] implements Seri
 
 [for (prop:Property|aClass.classAttributes())]
     /**
-     * Field [prop.name/].
+     * Field [prop.name.toLowerFirst()/].
      */
-    protected [prop.convertToJavaDtoType()/] [prop.name/];
+    protected [prop.convertToJavaDtoType()/] [prop.name.toLowerFirst()/];
 
 [/for]
     /**
