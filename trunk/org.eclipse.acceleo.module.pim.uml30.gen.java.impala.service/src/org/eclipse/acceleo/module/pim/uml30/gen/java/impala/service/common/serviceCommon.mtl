@@ -13,3 +13,16 @@ endif
 [comment][template public generateServiceManagerFunctionParam (anEntity : Class) post (trim()) ]
 [anEntity.generateDaoManagerFunctionParam()/]
 [/template][/comment]
+[query public getOtherPKProperties(aService : Class) : Set(Property) =
+if(aService.interfaceRealization->notEmpty()and 
+	aService.interfaceRealization.target->notEmpty() and
+	aService.interfaceRealization.target->filter(Interface)->notEmpty() and
+	aService.interfaceRealization.target->filter(Interface)->select(isEntity())->notEmpty() and
+	aService.interfaceRealization.target->filter(Interface)->select(isEntity())
+		->asSequence()->first().attribute->notEmpty()) then   
+	aService.interfaceRealization.target->filter(Interface)->select(isEntity())
+		->asSequence()->first().attribute->select(isPK())
+else
+	Set{}
+endif
+/]
