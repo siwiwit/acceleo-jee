@@ -13,6 +13,7 @@
 [import org::acceleo::module::pim::uml21::gen::java::spring::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::entityUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::build::common::entityUtil /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::serviceCommon /]
 [template public generateServiceInterfaceJava(aService : Class)]
 [comment This template is called by the main module file /]
 	[file (aService.getModel().generateProjectFolder().concat(aService.getModel().pathToGeneratedMainJava()).concat('/').concat(aService.generateJavaPackagePath()).concat('/').concat(aService.name.toUpperFirst()).concat('.java'), false, 'UTF-8')]
@@ -142,28 +143,4 @@ aService.superClass->notEmpty() and aService.superClass->asSequence()->first().h
 [template public implementedInterfaces(aService:Class)]
 [aService.interfaceRealization.target->filter(Interface).name->sep(', ')/]
 [/template]
-
-
-
-[query public getOtherPKProperties(aService : Class) : Set(Property) =
-if(aService.interfaceRealization->notEmpty()and 
-	aService.interfaceRealization.target->notEmpty() and
-	aService.interfaceRealization.target->filter(Interface)->notEmpty() and
-	aService.interfaceRealization.target->filter(Interface)->select(isEntity())->notEmpty() and
-	aService.interfaceRealization.target->filter(Interface)->select(isEntity())
-		->asSequence()->first().attribute->notEmpty()) then   
-	aService.interfaceRealization.target->filter(Interface)->select(isEntity())
-		->asSequence()->first().attribute->select(isPK())
-else
-	Set{}
-endif
-/]
-
-[query public getRelatedDaos(aService : Class) : Set(Class) = 
-if(aService.clientDependency->notEmpty()) then
-aService.clientDependency.supplier->filter(Class)->select(aService : Class|aService.isEntity())->asSet()
-else
-Set{}
-endif
-/]
 
