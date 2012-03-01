@@ -135,7 +135,7 @@ arg0
 			[else]
                 <!-- Aggregation Type : [property.aggregation/] -->
         <set name="[property.name/]" lazy="true"[if (property.isComposite or property.aggregation = 'shared')] cascade="all"[/if]> 
-            <key column="[property.type.name.toSqlNotation()/]_id"/>            
+            <key column="[property.oppositeAttribute().type.name.toSqlNotation()/]_[property.oppositeAttribute().name.toSqlNotation()/]"/>            
             <one-to-many class="[if (property.type.generateJavaPackage().trim().size()>0)][property.type.generateJavaPackage()/].[/if][property.type.name/]Impl"/>
         </set>
 			[/if]
