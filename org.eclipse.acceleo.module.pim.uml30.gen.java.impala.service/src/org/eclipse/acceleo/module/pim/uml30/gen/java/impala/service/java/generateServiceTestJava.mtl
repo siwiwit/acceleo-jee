@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generateTestServiceIlmpl('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[module generateServiceTestJava('http://www.eclipse.org/uml2/3.0.0/UML')/]
 [import org::acceleo::module::pim::uml21::gen::java::common::common /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::common::servicePathUtil /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::pathUtil /]
@@ -11,7 +11,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::common::stringUtil /]
 [import org::acceleo::module::pim::uml21::gen::java::common::dataTypes /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::main::common::mainCommon /]
-[template public generateTestServiceIlmpl(aClass : Class)]
+[template public generateServiceTestJava(aClass : Class)]
 	[file (aClass.getModel().generateProjectFolder().concat(aClass.getModel().pathToTestJava()).concat('/').concat(aClass.generateJavaPackagePath()).concat('/').concat(aClass.name.toUpperFirst()).concat('Test.java'), false, 'UTF-8')]
 [if (aClass.generateJavaPackage().trim().size()>0)]
 package [aClass.generateJavaPackage()/];
@@ -34,6 +34,8 @@ import org.impalaframework.module.ModuleDefinitionSource;
 import org.impalaframework.module.RootModuleDefinition;
 import org.impalaframework.module.source.SimpleModuleDefinitionSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import tests.integration.AbstractServiceTest;
+
 [for (anEntity : Class | aClass.getModel().eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
 import [if(anEntity.generateJavaPackage().trim().size()>0)][anEntity.generateJavaPackage()/].[/if][anEntity.name/][if(anEntity.hasEntityParent())]Impl[/if];
 [/for]
@@ -56,8 +58,7 @@ import [if(aClass.generateJavaPackage().trim().size()>0)][aClass.generateJavaPac
  * @author Juergen Hoeller
  * @author Phil Zoio
  */
-public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
-        ModuleDefinitionSource {
+public class [aClass.name.toUpperFirst()/]Test extends AbstractServiceTest {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	//[protected ('addition properties')]
 
@@ -67,23 +68,23 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
         InteractiveTestRunner.run([aClass.name.toUpperFirst()/]Test.class);
     }
 
-    private JdbcTemplate jdbcTemplate;
+[comment]    private JdbcTemplate jdbcTemplate;[/comment]
 
     private [aClass.name.toUpperFirst()/] [aClass.name.toLowerFirst()/];
 
 	@Override
     public void setUp() throws Exception {
         super.setUp();
-        Impala.init(this);
-        [aClass.name.toLowerFirst()/] = Impala.getBean("[aClass.name.toLower()/]", [aClass.name.toUpperFirst()/].class);
-        jdbcTemplate = new JdbcTemplate(Impala.getBean(
+        [comment]Impala.init(this);[/comment]
+        this.[aClass.name.toLowerFirst()/] = Impala.getBean("[aClass.name.toLower()/]", [aClass.name.toUpperFirst()/].class);
+        [comment]jdbcTemplate = new JdbcTemplate(Impala.getBean(
                 "dataSource", DataSource.class));
 
         runScript("../[aClass.getModel().generateSpecificProjectFolder('-build')/]/src/main/resources/db/emptyDB.txt");
-        runScript("../[aClass.getModel().generateSpecificProjectFolder('-build')/]/src/main/resources/db/populateDB.txt");
+        runScript("../[aClass.getModel().generateSpecificProjectFolder('-build')/]/src/main/resources/db/populateDB.txt");[/comment]
     }
 
-    private void runScript(String file) throws IOException,
+    [comment]private void runScript(String file) throws IOException,
             FileNotFoundException {
         String empty = FileCopyUtils.copyToString(new FileReader(file));
         String['['/][']'/] statements = empty.split(";");
@@ -91,7 +92,7 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
             if (sql.trim().length() > 0)
                 jdbcTemplate.execute(sql);
         }
-    }
+    }[/comment]
 
 	[for (aServicrMethod : Operation | aClass.ownedOperation->select(anOper:Operation|anOper.visibility = VisibilityKind::public))]
 	public void test[aServicrMethod.name.toUpperFirst()/]() {
@@ -197,7 +198,7 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
 	
 [/for][/comment]
 
-    public RootModuleDefinition getModuleDefinition() {
+    [comment]public RootModuleDefinition getModuleDefinition() {
 
         return new SimpleModuleDefinitionSource("[aClass.getModel().generateSpecificProjectFolder('-main')/]",
                 new String['[]'/] { "[aClass.getModel().generateSpecificProjectFolder('-service-context')/].xml"
@@ -209,7 +210,7 @@ public class [aClass.name.toUpperFirst()/]Test extends TestCase implements
                         "[aClass.getModel().generateSpecificProjectFolder('-dao')/]", 
                         "[aClass.getModel().generateSpecificProjectFolder('-service')/]" })
                 .getModuleDefinition();
-    }
+    }[/comment]
 
 	//[protected ('other unit tests')]
 

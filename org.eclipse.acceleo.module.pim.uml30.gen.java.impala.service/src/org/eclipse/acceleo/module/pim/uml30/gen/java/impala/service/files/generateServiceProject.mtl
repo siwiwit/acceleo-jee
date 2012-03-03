@@ -1,6 +1,5 @@
 [comment encoding = UTF-8 /]
 [module generateServiceProject('http://www.eclipse.org/uml2/3.0.0/UML')/]
-[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateTestServiceIlmpl/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::resources::generateHsqldbProperties/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::resources::generateModuleProperties/]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::resources::generateMysqlProperties/]
@@ -16,7 +15,11 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateManageableServiceBaseJava /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateManageableServiceImplJava /]
 [import org::acceleo::module::pim::uml21::gen::java::common::requests /]
-
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateAbstractServiceTestJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateServiceTestJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateManageableServiceTestJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::java::generateServiceTestUtilJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::service::resources::generateImportDaoContextXml /]
 [template public generateServiceProjectModel(aModel : Model)] 
 	
 	[comment @main /]
@@ -33,7 +36,9 @@
 	[aModel.generatePomXml()/]
 	[aModel.generateManageableServiceContextXml(aModel.pathToMainResources())/]
 	[aModel.generateManageableServiceContextXml(aModel.pathToTestResources())/]
-
+	[aModel.generateAbstractServiceTestJava()/]
+	[aModel.generateServiceTestUtilJava()/]
+	[aModel.generateImportDaoContextXml()/]
 [/template]
 
 [template public generateServiceProjectModel(aClass : Class) ? (aClass.isService())] 
@@ -41,7 +46,7 @@
 	[aClass.generateServiceInterfaceJava()/]
 	[aClass.generateServiceBaseImplJava()/]
 	[aClass.generateServiceImplJava()/]
-	[aClass.generateTestServiceIlmpl()/]
+	[aClass.generateServiceTestJava()/]
 [/template]
 
 [template public generateServiceProjectModel(aClass : Class) ? (aClass.isManageableEntity())] 
@@ -49,6 +54,7 @@
 	[aClass.generateManageableServiceInterfaceJava()/]
 	[aClass.generateManageableServiceBaseJava()/]
 	[aClass.generateManageableServiceImplJava()/]
+	[aClass.generateManageableServiceTestJava()/]
 	
 [/template]
 
