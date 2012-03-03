@@ -59,7 +59,7 @@ import org.impalaframework.interactive.InteractiveTestRunner;
 //[/protected]
 
 public class [anEntity.name.toUpperFirst()/]DaoTest extends AbstractDaoTest {
-	//private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     private [anEntity.name.toUpperFirst()/]Dao [anEntity.name.toLowerFirst()/]Dao = null;
 	//[protected ('addition properties')]
 
