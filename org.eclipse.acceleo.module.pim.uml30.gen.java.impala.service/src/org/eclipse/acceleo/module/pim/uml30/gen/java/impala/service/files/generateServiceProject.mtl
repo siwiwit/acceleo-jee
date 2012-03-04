@@ -28,7 +28,7 @@
 	[aModel.generateHsqldbProperties(aModel.pathToMainResources())/]
 	[aModel.generateHsqldbProperties(aModel.pathToTestResources())/]
 	[aModel.generateModuleProperties(aModel.pathToMainResources())/]
-	[aModel.generateModuleProperties(aModel.pathToTestResources())/]
+	[comment][aModel.generateModuleProperties(aModel.pathToTestResources())/][/comment]
 	[aModel.generateMysqlProperties(aModel.pathToMainResources())/]
 	[aModel.generateMysqlProperties(aModel.pathToTestResources())/]
 	[aModel.generateServiceContextXml(aModel.pathToMainResources())/]

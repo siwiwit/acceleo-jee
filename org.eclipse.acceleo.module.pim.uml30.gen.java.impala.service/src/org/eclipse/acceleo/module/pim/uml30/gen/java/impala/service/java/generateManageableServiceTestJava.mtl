@@ -41,12 +41,14 @@ public class [anEntity.name.toUpperFirst()/]ManageableServiceTest extends Abstra
     }
 
     public void testMappings() throws Exception {
-        System.out.println("[anEntity.name.toLower()/]manageableservice bean: " + Impala.getBean("[anEntity.name.toLower()/]manageableservice", [anEntity.name.toUpperFirst()/]ManageableService.class));
+        System.out.println("[anEntity.name.toLower()/]manageableservice bean: " + AbstractServiceTest.getBean("[anEntity.name.toLower()/]manageableservice", [anEntity.name.toUpperFirst()/]ManageableService.class));
     }
 	
 	public static [anEntity.name.toUpperFirst()/]ManageableService get[anEntity.name.toUpperFirst()/]ManageableService() {
-		return Impala.getBean("[anEntity.name.toLower()/]manageableservice", [anEntity.name.toUpperFirst()/]ManageableService.class);
+		return ServiceTestUtil.getBean("[anEntity.name.toLower()/]manageableservice", [anEntity.name.toUpperFirst()/]ManageableService.class);
 	}
+
+	
 
 	@Override
     public void setUp() throws Exception {
