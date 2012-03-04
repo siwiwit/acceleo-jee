@@ -108,9 +108,13 @@ public final class ServiceTestUtil {
 		
 	}
 
+	public static <T extends Object> T getBean(String beanName, Class<T> type) {
+		return Impala.getModuleBean("[aModel.generateProjectFolder()/]", beanName, type);
+	}
+
 	[for (aEntityClass : Class | aModel.eAllContents(Class)->select(aClass:Class|aClass.isEntity()))]
 	public static [aEntityClass.name.toUpperFirst()/]Dao get[aEntityClass.name.toUpperFirst()/]Dao() {
-        return Impala.getBean("[aEntityClass.name.toLower()/]dao", [aEntityClass.name.toUpperFirst()/]Dao.class);
+        return ServiceTestUtil.getBean("[aEntityClass.name.toLower()/]dao", [aEntityClass.name.toUpperFirst()/]Dao.class);
     }
 	[/for]
 	

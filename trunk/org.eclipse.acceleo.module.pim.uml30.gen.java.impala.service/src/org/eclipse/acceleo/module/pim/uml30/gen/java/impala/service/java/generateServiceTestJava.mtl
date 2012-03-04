@@ -76,7 +76,7 @@ public class [aClass.name.toUpperFirst()/]Test extends AbstractServiceTest {
     public void setUp() throws Exception {
         super.setUp();
         [comment]Impala.init(this);[/comment]
-        this.[aClass.name.toLowerFirst()/] = Impala.getBean("[aClass.name.toLower()/]", [aClass.name.toUpperFirst()/].class);
+        this.[aClass.name.toLowerFirst()/] = AbstractServiceTest.getBean("[aClass.name.toLower()/]", [aClass.name.toUpperFirst()/].class);
         [comment]jdbcTemplate = new JdbcTemplate(Impala.getBean(
                 "dataSource", DataSource.class));
 
