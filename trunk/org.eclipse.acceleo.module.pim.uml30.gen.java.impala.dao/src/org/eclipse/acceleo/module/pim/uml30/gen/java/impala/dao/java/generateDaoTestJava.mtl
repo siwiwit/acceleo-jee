@@ -59,7 +59,9 @@ import org.impalaframework.interactive.InteractiveTestRunner;
 //[/protected]
 
 public class [anEntity.name.toUpperFirst()/]DaoTest extends AbstractDaoTest {
+[if (anEntity.ownedAttribute->select(aProp:Property|aProp.type.name='Date')->notEmpty())]
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+[/if]
     private [anEntity.name.toUpperFirst()/]Dao [anEntity.name.toLowerFirst()/]Dao = null;
 	//[protected ('addition properties')]
 
@@ -69,11 +71,11 @@ public class [anEntity.name.toUpperFirst()/]DaoTest extends AbstractDaoTest {
     }
 
     public void testMappings() throws Exception {
-        System.out.println("[anEntity.name.toLowerFirst()/]dao bean: " + Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class));
+        System.out.println("[anEntity.name.toLowerFirst()/]dao bean: " + AbstractDaoTest.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class));
     }
 	
 	public static [anEntity.name.toUpperFirst()/]Dao get[anEntity.name.toUpperFirst()/]Dao() {
-		return Impala.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
+		return AbstractDaoTest.getBean("[anEntity.name.toLower()/]dao", [anEntity.name.toUpperFirst()/]Dao.class);
 	}
 
 	@Override

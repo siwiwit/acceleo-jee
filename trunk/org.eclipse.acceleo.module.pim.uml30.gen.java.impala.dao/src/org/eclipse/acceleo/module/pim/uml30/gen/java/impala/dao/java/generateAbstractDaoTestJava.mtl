@@ -33,7 +33,7 @@ import org.impalaframework.facade.Impala;
 import org.impalaframework.interactive.InteractiveTestRunner;
 import org.impalaframework.module.ModuleDefinitionSource;
 import org.impalaframework.module.RootModuleDefinition;
-import org.impalaframework.module.source.SimpleModuleDefinitionSource;
+import org.impalaframework.interactive.definition.source.TestDefinitionSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.FileCopyUtils;
 //[/protected]
@@ -47,7 +47,7 @@ public abstract class AbstractDaoTest extends TestCase implements
     public void setUp() throws Exception {
         super.setUp();
         Impala.init(this);
-        this.jdbcTemplate = new JdbcTemplate(Impala.getBean(
+        this.jdbcTemplate = new JdbcTemplate(AbstractServiceTest.getBean(
                 "dataSource", DataSource.class));
 
         runScript("../[aModel.generateSpecificProjectFolder('-build')/]/src/main/resources/db/emptyDB.txt");
@@ -65,15 +65,20 @@ public abstract class AbstractDaoTest extends TestCase implements
         }
     }
 
-    public final RootModuleDefinition getModuleDefinition() {
+	protected static <T extends Object> T getBean(String beanName, Class<T> type) {
+		return Impala.getModuleBean("[aModel.generateProjectFolder()/]", beanName, type);
+	}
 
-        return new SimpleModuleDefinitionSource("newtimetracker-main",
-                new String['['/][']'/]{"[aModel.generateProjectFolder()/]-context.xml"
-				[if (aModel.eAllContents(Class)->select(aClass:Class|aClass.isManageableEntity())->notEmpty())]
-									, "[aModel.generateProjectFolder()/]-manageable.xml"
-				[/if] 
-				},
-                new String['['/][']'/]{"[aModel.generateProjectFolder()/]", "[aModel.generateSpecificProjectFolder('-hibernate')/]"}).getModuleDefinition();
+    public final RootModuleDefinition getModuleDefinition() {
+        return new TestDefinitionSource("[aModel.generateProjectFolder()/]", "[aModel.generateSpecificProjectFolder('-hibernate')/]").getModuleDefinition();
+
+//        return new SimpleModuleDefinitionSource("[aModel.generateSpecificProjectFolder('-main')/]",
+//                new String['['/][']'/]{"[aModel.generateProjectFolder()/]-context.xml"
+//				[if (aModel.eAllContents(Class)->select(aClass:Class|aClass.isManageableEntity())->notEmpty())]
+//									, "[aModel.generateProjectFolder()/]-manageable.xml"
+//				[/if] 
+//				},
+//                new String['['/][']'/]{"[aModel.generateProjectFolder()/]", "[aModel.generateSpecificProjectFolder('-hibernate')/]"}).getModuleDefinition();
     }
 	
 }

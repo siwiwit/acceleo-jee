@@ -37,11 +37,11 @@ public class [anEntity.name.toUpperFirst()/]ManageableDaoTest extends AbstractDa
     }
 
     public void testMappings() throws Exception {
-        System.out.println("[anEntity.name.toLower()/]manageabledao bean: " + Impala.getBean("[anEntity.name.toLower()/]manageabledao", [anEntity.name.toUpperFirst()/]ManageableDao.class));
+        System.out.println("[anEntity.name.toLower()/]manageabledao bean: " + AbstractDaoTest.getBean("[anEntity.name.toLower()/]manageabledao", [anEntity.name.toUpperFirst()/]ManageableDao.class));
     }
 	
 	public static [anEntity.name.toUpperFirst()/]ManageableDao get[anEntity.name.toUpperFirst()/]ManageableDao() {
-		return Impala.getBean("[anEntity.name.toLower()/]manageabledao", [anEntity.name.toUpperFirst()/]ManageableDao.class);
+		return AbstractDaoTest.getBean("[anEntity.name.toLower()/]manageabledao", [anEntity.name.toUpperFirst()/]ManageableDao.class);
 	}
 
 	@Override
