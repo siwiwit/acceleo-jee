@@ -7,5 +7,8 @@
 [template public generateModuleProperties(aModel : Model)]
 	[file (aModel.generateProjectFolder().concat(aModel.pathToMainResources()).concat('/module.properties'), false, 'ISO-8859-1')]
 type=root	
+config-locations=[aModel.generateProjectFolder()/]-context.xml
+type=application
+runtime=spring
 	[/file]
 [/template]
