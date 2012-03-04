@@ -24,6 +24,7 @@
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::resources::generateManageableDaoContextXml /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::java::generateManageableDaoImplJava /]
 [import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::java::generateAbstractDaoTestJava /]
+[import org::eclipse::acceleo::module::pim::uml30::gen::java::impala::dao::resources::generateModuleProperties /]
 [template public generateDaoProjectClass(aClass : Class) ? (aClass.isEntity())]
 	
 	[comment @main /]
@@ -56,6 +57,6 @@
 	[aModel.generateManageableDaoContextXml(aModel.pathToTestResources())/]
 	[aModel.generateManageableDaoContextXml(aModel.pathToMainResources())/]
 	[aModel.generateAbstractDaoTestJava()/]
-	
+	[aModel.generateModuleProperties()/]
 [/template]
 

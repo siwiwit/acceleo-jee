@@ -106,7 +106,7 @@ public final class DaoTestUtil {
         }
 		
 	}
-	
+
 	[for (anEnumeration : Enumeration | aModel.eAllContents(Enumeration))]
 	public static [anEnumeration.name.toUpperFirst()/] create[anEnumeration.name.toUpperFirst()/]Value(String fieldName, long index) {
 		switch(Long.valueOf(index%[anEnumeration.ownedLiteral->size()/]).intValue()) {
