@@ -6,7 +6,7 @@
 	[file (aModel.generateProjectFolder().concat(aModel.pathToTestJava()).concat('/tests/integration/HibernateMappingsDAOTest.java'), false, 'UTF-8')]
 package tests.integration;
 
-import junit.framework.TestCase;
+import junit.framework.TestCase; 
 
 import org.hibernate.SessionFactory;
 import org.impalaframework.facade.Impala;
